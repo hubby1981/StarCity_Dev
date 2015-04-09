@@ -3,4 +3,14 @@
     android:layout_height="match_parent"
     android:background="@drawable/gal_back_001">
 
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button android:text="@string/btn_start_new_game" />
+
+        <Button android:text="@string/btn_shopping" />
+
+        <Button android:text="@string/btn_close_game" />
+    </GridLayout>
 </RelativeLayout>

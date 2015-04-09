@@ -3,4 +3,9 @@
 
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="btn_start_new_game">START NEW GAME</string>
+    <string name="btn_close_game">CLOSE GAME</string>
+    <string name="btn_shopping">SHOP</string>
+    <string name="btn_help">HELP</string>
+    <string name="btn_select_mode">Online / Offline</string>
 </resources>
