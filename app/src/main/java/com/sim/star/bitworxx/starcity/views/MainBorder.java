@@ -50,12 +50,24 @@ public class MainBorder extends View {
         return p;
     }
 
-    private Path getEquilateralTriangle(Point p1, int faktor, Direction direction) {
+    private Path getEquilateralTriangle(Point p1, int factor, Direction direction) {
         Point p2 = null, p3 = null;
 
         if (direction == Direction.WEST) {
-            p2 = new Point(p1.x + translateMarginWidth() / faktor, p1.y);
-            p3 = new Point(p1.x, p1.y + translateMarginWidth() / faktor);
+            p2 = new Point(p1.x + translateMarginWidth() / factor, p1.y);
+            p3 = new Point(p1.x, p1.y + translateMarginWidth() / factor);
+
+        } else if (direction == Direction.EAST) {
+            p2 = new Point(p1.x - translateMarginWidth() / factor, p1.y);
+            p3 = new Point(p1.x, p1.y + translateMarginWidth() / factor);
+
+        } else if (direction == Direction.SOUTH) {
+            p2 = new Point(p1.x - translateMarginWidth() / factor, p1.y);
+            p3 = new Point(p1.x, p1.y - translateMarginWidth() / factor);
+
+        } else if (direction == Direction.NORTH) {
+            p2 = new Point(p1.x + translateMarginWidth() / factor, p1.y);
+            p3 = new Point(p1.x, p1.y - translateMarginWidth() / factor);
 
         }
 
@@ -86,6 +98,15 @@ public class MainBorder extends View {
         canvas.clipPath(getInboundPath(), Region.Op.DIFFERENCE);
         canvas.clipPath(getEquilateralTriangle(new Point(getOutboundRect().left, getOutboundRect().top), MenuConst.FAKTOR_TRIANLGE_OUT, Direction.WEST), Region.Op.DIFFERENCE);
         canvas.clipPath(getEquilateralTriangle(new Point(getInboundRect().left, getInboundRect().top), MenuConst.FAKTOR_TRIANLGE_IN, Direction.WEST), Region.Op.UNION);
+
+        canvas.clipPath(getEquilateralTriangle(new Point(getOutboundRect().right, getOutboundRect().top), MenuConst.FAKTOR_TRIANLGE_OUT, Direction.EAST), Region.Op.DIFFERENCE);
+        canvas.clipPath(getEquilateralTriangle(new Point(getInboundRect().right, getInboundRect().top), MenuConst.FAKTOR_TRIANLGE_IN, Direction.EAST), Region.Op.UNION);
+
+        canvas.clipPath(getEquilateralTriangle(new Point(getOutboundRect().right, getOutboundRect().bottom), MenuConst.FAKTOR_TRIANLGE_OUT, Direction.SOUTH), Region.Op.DIFFERENCE);
+        canvas.clipPath(getEquilateralTriangle(new Point(getInboundRect().right, getInboundRect().bottom), MenuConst.FAKTOR_TRIANLGE_IN, Direction.SOUTH), Region.Op.UNION);
+
+        canvas.clipPath(getEquilateralTriangle(new Point(getOutboundRect().left, getOutboundRect().bottom), MenuConst.FAKTOR_TRIANLGE_OUT, Direction.NORTH), Region.Op.DIFFERENCE);
+        canvas.clipPath(getEquilateralTriangle(new Point(getInboundRect().left, getInboundRect().bottom), MenuConst.FAKTOR_TRIANLGE_IN, Direction.NORTH), Region.Op.UNION);
         canvas.drawPath(p, MenuConst.BACK_PAINTER);
 
 
