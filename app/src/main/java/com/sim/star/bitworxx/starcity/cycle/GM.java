@@ -1,5 +1,9 @@
 package com.sim.star.bitworxx.starcity.cycle;
 
+import com.sim.star.bitworxx.starcity.game.enums.RaceEnum;
+import com.sim.star.bitworxx.starcity.player.PlayerBag;
+
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -11,6 +15,8 @@ public class GM {
 
     public static GM_LoopTicker LT;
     public static GM_TimeFrame TF;
+    public static String Started;
+    public static PlayerBag Player;
 
     public static Timer GeneralTimer;
 
@@ -18,6 +24,8 @@ public class GM {
         GeneralTimer = create_timer();
         LT = new GM_LoopTicker(5, 9);
         TF = new GM_TimeFrame();
+        Player = new PlayerBag().create_bag("MustSet", RaceEnum.MustSelect);
+        Started = new Date().toString();
     }
 
     public static Timer create_timer() {
@@ -27,7 +35,7 @@ public class GM {
             public void run() {
                 Animate();
             }
-        }, 1000);
+        }, 0, 1000);
         return result;
     }
 
