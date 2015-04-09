@@ -7,6 +7,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
+        <com.sim.star.bitworxx.starcity.views.MainBorder
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
         <Button android:text="@string/btn_start_new_game" />
 
         <Button android:text="@string/btn_shopping" />
