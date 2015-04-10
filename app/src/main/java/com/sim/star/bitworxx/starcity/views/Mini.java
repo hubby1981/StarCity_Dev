@@ -2,6 +2,8 @@ package com.sim.star.bitworxx.starcity.views;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Path;
+import android.graphics.Point;
 import android.graphics.Rect;
 
 import com.sim.star.bitworxx.starcity.constants.MenuConst;
@@ -33,8 +35,112 @@ public class Mini {
             DisplayRect = new Rect(0, 0, w, h);
     }
 
-    private void Draw(Canvas canvas) {
-        canvas.drawRect(DisplayRect, MenuConst.BACK_PAINTER);
+    private Path generateTrianglePath(Rect rc, int w, int h) {
+        Path outerPath = new Path();
+
+        outerPath.moveTo(rc.left, rc.top + h);
+        outerPath.lineTo(rc.left + w, rc.top);
+        outerPath.lineTo(rc.right - w, rc.top);
+        outerPath.lineTo(rc.right, rc.top + h);
+        outerPath.lineTo(rc.right, rc.bottom - h);
+        outerPath.lineTo(rc.right - w, rc.bottom);
+        outerPath.lineTo(rc.left + w, rc.bottom);
+        outerPath.lineTo(rc.left, rc.bottom - h);
+        outerPath.lineTo(rc.left, rc.top + h);
+
+        return outerPath;
     }
 
+    private Rect getInboundRect(int w) {
+        return new Rect(DisplayRect.left + w, DisplayRect.top + w, DisplayRect.right - w, DisplayRect.bottom - w);
+    }
+
+    private void makePlateH(Canvas canvas, int x, int y, int w, int h, boolean invert) {
+        Path plate = new Path();
+
+
+        x += translateMarginWidth() * MenuConst.FACTOR_TRIANGLE_OUT;
+        w -= translateMarginWidth() * MenuConst.FACTOR_TRIANGLE_OUT;
+
+
+        Point p1 = new Point(x, y);
+        Point p2 = new Point(w, y);
+
+        Point p3 = new Point(w - translateMarginWidth(), h - ((h - y) / 2));
+        Point p4 = new Point(x + translateMarginWidth(), h - ((h - y) / 2));
+
+        plate.moveTo(p1.x, p1.y);
+        plate.lineTo(p2.x, p2.y);
+        plate.lineTo(p3.x, p3.y);
+        plate.lineTo(p4.x, p4.y);
+        plate.lineTo(p1.x, p1.y);
+
+        canvas.drawPath(plate, MenuConst.PLATE_BACK_PAINTER);
+        canvas.drawPath(plate, MenuConst.PLATE_STROKE_BACK_PAINTER);
+    }
+
+    private void makePlateV(Canvas canvas, int x, int y, int w, int h, boolean invert) {
+        Path plate = new Path();
+
+
+        y += translateMarginHeight() * MenuConst.FACTOR_TRIANGLE_OUT;
+        h -= translateMarginHeight() * MenuConst.FACTOR_TRIANGLE_OUT;
+
+
+        w -= (w - x) / 2;
+        Point p1 = new Point(x, y);
+
+        Point p4 = new Point(x, h);
+
+
+        Point p2 = new Point(w, y + translateMarginHeight());
+        Point p3 = new Point(w, h - translateMarginHeight());
+
+
+        plate.moveTo(p1.x, p1.y);
+        plate.lineTo(p2.x, p2.y);
+        plate.lineTo(p3.x, p3.y);
+        plate.lineTo(p4.x, p4.y);
+        plate.lineTo(p1.x, p1.y);
+
+        canvas.drawPath(plate, MenuConst.PLATE_BACK_PAINTER);
+        canvas.drawPath(plate, MenuConst.PLATE_STROKE_BACK_PAINTER);
+    }
+
+    private int translateMarginHeight() {
+        return (DisplayRect.height() / 100) * MenuConst.MARGIN_CLIP_MINI;
+    }
+
+    private int translateMarginWidth() {
+        return (DisplayRect.height() / 100) * MenuConst.MARGIN_CLIP_MINI;
+    }
+
+    private void Draw(Canvas canvas) {
+
+
+        int w = translateMarginWidth();
+        int h = translateMarginHeight();
+
+
+        Path outerPath = generateTrianglePath(DisplayRect, w, h);
+        Path innerPath = generateTrianglePath(getInboundRect(w + w), w, h);
+
+        canvas.drawPath(outerPath, MenuConst.BACK_PAINTER);
+
+
+        canvas.drawPath(innerPath, MenuConst.FORE_PAINTER);
+        canvas.drawPath(innerPath, MenuConst.STROKE_FORE_PAINTER);
+
+        makePlateH(canvas, getOutboundRect().left, getOutboundRect().top, getOutboundRect().right, getInboundRect(w + w).top, true);
+
+        makePlateH(canvas, getOutboundRect().left, getOutboundRect().bottom, getOutboundRect().right, getInboundRect(w + w).bottom, false);
+
+        makePlateV(canvas, getOutboundRect().left, getOutboundRect().top, getInboundRect(w + w).left, getOutboundRect().bottom, true);
+        makePlateV(canvas, getOutboundRect().right, getOutboundRect().top, getInboundRect(w + w).right, getOutboundRect().bottom, false);
+
+    }
+
+    public Rect getOutboundRect() {
+        return DisplayRect;
+    }
 }

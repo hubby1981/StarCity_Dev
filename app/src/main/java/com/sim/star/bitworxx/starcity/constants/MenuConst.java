@@ -8,21 +8,18 @@ import android.graphics.Paint;
  */
 public class MenuConst {
 
-    public static int FILL_YELLOW = Color.argb(225, 213, 123, 36);
-    public static int FILL_BACK_COLOR = FILL_YELLOW;
-    public static int FILL_BACK = FILL_BACK_COLOR;
+
+    public static int FILL_BACK = ColorSetter.FILL_BACK_COLOR;
     public static Paint BACK_PAINTER = createBackPainter(FILL_BACK);
-    public static int FILL_YELLOW_PLATE = Color.argb(255, 255, 200, 0);
-    public static int FILL_BACK_COLOR_PLATE = FILL_YELLOW_PLATE;
-    public static int FILL_BACK_PLATE = FILL_BACK_COLOR_PLATE;
+    public static int FILL_FORE = ColorSetter.FILL_FORE_COLOR;
+    public static Paint FORE_PAINTER = createBackPainter(FILL_FORE);
+
+    public static int FILL_BACK_PLATE = ColorSetter.FILL_BACK_COLOR_PLATE;
     public static Paint PLATE_BACK_PAINTER = createBackPainter(FILL_BACK_PLATE);
-    public static int FILL_YELLOW_PLATE_HALF = Color.argb(128, 255, 200, 0);
-    public static int FILL_BACK_COLOR_PLATE_HALF = FILL_YELLOW_PLATE_HALF;
-    public static int FILL_GREEN = Color.argb(225, 115, 157, 115);
-    public static int FILL_GREEN_PLATE = Color.argb(255, 92, 210, 27);
-    public static int FILL_GREEN_PLATE_HALF = Color.argb(128, 92, 210, 27);
-    public static int FILL_STROKE_BACK = Color.argb(255, 0, 0, 0);
-    public static Paint STROKE_BACK_PAINTER = createStrokeBackPainter(FILL_STROKE_BACK);
+
+
+    public static Paint STROKE_BACK_PAINTER = createStrokeBackPainter(ColorSetter.FILL_STROKE_BACK);
+    public static Paint STROKE_FORE_PAINTER = createStrokeBackPainter(ColorSetter.FILL_STROKE_FORE);
     public static int FILL_STROKE_BACK_PLATE = Color.argb(255, 0, 0, 0);
     public static Paint PLATE_STROKE_BACK_PAINTER = createStrokeBackPainter(FILL_STROKE_BACK_PLATE);
     public static int FILL_HALF_TRANSPARENT_BACK = Color.argb(128, 0, 0, 0);

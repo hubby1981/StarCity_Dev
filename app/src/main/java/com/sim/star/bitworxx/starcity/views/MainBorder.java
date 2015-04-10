@@ -11,6 +11,7 @@ import android.graphics.Region;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.sim.star.bitworxx.starcity.constants.ColorSetter;
 import com.sim.star.bitworxx.starcity.constants.MenuConst;
 import com.sim.star.bitworxx.starcity.game.enums.Direction;
 import com.sim.star.bitworxx.starcity.game.enums.MenuTriangle;
@@ -284,7 +285,7 @@ public abstract class MainBorder extends View {
             Paint pp = new Paint();
             pp.setStyle(Paint.Style.STROKE);
             pp.setAntiAlias(true);
-            pp.setColor(MenuConst.FILL_BACK_COLOR_PLATE_HALF);
+            pp.setColor(ColorSetter.FILL_BACK_COLOR_PLATE_HALF);
             pp.setStrokeWidth(MenuConst.MARGIN_CLIP_MINI);
             canvas.drawPath(outboundPath, pp);
         }
@@ -300,7 +301,7 @@ public abstract class MainBorder extends View {
 
 
         canvas.clipRect(InnerRect, Region.Op.UNION);
-        canvas.drawRect(InnerRect, MenuConst.HALF_TRANSPARENT_BACK_PAINTER);
+        // canvas.drawRect(InnerRect, MenuConst.HALF_TRANSPARENT_BACK_PAINTER);
         DrawItems(canvas);
     }
 

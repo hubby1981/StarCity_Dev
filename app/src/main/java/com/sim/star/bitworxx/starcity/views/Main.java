@@ -13,7 +13,9 @@ import com.sim.star.bitworxx.starcity.game.enums.MenuTriangle;
  */
 public class Main extends MainBorder {
 
+
     private Mini MainMenu;
+    private Mini TopMenu;
 
     public Main(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -24,12 +26,18 @@ public class Main extends MainBorder {
         HasTitle = true;
         init(MenuConst.MARGIN_CLIP, MenuTriangle.ALL, MenuConst.FACTOR_TRIANGLE_OUT, MenuConst.FACTOR_TRIANGLE_IN);
         MainMenu = new Mini();
+        TopMenu = new Mini();
+
     }
 
     @Override
     protected void DrawItems(Canvas canvas) {
         MainMenu.HandleDisplay(measureItemWidth(), measureItemWidth());
         Point p = new Point(LeftItem, (InnerRect.bottom) - MainMenu.DisplayRect.height());
+        canvas.drawBitmap(MainMenu.getAsBitmap(), (float) p.x, (float) p.y, null);
+
+        TopMenu.HandleDisplay(measureItemWidth(), measureItemWidth());
+        p = new Point(LeftItem, (InnerRect.top));
         canvas.drawBitmap(MainMenu.getAsBitmap(), (float) p.x, (float) p.y, null);
     }
 }
