@@ -3,19 +3,18 @@
     android:layout_height="match_parent"
     android:background="@drawable/gal_back_001">
 
-    <GridLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
-        <com.sim.star.bitworxx.starcity.views.MainBorder
+        <com.sim.star.bitworxx.starcity.views.Main
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
 
-        <Button android:text="@string/btn_start_new_game" />
 
-        <Button android:text="@string/btn_shopping" />
+        </com.sim.star.bitworxx.starcity.views.Main>
 
-        <Button android:text="@string/btn_close_game" />
-    </GridLayout>
+
+    </RelativeLayout>
 </RelativeLayout>
