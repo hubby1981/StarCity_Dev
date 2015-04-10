@@ -1,6 +1,8 @@
 package com.sim.star.bitworxx.starcity.cycle;
 
+import com.sim.star.bitworxx.starcity.game.enums.LoopEnum;
 import com.sim.star.bitworxx.starcity.game.enums.RaceEnum;
+import com.sim.star.bitworxx.starcity.game.enums.TimeEnum;
 import com.sim.star.bitworxx.starcity.player.PlayerBag;
 
 import java.util.Date;

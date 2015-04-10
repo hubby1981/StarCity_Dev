@@ -12,6 +12,8 @@ import android.view.View;
 
 import com.sim.star.bitworxx.starcity.constants.MenuConst;
 import com.sim.star.bitworxx.starcity.game.enums.Direction;
+import com.sim.star.bitworxx.starcity.game.enums.MenuTriangle;
+import com.sim.star.bitworxx.starcity.geometric.TriagleHelper;
 
 /**
  * Created by WEIS on 09.04.2015.
@@ -20,26 +22,55 @@ import com.sim.star.bitworxx.starcity.game.enums.Direction;
 public class MainBorder extends View {
 
 
+    private int MARGIN_CLIP;
+    private MenuTriangle TRIANGLES = MenuTriangle.NONE;
+    private Rect OutboundRect = null;
+    private RectF OutboundRectF = null;
+
+    private Rect InboundRect = null;
+    private RectF InboundRectF = null;
+
+
+
     public MainBorder(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
+    public void init(int marginClip, MenuTriangle triangles) {
+        MARGIN_CLIP = marginClip;
+        TRIANGLES = triangles;
+        refresh();
+    }
+
+    public void refresh() {
+        OutboundRect = InboundRect = null;
+        OutboundRectF = InboundRectF = null;
+    }
+
     private RectF getOutboundRectF() {
-        return new RectF(0, 0, getMeasuredWidth(), getMeasuredHeight());
+        if (OutboundRect == null)
+            OutboundRectF = new RectF(0, 0, getMeasuredWidth(), getMeasuredHeight());
+        return OutboundRectF;
     }
 
     private Rect getOutboundRect() {
-        return new Rect(0, 0, getMeasuredWidth(), getMeasuredHeight());
+        if (OutboundRect == null)
+            OutboundRect = new Rect(0, 0, getMeasuredWidth(), getMeasuredHeight());
+        return OutboundRect;
     }
 
     private Rect getInboundRect() {
-        return new Rect(getOutboundRect().left + translateMarginWidth(), getOutboundRect().top + translateMarginHeight(),
+        if (InboundRect == null)
+            InboundRect = new Rect(getOutboundRect().left + translateMarginWidth(), getOutboundRect().top + translateMarginHeight(),
                 getOutboundRect().right - translateMarginWidth(), getOutboundRect().bottom - translateMarginHeight());
+        return InboundRect;
     }
 
     private RectF getInboundRectF() {
-        return new RectF(getOutboundRect().left + translateMarginWidth(), getOutboundRect().top + translateMarginHeight(),
+        if (InboundRectF == null)
+            InboundRectF = new RectF(getOutboundRect().left + translateMarginWidth(), getOutboundRect().top + translateMarginHeight(),
                 getOutboundRect().right - translateMarginWidth(), getOutboundRect().bottom - translateMarginHeight());
+        return InboundRectF;
     }
 
     private Path getInboundPath() {
@@ -48,64 +79,42 @@ public class MainBorder extends View {
         return p;
     }
 
-    private Path getEquilateralTriangle(Point p1, int factor, Direction direction) {
-        Point p2 = null, p3 = null;
 
-        if (direction == Direction.WEST) {
-            p2 = new Point(p1.x + translateMarginWidth() / factor, p1.y);
-            p3 = new Point(p1.x, p1.y + translateMarginWidth() / factor);
-
-        } else if (direction == Direction.EAST) {
-            p2 = new Point(p1.x - translateMarginWidth() / factor, p1.y);
-            p3 = new Point(p1.x, p1.y + translateMarginWidth() / factor);
-
-        } else if (direction == Direction.SOUTH) {
-            p2 = new Point(p1.x - translateMarginWidth() / factor, p1.y);
-            p3 = new Point(p1.x, p1.y - translateMarginWidth() / factor);
-
-        } else if (direction == Direction.NORTH) {
-            p2 = new Point(p1.x + translateMarginWidth() / factor, p1.y);
-            p3 = new Point(p1.x, p1.y - translateMarginWidth() / factor);
-
-        }
-
-        Path path = new Path();
-        path.moveTo(p1.x, p1.y);
-        path.lineTo(p2.x, p2.y);
-        path.lineTo(p3.x, p3.y);
-
-        return path;
-    }
 
     private int translateMarginWidth() {
-        return (getMeasuredWidth() / 100) * MenuConst.MARGIN_CLIP;
+        return (getMeasuredWidth() / 100) * MARGIN_CLIP;
     }
 
     private int translateMarginHeight() {
-        return (getMeasuredHeight() / 100) * MenuConst.MARGIN_CLIP;
+        return (getMeasuredHeight() / 100) * MARGIN_CLIP;
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        Path p = new Path();
-        p.addRect(getOutboundRectF(), Path.Direction.CW);
+        Path outboundPath = new Path();
+        outboundPath.addRect(getOutboundRectF(), Path.Direction.CW);
 
-        canvas.clipPath(p);
-        canvas.clipPath(getInboundPath(), Region.Op.DIFFERENCE);
-        canvas.clipPath(getEquilateralTriangle(new Point(getOutboundRect().left, getOutboundRect().top), MenuConst.FAKTOR_TRIANLGE_OUT, Direction.WEST), Region.Op.DIFFERENCE);
-        canvas.clipPath(getEquilateralTriangle(new Point(getInboundRect().left, getInboundRect().top), MenuConst.FAKTOR_TRIANLGE_IN, Direction.WEST), Region.Op.UNION);
+        Path inboundPath = new Path();
+        inboundPath.addRect(getInboundRectF(), Path.Direction.CW);
 
-        canvas.clipPath(getEquilateralTriangle(new Point(getOutboundRect().right, getOutboundRect().top), MenuConst.FAKTOR_TRIANLGE_OUT, Direction.EAST), Region.Op.DIFFERENCE);
-        canvas.clipPath(getEquilateralTriangle(new Point(getInboundRect().right, getInboundRect().top), MenuConst.FAKTOR_TRIANLGE_IN, Direction.EAST), Region.Op.UNION);
+        canvas.clipPath(outboundPath);
+        canvas.clipPath(inboundPath, Region.Op.DIFFERENCE);
 
-        canvas.clipPath(getEquilateralTriangle(new Point(getOutboundRect().right, getOutboundRect().bottom), MenuConst.FAKTOR_TRIANLGE_OUT, Direction.SOUTH), Region.Op.DIFFERENCE);
-        canvas.clipPath(getEquilateralTriangle(new Point(getInboundRect().right, getInboundRect().bottom), MenuConst.FAKTOR_TRIANLGE_IN, Direction.SOUTH), Region.Op.UNION);
+        canvas.clipPath(TriagleHelper.getTriangle(new Point(getOutboundRect().left, getOutboundRect().top), MenuConst.FAKTOR_TRIANLGE_OUT, translateMarginWidth(), Direction.WEST), Region.Op.DIFFERENCE);
+        canvas.clipPath(TriagleHelper.getTriangle(new Point(getInboundRect().left, getInboundRect().top), MenuConst.FAKTOR_TRIANLGE_IN, translateMarginWidth(), Direction.WEST), Region.Op.UNION);
 
-        canvas.clipPath(getEquilateralTriangle(new Point(getOutboundRect().left, getOutboundRect().bottom), MenuConst.FAKTOR_TRIANLGE_OUT, Direction.NORTH), Region.Op.DIFFERENCE);
-        canvas.clipPath(getEquilateralTriangle(new Point(getInboundRect().left, getInboundRect().bottom), MenuConst.FAKTOR_TRIANLGE_IN, Direction.NORTH), Region.Op.UNION);
-        canvas.drawPath(p, MenuConst.BACK_PAINTER);
+        canvas.clipPath(TriagleHelper.getTriangle(new Point(getOutboundRect().right, getOutboundRect().top), MenuConst.FAKTOR_TRIANLGE_OUT, translateMarginWidth(), Direction.EAST), Region.Op.DIFFERENCE);
+        canvas.clipPath(TriagleHelper.getTriangle(new Point(getInboundRect().right, getInboundRect().top), MenuConst.FAKTOR_TRIANLGE_IN, translateMarginWidth(), Direction.EAST), Region.Op.UNION);
+
+        canvas.clipPath(TriagleHelper.getTriangle(new Point(getOutboundRect().right, getOutboundRect().bottom), MenuConst.FAKTOR_TRIANLGE_OUT, translateMarginWidth(), Direction.SOUTH), Region.Op.DIFFERENCE);
+        canvas.clipPath(TriagleHelper.getTriangle(new Point(getInboundRect().right, getInboundRect().bottom), MenuConst.FAKTOR_TRIANLGE_IN, translateMarginWidth(), Direction.SOUTH), Region.Op.UNION);
+
+        canvas.clipPath(TriagleHelper.getTriangle(new Point(getOutboundRect().left, getOutboundRect().bottom), MenuConst.FAKTOR_TRIANLGE_OUT, translateMarginWidth(), Direction.NORTH), Region.Op.DIFFERENCE);
+        canvas.clipPath(TriagleHelper.getTriangle(new Point(getInboundRect().left, getInboundRect().bottom), MenuConst.FAKTOR_TRIANLGE_IN, translateMarginWidth(), Direction.NORTH), Region.Op.UNION);
+
+        canvas.drawPath(outboundPath, MenuConst.BACK_PAINTER);
 
 
     }

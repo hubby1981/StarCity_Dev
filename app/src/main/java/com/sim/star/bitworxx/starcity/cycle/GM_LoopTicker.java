@@ -1,5 +1,7 @@
 package com.sim.star.bitworxx.starcity.cycle;
 
+import com.sim.star.bitworxx.starcity.game.enums.LoopEnum;
+
 public class GM_LoopTicker {
     public int L1;
     public int L2;

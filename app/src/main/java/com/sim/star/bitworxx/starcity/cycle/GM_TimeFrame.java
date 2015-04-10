@@ -1,5 +1,7 @@
 package com.sim.star.bitworxx.starcity.cycle;
 
+import com.sim.star.bitworxx.starcity.game.enums.TimeEnum;
+
 /**
  * Created by WEIS on 09.04.2015.
  */
