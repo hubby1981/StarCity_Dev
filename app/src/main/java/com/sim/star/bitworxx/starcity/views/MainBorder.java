@@ -11,13 +11,11 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.sim.star.bitworxx.starcity.constants.MenuConst;
+import com.sim.star.bitworxx.starcity.game.enums.Direction;
 
 /**
  * Created by WEIS on 09.04.2015.
  */
-enum Direction {
-    NORTH, SOUTH, EAST, WEST;
-}
 
 public class MainBorder extends View {
 
