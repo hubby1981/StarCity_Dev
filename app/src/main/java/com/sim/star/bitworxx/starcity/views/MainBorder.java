@@ -2,6 +2,7 @@ package com.sim.star.bitworxx.starcity.views;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
@@ -9,13 +10,18 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Region;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.sim.star.bitworxx.starcity.constants.ColorSetter;
 import com.sim.star.bitworxx.starcity.constants.MenuConst;
+import com.sim.star.bitworxx.starcity.display.Show;
 import com.sim.star.bitworxx.starcity.game.enums.Direction;
 import com.sim.star.bitworxx.starcity.game.enums.MenuTriangle;
 import com.sim.star.bitworxx.starcity.geometric.TriagleHelper;
+import com.sim.star.bitworxx.starcity.runnable.RunnablesMainMenu;
+import com.sim.star.bitworxx.starcity.views.touch.ActionContainer;
+import com.sim.star.bitworxx.starcity.views.touch.ActionHandler;
 
 /**
  * Created by WEIS on 09.04.2015.
@@ -30,6 +36,7 @@ public abstract class MainBorder extends View {
     protected boolean HasTitle = false;
     protected Rect InnerRect;
     protected int LeftItem = 0;
+    protected int TopItem = 0;
     private MenuTriangle TRIANGLES = MenuTriangle.NONE;
     private Rect OutboundRect = null;
     private RectF OutboundRectF = null;
@@ -52,12 +59,26 @@ public abstract class MainBorder extends View {
         FACTOR_TRIANGLE_OUT = factorTriangleOut;
         FACTOR_TRIANGLE_IN = factorTriangleIn;
         refresh();
+
     }
 
     public void refresh() {
         OutboundRect = InboundRect = null;
         OutboundRectF = InboundRectF = null;
     }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            Point wire = new Point((int) event.getX(), (int) event.getY());
+            checkUp(wire);
+            ActionContainer.checkUp(wire);
+        }
+        return true;
+    }
+
+    protected abstract void checkUp(Point check);
 
     private RectF getOutboundRectF() {
         if (OutboundRectF == null)
@@ -114,6 +135,10 @@ public abstract class MainBorder extends View {
         return (getInboundRect().width() / 100) * MenuConst.MARGIN_CLIP_MINI;
     }
 
+    protected int measureItemHeight() {
+        return (getInboundRect().height() / 100) * MenuConst.MARGIN_CLIP_MINI;
+    }
+
     private void makeAttacherPath(Canvas canvas, int x, int y) {
         Path attacher = new Path();
 
@@ -144,6 +169,54 @@ public abstract class MainBorder extends View {
         attacher.moveTo(w, y);
 
 
+        canvas.clipPath(attacher, Region.Op.UNION);
+
+    }
+
+    private void makeAttacherPath2(Canvas canvas, Rect bound) {
+        Path attacher = new Path();
+
+        int r = (measureItemHeight() / MenuConst.MARGIN_CLIP_MINI * MenuConst.FACTOR_TRIANGLE_OUT);
+        int rr = r / 2;
+        int rrr = rr;
+
+        InnerRect.left = bound.right + FACTOR_TRIANGLE_OUT;
+        TopItem = bound.top;
+        attacher.moveTo(bound.left, bound.top);
+        attacher.lineTo(bound.right - rrr, bound.top);
+        attacher.lineTo(bound.right, bound.top + rrr);
+        attacher.lineTo(bound.right, bound.top + rr + rr + rr);
+        attacher.lineTo(bound.right - rrr, bound.top + rr + rr + rr + rrr);
+
+        attacher.lineTo(bound.right - rrr, bound.bottom - rr - rr - rr - rrr);
+        attacher.lineTo(bound.right, bound.bottom - rr - rr - rr);
+        attacher.lineTo(bound.right, bound.bottom - rrr);
+        attacher.lineTo(bound.right - rrr, bound.bottom);
+        attacher.lineTo(bound.left, bound.bottom);
+        canvas.clipPath(attacher, Region.Op.UNION);
+
+    }
+
+    private void makeAttacherPath2Inverse(Canvas canvas, Rect bound) {
+        Path attacher = new Path();
+
+        int r = (measureItemHeight() / MenuConst.MARGIN_CLIP_MINI) * MenuConst.FACTOR_TRIANGLE_OUT;
+        int rr = r / 2;
+        int rrr = rr;
+
+        InnerRect.right = bound.left - FACTOR_TRIANGLE_OUT;
+
+        attacher.moveTo(bound.right, bound.top);
+        attacher.lineTo(bound.left + rrr, bound.top);
+        attacher.lineTo(bound.left, bound.top + rrr);
+        attacher.lineTo(bound.left, bound.top + rr + rr);
+        attacher.lineTo(bound.left + rrr, bound.top + rr + rr + rrr);
+
+        attacher.lineTo(bound.left + rrr, bound.bottom - rr - rr - rrr);
+        attacher.lineTo(bound.left, bound.bottom - rr - rr);
+        attacher.lineTo(bound.left, bound.bottom - rrr);
+        attacher.lineTo(bound.left + rrr, bound.bottom);
+        attacher.lineTo(bound.right, bound.bottom);
         canvas.clipPath(attacher, Region.Op.UNION);
 
     }
@@ -233,12 +306,61 @@ public abstract class MainBorder extends View {
         canvas.drawPath(plate, MenuConst.PLATE_STROKE_BACK_PAINTER);
     }
 
-    protected abstract void DrawItems(Canvas canvas);
+    protected abstract void drawItems(Canvas canvas);
+
+    private void createBackShader() {
+        MenuConst.BACK_SHADER_PAINTER = new Paint();
+        MenuConst.BACK_SHADER_PAINTER.setStyle(Paint.Style.FILL);
+        MenuConst.BACK_SHADER_PAINTER.setColor(Color.argb(255 / 3, 0, 0, 0));
+        MenuConst.BACK_SHADER_PAINTER.setShader(MenuConst.BACK_SHADER);
+
+        MenuConst.BACK_SHADER_PAINTER.setAntiAlias(true);
+
+        if (Show.RenderShader) {
+            if (MenuConst.BACK_PAINTER_WITH_SHADER == null && MenuConst.BACK_SHADER2 != null) {
+                MenuConst.BACK_PAINTER_WITH_SHADER = new Paint();
+                MenuConst.BACK_PAINTER_WITH_SHADER.setStyle(Paint.Style.FILL);
+                MenuConst.BACK_PAINTER_WITH_SHADER.setColor(ColorSetter.FILL_BACK_COLOR);
+                MenuConst.BACK_PAINTER_WITH_SHADER.setShader(MenuConst.BACK_SHADER2);
+
+                MenuConst.BACK_PAINTER_WITH_SHADER.setAntiAlias(true);
+
+            }
+        }
+    }
+
+    private void initBorder() {
+
+        if (ActionContainer.InitBorder == false) {
+            Rect o = getOutboundRect();
+            Rect i = getInboundRect();
+
+            int w = i.left - o.left;
+
+
+            Rect rL = new Rect(o.left, (o.top + o.height() / 2) - measureItemHeight(), o.left + w + FACTOR_TRIANGLE_OUT * 4, (o.top + o.height() / 2) + measureItemHeight());
+
+            ActionContainer.Handler.add(new ActionHandler(rL, RunnablesMainMenu.R_S_SUB_MENU));
+            Rect rR = new Rect(o.right - w + FACTOR_TRIANGLE_OUT * 4, (o.top + o.height() / 2) - measureItemHeight(), o.right, (o.top + o.height() / 2) + measureItemHeight());
+
+            ActionContainer.Handler.add(new ActionHandler(rR, RunnablesMainMenu.R_S_TIME_MENU));
+
+            Rect rM = new Rect(o.right - ((o.width() / 2)) - measureItemWidth(), o.bottom - measureItemHeight(), o.right - ((o.width() / 2)) + measureItemWidth(), o.bottom);
+
+            ActionContainer.Handler.add(new ActionHandler(rM, RunnablesMainMenu.R_S_MAIN_MENU));
+            ActionContainer.InitBorder = true;
+        }
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
+        initBorder();
+        if (MenuConst.BACK_SHADER_PAINTER == null) {
+            createBackShader();
+        }
+        if (MenuConst.BACK_SHADER_PAINTER != null)
+            canvas.drawRect(getOutboundRect(), MenuConst.BACK_SHADER_PAINTER);
 
         Path outboundPath = new Path();
         outboundPath.addRect(getOutboundRectF(), Path.Direction.CW);
@@ -257,6 +379,16 @@ public abstract class MainBorder extends View {
         if (HasTitle) {
             makeAttacherPath(canvas, getInboundRect().right - getInboundRect().width() / 2, getInboundRect().top);
             makeAttacherPathInverse(canvas, getTitleRect().right - getTitleRect().width() / 2, getTitleRect().top, getInboundRect().top);
+
+            makeAttacherPath2(canvas, new Rect(getInboundRect().left,
+                    (getInboundRect().top + getInboundRect().height() / 2) - measureItemWidth() / 2,
+                    getInboundRect().left + (translateMarginWidth() / FACTOR_TRIANGLE_OUT),
+                    (getInboundRect().top + getInboundRect().height() / 2) + measureItemWidth() / 2));
+
+            makeAttacherPath2Inverse(canvas, new Rect(getInboundRect().right - (translateMarginWidth() / FACTOR_TRIANGLE_OUT),
+                    (getInboundRect().top + getInboundRect().height() / 2) - measureItemWidth() / 2,
+                    getInboundRect().right,
+                    (getInboundRect().top + getInboundRect().height() / 2) + measureItemWidth() / 2));
         }
 
 
@@ -279,6 +411,8 @@ public abstract class MainBorder extends View {
         if (TRIANGLES == MenuTriangle.TOP || TRIANGLES == MenuTriangle.ALL)
             makeTrianglePath(canvas, getOutboundRect().left, getOutboundRect().bottom, getInboundRect().left, getInboundRect().bottom, Direction.NORTH);
 
+        if (MenuConst.BACK_PAINTER_WITH_SHADER != null && Show.RenderShader)
+            canvas.drawPath(outboundPath, MenuConst.BACK_PAINTER_WITH_SHADER);
 
         canvas.drawPath(outboundPath, MenuConst.BACK_PAINTER);
         if (HasTitle) {
@@ -301,8 +435,19 @@ public abstract class MainBorder extends View {
 
 
         canvas.clipRect(InnerRect, Region.Op.UNION);
-        // canvas.drawRect(InnerRect, MenuConst.HALF_TRANSPARENT_BACK_PAINTER);
-        DrawItems(canvas);
+
+
+        drawItems(canvas);
+
+        checkRenderClip(canvas);
+    }
+
+    private void checkRenderClip(Canvas canvas) {
+        if (Show.RenderClipShow) {
+            for (ActionHandler h : ActionContainer.Handler) {
+                canvas.drawRect(h.Bound, MenuConst.PLATE_BACK_PAINTER);
+            }
+        }
     }
 
 

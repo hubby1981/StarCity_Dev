@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gal_back_001">
 
-    <GridLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -17,5 +17,5 @@
         </com.sim.star.bitworxx.starcity.views.Main>
 
 
-    </GridLayout>
+    </RelativeLayout>
 </RelativeLayout>

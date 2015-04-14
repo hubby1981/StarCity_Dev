@@ -6,6 +6,7 @@ import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.Rect;
 
+import com.sim.star.bitworxx.starcity.MainScreen;
 import com.sim.star.bitworxx.starcity.constants.MenuConst;
 
 /**
@@ -15,8 +16,10 @@ public class Mini {
 
 
     public Rect DisplayRect = null;
+    public Rect InboundRect = null;
+    public Runnable Action;
+    public Point Measure;
     private Bitmap DisplayBitmap = null;
-
 
     public Bitmap getAsBitmap() {
 
@@ -28,6 +31,14 @@ public class Mini {
         }
 
         return DisplayBitmap;
+    }
+
+    public Canvas getAsCanvas() {
+        return new Canvas(DisplayBitmap);
+    }
+
+    public void setRunnable(Runnable action) {
+        Action = action;
     }
 
     public void HandleDisplay(int w, int h) {
@@ -51,8 +62,23 @@ public class Mini {
         return outerPath;
     }
 
-    private Rect getInboundRect(int w) {
-        return new Rect(DisplayRect.left + w, DisplayRect.top + w, DisplayRect.right - w, DisplayRect.bottom - w);
+    public void checkUp(Point check) {
+        if (InboundRect != null) {
+            Rect checkR = new Rect(Measure.x, Measure.y, Measure.x + DisplayRect.width(), Measure.y + DisplayRect.height());
+            if (checkR.contains(check.x, check.y)) {
+                if (Action != null) {
+
+                    Action.run();
+                    MainScreen.Init.run();
+                }
+            }
+        }
+    }
+
+
+    public Rect getInboundRect(int w) {
+        InboundRect = new Rect(DisplayRect.left + w, DisplayRect.top + w, DisplayRect.right - w, DisplayRect.bottom - w);
+        return InboundRect;
     }
 
     private void makePlateH(Canvas canvas, int x, int y, int w, int h, boolean invert) {
@@ -107,11 +133,11 @@ public class Mini {
         canvas.drawPath(plate, MenuConst.PLATE_STROKE_BACK_PAINTER);
     }
 
-    private int translateMarginHeight() {
+    public int translateMarginHeight() {
         return (DisplayRect.height() / 100) * MenuConst.MARGIN_CLIP_MINI;
     }
 
-    private int translateMarginWidth() {
+    public int translateMarginWidth() {
         return (DisplayRect.height() / 100) * MenuConst.MARGIN_CLIP_MINI;
     }
 

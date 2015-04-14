@@ -25,6 +25,7 @@ public class GM_LoopTicker {
         I_L3 = L3 = 9;
     }
 
+
     public LoopEnum iterate() {
         LoopEnum result = LoopEnum.NEXT_ITERATE;
 
