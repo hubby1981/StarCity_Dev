@@ -31,7 +31,7 @@ public class MainContent extends ContentWindow {
     protected void drawContents(Canvas canvas) {
 
 
-
+        drawGrid(canvas);
         drawText(canvas, S_HEADER_001, 0,4, HeaderFontPaint);
 
         drawText(canvas, S_SUB_HEADER_001,8,6, SubHeaderFontPaint);
@@ -39,9 +39,7 @@ public class MainContent extends ContentWindow {
         drawText(canvas, S_CONTENT_001,4,10, FontPaint);
 
 
-        drawRect(canvas,0,20,16,32);
 
-        drawRect(canvas,7,14,8,16);
 
     }
 

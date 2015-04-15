@@ -30,6 +30,7 @@ public class RunnablesMainMenu {
             Show.ShowMainMenu = !Show.ShowMainMenu;
             Show.ShowSubMenu = Show.ShowMainMenu;
             Show.ShowTimer = Show.ShowMainMenu;
+            Show.ShowTopMenu =Show.ShowMainMenu;
             S_UPDATE.run();}
     };
 

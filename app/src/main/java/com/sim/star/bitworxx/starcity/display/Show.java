@@ -8,7 +8,7 @@ public class Show {
     public static boolean ShowSubMenu = false;
     public static boolean ShowTimer = true;
     public static boolean ShowMainMenu = true;
-
+    public static boolean ShowTopMenu = true;
 
     public static boolean ShowSubMenuSecondLevel = false;
 
