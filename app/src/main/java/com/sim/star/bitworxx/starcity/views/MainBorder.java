@@ -311,7 +311,7 @@ public abstract class MainBorder extends View {
     private void createBackShader() {
         MenuConst.BACK_SHADER_PAINTER = new Paint();
         MenuConst.BACK_SHADER_PAINTER.setStyle(Paint.Style.FILL);
-        MenuConst.BACK_SHADER_PAINTER.setColor(Color.argb(255 / 3, 0, 0, 0));
+        MenuConst.BACK_SHADER_PAINTER.setColor(ColorSetter.FILL_SHADER_BACK);
         MenuConst.BACK_SHADER_PAINTER.setShader(MenuConst.BACK_SHADER);
 
         MenuConst.BACK_SHADER_PAINTER.setAntiAlias(true);

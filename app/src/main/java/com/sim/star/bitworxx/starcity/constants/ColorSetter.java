@@ -18,4 +18,6 @@ public class ColorSetter {
 
     public static int FILL_STROKE_BACK_HALF = Color.argb(ColorMenu.ALPHA_TWO, 0, 0, 0);
 
+    public static int FILL_SHADER_BACK = Color.argb(ColorMenu.ALPHA_THREE, 0, 0, 0);
+
 }

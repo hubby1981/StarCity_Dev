@@ -27,7 +27,7 @@ public class MainScreen extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        DB.Connection = openOrCreateDatabase(DB.DB_NAME, MODE_PRIVATE, null);
+        //DB.Connection = openOrCreateDatabase(DB.DB_NAME, MODE_PRIVATE, null);
 
         gm = new GM();
         mc = new MenuConst();
