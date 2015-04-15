@@ -30,8 +30,6 @@ public class MainContent extends ContentWindow {
     @Override
     protected void drawContents(Canvas canvas) {
 
-
-        drawGrid(canvas);
         drawText(canvas, S_HEADER_001, 0,4, HeaderFontPaint);
 
         drawText(canvas, S_SUB_HEADER_001,8,6, SubHeaderFontPaint);

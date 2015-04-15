@@ -100,12 +100,12 @@ public class Main extends MainBorder {
             canvas.drawBitmap(MainMenu.getAsBitmap(), (float) p.x, (float) p.y, null);
             Main.drawItems();
         }
-
-        TopMenu.HandleDisplay(measureItemWidth(), measureItemWidth());
-        p = new Point(LeftItem, (InnerRect.top));
-        TopMenu.Measure = p;
-        canvas.drawBitmap(TopMenu.getAsBitmap(), (float) p.x, (float) p.y, null);
-        Race.drawItems();
+        if(Show.ShowTopMenu){
+                TopMenu.HandleDisplay(measureItemWidth(), measureItemWidth());
+                p = new Point(LeftItem, (InnerRect.top));
+                TopMenu.Measure = p;
+                canvas.drawBitmap(TopMenu.getAsBitmap(), (float) p.x, (float) p.y, null);
+                Race.drawItems();}
         if (Show.ShowSubMenu) {
             SubMenu.HandleDisplay(measureItemWidth(), measureItemWidth());
             p = new Point(InnerRect.left + FACTOR_TRIANGLE_OUT, TopItem);
