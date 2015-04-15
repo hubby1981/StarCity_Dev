@@ -1,7 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/gal_back_001">
+    android:layout_height="match_parent">
 
     <GridLayout
         android:layout_width="match_parent"
@@ -9,12 +8,13 @@
 
 
         <com.sim.star.bitworxx.starcity.views.Main
-            android:id="@+id/mainview"
+            android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
 
-        </com.sim.star.bitworxx.starcity.views.Main>
+        </com.sim.star.bitworxx.starcity.views.Main
+           >
 
 
     </GridLayout>

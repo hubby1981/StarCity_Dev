@@ -23,7 +23,7 @@ public class ActionHandler {
                 if (Action != null) {
 
                     Action.run();
-                    MainScreen.Init.run();
+
                 }
             }
         }

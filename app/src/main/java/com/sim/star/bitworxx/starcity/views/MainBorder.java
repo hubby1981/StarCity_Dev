@@ -1,6 +1,7 @@
 package com.sim.star.bitworxx.starcity.views;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -9,11 +10,15 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Region;
+import android.os.Trace;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.sim.star.bitworxx.starcity.MainScreen;
 import com.sim.star.bitworxx.starcity.constants.ColorSetter;
+import com.sim.star.bitworxx.starcity.constants.ContentFont;
+import com.sim.star.bitworxx.starcity.constants.MenuBitmaps;
 import com.sim.star.bitworxx.starcity.constants.MenuConst;
 import com.sim.star.bitworxx.starcity.display.Show;
 import com.sim.star.bitworxx.starcity.game.enums.Direction;
@@ -22,6 +27,8 @@ import com.sim.star.bitworxx.starcity.geometric.TriagleHelper;
 import com.sim.star.bitworxx.starcity.runnable.RunnablesMainMenu;
 import com.sim.star.bitworxx.starcity.views.touch.ActionContainer;
 import com.sim.star.bitworxx.starcity.views.touch.ActionHandler;
+
+import java.util.UUID;
 
 /**
  * Created by WEIS on 09.04.2015.
@@ -45,8 +52,12 @@ public abstract class MainBorder extends View {
     private Rect TitleRect = null;
     private RectF TitleRectF = null;
 
+    private UUID Id;
+
     public MainBorder(Context context, AttributeSet attrs) {
         super(context, attrs);
+        Id=UUID.randomUUID();
+
 
         get_init();
     }
@@ -307,26 +318,31 @@ public abstract class MainBorder extends View {
     }
 
     protected abstract void drawItems(Canvas canvas);
+    protected abstract void drawContent(Canvas canvas);
 
     private void createBackShader() {
-        MenuConst.BACK_SHADER_PAINTER = new Paint();
-        MenuConst.BACK_SHADER_PAINTER.setStyle(Paint.Style.FILL);
-        MenuConst.BACK_SHADER_PAINTER.setColor(ColorSetter.FILL_SHADER_BACK);
-        MenuConst.BACK_SHADER_PAINTER.setShader(MenuConst.BACK_SHADER);
-
-        MenuConst.BACK_SHADER_PAINTER.setAntiAlias(true);
-
         if (Show.RenderShader) {
-            if (MenuConst.BACK_PAINTER_WITH_SHADER == null && MenuConst.BACK_SHADER2 != null) {
-                MenuConst.BACK_PAINTER_WITH_SHADER = new Paint();
-                MenuConst.BACK_PAINTER_WITH_SHADER.setStyle(Paint.Style.FILL);
-                MenuConst.BACK_PAINTER_WITH_SHADER.setColor(ColorSetter.FILL_BACK_COLOR);
-                MenuConst.BACK_PAINTER_WITH_SHADER.setShader(MenuConst.BACK_SHADER2);
+            MenuConst.BACK_SHADER_PAINTER = new Paint();
+            MenuConst.BACK_SHADER_PAINTER.setStyle(Paint.Style.FILL);
+            MenuConst.BACK_SHADER_PAINTER.setColor(ColorSetter.FILL_SHADER_BACK_HALF);
+            MenuConst.BACK_SHADER_PAINTER.setShader(MenuConst.BACK_SHADER);
 
-                MenuConst.BACK_PAINTER_WITH_SHADER.setAntiAlias(true);
+            MenuConst.BACK_SHADER_PAINTER.setAntiAlias(true);
 
+            if (Show.RenderMenuShader) {
+                if (MenuConst.BACK_PAINTER_WITH_SHADER == null && MenuConst.BACK_SHADER2 != null) {
+                    MenuConst.BACK_PAINTER_WITH_SHADER = new Paint();
+                    MenuConst.BACK_PAINTER_WITH_SHADER.setStyle(Paint.Style.FILL);
+                    MenuConst.BACK_PAINTER_WITH_SHADER.setColor(ColorSetter.FILL_BACK_COLOR);
+                    MenuConst.BACK_PAINTER_WITH_SHADER.setShader(MenuConst.BACK_SHADER2);
+
+                    MenuConst.BACK_PAINTER_WITH_SHADER.setAntiAlias(true);
+
+                }
             }
         }
+
+
     }
 
     private void initBorder() {
@@ -336,7 +352,10 @@ public abstract class MainBorder extends View {
             Rect i = getInboundRect();
 
             int w = i.left - o.left;
-
+            ContentFont.FontHeightHeader = (getHeight()/100)*MenuConst.MARGIN_CLIP_MINI/(MenuConst.FACTOR_TRIANGLE_OUT+FACTOR_TRIANGLE_OUT);
+            ContentFont.FontHeightHeader+=FACTOR_TRIANGLE_OUT*FACTOR_TRIANGLE_OUT+1;
+            ContentFont.FontHeightSubHeader=ContentFont.FontHeightHeader-FACTOR_TRIANGLE_OUT;
+            ContentFont.FontHeight=ContentFont.FontHeightSubHeader-FACTOR_TRIANGLE_OUT;
 
             Rect rL = new Rect(o.left, (o.top + o.height() / 2) - measureItemHeight(), o.left + w + FACTOR_TRIANGLE_OUT * 4, (o.top + o.height() / 2) + measureItemHeight());
 
@@ -355,12 +374,32 @@ public abstract class MainBorder extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        initBorder();
-        if (MenuConst.BACK_SHADER_PAINTER == null) {
-            createBackShader();
+
+        Canvas canvasBit;
+        if(!MenuBitmaps.BitmapDrawables.containsKey(Id))
+        {
+
+                MenuBitmaps.BitmapDrawables.put(Id, Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_4444));
+                canvasBit=new Canvas(MenuBitmaps.BitmapDrawables.get(Id));
+                drawBorderBack(canvasBit);
+
+
+
         }
-        if (MenuConst.BACK_SHADER_PAINTER != null)
-            canvas.drawRect(getOutboundRect(), MenuConst.BACK_SHADER_PAINTER);
+
+
+        canvas.drawBitmap(MenuBitmaps.BitmapDrawables.get(Id),0,0,null);
+        drawContent(canvas);
+
+        drawItems(canvas);
+
+
+    }
+
+    private void drawBorderBack(Canvas canvas)
+    {
+        initBorder();
+
 
         Path outboundPath = new Path();
         outboundPath.addRect(getOutboundRectF(), Path.Direction.CW);
@@ -368,7 +407,14 @@ public abstract class MainBorder extends View {
         Path inboundPath = new Path();
         inboundPath.addRect(getInboundRectF(), Path.Direction.CW);
 
-
+        if (MenuConst.BACK_SHADER_PAINTER == null) {
+            createBackShader();
+        }
+        if (MenuConst.BACK_SHADER_PAINTER != null)
+        {
+            canvas.drawRect(getOutboundRect(),MenuConst.BACK_PAINTER_BLACK);
+            canvas.drawRect(getInboundRect(), MenuConst.BACK_SHADER_PAINTER);
+        }
         canvas.clipPath(outboundPath);
         canvas.clipPath(inboundPath, Region.Op.DIFFERENCE);
 
@@ -435,11 +481,6 @@ public abstract class MainBorder extends View {
 
 
         canvas.clipRect(InnerRect, Region.Op.UNION);
-
-
-        drawItems(canvas);
-
-        checkRenderClip(canvas);
     }
 
     private void checkRenderClip(Canvas canvas) {

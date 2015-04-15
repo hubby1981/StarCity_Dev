@@ -3,8 +3,10 @@ package com.sim.star.bitworxx.starcity.views;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 
+import com.sim.star.bitworxx.starcity.constants.DirtyRects;
 import com.sim.star.bitworxx.starcity.constants.MenuBitmaps;
 import com.sim.star.bitworxx.starcity.constants.MenuConst;
 import com.sim.star.bitworxx.starcity.display.Show;
@@ -15,6 +17,8 @@ import com.sim.star.bitworxx.starcity.views.anim.BitmapAnimation;
 import com.sim.star.bitworxx.starcity.views.anim.MainAnimation;
 import com.sim.star.bitworxx.starcity.views.anim.SubMenuAnimation;
 import com.sim.star.bitworxx.starcity.views.anim.WatchAnimation;
+import com.sim.star.bitworxx.starcity.views.content.ContentWindow;
+import com.sim.star.bitworxx.starcity.views.content.MainContent;
 
 /**
  * Created by WEIS on 10.04.2015.
@@ -136,6 +140,18 @@ public class Main extends MainBorder {
             TimeMenu.Measure = p;
             canvas.drawBitmap(TimeMenu.getAsBitmap(), (float) p.x, (float) p.y, null);
             Watcher.drawItems();
+            DirtyRects.DirtyWatch=new Rect(p.x,p.y,p.x+TimeMenu.getOutboundRect().width(),p.y+TimeMenu.getOutboundRect().height());
         }
+    }
+
+    @Override
+    protected void drawContent(Canvas canvas) {
+
+
+        if(MenuBitmaps.ActualWindow==null)
+            MenuBitmaps.ActualWindow = new MainContent(InnerRect);
+
+        if(MenuBitmaps.ActualWindow!=null)
+            MenuBitmaps.ActualWindow.drawOnCanvas(canvas);
     }
 }

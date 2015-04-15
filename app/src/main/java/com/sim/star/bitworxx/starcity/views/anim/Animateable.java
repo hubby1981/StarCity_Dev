@@ -10,7 +10,7 @@ import com.sim.star.bitworxx.starcity.views.Mini;
  */
 public abstract class Animateable {
     protected Mini Parent;
-    protected Rect DisplayRect;
+    public Rect DisplayRect;
 
     public Animateable(Mini parent) {
         Parent = parent;

@@ -20,9 +20,8 @@ public class BankIcon extends BaseIcon {
         int h = Size.Height;
 
 
-        mh -= h * 5;
-        result.addRect(new RectF((float) mw - w / 4, (float) mh - h / 2, (float) mw + w / 4, (float) mh + h / 4), Path.Direction.CW);
-        mh += h * 1;
+
+        mh -= h * 4;
         result.addRect(new RectF((float) mw - w / 3, (float) mh - h / 2, (float) mw + w / 3, (float) mh + h / 4), Path.Direction.CW);
         mh += h * 1;
         result.addRect(new RectF((float) mw - w / 2, (float) mh - h / 2, (float) mw + w / 2, (float) mh + h / 4), Path.Direction.CW);

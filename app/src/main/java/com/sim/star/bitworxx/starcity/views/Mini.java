@@ -7,7 +7,12 @@ import android.graphics.Point;
 import android.graphics.Rect;
 
 import com.sim.star.bitworxx.starcity.MainScreen;
+import com.sim.star.bitworxx.starcity.constants.MenuBitmaps;
 import com.sim.star.bitworxx.starcity.constants.MenuConst;
+import com.sim.star.bitworxx.starcity.display.Show;
+import com.sim.star.bitworxx.starcity.geometric.GeometricHelp;
+
+import java.util.UUID;
 
 /**
  * Created by WEIS on 10.04.2015.
@@ -19,22 +24,28 @@ public class Mini {
     public Rect InboundRect = null;
     public Runnable Action;
     public Point Measure;
-    private Bitmap DisplayBitmap = null;
+
+    public UUID Id;
+
+    public Mini()
+    {
+        Id=UUID.randomUUID();
+    }
 
     public Bitmap getAsBitmap() {
 
-        if (DisplayBitmap == null) {
-            DisplayBitmap = Bitmap.createBitmap(DisplayRect.width(), DisplayRect.height(), Bitmap.Config.ARGB_4444);
+        if (!MenuBitmaps.BitmapDrawables.containsKey(Id)) {
+            MenuBitmaps.BitmapDrawables.put(Id, Bitmap.createBitmap(DisplayRect.width(), DisplayRect.height(), Bitmap.Config.ARGB_4444));
 
-            Canvas canvas = new Canvas(DisplayBitmap);
+            Canvas canvas = new Canvas(MenuBitmaps.BitmapDrawables.get(Id));
             Draw(canvas);
         }
 
-        return DisplayBitmap;
+        return MenuBitmaps.BitmapDrawables.get(Id);
     }
 
     public Canvas getAsCanvas() {
-        return new Canvas(DisplayBitmap);
+        return new Canvas(getAsBitmap());
     }
 
     public void setRunnable(Runnable action) {
@@ -46,21 +57,7 @@ public class Mini {
             DisplayRect = new Rect(0, 0, w, h);
     }
 
-    private Path generateTrianglePath(Rect rc, int w, int h) {
-        Path outerPath = new Path();
 
-        outerPath.moveTo(rc.left, rc.top + h);
-        outerPath.lineTo(rc.left + w, rc.top);
-        outerPath.lineTo(rc.right - w, rc.top);
-        outerPath.lineTo(rc.right, rc.top + h);
-        outerPath.lineTo(rc.right, rc.bottom - h);
-        outerPath.lineTo(rc.right - w, rc.bottom);
-        outerPath.lineTo(rc.left + w, rc.bottom);
-        outerPath.lineTo(rc.left, rc.bottom - h);
-        outerPath.lineTo(rc.left, rc.top + h);
-
-        return outerPath;
-    }
 
     public void checkUp(Point check) {
         if (InboundRect != null) {
@@ -69,7 +66,7 @@ public class Mini {
                 if (Action != null) {
 
                     Action.run();
-                    MainScreen.Init.run();
+
                 }
             }
         }
@@ -148,8 +145,11 @@ public class Mini {
         int h = translateMarginHeight();
 
 
-        Path outerPath = generateTrianglePath(DisplayRect, w, h);
-        Path innerPath = generateTrianglePath(getInboundRect(w + w), w, h);
+        Path outerPath = GeometricHelp.generateTrianglePath(DisplayRect, w, h);
+        Path innerPath = GeometricHelp.generateTrianglePath(getInboundRect(w + w), w, h);
+
+        if(Show.RenderMenuShader)
+            canvas.drawPath(outerPath, MenuConst.BACK_PAINTER_WITH_SHADER);
 
         canvas.drawPath(outerPath, MenuConst.BACK_PAINTER);
 

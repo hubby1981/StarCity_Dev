@@ -18,7 +18,8 @@ public class GM {
     public static String Started;
     public static PlayerBag Player;
 
-
+    public static long TS=0;
+public static long TE =0;
     static {
 
         LT = new GM_LoopTicker(5, 9);

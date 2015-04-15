@@ -37,11 +37,17 @@ public class MenuConst {
     public static BitmapShader BACK_SHADER;
     public static BitmapShader BACK_SHADER2;
 
+
     public static Paint BACK_SHADER_PAINTER = null;
+
+    public static Paint BACK_PAINTER_CONTENT;
+    public static Paint BACK_PAINTER_CONTENT_INNER;
+
+    public static Paint BACK_PAINTER_BLACK;
 
     static {
         BACK_PAINTER = createBackPainter(ColorSetter.FILL_BACK_COLOR);
-
+        BACK_PAINTER_BLACK = createBackPainter(ColorSetter.FILL_SHADER_BACK);
         FORE_PAINTER = createBackPainter(ColorSetter.FILL_FORE_COLOR);
         FORE_PAINTER_ICON = createBackPainter(ColorSetter.FILL_FORE_ICON);
 
@@ -56,6 +62,8 @@ public class MenuConst {
         HALF_TRANSPARENT_BACK_PAINTER = createBackPainter(ColorSetter.FILL_STROKE_BACK_HALF);
         BACK_TRANSPARENT = createTransparentBackPainter();
 
+        BACK_PAINTER_CONTENT = createBackPainter(ColorSetter.FILL_STROKE_BACK_HALF);
+        BACK_PAINTER_CONTENT_INNER = createBackPainter(ColorSetter.FILL_CONTENT_BACK_HALF);
     }
 
 

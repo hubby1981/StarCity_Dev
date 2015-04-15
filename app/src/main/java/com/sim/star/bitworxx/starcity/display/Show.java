@@ -13,6 +13,11 @@ public class Show {
     public static boolean ShowSubMenuSecondLevel = false;
 
     public static boolean RenderClipShow = false;
+
     public static boolean RenderShader = true;
+
+    public static boolean RenderMenuShader = true;
+
+    public static boolean RenderBackGal = false;
 
 }
