@@ -42,7 +42,7 @@ public class MenuConst {
 
     public static Paint BACK_PAINTER_CONTENT;
     public static Paint BACK_PAINTER_CONTENT_INNER;
-
+    public static Paint BACK_PAINTER_CONTENT_INNER2;
     public static Paint BACK_PAINTER_BLACK;
 
     static {
@@ -64,7 +64,7 @@ public class MenuConst {
 
         BACK_PAINTER_CONTENT = createBackPainter(ColorSetter.FILL_STROKE_BACK_HALF);
         BACK_PAINTER_CONTENT_INNER = createBackPainter(ColorSetter.FILL_CONTENT_BACK_HALF);
-
+        BACK_PAINTER_CONTENT_INNER = createBackPainter(ColorSetter.FILL_CONTENT_BACK_HALF2);
 
     }
 

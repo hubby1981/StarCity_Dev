@@ -4,6 +4,7 @@ import com.sim.star.bitworxx.starcity.MainScreen;
 import com.sim.star.bitworxx.starcity.constants.MenuBitmaps;
 import com.sim.star.bitworxx.starcity.constants.MenuConst;
 import com.sim.star.bitworxx.starcity.display.Show;
+import com.sim.star.bitworxx.starcity.highlight.BlinkCode;
 import com.sim.star.bitworxx.starcity.highlight.HightlightMenu;
 
 /**
@@ -70,6 +71,9 @@ public class RunnablesMainMenu {
 
             if(MenuBitmaps.ActualWindow!=null)
                 MenuBitmaps.ActualWindow.prevPage();
+
+            BlinkCode.LEFT_ALT=1;
+            BlinkCode.BLINK_LEFT_PAGE=BlinkCode.BLINK;
         }
     };
 
@@ -79,6 +83,8 @@ public class RunnablesMainMenu {
 
             if(MenuBitmaps.ActualWindow!=null)
                 MenuBitmaps.ActualWindow.nextPage();
+            BlinkCode.RIGHT_ALT=1;
+            BlinkCode.BLINK_RIGHT_PAGE=BlinkCode.BLINK;
         }
     };
 }

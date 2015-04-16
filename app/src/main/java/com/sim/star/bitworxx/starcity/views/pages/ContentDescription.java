@@ -30,7 +30,7 @@ public class ContentDescription {
 
     private Content buildInternal()
     {
-        return T==ContentType.TEXT ? buildText():null;
+        return T==ContentType.TEXT ? buildText(): T==ContentType.TABLE?new TableContent(P):null;
     }
 
 
@@ -39,5 +39,6 @@ public class ContentDescription {
         TextDescription td = TXT.get(K);
         return new TextContent(P, td.Text,td.Size);
     }
+
 
 }

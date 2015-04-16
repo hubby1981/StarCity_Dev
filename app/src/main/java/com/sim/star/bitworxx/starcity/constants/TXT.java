@@ -14,7 +14,7 @@ public class TXT {
 
     public static HashMap<String,TextDescription> ALL_TEXT;
     public static String LOCALE = "en-";
-    public static String LOCALE_A = "de-";
+    public static String LOCALE_A = "en-";
     static{
         ALL_TEXT=new HashMap<String,TextDescription>(){
 
@@ -35,7 +35,12 @@ public class TXT {
         ALL_TEXT.put("en-header-main-functions_desc",new TextDescription("All Functions are designed for.", TextSize.TEXT));
         ALL_TEXT.put("de-header-main-functions_desc",new TextDescription("Alle Funktionen sind darauf ausgelegt.", TextSize.TEXT));
 
+        ALL_TEXT.put("en-header-systems-table",new TextDescription("Your Systems Overview", TextSize.SUB_HEADER));
+        ALL_TEXT.put("de-header-systems-table",new TextDescription("Deine System Übersicht", TextSize.SUB_HEADER));
 
+        ALL_TEXT.put("en-header-systems-table_name",new TextDescription("Name", TextSize.TEXT));
+        ALL_TEXT.put("en-header-systems-table_sector",new TextDescription("Sector", TextSize.TEXT));
+        ALL_TEXT.put("en-header-systems-table_status",new TextDescription("Status", TextSize.TEXT));
     }
 
 

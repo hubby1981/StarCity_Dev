@@ -13,6 +13,7 @@ import android.graphics.Region;
 import android.graphics.Typeface;
 import android.os.Trace;
 import android.util.AttributeSet;
+import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -25,7 +26,9 @@ import com.sim.star.bitworxx.starcity.constants.MenuConst;
 import com.sim.star.bitworxx.starcity.display.Show;
 import com.sim.star.bitworxx.starcity.game.enums.Direction;
 import com.sim.star.bitworxx.starcity.game.enums.MenuTriangle;
+import com.sim.star.bitworxx.starcity.geometric.GeometricHelp;
 import com.sim.star.bitworxx.starcity.geometric.TriagleHelper;
+import com.sim.star.bitworxx.starcity.highlight.BlinkCode;
 import com.sim.star.bitworxx.starcity.runnable.RunnablesMainMenu;
 import com.sim.star.bitworxx.starcity.views.touch.ActionContainer;
 import com.sim.star.bitworxx.starcity.views.touch.ActionHandler;
@@ -53,6 +56,9 @@ public abstract class MainBorder extends View {
     private RectF InboundRectF = null;
     private Rect TitleRect = null;
     private RectF TitleRectF = null;
+    private Path LeftPage=null;
+    private Path RightPage=null;
+
     public static Typeface VenusFace;
     private UUID Id;
 
@@ -362,10 +368,10 @@ public abstract class MainBorder extends View {
 
             Rect rL = new Rect(o.left, (o.top + o.height() / 2) - measureItemHeight(), o.left + w + FACTOR_TRIANGLE_OUT * 4, (o.top + o.height() / 2) + measureItemHeight());
 
-            ActionContainer.Handler.add(new ActionHandler(rL, RunnablesMainMenu.R_A_PREV_PAGE));
+            ActionContainer.Handler.add(new ActionHandler(rL, RunnablesMainMenu.R_S_SUB_MENU));
             Rect rR = new Rect(o.right - w + FACTOR_TRIANGLE_OUT * 4, (o.top + o.height() / 2) - measureItemHeight(), o.right, (o.top + o.height() / 2) + measureItemHeight());
 
-            ActionContainer.Handler.add(new ActionHandler(rR, RunnablesMainMenu.R_A_NEXT_PAGE));
+            ActionContainer.Handler.add(new ActionHandler(rR, RunnablesMainMenu.R_S_TIME_MENU));
 
             Rect rM = new Rect(o.right - ((o.width() / 2)) - measureItemWidth(), o.bottom - measureItemHeight(), o.right - ((o.width() / 2)) + measureItemWidth(), o.bottom);
 
@@ -378,7 +384,7 @@ public abstract class MainBorder extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        Canvas canvasBit;
+        Canvas canvasBit=null;
         if(!MenuBitmaps.BitmapDrawables.containsKey(Id))
         {
 
@@ -478,7 +484,19 @@ public abstract class MainBorder extends View {
         makePlateV(canvas, getOutboundRect().left, getOutboundRect().top, getInboundRect().left, getOutboundRect().bottom, true);
         makePlateV(canvas, getOutboundRect().right, getOutboundRect().top, getInboundRect().right, getOutboundRect().bottom, false);
 
+        int wTitle = (getTitleRect().width()/100)*MenuConst.MARGIN_CLIP_MINI;
+        Rect leftPage = new Rect(getTitleRect().left,getTitleRect().top,getTitleRect().left+wTitle,getTitleRect().bottom);
+        Rect rightPage = new Rect(getTitleRect().right-wTitle,getTitleRect().top,getTitleRect().right,getTitleRect().bottom);
+        LeftPage=GeometricHelp.generateTrianglePath(leftPage,0,0,0,0,50,30,0,0);
+        RightPage=GeometricHelp.generateTrianglePath(rightPage,0,0,0,0,0,0,50,30);
+        canvas.drawPath(LeftPage, MenuConst.PLATE_BACK_PAINTER);
+        canvas.drawPath(RightPage, MenuConst.PLATE_BACK_PAINTER);
+        if(ActionContainer.Handler!=null)
+        {
+            ActionContainer.Handler.add(new ActionHandler(leftPage, RunnablesMainMenu.R_A_PREV_PAGE));
+            ActionContainer.Handler.add(new ActionHandler(rightPage, RunnablesMainMenu.R_A_NEXT_PAGE));
 
+        }
         canvas.clipRect(InnerRect, Region.Op.UNION);
 
         CliprRects.InnerRectMain=InnerRect;
