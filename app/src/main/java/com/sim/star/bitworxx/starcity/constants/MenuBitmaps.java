@@ -18,4 +18,11 @@ public class MenuBitmaps {
     public static HashMap<UUID,Bitmap> BitmapDrawables = new HashMap<UUID,Bitmap>();
 
     public static ContentWindow ActualWindow=null;
+
+    public static int PG()
+    {
+        if(ActualWindow!=null)
+            return ActualWindow.getPagesCount();
+        return 0;
+    }
 }

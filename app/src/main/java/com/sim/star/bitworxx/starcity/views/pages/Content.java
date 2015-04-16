@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.Rect;
 
+import com.sim.star.bitworxx.starcity.geometric.CoPo;
 import com.sim.star.bitworxx.starcity.views.content.ContentWindow;
 
 import java.util.ArrayList;
@@ -13,8 +14,7 @@ import java.util.ArrayList;
  */
 public abstract class Content {
 
-    public Point LeftTop;
-    public Point RightBottom;
+ private CoPo P;
 
     public Content(Point leftTop)
     {
@@ -23,21 +23,25 @@ public abstract class Content {
 
     public Content(Point leftTop,Point rightBottom)
     {
-        LeftTop=leftTop;
-        RightBottom=rightBottom;
+       this(new CoPo(leftTop.x,leftTop.y,rightBottom.x,rightBottom.y));
+    }
+
+    public Content(CoPo p)
+    {
+        P=p;
     }
 
     public boolean isSinglePoint()
     {
-        return LeftTop.x==RightBottom.x && LeftTop.y==RightBottom.y;
+        return P.isSingle();
     }
 
     public void onDraw(Canvas canvas,ContentWindow window)
     {
         if(isSinglePoint())
-            onDrawInternal(canvas,window.getLayoutPosition(LeftTop.x,LeftTop.y),window);
+            onDrawInternal(canvas,window.getLayoutPosition(P.L,P.T),window);
         else
-            onDrawInternal(canvas, window.getLayoutPosition(LeftTop.x, LeftTop.y, RightBottom.x, RightBottom.y), window);
+            onDrawInternal(canvas, window.getLayoutPosition(P.L,P.T,P.R,P.B), window);
     }
 
     protected abstract void onDrawInternal(Canvas canvas,Rect rect,ContentWindow window);

@@ -2,6 +2,8 @@ package com.sim.star.bitworxx.starcity.views.pages;
 
 import android.graphics.Canvas;
 
+import com.sim.star.bitworxx.starcity.views.pattern.PatternBase;
+
 import java.util.ArrayList;
 
 /**
@@ -34,5 +36,10 @@ public class PageBase {
     public ArrayList<Content> drawContents()
     {
         return Contents;
+    }
+
+    public void generate(PatternBase pattern)
+    {
+        Contents = pattern.build();
     }
 }

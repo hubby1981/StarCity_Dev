@@ -46,6 +46,13 @@ public abstract class ContentWindow extends ContentBase {
         return size==TextSize.HEADER ? HeaderFontPaint : size==TextSize.SUB_HEADER ? SubHeaderFontPaint : FontPaint;
     }
 
+    public int getPagesCount()
+    {
+        return Pages.size();
+    }
+
+
+
     public void prevPage()
     {
         if(ActualPage==0)

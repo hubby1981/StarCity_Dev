@@ -6,6 +6,7 @@ import android.graphics.Point;
 import android.graphics.Rect;
 
 import com.sim.star.bitworxx.starcity.game.enums.TextSize;
+import com.sim.star.bitworxx.starcity.geometric.CoPo;
 import com.sim.star.bitworxx.starcity.views.content.ContentWindow;
 
 import java.util.ArrayList;
@@ -17,8 +18,8 @@ public class TextContent extends Content {
 
     private String Text;
     private TextSize Size;
-    public TextContent(Point leftTop,String text,TextSize size) {
-        super(leftTop);
+    public TextContent(CoPo p,String text,TextSize size) {
+        super(p);
         Text = text;
         Size=size;
     }
