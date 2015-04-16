@@ -19,5 +19,5 @@ public class ColorSetter {
     public static int FILL_STROKE_BACK_HALF = Color.argb(ColorMenu.ALPHA_TWO, 0, 0, 0);
     public static int FILL_CONTENT_BACK_HALF = Color.argb(ColorMenu.ALPHA_TWO/2, 225,225,225);
     public static int FILL_SHADER_BACK = Color.argb(255, 0, 0, 0);
-    public static int FILL_SHADER_BACK_HALF = Color.argb(ColorMenu.ALPHA_TWO, 50,50,50);
+    public static int FILL_SHADER_BACK_HALF = Color.argb(ColorMenu.ALPHA_ONE, 0,0,0);
 }

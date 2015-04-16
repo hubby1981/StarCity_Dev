@@ -23,6 +23,10 @@ public class ContentFont {
     public static int SUB_HEADER_Y = 1;
     public static int FONT_Y = 1;
 
+
+    public static int HEADER_MAX=1;
+    public static int SUB_HEADER_MAX=6;
+    public static int FONT_MAX=3;
     public static int measureTextW(int cells,TextSize size)
     {
         return size==TextSize.HEADER?cells*HEADER_X:size==TextSize.SUB_HEADER?cells*SUB_HEADER_X:cells*FONT_X;

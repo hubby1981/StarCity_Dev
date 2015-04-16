@@ -356,9 +356,9 @@ public abstract class MainBorder extends View {
 
             int w = i.left - o.left;
             ContentFont.FontHeightHeader = (getHeight()/100)*MenuConst.MARGIN_CLIP_MINI/(MenuConst.FACTOR_TRIANGLE_OUT+FACTOR_TRIANGLE_OUT);
-            ContentFont.FontHeightHeader+=FACTOR_TRIANGLE_OUT*FACTOR_TRIANGLE_OUT+1;
-            ContentFont.FontHeightSubHeader=ContentFont.FontHeightHeader-10;
-            ContentFont.FontHeight=ContentFont.FontHeightSubHeader-2;
+            ContentFont.FontHeightHeader+=FACTOR_TRIANGLE_OUT*FACTOR_TRIANGLE_OUT+ContentFont.HEADER_MAX;
+            ContentFont.FontHeightSubHeader=ContentFont.FontHeightHeader-ContentFont.SUB_HEADER_MAX;
+            ContentFont.FontHeight=ContentFont.FontHeightSubHeader-ContentFont.FONT_MAX;
 
             Rect rL = new Rect(o.left, (o.top + o.height() / 2) - measureItemHeight(), o.left + w + FACTOR_TRIANGLE_OUT * 4, (o.top + o.height() / 2) + measureItemHeight());
 
@@ -413,11 +413,7 @@ public abstract class MainBorder extends View {
         if (MenuConst.BACK_SHADER_PAINTER == null) {
             createBackShader();
         }
-        if (MenuConst.BACK_SHADER_PAINTER != null)
-        {
-            canvas.drawRect(getOutboundRect(),MenuConst.BACK_PAINTER_BLACK);
-            canvas.drawRect(getInboundRect(), MenuConst.BACK_SHADER_PAINTER);
-        }
+
         canvas.clipPath(outboundPath);
         canvas.clipPath(inboundPath, Region.Op.DIFFERENCE);
 

@@ -113,7 +113,11 @@ public abstract class ContentWindow extends ContentBase {
             FontPaint.setColor(ColorSetter.FILL_STROKE_BACK_FORE);
             FontPaint.setTextSize((float) ContentFont.FontHeight);
 
+            if (MenuConst.BACK_SHADER_PAINTER != null)
+            {
 
+                canvas.drawRect(InboundRect, MenuConst.BACK_SHADER_PAINTER);
+            }
             canvas.drawPath(outLine, MenuConst.BACK_PAINTER_CONTENT);
             canvas.drawPath(outLine, MenuConst.PLATE_STROKE_BACK_PAINTER);
             canvas.drawPath(inLine, MenuConst.BACK_PAINTER_CONTENT_INNER);
@@ -121,6 +125,8 @@ public abstract class ContentWindow extends ContentBase {
 
             CliprRects.InnerRectContent=InboundRect;
             CliprRects.OuterRectContent=OutboundRect;
+
+
 
             if(Show.ShowGrid)
                 drawGrid(canvas);

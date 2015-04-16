@@ -18,7 +18,7 @@ public class MainIndexPattern extends PatternBase {
         Contents.add(new ContentDescription(new CoPo(30,0),"1", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(31,0), pageCount, ContentType.TEXT));
 
-        Contents.add(new ContentDescription(new CoPo(0,2),"header-main-functions", ContentType.TEXT));
-
+        Contents.add(new ContentDescription(new CoPo(0,3),"header-main-functions", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(6,3),"header-main-functions_desc", ContentType.TEXT));
     }
 }

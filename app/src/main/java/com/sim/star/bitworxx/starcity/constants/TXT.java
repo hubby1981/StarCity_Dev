@@ -31,6 +31,11 @@ public class TXT {
 
         ALL_TEXT.put("en-header-main-functions",new TextDescription("Functions", TextSize.SUB_HEADER));
         ALL_TEXT.put("de-header-main-functions",new TextDescription("Funktionen", TextSize.SUB_HEADER));
+
+        ALL_TEXT.put("en-header-main-functions_desc",new TextDescription("All Functions are designed for.", TextSize.TEXT));
+        ALL_TEXT.put("de-header-main-functions_desc",new TextDescription("Alle Funktionen sind darauf ausgelegt.", TextSize.TEXT));
+
+
     }
 
 
