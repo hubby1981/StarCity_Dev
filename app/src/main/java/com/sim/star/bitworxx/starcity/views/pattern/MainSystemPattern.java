@@ -9,11 +9,11 @@ import com.sim.star.bitworxx.starcity.views.pages.ContentDescription;
  */
 public class MainSystemPattern extends PatternBase {
 
-    public MainSystemPattern()
+    public MainSystemPattern(String pageCount)
     {
         Contents.add(new ContentDescription(new CoPo(0,0),"header-systems", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(28,0),"page", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(30,0),"2", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(31,0),"2", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(31,0),pageCount, ContentType.TEXT));
     }
 }

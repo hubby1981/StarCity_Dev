@@ -10,13 +10,13 @@ import com.sim.star.bitworxx.starcity.views.pages.ContentDescription;
  */
 public class MainIndexPattern extends PatternBase {
 
-    public MainIndexPattern()
+    public MainIndexPattern(String pageCount)
     {
         super();
         Contents.add(new ContentDescription(new CoPo(0,0),"header-main", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(28,0),"page", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(30,0),"1", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(31,0), "2", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(31,0), pageCount, ContentType.TEXT));
 
         Contents.add(new ContentDescription(new CoPo(0,2),"header-main-functions", ContentType.TEXT));
 

@@ -24,7 +24,7 @@ public class MainContent extends ContentWindow {
     public MainContent(Rect displayIn) {
         super(displayIn);
     }
-
+    public static String PageCount="2";
     @Override
     protected void setupPages() {
 
@@ -32,8 +32,8 @@ public class MainContent extends ContentWindow {
         PageBase indexPage = new PageBase(0,"MainIndex");
         PageBase systemPage = new PageBase(1,"MainSystems");
 
-        indexPage.generate(new MainIndexPattern());
-        systemPage.generate(new MainSystemPattern());
+        indexPage.generate(new MainIndexPattern(PageCount));
+        systemPage.generate(new MainSystemPattern(PageCount));
 
         Pages.add(indexPage);
         Pages.add(systemPage);
