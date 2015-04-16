@@ -10,12 +10,14 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Region;
+import android.graphics.Typeface;
 import android.os.Trace;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
 import com.sim.star.bitworxx.starcity.MainScreen;
+import com.sim.star.bitworxx.starcity.constants.CliprRects;
 import com.sim.star.bitworxx.starcity.constants.ColorSetter;
 import com.sim.star.bitworxx.starcity.constants.ContentFont;
 import com.sim.star.bitworxx.starcity.constants.MenuBitmaps;
@@ -51,7 +53,7 @@ public abstract class MainBorder extends View {
     private RectF InboundRectF = null;
     private Rect TitleRect = null;
     private RectF TitleRectF = null;
-
+    public static Typeface VenusFace;
     private UUID Id;
 
     public MainBorder(Context context, AttributeSet attrs) {
@@ -59,6 +61,7 @@ public abstract class MainBorder extends View {
         Id=UUID.randomUUID();
 
 
+        VenusFace=Typeface.createFromAsset(context.getAssets(),"venus.ttf");
         get_init();
     }
 
@@ -354,15 +357,15 @@ public abstract class MainBorder extends View {
             int w = i.left - o.left;
             ContentFont.FontHeightHeader = (getHeight()/100)*MenuConst.MARGIN_CLIP_MINI/(MenuConst.FACTOR_TRIANGLE_OUT+FACTOR_TRIANGLE_OUT);
             ContentFont.FontHeightHeader+=FACTOR_TRIANGLE_OUT*FACTOR_TRIANGLE_OUT+1;
-            ContentFont.FontHeightSubHeader=ContentFont.FontHeightHeader-FACTOR_TRIANGLE_OUT;
-            ContentFont.FontHeight=ContentFont.FontHeightSubHeader-FACTOR_TRIANGLE_OUT;
+            ContentFont.FontHeightSubHeader=ContentFont.FontHeightHeader-10;
+            ContentFont.FontHeight=ContentFont.FontHeightSubHeader-2;
 
             Rect rL = new Rect(o.left, (o.top + o.height() / 2) - measureItemHeight(), o.left + w + FACTOR_TRIANGLE_OUT * 4, (o.top + o.height() / 2) + measureItemHeight());
 
-            ActionContainer.Handler.add(new ActionHandler(rL, RunnablesMainMenu.R_S_SUB_MENU));
+            ActionContainer.Handler.add(new ActionHandler(rL, RunnablesMainMenu.R_A_PREV_PAGE));
             Rect rR = new Rect(o.right - w + FACTOR_TRIANGLE_OUT * 4, (o.top + o.height() / 2) - measureItemHeight(), o.right, (o.top + o.height() / 2) + measureItemHeight());
 
-            ActionContainer.Handler.add(new ActionHandler(rR, RunnablesMainMenu.R_S_TIME_MENU));
+            ActionContainer.Handler.add(new ActionHandler(rR, RunnablesMainMenu.R_A_NEXT_PAGE));
 
             Rect rM = new Rect(o.right - ((o.width() / 2)) - measureItemWidth(), o.bottom - measureItemHeight(), o.right - ((o.width() / 2)) + measureItemWidth(), o.bottom);
 
@@ -481,6 +484,9 @@ public abstract class MainBorder extends View {
 
 
         canvas.clipRect(InnerRect, Region.Op.UNION);
+
+        CliprRects.InnerRectMain=InnerRect;
+        CliprRects.OuterRectMain=OutboundRect;
     }
 
     private void checkRenderClip(Canvas canvas) {

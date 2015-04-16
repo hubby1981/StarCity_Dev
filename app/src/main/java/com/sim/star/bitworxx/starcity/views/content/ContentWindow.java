@@ -5,12 +5,21 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.preference.PreferenceActivity;
 
+import com.sim.star.bitworxx.starcity.constants.CliprRects;
 import com.sim.star.bitworxx.starcity.constants.ColorSetter;
 import com.sim.star.bitworxx.starcity.constants.ContentFont;
 import com.sim.star.bitworxx.starcity.constants.MenuConst;
+import com.sim.star.bitworxx.starcity.display.Show;
+import com.sim.star.bitworxx.starcity.game.enums.TextSize;
 import com.sim.star.bitworxx.starcity.geometric.GeometricHelp;
+import com.sim.star.bitworxx.starcity.views.MainBorder;
+import com.sim.star.bitworxx.starcity.views.pages.Content;
+import com.sim.star.bitworxx.starcity.views.pages.PageBase;
+
+import java.util.ArrayList;
 
 /**
  * Created by WEIS on 15.04.2015.
@@ -20,12 +29,43 @@ public abstract class ContentWindow extends ContentBase {
     protected  int LeftPos=0;
     protected  int TopPos=0;
 
-    protected Paint HeaderFontPaint;
-    protected Paint SubHeaderFontPaint;
-    protected Paint FontPaint;
+    public Paint HeaderFontPaint;
+    public Paint SubHeaderFontPaint;
+    public Paint FontPaint;
+
+    protected ArrayList<PageBase> Pages;
+    protected int ActualPage =0;
     public ContentWindow(Rect displayIn) {
         super(displayIn);
+        Pages=new ArrayList<PageBase>();
+        setupPages();
     }
+
+    public Paint getFontPainter(TextSize size)
+    {
+        return size==TextSize.HEADER ? HeaderFontPaint : size==TextSize.SUB_HEADER ? SubHeaderFontPaint : FontPaint;
+    }
+
+    public void prevPage()
+    {
+        if(ActualPage==0)
+            ActualPage=Pages.size()-1;
+        else
+            ActualPage--;
+
+        flush();
+    }
+
+    public void nextPage()
+    {
+        if (ActualPage==Pages.size()-1)
+            ActualPage=0;
+        else
+            ActualPage++;
+        flush();
+    }
+
+    protected abstract void setupPages();
 
     @Override
     public Bitmap draw() {
@@ -44,6 +84,8 @@ public abstract class ContentWindow extends ContentBase {
 
             HeaderFontPaint = new Paint();
             HeaderFontPaint.setStyle(Paint.Style.FILL);
+            HeaderFontPaint.setTypeface(MainBorder.VenusFace);
+            HeaderFontPaint.setFakeBoldText(true);
             HeaderFontPaint.setStrokeWidth(1);
             HeaderFontPaint.setColor(ColorSetter.FILL_STROKE_BACK_FORE);
             HeaderFontPaint.setTextSize((float) ContentFont.FontHeightHeader);
@@ -51,20 +93,30 @@ public abstract class ContentWindow extends ContentBase {
             SubHeaderFontPaint = new Paint();
             SubHeaderFontPaint.setStyle(Paint.Style.FILL);
             SubHeaderFontPaint.setStrokeWidth(1);
+            SubHeaderFontPaint.setTypeface(MainBorder.VenusFace);
+            SubHeaderFontPaint.setFakeBoldText(true);
             SubHeaderFontPaint.setColor(ColorSetter.FILL_STROKE_BACK_FORE);
             SubHeaderFontPaint.setTextSize((float) ContentFont.FontHeightSubHeader);
 
             FontPaint = new Paint();
             FontPaint.setStyle(Paint.Style.FILL);
-            FontPaint.setStrokeWidth(1);
+
+            FontPaint.setTypeface(MainBorder.VenusFace);
+
             FontPaint.setColor(ColorSetter.FILL_STROKE_BACK_FORE);
             FontPaint.setTextSize((float) ContentFont.FontHeight);
+
 
             canvas.drawPath(outLine, MenuConst.BACK_PAINTER_CONTENT);
             canvas.drawPath(outLine, MenuConst.PLATE_STROKE_BACK_PAINTER);
             canvas.drawPath(inLine, MenuConst.BACK_PAINTER_CONTENT_INNER);
             canvas.drawPath(inLine, MenuConst.PLATE_STROKE_BACK_PAINTER);
 
+            CliprRects.InnerRectContent=InboundRect;
+            CliprRects.OuterRectContent=OutboundRect;
+
+            if(Show.ShowGrid)
+                drawGrid(canvas);
             drawContents(canvas);
 
         }
@@ -72,6 +124,16 @@ public abstract class ContentWindow extends ContentBase {
         return result;
     }
 
-    protected abstract void drawContents(Canvas canvas);
+    protected void drawContents(Canvas canvas)
+    {
+           PageBase page = Pages.get(ActualPage);
+            if(page!=null)
+            {
+                for(Content c : page.drawContents())
+                {
+                    c.onDraw(canvas,this);
+                }
+            }
+    }
 
 }

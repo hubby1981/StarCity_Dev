@@ -6,6 +6,6 @@ package com.sim.star.bitworxx.starcity.constants;
 public class ContentPosition {
 
     public static int MAX_GRID_X = 32;
-    public static int MAX_GRID_Y = 32;
+    public static int MAX_GRID_Y = 16;
 
 }

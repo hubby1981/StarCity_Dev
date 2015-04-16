@@ -64,6 +64,8 @@ public class MenuConst {
 
         BACK_PAINTER_CONTENT = createBackPainter(ColorSetter.FILL_STROKE_BACK_HALF);
         BACK_PAINTER_CONTENT_INNER = createBackPainter(ColorSetter.FILL_CONTENT_BACK_HALF);
+
+
     }
 
 
@@ -87,7 +89,9 @@ public class MenuConst {
         p.setStyle(Paint.Style.STROKE);
         p.setAntiAlias(true);
         p.setColor(color);
-        p.setStrokeWidth(2);
+        p.setStrokeWidth(1);
+        p.setStrokeCap(Paint.Cap.ROUND);
+        p.setStrokeJoin(Paint.Join.ROUND);
         return p;
     }
 

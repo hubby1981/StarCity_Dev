@@ -1,6 +1,8 @@
 package com.sim.star.bitworxx.starcity.runnable;
 
 import com.sim.star.bitworxx.starcity.MainScreen;
+import com.sim.star.bitworxx.starcity.constants.MenuBitmaps;
+import com.sim.star.bitworxx.starcity.constants.MenuConst;
 import com.sim.star.bitworxx.starcity.display.Show;
 import com.sim.star.bitworxx.starcity.highlight.HightlightMenu;
 
@@ -31,6 +33,7 @@ public class RunnablesMainMenu {
             Show.ShowSubMenu = Show.ShowMainMenu;
             Show.ShowTimer = Show.ShowMainMenu;
             Show.ShowTopMenu =Show.ShowMainMenu;
+
             S_UPDATE.run();}
     };
 
@@ -55,7 +58,27 @@ public class RunnablesMainMenu {
         public void run() {
             Show.ShowSubMenu = !Show.ShowSubMenu;
             HightlightMenu.HIGH_MAIN_MENU = !HightlightMenu.HIGH_MAIN_MENU;
+
+
             S_UPDATE.run();
+        }
+    };
+
+    public static Runnable R_A_PREV_PAGE = new Runnable() {
+        @Override
+        public void run() {
+
+            if(MenuBitmaps.ActualWindow!=null)
+                MenuBitmaps.ActualWindow.prevPage();
+        }
+    };
+
+    public static Runnable R_A_NEXT_PAGE = new Runnable() {
+        @Override
+        public void run() {
+
+            if(MenuBitmaps.ActualWindow!=null)
+                MenuBitmaps.ActualWindow.nextPage();
         }
     };
 }

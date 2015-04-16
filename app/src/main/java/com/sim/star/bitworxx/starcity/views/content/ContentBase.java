@@ -47,6 +47,12 @@ public abstract class ContentBase {
         return MenuBitmaps.BitmapDrawables.get(Id);
     }
 
+    protected void flush()
+    {
+        if(MenuBitmaps.BitmapDrawables.containsKey(Id))
+            MenuBitmaps.BitmapDrawables.remove(Id);
+    }
+
     protected int measureWidth()
     {
         return DisplayRect.width()-(MenuConst.MARGIN_CLIP_MINI*MenuConst.FACTOR_TRIANGLE_OUT);
@@ -115,19 +121,19 @@ public abstract class ContentBase {
     }
 
 
-    public Point getLayoutPosition(int x,int y)
+    public Rect getLayoutPosition(int x,int y)
     {
        Rect rc = getLayoutRect(x,y);
-       return new Point(rc.left,rc.top);
+       return getLayoutRect(x,y);
     }
-    public ArrayList<Point> getLayoutPosition(int x,int y,int xx,int yy)
+    public ArrayList<Rect> getLayoutPosition(int x,int y,int xx,int yy)
     {
         Rect rc = getLayoutRect(x,y);
         Rect rc2 = getLayoutRect(xx,yy);
-        ArrayList<Point> result = new ArrayList<Point>();
+        ArrayList<Rect> result = new ArrayList<Rect>();
 
-        result.add( new Point(rc.left,rc.top));
-        result.add( new Point(rc2.right,rc2.bottom));
+        result.add( rc);
+        result.add( rc2);
         return result;
     }
     private Rect getLayoutRect(int x,int y)

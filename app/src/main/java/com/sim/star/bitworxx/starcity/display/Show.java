@@ -20,4 +20,6 @@ public class Show {
 
     public static boolean RenderBackGal = false;
 
+    public static boolean ShowGrid=false;
+
 }
