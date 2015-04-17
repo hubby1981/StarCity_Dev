@@ -41,9 +41,9 @@ public class TXT {
         ALL_TEXT.put("en-header-systems-table",new TextDescription("Your Systems Overview", TextSize.SUB_HEADER));
         ALL_TEXT.put("de-header-systems-table",new TextDescription("Deine System Übersicht", TextSize.SUB_HEADER));
 
-        ALL_TEXT.put("en-header-systems-table_name",new TextDescription("Name", TextSize.TEXT));
-        ALL_TEXT.put("en-header-systems-table_sector",new TextDescription("Sector", TextSize.TEXT));
-        ALL_TEXT.put("en-header-systems-table_status",new TextDescription("Status", TextSize.TEXT));
+        ALL_TEXT.put("en-header-systems-table_name",new TextDescription("Name", TextSize.SUB_HEADER));
+        ALL_TEXT.put("en-header-systems-table_sector",new TextDescription("Sector", TextSize.SUB_HEADER));
+        ALL_TEXT.put("en-header-systems-table_status",new TextDescription("Status", TextSize.SUB_HEADER));
     }
 
 
