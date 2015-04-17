@@ -1,5 +1,6 @@
 package com.sim.star.bitworxx.starcity.views.pages;
 
+import com.sim.star.bitworxx.starcity.constants.BTN;
 import com.sim.star.bitworxx.starcity.constants.TXT;
 import com.sim.star.bitworxx.starcity.game.enums.ContentType;
 import com.sim.star.bitworxx.starcity.geometric.CoPo;
@@ -30,7 +31,7 @@ public class ContentDescription {
 
     private Content buildInternal()
     {
-        return T==ContentType.TEXT ? buildText(): T==ContentType.TABLE?new TableContent(P):null;
+        return T==ContentType.TEXT ? buildText(): T==ContentType.TABLE?new TableContent(P):T==ContentType.BUTTON?buildButton():null;
     }
 
 
@@ -38,6 +39,18 @@ public class ContentDescription {
     {
         TextDescription td = TXT.get(K);
         return new TextContent(P, td.Text,td.Size);
+    }
+
+    private ButtonContent buildButton()
+    {
+        ButtonDescription bd = BTN.get(K);
+        ButtonContent content= new ButtonContent(P,bd.Action);
+        if(bd.hasChilds())
+        {
+            for(TextDescription td : bd.getChilds())
+                content.Childs.add(new TextContent(P,td.Text,td.Size));
+        }
+        return content;
     }
 
 

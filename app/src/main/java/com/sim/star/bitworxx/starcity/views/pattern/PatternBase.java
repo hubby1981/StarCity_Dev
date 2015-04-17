@@ -16,12 +16,12 @@ public abstract class PatternBase {
 
     public PatternBase()
     {
-        Contents=new ArrayList<ContentDescription>();
+        Contents=new ArrayList<>();
     }
 
     public ArrayList<Content> build()
     {
-        ArrayList<Content> contents = new ArrayList<Content>();
+        ArrayList<Content> contents = new ArrayList<>();
         if(Contents!=null){
         for(ContentDescription cd :Contents)
         {

@@ -18,6 +18,7 @@ import com.sim.star.bitworxx.starcity.geometric.GeometricHelp;
 import com.sim.star.bitworxx.starcity.views.MainBorder;
 import com.sim.star.bitworxx.starcity.views.pages.Content;
 import com.sim.star.bitworxx.starcity.views.pages.PageBase;
+import com.sim.star.bitworxx.starcity.views.touch.ActionContainer;
 
 import java.util.ArrayList;
 
@@ -142,6 +143,7 @@ public abstract class ContentWindow extends ContentBase {
            PageBase page = Pages.get(ActualPage);
             if(page!=null)
             {
+                ActionContainer.flush();
                 for(Content c : page.drawContents())
                 {
                     c.onDraw(canvas,this);

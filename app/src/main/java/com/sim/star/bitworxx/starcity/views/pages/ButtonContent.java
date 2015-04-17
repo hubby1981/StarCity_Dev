@@ -8,17 +8,19 @@ import com.sim.star.bitworxx.starcity.constants.MenuConst;
 import com.sim.star.bitworxx.starcity.geometric.CoPo;
 import com.sim.star.bitworxx.starcity.geometric.GeometricHelp;
 import com.sim.star.bitworxx.starcity.views.content.ContentWindow;
+import com.sim.star.bitworxx.starcity.views.touch.ActionContainer;
 
 import java.util.ArrayList;
 
 /**
- * Created by WEIS on 16.04.2015.
+ * Created by WEIS on 17.04.2015.
  */
-public class TableContent extends Content {
+public class ButtonContent extends Content {
 
-
-    public TableContent(CoPo p) {
+    private Runnable Action;
+    public ButtonContent(CoPo p,Runnable action) {
         super(p);
+        Action=action;
     }
 
     @Override
@@ -31,20 +33,15 @@ public class TableContent extends Content {
 
     @Override
     protected void onDrawInternal(Canvas canvas, ArrayList<Rect> rects, ContentWindow window) {
-
         if(rects.size()>=2) {
             Rect r = combineRects(rects.get(0), rects.get(1));
+            if(Action!=null)
+                ActionContainer.addButton(r,Action);
             int w=10;
-            Rect r2 = makeInnerRectWithTitle(r,w);
             Path p = GeometricHelp.generateTrianglePath(r, w, w);
 
             canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT);
             canvas.drawPath(p, MenuConst.PLATE_STROKE_BACK_PAINTER);
-            p = GeometricHelp.generateTrianglePath(r2, w, w);
-
-            canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT_INNER);
-            canvas.drawPath(p, MenuConst.PLATE_STROKE_BACK_PAINTER);
         }
-
     }
 }

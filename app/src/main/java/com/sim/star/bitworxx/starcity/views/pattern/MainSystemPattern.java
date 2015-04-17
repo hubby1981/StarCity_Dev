@@ -38,5 +38,8 @@ public class MainSystemPattern extends PatternBase {
         Contents.add(new ContentDescription(new CoPo(1,10),"Taba", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(11,10),"45.1.99.200", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(19,10),"explore", ContentType.TEXT));
+
+
+        Contents.add(new ContentDescription(new CoPo(25,28,25,30),"btn-system-add",ContentType.BUTTON));
     }
 }

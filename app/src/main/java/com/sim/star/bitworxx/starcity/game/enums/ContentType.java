@@ -5,5 +5,6 @@ package com.sim.star.bitworxx.starcity.game.enums;
  */
 public enum ContentType {
     TEXT,
-    TABLE
+    TABLE,
+    BUTTON
 }

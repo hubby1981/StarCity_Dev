@@ -29,6 +29,9 @@ public class TXT {
         ALL_TEXT.put("en-page",new TextDescription("PAGE", TextSize.TEXT));
         ALL_TEXT.put("de-page",new TextDescription("Seite", TextSize.TEXT));
 
+        ALL_TEXT.put("en-btn-system-add",new TextDescription("Add", TextSize.TEXT));
+        ALL_TEXT.put("de-btn-system-add",new TextDescription("Neu", TextSize.TEXT));
+
         ALL_TEXT.put("en-header-main-functions",new TextDescription("Functions", TextSize.SUB_HEADER));
         ALL_TEXT.put("de-header-main-functions",new TextDescription("Funktionen", TextSize.SUB_HEADER));
 

@@ -14,7 +14,9 @@ import java.util.ArrayList;
  */
 public abstract class Content {
 
- private CoPo P;
+    private CoPo P;
+
+    protected ArrayList<Content> Childs;
 
     public Content(Point leftTop)
     {
@@ -29,6 +31,7 @@ public abstract class Content {
     public Content(CoPo p)
     {
         P=p;
+        Childs=new ArrayList<>();
     }
 
     public boolean isSinglePoint()
@@ -42,6 +45,19 @@ public abstract class Content {
             onDrawInternal(canvas,window.getLayoutPosition(P.L,P.T),window);
         else
             onDrawInternal(canvas, window.getLayoutPosition(P.L,P.T,P.R,P.B), window);
+
+        for(Content c : Childs)
+            c.onDraw(canvas,window);
+    }
+
+    protected Rect combineRects(Rect r1,Rect r2)
+    {
+        return new Rect(r1.left,r1.top,r2.right,r2.bottom);
+    }
+
+    protected Rect makeInnerRectWithTitle(Rect r,int pW)
+    {
+        return new Rect(r.left + pW,r.top + r.height(), r.right - pW, r.bottom - pW);
     }
 
     protected abstract void onDrawInternal(Canvas canvas,Rect rect,ContentWindow window);
