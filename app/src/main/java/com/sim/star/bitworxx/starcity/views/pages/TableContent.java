@@ -14,19 +14,11 @@ import java.util.ArrayList;
 /**
  * Created by WEIS on 16.04.2015.
  */
-public class TableContent extends Content {
+public class TableContent extends RectContent {
 
 
     public TableContent(CoPo p) {
         super(p);
-    }
-
-    @Override
-    protected void onDrawInternal(Canvas canvas, Rect rect, ContentWindow window) {
-        ArrayList<Rect> list = new ArrayList<>();
-        list.add(rect);
-        list.add(rect);
-        onDrawInternal(canvas, list, window);
     }
 
     @Override
@@ -35,7 +27,7 @@ public class TableContent extends Content {
         if(rects.size()>=2) {
             Rect r = combineRects(rects.get(0), rects.get(1));
             int w=10;
-            Rect r2 = makeInnerRectWithTitle(r,w,rects.get(0).height());
+            Rect r2 = makeInnerRectWithTitle(r,0,rects.get(0).height());
             Path p = GeometricHelp.generateTrianglePath(r, w, w);
 
             canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT_INNER2);

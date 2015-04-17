@@ -26,7 +26,7 @@ public class MainSystemPattern extends PatternBase {
         Contents.add(new ContentDescription(new CoPo(13,15,12,15),"3",ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(20,15,22,15),"NEXT",ContentType.BUTTON));
 
-        StackingPattern st = new StackingPattern(3,0,8,1,new CoPo(1,1,30,4));
+        StackingPattern st = new StackingPattern(3,0,2,1,new CoPo(1,1,30,4));
 
         st.register(new ContentDescription("Explore",ContentType.BUTTON));
         st.register(new ContentDescription("Build",ContentType.BUTTON));

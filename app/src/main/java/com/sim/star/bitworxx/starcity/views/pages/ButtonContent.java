@@ -21,20 +21,12 @@ import java.util.ArrayList;
 /**
  * Created by WEIS on 17.04.2015.
  */
-public class ButtonContent extends Content {
+public class ButtonContent extends RectContent {
 
     private Runnable Action;
     public ButtonContent(CoPo p,Runnable action) {
         super(p);
         Action=action;
-    }
-
-    @Override
-    protected void onDrawInternal(Canvas canvas, Rect rect, ContentWindow window) {
-        ArrayList<Rect> list = new ArrayList<>();
-        list.add(rect);
-        list.add(rect);
-        onDrawInternal(canvas, list, window);
     }
 
     @Override

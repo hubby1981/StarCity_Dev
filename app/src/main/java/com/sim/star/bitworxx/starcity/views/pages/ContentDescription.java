@@ -38,7 +38,11 @@ public class ContentDescription {
 
     private Content buildInternal()
     {
-        return T==ContentType.TEXT ? buildText(): T==ContentType.TABLE?new TableContent(P):T==ContentType.BUTTON?buildButton():null;
+        return T==ContentType.TEXT ? buildText():
+                T==ContentType.TABLE?new TableContent(P):
+                        T==ContentType.BUTTON?buildButton():
+                                T==ContentType.LINE?new LineContent(P):
+                                        null;
     }
 
 
