@@ -3,6 +3,7 @@ package com.sim.star.bitworxx.starcity.constants;
 import android.widget.Toast;
 
 import com.sim.star.bitworxx.starcity.app.StarCityApp;
+import com.sim.star.bitworxx.starcity.cycle.GM;
 import com.sim.star.bitworxx.starcity.game.enums.TextSize;
 import com.sim.star.bitworxx.starcity.views.pages.ButtonContent;
 import com.sim.star.bitworxx.starcity.views.pages.ButtonDescription;
@@ -15,8 +16,7 @@ import java.util.HashMap;
  */
 public class BTN {
     public static HashMap<String,ButtonDescription> ALL_BUTTON;
-    public static String LOCALE = "en-";
-    public static String LOCALE_A = "en-";
+
     static{
         ALL_BUTTON=new HashMap<String,ButtonDescription>(){
 
@@ -40,8 +40,8 @@ public class BTN {
 
     public static ButtonDescription getInternal(String key)
     {
-        String k1 = LOCALE_A +key;
-        String k2 = LOCALE + key;
+        String k1 = GM.LOCALE_A +key;
+        String k2 = GM.LOCALE + key;
 
         return ALL_BUTTON.containsKey(k1)?ALL_BUTTON.get(k1):ALL_BUTTON.containsKey(k2)?ALL_BUTTON.get(k2):new ButtonDescription(new TextDescription(key,TextSize.TEXT),null);
     }

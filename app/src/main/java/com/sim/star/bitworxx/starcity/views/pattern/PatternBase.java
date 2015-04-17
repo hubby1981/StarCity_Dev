@@ -13,10 +13,11 @@ import java.util.HashMap;
 public abstract class PatternBase {
 
     public ArrayList<ContentDescription> Contents;
+    public ArrayList<PatternBase> Patterns;
 
     public PatternBase()
     {
-        Contents=new ArrayList<>();
+        Contents=new ArrayList<>();Patterns=new ArrayList<>();
     }
 
     public ArrayList<Content> build()
@@ -29,6 +30,14 @@ public abstract class PatternBase {
             if(c!=null)
                 contents.add(c);
         }}
+        if(Patterns!=null)
+            for(PatternBase p : Patterns)
+            {
+                for(Content c : p.build())
+                {
+                    contents.add(c);
+                }
+            }
         return contents;
     }
 }

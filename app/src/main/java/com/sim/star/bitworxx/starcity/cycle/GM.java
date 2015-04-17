@@ -17,7 +17,8 @@ public class GM {
     public static GM_TimeFrame TF;
     public static String Started;
     public static PlayerBag Player;
-
+    public static String LOCALE = "en-";
+    public static String LOCALE_A = "de-";
     public static long TS=0;
 public static long TE =0;
     static {

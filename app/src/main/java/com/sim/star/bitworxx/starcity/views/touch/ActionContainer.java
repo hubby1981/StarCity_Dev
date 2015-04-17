@@ -3,6 +3,8 @@ package com.sim.star.bitworxx.starcity.views.touch;
 import android.graphics.Point;
 import android.graphics.Rect;
 
+import com.sim.star.bitworxx.starcity.constants.CliprRects;
+
 import java.util.ArrayList;
 
 /**
@@ -25,10 +27,11 @@ public class ActionContainer {
             for (ActionHandler h : Handler) {
                 h.checkUp(point);
             }
-        if(HandlerButton!=null)
+        if(HandlerButton!=null) {
             for (ActionHandler h : HandlerButton) {
                 h.checkUp(point);
             }
+        }
     }
 
     public static void flush()
@@ -36,6 +39,7 @@ public class ActionContainer {
         if(HandlerButton!=null)
             HandlerButton.clear();
     }
+
 
     public static void addButton(Rect rect,Runnable action)
     {

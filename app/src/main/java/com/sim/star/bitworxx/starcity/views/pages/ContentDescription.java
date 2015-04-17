@@ -22,6 +22,13 @@ public class ContentDescription {
         T=t;
     }
 
+    public ContentDescription(String k,ContentType t)
+    {
+        P=new CoPo(0,0);
+        K=k;
+        T=t;
+    }
+
     public Content build()
     {
             if(P!=null&&K!=null&&T!=null)
@@ -47,8 +54,10 @@ public class ContentDescription {
         ButtonContent content= new ButtonContent(P,bd.Action);
         if(bd.hasChilds())
         {
+            int l = (P.R-P.L)/2;
+            int t=(P.B-P.T)/2;
             for(TextDescription td : bd.getChilds())
-                content.Childs.add(new TextContent(P,td.Text,td.Size));
+                content.Childs.add(new TextContent(new CoPo(P.L+l,P.T+t),td.Text,td.Size));
         }
         return content;
     }

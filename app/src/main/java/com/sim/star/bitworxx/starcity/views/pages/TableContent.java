@@ -35,10 +35,10 @@ public class TableContent extends Content {
         if(rects.size()>=2) {
             Rect r = combineRects(rects.get(0), rects.get(1));
             int w=10;
-            Rect r2 = makeInnerRectWithTitle(r,w);
+            Rect r2 = makeInnerRectWithTitle(r,w,rects.get(0).height());
             Path p = GeometricHelp.generateTrianglePath(r, w, w);
 
-            canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT);
+            canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT_INNER2);
             canvas.drawPath(p, MenuConst.PLATE_STROKE_BACK_PAINTER);
             p = GeometricHelp.generateTrianglePath(r2, w, w);
 

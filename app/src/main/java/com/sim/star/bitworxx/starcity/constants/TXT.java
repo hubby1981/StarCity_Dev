@@ -2,6 +2,7 @@ package com.sim.star.bitworxx.starcity.constants;
 
 import android.hardware.Camera;
 
+import com.sim.star.bitworxx.starcity.cycle.GM;
 import com.sim.star.bitworxx.starcity.game.enums.TextSize;
 import com.sim.star.bitworxx.starcity.views.pages.TextDescription;
 
@@ -13,8 +14,7 @@ import java.util.HashMap;
 public class TXT {
 
     public static HashMap<String,TextDescription> ALL_TEXT;
-    public static String LOCALE = "en-";
-    public static String LOCALE_A = "en-";
+
     static{
         ALL_TEXT=new HashMap<String,TextDescription>(){
 
@@ -49,8 +49,8 @@ public class TXT {
 
     public static TextDescription get(String key)
     {
-        String k1 = LOCALE_A +key;
-        String k2 = LOCALE + key;
+        String k1 = GM.LOCALE_A +key;
+        String k2 = GM.LOCALE + key;
 
         return ALL_TEXT.containsKey(k1)?ALL_TEXT.get(k1):ALL_TEXT.containsKey(k2)?ALL_TEXT.get(k2):new TextDescription(key,TextSize.TEXT);
     }

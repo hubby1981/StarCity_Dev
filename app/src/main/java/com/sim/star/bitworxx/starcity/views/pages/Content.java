@@ -55,9 +55,9 @@ public abstract class Content {
         return new Rect(r1.left,r1.top,r2.right,r2.bottom);
     }
 
-    protected Rect makeInnerRectWithTitle(Rect r,int pW)
+    protected Rect makeInnerRectWithTitle(Rect r,int pW,int h)
     {
-        return new Rect(r.left + pW,r.top + r.height(), r.right - pW, r.bottom - pW);
+        return new Rect(r.left + pW,r.top + h, r.right - pW, r.bottom - pW);
     }
 
     protected abstract void onDrawInternal(Canvas canvas,Rect rect,ContentWindow window);

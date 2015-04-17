@@ -1,9 +1,15 @@
 package com.sim.star.bitworxx.starcity.views.pages;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.RadialGradient;
 import android.graphics.Rect;
+import android.graphics.Shader;
 
+import com.sim.star.bitworxx.starcity.constants.CliprRects;
+import com.sim.star.bitworxx.starcity.constants.ColorSetter;
 import com.sim.star.bitworxx.starcity.constants.MenuConst;
 import com.sim.star.bitworxx.starcity.geometric.CoPo;
 import com.sim.star.bitworxx.starcity.geometric.GeometricHelp;
@@ -36,11 +42,34 @@ public class ButtonContent extends Content {
         if(rects.size()>=2) {
             Rect r = combineRects(rects.get(0), rects.get(1));
             if(Action!=null)
-                ActionContainer.addButton(r,Action);
-            int w=10;
+            {
+                int w =CliprRects.InnerRectMain.left- CliprRects.OuterRectContent.left;
+                int h=CliprRects.InnerRectMain.top- CliprRects.OuterRectContent.top;
+                Rect r2 = new Rect(r.left+ w,r.top+h,r.right+ w,r.bottom+h);
+                ActionContainer.addButton(r2,Action);
+            }
+            int w=6;
             Path p = GeometricHelp.generateTrianglePath(r, w, w);
 
-            canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT);
+            Paint pp = new Paint();
+
+            pp.setColor(Color.BLACK);
+            pp.setShader(new RadialGradient((float)r.centerX(),(float)r.centerY(),(float)r.width()/2, ColorSetter.FILL_BACK_COLOR_PLATE,Color.BLACK, Shader.TileMode.MIRROR));
+            pp.setAntiAlias(true);
+
+
+            canvas.drawPath(p, pp);
+
+
+            canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT_INNER);
+            Rect r2 = makeInnerRectWithTitle(r,w/2,w/2);
+            p = GeometricHelp.generateTrianglePath(r2, w, w);
+
+            canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT_INNER2);
+            canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT_INNER2);
+
+
+
             canvas.drawPath(p, MenuConst.PLATE_STROKE_BACK_PAINTER);
         }
     }

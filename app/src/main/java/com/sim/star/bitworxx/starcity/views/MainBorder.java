@@ -474,21 +474,22 @@ public abstract class MainBorder extends View {
             pp.setStrokeWidth(MenuConst.MARGIN_CLIP_MINI);
             canvas.drawPath(outboundPath, pp);
         }
-
-        makePlateH(canvas, getOutboundRect().left, getOutboundRect().top, getOutboundRect().right, getInboundRect().top, true);
+        int wL = 5;
+        int wH = 5;
+        makePlateH(canvas, getOutboundRect().left, getOutboundRect().top+wH, getOutboundRect().right, getInboundRect().top+wH, true);
         if (HasTitle) {
-            makePlateH(canvas, getTitleRect().left, getOutboundRect().bottom, getTitleRect().right, getTitleRect().bottom - translateMarginHeight(), false);
+            makePlateH(canvas, getTitleRect().left, getOutboundRect().bottom-wH, getTitleRect().right, (getTitleRect().bottom - translateMarginHeight())-wH, false);
         } else {
-            makePlateH(canvas, getOutboundRect().left, getOutboundRect().bottom, getOutboundRect().right, getInboundRect().bottom, false);
+            makePlateH(canvas, getOutboundRect().left, getOutboundRect().bottom-wH, getOutboundRect().right, getInboundRect().bottom-wH, false);
         }
-        makePlateV(canvas, getOutboundRect().left, getOutboundRect().top, getInboundRect().left, getOutboundRect().bottom, true);
-        makePlateV(canvas, getOutboundRect().right, getOutboundRect().top, getInboundRect().right, getOutboundRect().bottom, false);
+        makePlateV(canvas, getOutboundRect().left+wL, getOutboundRect().top, getInboundRect().left+wL, getOutboundRect().bottom, true);
+        makePlateV(canvas, getOutboundRect().right-wL, getOutboundRect().top, getInboundRect().right-wL, getOutboundRect().bottom, false);
 
         int wTitle = (getTitleRect().width()/100)*MenuConst.MARGIN_CLIP_MINI;
         Rect leftPage = new Rect(getTitleRect().left,getTitleRect().top,getTitleRect().left+wTitle,getTitleRect().bottom);
         Rect rightPage = new Rect(getTitleRect().right-wTitle,getTitleRect().top,getTitleRect().right,getTitleRect().bottom);
-        LeftPage=GeometricHelp.generateTrianglePath(leftPage,0,0,0,0,50,30,0,0);
-        RightPage=GeometricHelp.generateTrianglePath(rightPage,0,0,0,0,0,0,50,30);
+        LeftPage=GeometricHelp.generateTrianglePath(leftPage,0,0,0,0,48,30,0,0);
+        RightPage=GeometricHelp.generateTrianglePath(rightPage,0,0,0,0,0,0,48,30);
         canvas.drawPath(LeftPage, MenuConst.PLATE_BACK_PAINTER);
         canvas.drawPath(RightPage, MenuConst.PLATE_BACK_PAINTER);
         if(ActionContainer.Handler!=null)

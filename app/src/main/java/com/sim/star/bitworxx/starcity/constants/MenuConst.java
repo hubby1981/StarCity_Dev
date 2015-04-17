@@ -65,7 +65,7 @@ public class MenuConst {
         BACK_PAINTER_CONTENT = createBackPainter(ColorSetter.FILL_STROKE_BACK_HALF);
         BACK_PAINTER_CONTENT_INNER = createBackPainter(ColorSetter.FILL_CONTENT_BACK_HALF);
         BACK_PAINTER_CONTENT_INNER = createBackPainter(ColorSetter.FILL_CONTENT_BACK_HALF2);
-
+        BACK_PAINTER_CONTENT_INNER2 = createBackPainter(ColorSetter.FILL_STROKE_BACK_HALF2);
     }
 
 

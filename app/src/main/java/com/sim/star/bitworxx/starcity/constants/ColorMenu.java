@@ -8,11 +8,12 @@ import android.graphics.Color;
 public class ColorMenu {
 
     public static int ALPHA_ONE = 180;
-    public static int FILL_YELLOW = Color.argb(ALPHA_ONE, 213, 123, 36);
-    public static int FILL_YELLOW_FORE = Color.argb(ALPHA_ONE, 0, 0, 0);
-    public static int FILL_YELLOW_PLATE = Color.argb(ALPHA_ONE, 255, 200, 0);
-    public static int FILL_YELLOW_FORE_ICON = Color.argb(ALPHA_ONE, 255, 255, 255);
     public static int ALPHA_TWO = 128;
+
+    public static int FILL_YELLOW = Color.argb(ALPHA_ONE, 40, 40, 40);
+    public static int FILL_YELLOW_FORE = Color.argb(ALPHA_ONE, 0, 0, 0);
+    public static int FILL_YELLOW_PLATE = Color.argb(ALPHA_TWO, 255, 200, 0);
+    public static int FILL_YELLOW_FORE_ICON = Color.argb(ALPHA_ONE, 255, 255, 255);
     public static int FILL_YELLOW_PLATE_HALF = Color.argb(ALPHA_TWO, 255, 200, 0);
     public static int FILL_GREEN = Color.argb(ALPHA_ONE, 40, 40, 40);
     public static int FILL_GREEN_PLATE = Color.argb(ALPHA_TWO, 92, 210, 27);

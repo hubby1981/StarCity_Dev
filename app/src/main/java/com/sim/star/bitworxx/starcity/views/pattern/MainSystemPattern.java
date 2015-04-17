@@ -16,30 +16,23 @@ public class MainSystemPattern extends PatternBase {
         Contents.add(new ContentDescription(new CoPo(30,0),"2", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(31,0),pageCount, ContentType.TEXT));
 
-        Contents.add(new ContentDescription(new CoPo(0,4,23,15),"",ContentType.TABLE));
-        Contents.add(new ContentDescription(new CoPo(1,4),"header-systems-table", ContentType.TEXT));
+        Patterns.add(new SystemTablePattern());
 
-        Contents.add(new ContentDescription(new CoPo(1,5),"header-systems-table_name", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(11,5),"header-systems-table_sector", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(19,5),"header-systems-table_status", ContentType.TEXT));
-
-        Contents.add(new ContentDescription(new CoPo(1,7),"Pytico I", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(11,7),"45.10.99.200", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(19,7),"settle", ContentType.TEXT));
-
-        Contents.add(new ContentDescription(new CoPo(1,8),"Pytico II", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(11,8),"45.10.0.200", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(19,8),"wait", ContentType.TEXT));
-
-        Contents.add(new ContentDescription(new CoPo(1,9),"Sambut", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(11,9),"45.123.99.200", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(19,9),"wait", ContentType.TEXT));
-
-        Contents.add(new ContentDescription(new CoPo(1,10),"Taba", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(11,10),"45.1.99.200", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(19,10),"explore", ContentType.TEXT));
+        Patterns.add(new MainSystemButtonPattern());
 
 
-        Contents.add(new ContentDescription(new CoPo(25,28,25,30),"btn-system-add",ContentType.BUTTON));
+        Contents.add(new ContentDescription(new CoPo(1,15,3,15),"PREV",ContentType.BUTTON));
+        Contents.add(new ContentDescription(new CoPo(10,15,12,15),"page",ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(13,15,12,15),"3",ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(20,15,22,15),"NEXT",ContentType.BUTTON));
+
+        StackingPattern st = new StackingPattern(3,0,8,1,new CoPo(1,1,30,4));
+
+        st.register(new ContentDescription("Explore",ContentType.BUTTON));
+        st.register(new ContentDescription("Build",ContentType.BUTTON));
+        st.register(new ContentDescription("Settle",ContentType.BUTTON));
+        st.register(new ContentDescription("Spy",ContentType.BUTTON));
+
+        Patterns.add(st);
     }
 }
