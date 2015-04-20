@@ -58,7 +58,7 @@ public abstract class MainBorder extends View {
     private RectF TitleRectF = null;
     private Path LeftPage=null;
     private Path RightPage=null;
-
+private Paint HeaderFontPaint;
     public static Typeface VenusFace;
     private UUID Id;
 
@@ -492,6 +492,21 @@ public abstract class MainBorder extends View {
         RightPage=GeometricHelp.generateTrianglePath(rightPage,0,0,0,0,0,0,48,30);
         canvas.drawPath(LeftPage, MenuConst.PLATE_BACK_PAINTER);
         canvas.drawPath(RightPage, MenuConst.PLATE_BACK_PAINTER);
+
+        HeaderFontPaint = new Paint();
+        HeaderFontPaint.setStyle(Paint.Style.FILL);
+        HeaderFontPaint.setTypeface(MainBorder.VenusFace);
+        HeaderFontPaint.setFakeBoldText(true);
+        HeaderFontPaint.setStrokeWidth(1);
+        HeaderFontPaint.setColor(ColorSetter.FILL_STROKE_BACK_FORE);
+        HeaderFontPaint.setTextSize((float) ContentFont.FontHeightHeader);
+
+
+        canvas.drawText("<",(float)leftPage.right-leftPage.width()/3,(float)leftPage.bottom-leftPage.height()/2,HeaderFontPaint);
+        canvas.drawText(">",(float)rightPage.left+rightPage.width()/4,(float)rightPage.bottom-rightPage.height()/2,HeaderFontPaint);
+
+
+
         if(ActionContainer.Handler!=null)
         {
             ActionContainer.Handler.add(new ActionHandler(leftPage, RunnablesMainMenu.R_A_PREV_PAGE));
