@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.Rect;
 
+import com.sim.star.bitworxx.starcity.constants.ContentFont;
 import com.sim.star.bitworxx.starcity.constants.ContentPosition;
 import com.sim.star.bitworxx.starcity.constants.MenuBitmaps;
 import com.sim.star.bitworxx.starcity.constants.MenuConst;
@@ -79,7 +80,7 @@ public abstract class ContentBase {
         if(InboundRect==null)
         {
 
-            InboundRect=new Rect(getOutboundRect().left+measure,getOutboundRect().top+measure,getOutboundRect().right-measure,getOutboundRect().bottom-measure);
+            InboundRect=new Rect(getOutboundRect().left+measure,getOutboundRect().top+ ((ContentFont.FontHeightHeader)*MenuConst.FACTOR_TRIANGLE_OUT)-4,getOutboundRect().right-measure,getOutboundRect().bottom-measure);
             createGrid();
         }
 
@@ -90,7 +91,7 @@ public abstract class ContentBase {
     {
         if(InboundRectMargin==null)
         {
-            InboundRectMargin=new Rect(InboundRect.left+measure,InboundRect.top+measure,InboundRect.right-measure,InboundRect.bottom-measure);
+            InboundRectMargin=new Rect(InboundRect.left+measure,OutboundRect.top+measure,InboundRect.right-measure,InboundRect.bottom-measure);
 
         }
 

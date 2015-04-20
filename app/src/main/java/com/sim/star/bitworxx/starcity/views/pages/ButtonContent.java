@@ -41,6 +41,8 @@ public class ButtonContent extends RectContent {
                 ActionContainer.addButton(r2,Action);
             }
             int w=6;
+        
+
             Path p = GeometricHelp.generateTrianglePath(r, w, w);
 
             Paint pp = new Paint();
@@ -52,7 +54,7 @@ public class ButtonContent extends RectContent {
 
             canvas.drawPath(p, pp);
 
-
+            p = GeometricHelp.generateTrianglePath(r, w, w);
             canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT_INNER);
             Rect r2 = makeInnerRectWithTitle(r,w/2,w/2);
             p = GeometricHelp.generateTrianglePath(r2, w, w);

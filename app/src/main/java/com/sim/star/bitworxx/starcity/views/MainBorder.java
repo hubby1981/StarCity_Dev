@@ -333,7 +333,7 @@ private Paint HeaderFontPaint;
         if (Show.RenderShader) {
             MenuConst.BACK_SHADER_PAINTER = new Paint();
             MenuConst.BACK_SHADER_PAINTER.setStyle(Paint.Style.FILL);
-            MenuConst.BACK_SHADER_PAINTER.setColor(ColorSetter.FILL_SHADER_BACK_HALF);
+
             MenuConst.BACK_SHADER_PAINTER.setShader(MenuConst.BACK_SHADER);
 
             MenuConst.BACK_SHADER_PAINTER.setAntiAlias(true);

@@ -65,6 +65,16 @@ public class RunnablesMainMenu {
         }
     };
 
+    public static Runnable R_A_TOP_MENU = new Runnable() {
+        @Override
+        public void run() {
+            Show.ShowRaceMenu = !Show.ShowRaceMenu;
+
+
+            S_UPDATE.run();
+        }
+    };
+
     public static Runnable R_A_PREV_PAGE = new Runnable() {
         @Override
         public void run() {

@@ -35,6 +35,7 @@ public class Main extends MainBorder {
     private Mini SubMenuBank;
     private Mini SubMenuTech;
     private Mini SubMenuSkill;
+    private Mini RaceMenu;
 
     private WatchAnimation Watcher;
     private MainAnimation Main;
@@ -59,7 +60,7 @@ public class Main extends MainBorder {
         SubMenuBank = new Mini();
         SubMenuSkill = new Mini();
         SubMenuTech = new Mini();
-
+        RaceMenu = new Mini();
         Watcher = new WatchAnimation(TimeMenu);
         Main = new MainAnimation(MainMenu);
         Bank = new BankAnimation(SubMenuBank);
@@ -68,7 +69,7 @@ public class Main extends MainBorder {
 
         MainMenu.setRunnable(RunnablesMainMenu.R_A_MAIN_MENU);
         SubMenu.setRunnable(RunnablesMainMenu.R_A_SUB_MENU);
-
+        TopMenu.setRunnable(RunnablesMainMenu.R_A_TOP_MENU);
 
     }
 
@@ -106,7 +107,16 @@ public class Main extends MainBorder {
                 p = new Point(LeftItem, (InnerRect.top));
                 TopMenu.Measure = p;
                 canvas.drawBitmap(TopMenu.getAsBitmap(), (float) p.x, (float) p.y, null);
-                Race.drawItems();}
+                Race.drawItems();
+                if(Show.ShowRaceMenu)
+                {
+                    RaceMenu.HandleDisplay(measureItemWidth()*5, measureItemWidth());
+                    p = new Point(LeftItem-measureItemWidth()*2, TopMenu.DisplayRect.bottom+(int)(measureItemHeight()/1.3));
+                    RaceMenu.Measure = p;
+                    canvas.drawBitmap(RaceMenu.getAsBitmap(), (float) p.x, (float) p.y, null);
+                }
+
+        }
         if (Show.ShowSubMenu) {
             SubMenu.HandleDisplay(measureItemWidth(), measureItemWidth());
             p = new Point(InnerRect.left + FACTOR_TRIANGLE_OUT, TopItem);

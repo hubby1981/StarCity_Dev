@@ -154,7 +154,7 @@ public class Mini {
         canvas.drawPath(outerPath, MenuConst.BACK_PAINTER);
 
 
-        canvas.drawPath(innerPath, MenuConst.FORE_PAINTER);
+        canvas.drawPath(innerPath, MenuConst.BACK_PAINTER_CONTENT_INNER);
         canvas.drawPath(innerPath, MenuConst.STROKE_FORE_PAINTER);
         canvas.drawPath(outerPath, MenuConst.STROKE_FORE_PAINTER);
         makePlateH(canvas, getOutboundRect().left, getOutboundRect().top, getOutboundRect().right, getInboundRect(w + w).top, true);
