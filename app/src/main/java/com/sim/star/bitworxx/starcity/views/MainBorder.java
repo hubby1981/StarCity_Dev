@@ -274,7 +274,7 @@ private Paint HeaderFontPaint;
 
     }
 
-    private void makePlateH(Canvas canvas, int x, int y, int w, int h, boolean invert) {
+    private Path makePlateH(Canvas canvas, int x, int y, int w, int h, boolean invert,boolean sample) {
         Path plate = new Path();
 
 
@@ -294,11 +294,13 @@ private Paint HeaderFontPaint;
         plate.lineTo(p4.x, p4.y);
         plate.lineTo(p1.x, p1.y);
 
-        canvas.drawPath(plate, MenuConst.PLATE_BACK_PAINTER);
-        canvas.drawPath(plate, MenuConst.PLATE_STROKE_BACK_PAINTER);
+        if(!sample)
+        { canvas.drawPath(plate, MenuConst.PLATE_BACK_PAINTER);
+        canvas.drawPath(plate, MenuConst.PLATE_STROKE_BACK_PAINTER);}else plate.close();
+        return plate;
     }
 
-    private void makePlateV(Canvas canvas, int x, int y, int w, int h, boolean invert) {
+    private Path makePlateV(Canvas canvas, int x, int y, int w, int h, boolean invert,boolean sample) {
         Path plate = new Path();
 
 
@@ -321,9 +323,11 @@ private Paint HeaderFontPaint;
         plate.lineTo(p3.x, p3.y);
         plate.lineTo(p4.x, p4.y);
         plate.lineTo(p1.x, p1.y);
-
-        canvas.drawPath(plate, MenuConst.PLATE_BACK_PAINTER);
-        canvas.drawPath(plate, MenuConst.PLATE_STROKE_BACK_PAINTER);
+        if(!sample) {
+            canvas.drawPath(plate, MenuConst.PLATE_BACK_PAINTER);
+            canvas.drawPath(plate, MenuConst.PLATE_STROKE_BACK_PAINTER);
+        }else plate.close();
+        return  plate;
     }
 
     protected abstract void drawItems(Canvas canvas);
@@ -409,7 +413,9 @@ private Paint HeaderFontPaint;
     {
         initBorder();
 
-
+        Path pPlate=null;
+        int wL = 4;
+        int wH = 4;
         Path outboundPath = new Path();
         outboundPath.addRect(getOutboundRectF(), Path.Direction.CW);
 
@@ -422,6 +428,8 @@ private Paint HeaderFontPaint;
 
         canvas.clipPath(outboundPath);
         canvas.clipPath(inboundPath, Region.Op.DIFFERENCE);
+
+
 
         InnerRect = new Rect(getInboundRect().left + translateMarginWidth(), getInboundRect().top + translateMarginHeight(),
                 getInboundRect().right - translateMarginHeight(), getTitleRect().top - translateMarginWidth() / FACTOR_TRIANGLE_OUT);
@@ -470,20 +478,22 @@ private Paint HeaderFontPaint;
             Paint pp = new Paint();
             pp.setStyle(Paint.Style.STROKE);
             pp.setAntiAlias(true);
-            pp.setColor(ColorSetter.FILL_BACK_COLOR_PLATE_HALF);
+            pp.setColor(ColorSetter.FILL_BACK_COLOR_PLATE);
             pp.setStrokeWidth(MenuConst.MARGIN_CLIP_MINI);
             canvas.drawPath(outboundPath, pp);
         }
-        int wL = 5;
-        int wH = 5;
-        makePlateH(canvas, getOutboundRect().left, getOutboundRect().top+wH, getOutboundRect().right, getInboundRect().top+wH, true);
+
+
+        pPlate = makePlateH(canvas, getOutboundRect().left, getOutboundRect().top+wH, getOutboundRect().right, getInboundRect().top+wH, true,false);
+
+
         if (HasTitle) {
-            makePlateH(canvas, getTitleRect().left, getOutboundRect().bottom-wH, getTitleRect().right, (getTitleRect().bottom - translateMarginHeight())-wH, false);
+            pPlate=makePlateH(canvas, getTitleRect().left, getOutboundRect().bottom-wH, getTitleRect().right, (getTitleRect().bottom - translateMarginHeight())-wH, false,false);
         } else {
-            makePlateH(canvas, getOutboundRect().left, getOutboundRect().bottom-wH, getOutboundRect().right, getInboundRect().bottom-wH, false);
+            pPlate=makePlateH(canvas, getOutboundRect().left, getOutboundRect().bottom-wH, getOutboundRect().right, getInboundRect().bottom-wH, false,false);
         }
-        makePlateV(canvas, getOutboundRect().left+wL, getOutboundRect().top, getInboundRect().left+wL, getOutboundRect().bottom, true);
-        makePlateV(canvas, getOutboundRect().right-wL, getOutboundRect().top, getInboundRect().right-wL, getOutboundRect().bottom, false);
+        pPlate=makePlateV(canvas, getOutboundRect().left+wL, getOutboundRect().top, getInboundRect().left+wL, getOutboundRect().bottom, true,false);
+        pPlate=makePlateV(canvas, getOutboundRect().right-wL, getOutboundRect().top, getInboundRect().right-wL, getOutboundRect().bottom, false,false);
 
         int wTitle = (getTitleRect().width()/100)*MenuConst.MARGIN_CLIP_MINI;
         Rect leftPage = new Rect(getTitleRect().left,getTitleRect().top,getTitleRect().left+wTitle,getTitleRect().bottom);
@@ -493,13 +503,16 @@ private Paint HeaderFontPaint;
         canvas.drawPath(LeftPage, MenuConst.PLATE_BACK_PAINTER);
         canvas.drawPath(RightPage, MenuConst.PLATE_BACK_PAINTER);
 
+        canvas.drawPath(LeftPage, MenuConst.STROKE_BACK_PAINTER);
+        canvas.drawPath(RightPage, MenuConst.STROKE_BACK_PAINTER);
+
         HeaderFontPaint = new Paint();
         HeaderFontPaint.setStyle(Paint.Style.FILL);
         HeaderFontPaint.setTypeface(MainBorder.VenusFace);
         HeaderFontPaint.setFakeBoldText(true);
         HeaderFontPaint.setStrokeWidth(1);
         HeaderFontPaint.setColor(ColorSetter.FILL_STROKE_BACK_FORE);
-        HeaderFontPaint.setTextSize((float) ContentFont.FontHeightHeader+10);
+        HeaderFontPaint.setTextSize((float) ContentFont.FontHeightHeader+8);
 
 
         canvas.drawText("<",(float)leftPage.right-leftPage.width()/2,(float)leftPage.bottom-leftPage.height()/4,HeaderFontPaint);

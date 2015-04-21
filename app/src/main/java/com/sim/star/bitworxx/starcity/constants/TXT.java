@@ -45,8 +45,8 @@ public class TXT {
         ALL_TEXT.put("en-header-systems-table_sector",new TextDescription("Sector", TextSize.SUB_HEADER));
         ALL_TEXT.put("en-header-systems-table_status",new TextDescription("Status", TextSize.SUB_HEADER));
 
-        ALL_TEXT.put("en-rbn-use-action-1",new TextDescription(" use linear", TextSize.TEXT));
-        ALL_TEXT.put("en-rbn-use-action-2",new TextDescription(" use commander", TextSize.TEXT));
+        ALL_TEXT.put("en-rbn-use-action-1",new TextDescription(" use yellow", TextSize.TEXT));
+        ALL_TEXT.put("en-rbn-use-action-2",new TextDescription(" use green", TextSize.TEXT));
 
     }
 

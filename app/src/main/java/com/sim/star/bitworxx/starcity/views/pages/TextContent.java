@@ -25,15 +25,24 @@ public class TextContent extends Content {
     }
 
 
-    private int measureY(Rect bound)
-    {
-        return bound.bottom-bound.height()/4;
-
-    }
-
     @Override
     protected void onDrawInternal(Canvas canvas, Rect rect, ContentWindow window) {
-        canvas.drawText(Text,rect.left,measureY(rect),window.getFontPainter(Size));
+        Paint painter = window.getFontPainter(Size);
+        if(Parent!=null)
+        {
+            if(Parent.UseParentBounds) {
+
+                int w=(int)painter.measureText(Text);
+                rect = new Rect(Parent.Bounds.centerX() - w / 2, Parent.Bounds.centerY(), Parent.Bounds.centerX() + w / 2, Parent.Bounds.centerY() + (int)painter.getTextSize());
+                canvas.drawText(Text, rect.left, rect.centerY(), painter);
+            }
+            else
+                canvas.drawText(Text, rect.left,rect.centerY()+painter.getTextSize()/4, painter);
+
+        }
+        else {
+            canvas.drawText(Text, rect.left, rect.centerY()+painter.getTextSize()/4, painter);
+        }
     }
 
     @Override

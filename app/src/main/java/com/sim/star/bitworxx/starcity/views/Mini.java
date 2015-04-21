@@ -157,12 +157,12 @@ public class Mini {
         canvas.drawPath(innerPath, MenuConst.BACK_PAINTER_CONTENT_INNER);
         canvas.drawPath(innerPath, MenuConst.STROKE_FORE_PAINTER);
         canvas.drawPath(outerPath, MenuConst.STROKE_FORE_PAINTER);
-        makePlateH(canvas, getOutboundRect().left, getOutboundRect().top, getOutboundRect().right, getInboundRect(w + w).top, true);
+        makePlateH(canvas, getOutboundRect().left, getOutboundRect().top-1, getOutboundRect().right, getInboundRect(w + w).top-1, true);
 
-        makePlateH(canvas, getOutboundRect().left, getOutboundRect().bottom, getOutboundRect().right, getInboundRect(w + w).bottom, false);
+        makePlateH(canvas, getOutboundRect().left, getOutboundRect().bottom+1, getOutboundRect().right, getInboundRect(w + w).bottom+1, false);
 
-        makePlateV(canvas, getOutboundRect().left, getOutboundRect().top, getInboundRect(w + w).left, getOutboundRect().bottom, true);
-        makePlateV(canvas, getOutboundRect().right, getOutboundRect().top, getInboundRect(w + w).right, getOutboundRect().bottom, false);
+        makePlateV(canvas, getOutboundRect().left-1, getOutboundRect().top, getInboundRect(w + w).left-1, getOutboundRect().bottom, true);
+        makePlateV(canvas, getOutboundRect().right+1, getOutboundRect().top, getInboundRect(w + w).right+1, getOutboundRect().bottom, false);
 
     }
 

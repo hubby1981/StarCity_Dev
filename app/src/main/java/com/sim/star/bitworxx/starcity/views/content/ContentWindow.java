@@ -148,7 +148,7 @@ public abstract class ContentWindow extends ContentBase {
                 ActionContainer.flush();
                 for(Content c : page.drawContents())
                 {
-                    c.onDraw(canvas,this);
+                    c.onDraw(canvas,this,null);
                 }
             }
     }

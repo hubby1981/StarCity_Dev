@@ -27,6 +27,7 @@ public class ButtonContent extends RectContent {
     public ButtonContent(CoPo p,Runnable action) {
         super(p);
         Action=action;
+
     }
 
     @Override

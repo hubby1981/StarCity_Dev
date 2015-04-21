@@ -23,10 +23,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.sim.star.bitworxx.starcity.app.StarCityApp;
+import com.sim.star.bitworxx.starcity.constants.ColorSetter;
 import com.sim.star.bitworxx.starcity.constants.DB;
 import com.sim.star.bitworxx.starcity.constants.DirtyRects;
 import com.sim.star.bitworxx.starcity.constants.MenuBitmaps;
 import com.sim.star.bitworxx.starcity.constants.MenuConst;
+import com.sim.star.bitworxx.starcity.constants.RBN;
 import com.sim.star.bitworxx.starcity.cycle.GM;
 import com.sim.star.bitworxx.starcity.db.Meta;
 import com.sim.star.bitworxx.starcity.meta.MetaObjectContainer;
@@ -51,12 +53,11 @@ public class MainScreen extends Activity {
     private DB db;
     private Intent ResultIntent;
     private TaskStackBuilder Task;
-
+private int Count=0;
     public static UUID Id=UUID.randomUUID();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         gm = new GM();
         mc = new MenuConst();
@@ -118,7 +119,7 @@ public class MainScreen extends Activity {
                     }
                 });
             }
-        }, 0, 2000);
+        }, 0, 10);
         return result;
     }
 
@@ -126,7 +127,20 @@ public class MainScreen extends Activity {
 
 
     public void update() {
-       GM.animate();
+       Count++;
+        if(Count>155)
+        {
+
+            GM.animate();
+            Count=0;
+        }
+
+        if(RBN.ALL_CHECKED.containsKey("rbn-use-action-1"))
+            if(RBN.ALL_CHECKED.get("rbn-use-action-1")==true)
+                ColorSetter.changeToYellow();
+        if(RBN.ALL_CHECKED.containsKey("rbn-use-action-2"))
+            if(RBN.ALL_CHECKED.get("rbn-use-action-2")==true)
+                ColorSetter.changeToGreen();
         findViewById(R.id.imageView).invalidate();
     }
 
