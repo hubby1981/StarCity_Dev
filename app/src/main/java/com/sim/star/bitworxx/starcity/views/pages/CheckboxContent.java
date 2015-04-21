@@ -28,7 +28,7 @@ public class CheckboxContent extends ButtonContent {
     protected  void drawFilling(Canvas canvas,Rect r)
     {
         int w =6;
-        Rect r2=new Rect(r.left+2,r.top+2,(r.left+r.height()-2),r.bottom-2);
+        Rect r2=new Rect(r.left+4,r.top+4,(r.left+r.height()-4),r.bottom-4);
         Rect r3 = new Rect(r2.left+w,r2.top+w,r2.right-w,r2.bottom-w);
         Path p = GeometricHelp.generateTrianglePath(r2, w, w);
 
@@ -36,7 +36,7 @@ public class CheckboxContent extends ButtonContent {
 
 
 
-        canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT_INNER2);
+        canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT_INNER);
         canvas.drawPath(p, MenuConst.PLATE_STROKE_BACK_PAINTER);
     }
 
@@ -48,7 +48,7 @@ public class CheckboxContent extends ButtonContent {
             p2.moveTo(r3.left-2,r3.bottom-r3.height()/2);
             p2.lineTo(r3.left+r3.width()/2,r3.bottom);
             p2.lineTo(r3.right-1,r3.top);
-            p2.lineTo(r3.centerX()-2,r3.centerY()+3);
+            p2.lineTo(r3.centerX()-2,r3.centerY()+4);
             canvas.drawPath(p2,MenuConst.FORE_PAINTER_ICON);
         }
 

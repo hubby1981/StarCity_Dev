@@ -1,5 +1,6 @@
 package com.sim.star.bitworxx.starcity.cycle;
 
+import com.sim.star.bitworxx.starcity.MainScreen;
 import com.sim.star.bitworxx.starcity.game.enums.LoopEnum;
 import com.sim.star.bitworxx.starcity.game.enums.RaceEnum;
 import com.sim.star.bitworxx.starcity.game.enums.TimeEnum;
@@ -35,6 +36,8 @@ public static long TE =0;
         LoopEnum resultLT = LT.iterate();
         TimeEnum resultTF = TF.interate();
 
+        if(resultLT==LoopEnum.NEXT_LOOP)
+            MainScreen.Loop.run();
     }
 
 

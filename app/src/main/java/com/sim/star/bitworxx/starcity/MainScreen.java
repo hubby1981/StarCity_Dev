@@ -1,6 +1,11 @@
 package com.sim.star.bitworxx.starcity;
 
 import android.app.Activity;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,10 +17,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.sim.star.bitworxx.starcity.app.StarCityApp;
 import com.sim.star.bitworxx.starcity.constants.DB;
 import com.sim.star.bitworxx.starcity.constants.DirtyRects;
 import com.sim.star.bitworxx.starcity.constants.MenuBitmaps;
@@ -23,6 +30,7 @@ import com.sim.star.bitworxx.starcity.constants.MenuConst;
 import com.sim.star.bitworxx.starcity.cycle.GM;
 import com.sim.star.bitworxx.starcity.db.Meta;
 import com.sim.star.bitworxx.starcity.meta.MetaObjectContainer;
+import com.sim.star.bitworxx.starcity.runnable.RunnablesMainMenu;
 import com.sim.star.bitworxx.starcity.views.Main;
 import com.sim.star.bitworxx.starcity.views.touch.ActionContainer;
 
@@ -34,12 +42,15 @@ import java.util.UUID;
 public class MainScreen extends Activity {
 
     public static Runnable Init;
+    public static Runnable Loop;
+
     public Timer GeneralTimer;
     private GM gm;
     private MenuConst mc;
     private ActionContainer ac;
     private DB db;
-
+    private Intent ResultIntent;
+    private TaskStackBuilder Task;
 
     public static UUID Id=UUID.randomUUID();
     @Override
@@ -51,6 +62,9 @@ public class MainScreen extends Activity {
         mc = new MenuConst();
         ac = new ActionContainer();
         db  = new DB();
+        ResultIntent = this.getIntent();
+        Task = TaskStackBuilder.create(this);
+        Task.addNextIntent(ResultIntent);
         db.setConnection(openOrCreateDatabase(DB.DB_NAME,MODE_PRIVATE,null));
 
         MetaObjectContainer ships = Meta.getContainer("starship");
@@ -74,6 +88,20 @@ public class MainScreen extends Activity {
                 update();
             }
         };
+        Loop= new Runnable() {
+            @Override
+            public void run() {
+                NotificationManager mNotificationManager =
+                        (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                NotificationCompat.Builder mBuilder =
+                        new NotificationCompat.Builder(StarCityApp.getAppContext())
+                                .setSmallIcon(R.drawable.ico)
+                                .setContentTitle("Next loop")
+                                .setContentText("A loop has ended you earned 2.3mcrd");
+                mBuilder.setContentIntent(Task.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT));
+                mNotificationManager.notify(0, mBuilder.build());
+            }
+        };
         runOnUiThread(Init);
     }
 
@@ -90,9 +118,11 @@ public class MainScreen extends Activity {
                     }
                 });
             }
-        }, 0, 1000);
+        }, 0, 2000);
         return result;
     }
+
+
 
 
     public void update() {

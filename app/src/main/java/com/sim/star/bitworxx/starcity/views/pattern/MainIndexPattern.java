@@ -21,17 +21,17 @@ public class MainIndexPattern extends PatternBase {
         Contents.add(new ContentDescription(new CoPo(0,3),"header-main-functions", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(1,4),"header-main-functions_desc", ContentType.TEXT));
 
-        Contents.add(new ContentDescription(new CoPo(1,6,4,6)," use sublight", ContentType.CHECKBOX));
-        Contents.add(new ContentDescription(new CoPo(1,8,4,8)," use linear", ContentType.CHECKBOX));
-        Contents.add(new ContentDescription(new CoPo(1,9,4,9)," use commander", ContentType.CHECKBOX));
+        Contents.add(new ContentDescription(new CoPo(1,6,4,6),"use sublight", ContentType.CHECKBOX));
+        Contents.add(new ContentDescription(new CoPo(1,8,4,8),"use linear", ContentType.CHECKBOX));
+        Contents.add(new ContentDescription(new CoPo(1,9,4,9),"use commander", ContentType.CHECKBOX));
 
-        Contents.add(new ContentDescription(new CoPo(10,6,13,6)," use sublight", ContentType.RADIOBOX));
-        Contents.add(new ContentDescription(new CoPo(10,7,13,7)," use sublight2", ContentType.RADIOBOX));
+        Contents.add(new ContentDescription(new CoPo(10,6,13,6),"use sublight", ContentType.RADIOBOX));
+        Contents.add(new ContentDescription(new CoPo(10,7,13,7),"use sublight2", ContentType.RADIOBOX));
 
-        Contents.add(new ContentDescription(new CoPo(10, 8, 20, 13), "", ContentType.TABLE));
+        Contents.add(new ContentDescription(new CoPo(10, 8, 20, 12), "", ContentType.TABLE));
         Contents.add(new ContentDescription(new CoPo(11, 8), "choose pattern", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(11,10,13,10),"rbn-use-action-1", ContentType.RADIOBOX));
-        Contents.add(new ContentDescription(new CoPo(11,12,13,12),"rbn-use-action-2", ContentType.RADIOBOX));
+        Contents.add(new ContentDescription(new CoPo(10,9,13,9),"rbn-use-action-1", ContentType.RADIOBOX));
+        Contents.add(new ContentDescription(new CoPo(10,10,13,10),"rbn-use-action-2", ContentType.RADIOBOX));
 
         Patterns.add(new MainSystemButtonPattern());
     }

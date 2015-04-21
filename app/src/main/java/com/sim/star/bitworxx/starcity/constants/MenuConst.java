@@ -73,7 +73,7 @@ public class MenuConst {
         Paint p = new Paint();
         p.setStyle(Paint.Style.FILL);
         p.setColor(color);
-
+        p.setAntiAlias(true);
         return p;
     }
 
@@ -81,6 +81,7 @@ public class MenuConst {
         Paint p = new Paint();
         p.setStyle(Paint.Style.FILL);
         p.setColor(Color.TRANSPARENT);
+        p.setAntiAlias(true);
         return p;
     }
 

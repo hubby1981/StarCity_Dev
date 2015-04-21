@@ -97,7 +97,7 @@ public abstract class ContentWindow extends ContentBase {
             HeaderFontPaint.setStrokeWidth(1);
             HeaderFontPaint.setColor(ColorSetter.FILL_STROKE_BACK_FORE);
             HeaderFontPaint.setTextSize((float) ContentFont.FontHeightHeader);
-
+            HeaderFontPaint.setAntiAlias(true);
             SubHeaderFontPaint = new Paint();
             SubHeaderFontPaint.setStyle(Paint.Style.FILL);
             SubHeaderFontPaint.setStrokeWidth(1);
@@ -105,11 +105,13 @@ public abstract class ContentWindow extends ContentBase {
             SubHeaderFontPaint.setFakeBoldText(true);
             SubHeaderFontPaint.setColor(ColorSetter.FILL_STROKE_BACK_FORE);
             SubHeaderFontPaint.setTextSize((float) ContentFont.FontHeightSubHeader);
+            SubHeaderFontPaint.setAntiAlias(true);
 
             FontPaint = new Paint();
             FontPaint.setStyle(Paint.Style.FILL);
 
             FontPaint.setTypeface(MainBorder.VenusFace);
+            FontPaint.setAntiAlias(true);
 
             FontPaint.setColor(ColorSetter.FILL_STROKE_BACK_FORE);
             FontPaint.setTextSize((float) ContentFont.FontHeight);
