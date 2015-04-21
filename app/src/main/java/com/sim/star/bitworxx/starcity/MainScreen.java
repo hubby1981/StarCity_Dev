@@ -21,6 +21,8 @@ import com.sim.star.bitworxx.starcity.constants.DirtyRects;
 import com.sim.star.bitworxx.starcity.constants.MenuBitmaps;
 import com.sim.star.bitworxx.starcity.constants.MenuConst;
 import com.sim.star.bitworxx.starcity.cycle.GM;
+import com.sim.star.bitworxx.starcity.db.Meta;
+import com.sim.star.bitworxx.starcity.meta.MetaObjectContainer;
 import com.sim.star.bitworxx.starcity.views.Main;
 import com.sim.star.bitworxx.starcity.views.touch.ActionContainer;
 
@@ -36,6 +38,7 @@ public class MainScreen extends Activity {
     private GM gm;
     private MenuConst mc;
     private ActionContainer ac;
+    private DB db;
 
 
     public static UUID Id=UUID.randomUUID();
@@ -43,12 +46,16 @@ public class MainScreen extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //DB.Connection = openOrCreateDatabase(DB.DB_NAME, MODE_PRIVATE, null);
 
         gm = new GM();
         mc = new MenuConst();
         ac = new ActionContainer();
+        db  = new DB();
+        db.setConnection(openOrCreateDatabase(DB.DB_NAME,MODE_PRIVATE,null));
 
+        MetaObjectContainer ships = Meta.getContainer("starship");
+        MetaObjectContainer destroyer = Meta.getContainer("starship","shiptype","DESTROYER");
+        MetaObjectContainer explorer = Meta.getContainer("starship","shiptype","EXPLORER");
         MenuConst.BACK_SHADER = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.back_shader), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
         MenuConst.BACK_SHADER2 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.back_shader2), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
 

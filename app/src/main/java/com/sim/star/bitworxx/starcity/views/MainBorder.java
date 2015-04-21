@@ -499,11 +499,11 @@ private Paint HeaderFontPaint;
         HeaderFontPaint.setFakeBoldText(true);
         HeaderFontPaint.setStrokeWidth(1);
         HeaderFontPaint.setColor(ColorSetter.FILL_STROKE_BACK_FORE);
-        HeaderFontPaint.setTextSize((float) ContentFont.FontHeightHeader);
+        HeaderFontPaint.setTextSize((float) ContentFont.FontHeightHeader+10);
 
 
-        canvas.drawText("<",(float)leftPage.right-leftPage.width()/3,(float)leftPage.bottom-leftPage.height()/2,HeaderFontPaint);
-        canvas.drawText(">",(float)rightPage.left+rightPage.width()/4,(float)rightPage.bottom-rightPage.height()/2,HeaderFontPaint);
+        canvas.drawText("<",(float)leftPage.right-leftPage.width()/2,(float)leftPage.bottom-leftPage.height()/5,HeaderFontPaint);
+        canvas.drawText(">",(float)rightPage.left+rightPage.width()/3,(float)rightPage.bottom-rightPage.height()/5,HeaderFontPaint);
 
 
 

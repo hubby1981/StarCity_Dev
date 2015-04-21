@@ -57,11 +57,21 @@ public class DB {
             Connection.execSQL(CREATE_SQL_META_FIELD);
             Connection.execSQL(CREATE_SQL_META_PATTERN_FIELD);
 
-            /*Connection.execSQL("insert into "+SQL_TABLES.SQL_META_OBJECT+" (name) values('starship')");
+            /*
+            Connection.execSQL("insert into "+SqlTables.SQL_META_OBJECT+" (name) values('starship')");
+            Connection.execSQL("insert into "+SqlTables.SQL_META_OBJECT+" (name) values('starship')");
+            Connection.execSQL("insert into "+SqlTables.SQL_META_OBJECT+" (name) values('starship')");
 
-            Connection.execSQL("insert into "+SQL_TABLES.SQL_META_FIELD+" (meta_object_id,name,value,internal_value) values(1,'shipname','BEYOND',0.0)");
-            Connection.execSQL("insert into "+SQL_TABLES.SQL_META_FIELD+" (meta_object_id,name,value,internal_value) values(1,'shiptype','DESTROYER',0.0)");
-            Connection.execSQL("insert into "+SQL_TABLES.SQL_META_FIELD+" (meta_object_id,name,value,internal_value) values(1,'create',"+new Date().toString()+",0.0)");*/
+
+            Connection.execSQL("insert into "+SqlTables.SQL_META_FIELD+" (meta_object_id,name,value,internal_value) values(1,'shipname','BEYOND',0.0)");
+            Connection.execSQL("insert into "+SqlTables.SQL_META_FIELD+" (meta_object_id,name,value,internal_value) values(1,'shiptype','DESTROYER',0.0)");
+
+            Connection.execSQL("insert into "+SqlTables.SQL_META_FIELD+" (meta_object_id,name,value,internal_value) values(2,'shipname','DARKNEY',0.0)");
+            Connection.execSQL("insert into "+SqlTables.SQL_META_FIELD+" (meta_object_id,name,value,internal_value) values(2,'shiptype','EXPLORER',0.0)");
+
+
+            Connection.execSQL("insert into "+SqlTables.SQL_META_FIELD+" (meta_object_id,name,value,internal_value) values(3,'shipname','BEYOND II',0.0)");
+            Connection.execSQL("insert into "+SqlTables.SQL_META_FIELD+" (meta_object_id,name,value,internal_value) values(3,'shiptype','DESTROYER',0.0)");*/
         }
         checkInit();
     }
