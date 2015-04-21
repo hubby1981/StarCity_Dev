@@ -502,8 +502,8 @@ private Paint HeaderFontPaint;
         HeaderFontPaint.setTextSize((float) ContentFont.FontHeightHeader+10);
 
 
-        canvas.drawText("<",(float)leftPage.right-leftPage.width()/2,(float)leftPage.bottom-leftPage.height()/5,HeaderFontPaint);
-        canvas.drawText(">",(float)rightPage.left+rightPage.width()/3,(float)rightPage.bottom-rightPage.height()/5,HeaderFontPaint);
+        canvas.drawText("<",(float)leftPage.right-leftPage.width()/2,(float)leftPage.bottom-leftPage.height()/4,HeaderFontPaint);
+        canvas.drawText(">",(float)rightPage.left+rightPage.width()/3,(float)rightPage.bottom-rightPage.height()/4,HeaderFontPaint);
 
 
 

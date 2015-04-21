@@ -7,5 +7,7 @@ public enum ContentType {
     TEXT,
     TABLE,
     BUTTON,
-    LINE
+    LINE,
+    CHECKBOX,
+    RADIOBOX
 }

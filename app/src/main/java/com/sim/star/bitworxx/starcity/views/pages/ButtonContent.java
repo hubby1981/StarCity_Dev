@@ -23,7 +23,7 @@ import java.util.ArrayList;
  */
 public class ButtonContent extends RectContent {
 
-    private Runnable Action;
+    protected Runnable Action;
     public ButtonContent(CoPo p,Runnable action) {
         super(p);
         Action=action;
@@ -40,31 +40,37 @@ public class ButtonContent extends RectContent {
                 Rect r2 = new Rect(r.left+ w,r.top+h,r.right+ w,r.bottom+h);
                 ActionContainer.addButton(r2,Action);
             }
-            int w=6;
-        
-
-            Path p = GeometricHelp.generateTrianglePath(r, w, w);
-
-            Paint pp = new Paint();
-
-            pp.setColor(Color.BLACK);
-            pp.setShader(new RadialGradient((float)r.centerX(),(float)r.centerY(),(float)r.width()/2, ColorSetter.FILL_BACK_COLOR_PLATE,Color.BLACK, Shader.TileMode.MIRROR));
-            pp.setAntiAlias(true);
 
 
-            canvas.drawPath(p, pp);
-
-            p = GeometricHelp.generateTrianglePath(r, w, w);
-            canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT_INNER);
-            Rect r2 = makeInnerRectWithTitle(r,w/2,w/2);
-            p = GeometricHelp.generateTrianglePath(r2, w, w);
-
-            canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT_INNER2);
-            canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT_INNER2);
-
-
-
-            canvas.drawPath(p, MenuConst.PLATE_STROKE_BACK_PAINTER);
+             drawFilling(canvas,r);
         }
+    }
+
+    protected void drawFilling(Canvas canvas,Rect r)
+    {
+        int w=6;
+
+        Path p = GeometricHelp.generateTrianglePath(r, w, w);
+
+        Paint pp = new Paint();
+
+        pp.setColor(Color.BLACK);
+        pp.setShader(new RadialGradient((float)r.centerX(),(float)r.centerY(),(float)r.width()/2, ColorSetter.FILL_BACK_COLOR_PLATE,Color.BLACK, Shader.TileMode.MIRROR));
+        pp.setAntiAlias(true);
+
+
+        canvas.drawPath(p, pp);
+
+        p = GeometricHelp.generateTrianglePath(r, w, w);
+        canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT_INNER);
+        Rect r2 = makeInnerRectWithTitle(r,w/2,w/2);
+        p = GeometricHelp.generateTrianglePath(r2, w, w);
+
+        canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT_INNER2);
+        canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT_INNER2);
+
+
+
+        canvas.drawPath(p, MenuConst.PLATE_STROKE_BACK_PAINTER);
     }
 }

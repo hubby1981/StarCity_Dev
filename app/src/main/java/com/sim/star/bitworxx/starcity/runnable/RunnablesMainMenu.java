@@ -97,4 +97,13 @@ public class RunnablesMainMenu {
             BlinkCode.BLINK_RIGHT_PAGE=BlinkCode.BLINK;
         }
     };
+
+    public static Runnable R_S_FLUSH_CONTENT = new Runnable() {
+        @Override
+        public void run() {
+            if(MenuBitmaps.ActualWindow!=null)
+                MenuBitmaps.ActualWindow.flush();
+            MainScreen.Init.run();
+        }
+    };
 }

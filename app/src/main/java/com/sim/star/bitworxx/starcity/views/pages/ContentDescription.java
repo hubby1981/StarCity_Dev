@@ -1,6 +1,8 @@
 package com.sim.star.bitworxx.starcity.views.pages;
 
 import com.sim.star.bitworxx.starcity.constants.BTN;
+import com.sim.star.bitworxx.starcity.constants.CHK;
+import com.sim.star.bitworxx.starcity.constants.RBN;
 import com.sim.star.bitworxx.starcity.constants.TXT;
 import com.sim.star.bitworxx.starcity.game.enums.ContentType;
 import com.sim.star.bitworxx.starcity.geometric.CoPo;
@@ -42,7 +44,9 @@ public class ContentDescription {
                 T==ContentType.TABLE?new TableContent(P):
                         T==ContentType.BUTTON?buildButton():
                                 T==ContentType.LINE?new LineContent(P):
-                                        null;
+                                        T==ContentType.CHECKBOX ?buildCheckbox():
+                                                T==ContentType.RADIOBOX ?buildRadiobox():
+                                                        null;
     }
 
 
@@ -67,4 +71,33 @@ public class ContentDescription {
     }
 
 
+    private CheckboxContent buildCheckbox()
+    {
+        CheckboxDescription cd = CHK.get(K);
+
+        CheckboxContent content= new CheckboxContent(P,K,cd.Action);
+        if(cd.hasChilds())
+        {
+            int l = (P.R-P.L)/2;
+            int t=(P.B-P.T)/2;
+            for(TextDescription td : cd.getChilds())
+                content.Childs.add(new TextContent(new CoPo(P.L+l,P.T+t),td.Text,td.Size));
+        }
+        return content;
+    }
+
+    private RadioboxContent buildRadiobox()
+    {
+        RadioboxDescription cd = RBN.get(K);
+
+        RadioboxContent content= new RadioboxContent(P,K,cd.Action);
+        if(cd.hasChilds())
+        {
+            int l = (P.R-P.L)/2;
+            int t=(P.B-P.T)/2;
+            for(TextDescription td : cd.getChilds())
+                content.Childs.add(new TextContent(new CoPo(P.L+l,P.T+t),td.Text,td.Size));
+        }
+        return content;
+    }
 }

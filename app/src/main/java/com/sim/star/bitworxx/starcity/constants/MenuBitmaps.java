@@ -25,4 +25,6 @@ public class MenuBitmaps {
             return ActualWindow.getPagesCount();
         return 0;
     }
+
+
 }

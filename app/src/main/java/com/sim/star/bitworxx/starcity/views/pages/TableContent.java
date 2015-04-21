@@ -32,7 +32,7 @@ public class TableContent extends RectContent {
 
             canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT_INNER2);
             canvas.drawPath(p, MenuConst.PLATE_STROKE_BACK_PAINTER);
-            p = GeometricHelp.generateTrianglePath(r2, w, w);
+            p = GeometricHelp.generateTrianglePath(r2, w,w);
 
             canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT_INNER);
             canvas.drawPath(p, MenuConst.PLATE_STROKE_BACK_PAINTER);

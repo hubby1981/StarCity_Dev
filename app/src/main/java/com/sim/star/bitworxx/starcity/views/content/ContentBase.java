@@ -48,7 +48,7 @@ public abstract class ContentBase {
         return MenuBitmaps.BitmapDrawables.get(Id);
     }
 
-    protected void flush()
+    public void flush()
     {
         if(MenuBitmaps.BitmapDrawables.containsKey(Id))
             MenuBitmaps.BitmapDrawables.remove(Id);
