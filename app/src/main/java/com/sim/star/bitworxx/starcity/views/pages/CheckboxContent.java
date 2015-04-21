@@ -40,7 +40,7 @@ public class CheckboxContent extends ButtonContent {
 
 
 
-        canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT_INNER2);
+        canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT_INNER);
         canvas.drawPath(p, MenuConst.PLATE_STROKE_BACK_PAINTER);
 
     }
