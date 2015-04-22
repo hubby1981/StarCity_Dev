@@ -22,6 +22,15 @@ public class MetaFieldContainer {
 
     }
 
+    public String getValue(String name)
+    {
+        return Fields.containsKey(name)?Fields.get(name).Value:null;
+    }
+
+    public float getInternalValue(String name)
+    {
+        return Fields.containsKey(name)?Fields.get(name).InternalValue:null;
+    }
 
     public boolean hasField(String name,String value)
     {

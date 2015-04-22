@@ -32,6 +32,7 @@ import com.sim.star.bitworxx.starcity.constants.RBN;
 import com.sim.star.bitworxx.starcity.cycle.GM;
 import com.sim.star.bitworxx.starcity.db.Meta;
 import com.sim.star.bitworxx.starcity.meta.MetaObjectContainer;
+import com.sim.star.bitworxx.starcity.meta.object.handler.GalaxyHandler;
 import com.sim.star.bitworxx.starcity.runnable.RunnablesMainMenu;
 import com.sim.star.bitworxx.starcity.views.Main;
 import com.sim.star.bitworxx.starcity.views.touch.ActionContainer;
@@ -71,6 +72,9 @@ private int Count=0;
         MetaObjectContainer ships = Meta.getContainer("starship");
         MetaObjectContainer destroyer = Meta.getContainer("starship","shiptype","DESTROYER");
         MetaObjectContainer explorer = Meta.getContainer("starship","shiptype","EXPLORER");
+
+        GalaxyHandler galaxyHandler = new GalaxyHandler();
+
         MenuConst.BACK_SHADER = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.back_shader), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
         MenuConst.BACK_SHADER2 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.back_shader2), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
 
@@ -91,7 +95,7 @@ private int Count=0;
         };
         Loop= new Runnable() {
             @Override
-            public void run() {
+            public void run() {/*
                 NotificationManager mNotificationManager =
                         (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                 NotificationCompat.Builder mBuilder =
@@ -100,7 +104,7 @@ private int Count=0;
                                 .setContentTitle("Next loop")
                                 .setContentText("A loop has ended you earned 2.3mcrd");
                 mBuilder.setContentIntent(Task.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT));
-                mNotificationManager.notify(0, mBuilder.build());
+                mNotificationManager.notify(0, mBuilder.build());*/
             }
         };
         runOnUiThread(Init);

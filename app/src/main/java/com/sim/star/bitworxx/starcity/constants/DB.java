@@ -1,14 +1,17 @@
 package com.sim.star.bitworxx.starcity.constants;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.sim.star.bitworxx.starcity.cycle.GM;
 import com.sim.star.bitworxx.starcity.meta.MetaField;
+import com.sim.star.bitworxx.starcity.meta.MetaFieldContainer;
 import com.sim.star.bitworxx.starcity.meta.MetaObject;
 import com.sim.star.bitworxx.starcity.meta.MetaObjectContainer;
 
 import java.util.Date;
+import java.util.Map;
 
 /**
  * Created by WEIS on 14.04.2015.
@@ -28,7 +31,8 @@ public class DB {
 
     public static String SQL_SELECT_META = "SELECT id,name FROM "+ SqlTables.SQL_META_OBJECT+" WHERE name='[name]'";
     public static String SQL_SELECT_META_FIELD = "SELECT name,value,internal_value FROM "+ SqlTables.SQL_META_FIELD+" WHERE meta_object_id='[id]'";
-
+    public static String SQL_INSERT_META_FIELD = "INSERT INTO "+ SqlTables.SQL_META_FIELD+" VALUES([id],'[name]','[value]',[internal_value])";
+    public static String SQL_DELETE_META_FIELD = "DELETE FROM "+ SqlTables.SQL_META_FIELD+" WHERE meta_object_id='[id]'";
 
     public static String SQL_SELECT_ONE="SELECT value FROM ";
 
@@ -118,7 +122,7 @@ public class DB {
 
                     MetaObject metaObject = new MetaObject( cMeta.getString(1));
                     fillFields(cMeta.getInt(0),metaObject);
-                    container.Objects.put(cMeta.getInt(0),metaObject);
+                    container.register(cMeta.getInt(0), metaObject);
                 }
             }
         }
@@ -140,5 +144,41 @@ public class DB {
             }
         }
     }
+
+public static Integer addMetaObject(MetaObject metaObject)
+    {
+        Integer id=-1;
+        if(Connection!=null)
+        {
+
+            ContentValues values = new ContentValues();
+            values.put("name",metaObject.Name);
+            id =((Long) Connection.insert(SqlTables.SQL_META_OBJECT,"",values)).intValue();
+
+            saveFields(id,metaObject);
+        }
+        return id;
+    }
+
+    public static void saveFields(Integer id,MetaObject metaObject)
+    {
+        if(Connection!=null)
+        {
+            Connection.execSQL(SQL_DELETE_META_FIELD.replace("[id]",id.toString()));
+
+            for(Map.Entry<String,MetaField> f : metaObject.Fields.Fields.entrySet())
+            {
+                ContentValues values = new ContentValues();
+                    values.put("meta_object_id",id);
+                    values.put("name",f.getKey());
+                    values.put("value",f.getValue().Value);
+                    values.put("internal_value",f.getValue().InternalValue);
+
+                Connection.insert(SqlTables.SQL_META_FIELD,"",values);
+            }
+        }
+    }
+
+
 
 }
