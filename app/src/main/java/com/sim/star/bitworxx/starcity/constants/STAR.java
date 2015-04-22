@@ -22,9 +22,9 @@ public class STAR {
 
         };
         ALL_CHECKED = new HashMap<>();
-        ALL_STARS.put("en-sun1",new SystemObjectDescription(getActionForKey("sun1"),(float)8.6,MenuConst.BACK_SHADER_SUN01));
+        ALL_STARS.put("en-sun1",new SystemObjectDescription(getActionForKey("sun1"),(float)4.6,MenuConst.BACK_SHADER_SUN01));
         ALL_STARS.put("en-planet1",new SystemObjectDescription(getActionForKey("planet1"),3,MenuConst.BACK_SHADER_PLANET01));
-        ALL_STARS.put("en-planet2",new SystemObjectDescription(getActionForKey("planet2"),5,MenuConst.BACK_SHADER_PLANET02));
+        ALL_STARS.put("en-planet2",new SystemObjectDescription(getActionForKey("planet2"),(float)8.1,MenuConst.BACK_SHADER_PLANET02));
         ALL_STARS.put("en-moon1",new SystemObjectDescription(getActionForKey("moon1"),1,MenuConst.BACK_SHADER_MOON01));
         ALL_STARS.put("en-moon2",new SystemObjectDescription(getActionForKey("moon2"),2,MenuConst.BACK_SHADER_MOON01));
 
