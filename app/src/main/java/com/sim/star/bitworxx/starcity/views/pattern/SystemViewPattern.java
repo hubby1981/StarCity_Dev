@@ -41,6 +41,15 @@ public class SystemViewPattern extends PatternBase {
         Contents.add(new ContentDescription(new CoPo(1, 2), "Solar System Objects", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(26, 2), "DATA", ContentType.TEXT));
 
+        Contents.add(new ContentDescription(new CoPo(26, 4), "MASS", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(26, 5), "TYPE", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(26, 6), "GAS", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(26, 7), "DESC", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(28, 4), "8.6", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(28, 5), "SUN", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(28, 6), "O2/H2", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(28, 7), "Primary Sun", ContentType.TEXT));
+
         Contents.add(new ContentDescription(new CoPo(1, 3), "DEATH", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(9, 3), "LIVING", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(21, 3), "DEATH", ContentType.TEXT));
@@ -57,7 +66,12 @@ public class SystemViewPattern extends PatternBase {
         Contents.add(new ContentDescription(new CoPo(21, 4), "K", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(23, 4), "L", ContentType.TEXT));
 
-        Contents.add(new ContentDescription(new CoPo(0,9,1,10),"",ContentType.SYSTEM_OBJECT));
+        Contents.add(new ContentDescription(new CoPo(1,9,2,10),"sun1",ContentType.SYSTEM_OBJECT));
 
+        Contents.add(new ContentDescription(new CoPo(8,9,9,10),"planet1",ContentType.SYSTEM_OBJECT));
+        Contents.add(new ContentDescription(new CoPo(8,11,9,12),"moon1",ContentType.SYSTEM_OBJECT));
+        Contents.add(new ContentDescription(new CoPo(8,13,9,14),"moon2",ContentType.SYSTEM_OBJECT));
+
+        Contents.add(new ContentDescription(new CoPo(12,9,13,10),"planet2",ContentType.SYSTEM_OBJECT));
     }
 }

@@ -34,16 +34,22 @@ public class ButtonContent extends RectContent {
     protected void onDrawInternal(Canvas canvas, ArrayList<Rect> rects, ContentWindow window) {
         if(rects.size()>=2) {
             Rect r = combineRects(rects.get(0), rects.get(1));
-            if(Action!=null)
-            {
-                int w =CliprRects.InnerRectMain.left- CliprRects.OuterRectContent.left;
-                int h=CliprRects.InnerRectMain.top- CliprRects.OuterRectContent.top;
-                Rect r2 = new Rect(r.left+ w,r.top+h,r.right+ w,r.bottom+h);
-                ActionContainer.addButton(r2,Action);
-            }
 
+            setClick(r);
 
              drawFilling(canvas,r);
+        }
+    }
+
+
+    protected void setClick(Rect r)
+    {
+        if(Action!=null)
+        {
+            int w =CliprRects.InnerRectMain.left- CliprRects.OuterRectContent.left;
+            int h=CliprRects.InnerRectMain.top- CliprRects.OuterRectContent.top;
+            Rect r2 = new Rect(r.left+ w,r.top+h,r.right+ w,r.bottom+h);
+            ActionContainer.addButton(r2,Action);
         }
     }
 

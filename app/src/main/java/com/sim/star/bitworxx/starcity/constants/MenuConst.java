@@ -2,6 +2,7 @@ package com.sim.star.bitworxx.starcity.constants;
 
 import android.graphics.BitmapShader;
 import android.graphics.Color;
+import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 
 /**
@@ -15,6 +16,7 @@ public class MenuConst {
 
     public static Paint FORE_PAINTER;
     public static Paint FORE_PAINTER_ICON;
+    public static Paint FORE_PAINTER_STROKE_LIGHT;
 
     public static Paint PLATE_BACK_PAINTER;
 
@@ -40,6 +42,11 @@ public class MenuConst {
 
     public static Paint BACK_SHADER_PAINTER = null;
 
+    public static BitmapShader BACK_SHADER_SUN01 = null;
+    public static BitmapShader BACK_SHADER_PLANET01 = null;
+    public static BitmapShader BACK_SHADER_PLANET02 = null;
+    public static BitmapShader BACK_SHADER_MOON01 = null;
+
     public static Paint BACK_PAINTER_CONTENT;
     public static Paint BACK_PAINTER_CONTENT_INNER;
     public static Paint BACK_PAINTER_CONTENT_INNER2;
@@ -56,7 +63,7 @@ public class MenuConst {
 
         STROKE_BACK_PAINTER = createStrokeBackPainter(ColorSetter.FILL_STROKE_BACK);
         STROKE_FORE_PAINTER = createStrokeBackPainter(ColorSetter.FILL_STROKE_FORE);
-
+        FORE_PAINTER_STROKE_LIGHT = createStrokeBackPainterDash(ColorSetter.FILL_SHADER_BACK_LIGHT);
         PLATE_STROKE_BACK_PAINTER = createStrokeBackPainter(ColorSetter.FILL_STROKE_BACK);
 
         HALF_TRANSPARENT_BACK_PAINTER = createBackPainter(ColorSetter.FILL_STROKE_BACK_HALF);
@@ -96,5 +103,17 @@ public class MenuConst {
         return p;
     }
 
+
+    private static Paint createStrokeBackPainterDash(int color) {
+        Paint p = new Paint();
+        p.setStyle(Paint.Style.STROKE);
+        p.setAntiAlias(true);
+        p.setColor(color);
+        p.setStrokeWidth(1);
+        p.setPathEffect(new DashPathEffect(new float[]{2, 6}, 0));
+        p.setStrokeCap(Paint.Cap.ROUND);
+        p.setStrokeJoin(Paint.Join.ROUND);
+        return p;
+    }
 
 }

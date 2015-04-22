@@ -77,6 +77,10 @@ private int Count=0;
 
         MenuConst.BACK_SHADER = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.back_shader), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
         MenuConst.BACK_SHADER2 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.back_shader2), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_SUN01 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.sun_01), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET01 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet_01), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET02 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet_02), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_MOON01 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.moon_01), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
 
         MenuBitmaps.BITMAP_RACE = BitmapFactory.decodeResource(getResources(), R.drawable.race_human);
         try {

@@ -1,5 +1,7 @@
 package com.sim.star.bitworxx.starcity.views.pages;
 
+import android.graphics.BitmapShader;
+
 import com.sim.star.bitworxx.starcity.game.enums.TextSize;
 
 import java.util.ArrayList;
@@ -12,10 +14,19 @@ public class SystemObjectDescription extends BaseContentDescription<TextDescript
 
     public TextDescription Text;
     public Runnable Action;
-    public boolean SearchText=true;
+    public boolean SearchText=false;
+
+    public float Size=1;
+    public BitmapShader Shader;
     public SystemObjectDescription(Runnable actrion)
     {
         this(new TextDescription("", TextSize.TEXT),actrion);
+    }
+    public SystemObjectDescription(Runnable actrion,float size,BitmapShader shader)
+    {
+        this(new TextDescription("", TextSize.TEXT),actrion);
+        Size=size;
+        Shader=shader;
     }
     public SystemObjectDescription(Runnable actrion,boolean searchText)
     {

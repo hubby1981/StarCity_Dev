@@ -22,13 +22,18 @@ public class STAR {
 
         };
         ALL_CHECKED = new HashMap<>();
+        ALL_STARS.put("en-sun1",new SystemObjectDescription(getActionForKey("sun1"),(float)8.6,MenuConst.BACK_SHADER_SUN01));
+        ALL_STARS.put("en-planet1",new SystemObjectDescription(getActionForKey("planet1"),3,MenuConst.BACK_SHADER_PLANET01));
+        ALL_STARS.put("en-planet2",new SystemObjectDescription(getActionForKey("planet2"),5,MenuConst.BACK_SHADER_PLANET02));
+        ALL_STARS.put("en-moon1",new SystemObjectDescription(getActionForKey("moon1"),1,MenuConst.BACK_SHADER_MOON01));
+        ALL_STARS.put("en-moon2",new SystemObjectDescription(getActionForKey("moon2"),2,MenuConst.BACK_SHADER_MOON01));
 
     }
 
-    public static Runnable getActionForKey(String key,Boolean init)
+    public static Runnable getActionForKey(String key)
     {
         if(!ALL_CHECKED.containsKey(key))
-            ALL_CHECKED.put(key,init);
+            ALL_CHECKED.remove(key);
         final String k2=key;
         return new Runnable() {
             @Override
@@ -48,12 +53,13 @@ public class STAR {
         String k1 = GM.LOCALE_A +key;
         String k2 = GM.LOCALE + key;
 
-        return ALL_STARS.containsKey(k1)? ALL_STARS.get(k1): ALL_STARS.containsKey(k2)? ALL_STARS.get(k2):new SystemObjectDescription(new TextDescription(key, TextSize.TEXT),getActionForKey(key,false));
+        return ALL_STARS.containsKey(k1)? ALL_STARS.get(k1): ALL_STARS.containsKey(k2)? ALL_STARS.get(k2):new SystemObjectDescription(new TextDescription(key, TextSize.TEXT),getActionForKey(key));
     }
 
     public static SystemObjectDescription get(String key)
     {
         SystemObjectDescription cd = getInternal(key);
+
         if(cd.SearchText)
             cd.Text = TXT.get(key);
         return cd;

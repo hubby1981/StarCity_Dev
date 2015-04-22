@@ -93,6 +93,8 @@ public class ContentDescription {
         SystemObjectDescription cd = STAR.get(K);
 
         SystemObjectContent content= new SystemObjectContent(P,K,cd.Action);
+        content.Size=cd.Size;
+        content.Shader=cd.Shader;
         if(cd.hasChilds())
         {
             int l = (P.R-P.L)/2;
