@@ -9,5 +9,6 @@ public enum ContentType {
     BUTTON,
     LINE,
     CHECKBOX,
-    RADIOBOX
+    RADIOBOX,
+    SYSTEM_OBJECT
 }

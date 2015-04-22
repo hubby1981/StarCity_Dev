@@ -26,6 +26,9 @@ public class TXT {
         ALL_TEXT.put("en-header-systems",new TextDescription("System Overview", TextSize.HEADER));
         ALL_TEXT.put("de-header-systems",new TextDescription("System Übersicht", TextSize.HEADER));
 
+        ALL_TEXT.put("en-header-system",new TextDescription("System:", TextSize.HEADER));
+
+
         ALL_TEXT.put("en-page",new TextDescription("PAGE", TextSize.TEXT));
         ALL_TEXT.put("de-page",new TextDescription("Seite", TextSize.TEXT));
 
