@@ -32,6 +32,11 @@ public class MetaFieldContainer {
         return Fields.containsKey(name)?Fields.get(name).InternalValue:null;
     }
 
+    public MetaField getField(String field)
+    {
+        return Fields.get(field);
+    }
+
     public boolean hasField(String name,String value)
     {
         if(Fields.containsKey(name))

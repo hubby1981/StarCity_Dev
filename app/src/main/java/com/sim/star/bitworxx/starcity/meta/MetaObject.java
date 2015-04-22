@@ -57,6 +57,20 @@ public class MetaObject implements IMetaObject
         return Fields.getValue("id");
     }
 
+    public void setFieldValue(String field,String value)
+    {
+        MetaField fieldItem = Fields.getField(field);
+        if(fieldItem!=null)
+            fieldItem.Value=value;
+    }
+
+    public void setFieldInternalValue(String field,float value)
+    {
+        MetaField fieldItem = Fields.getField(field);
+        if(fieldItem!=null)
+            fieldItem.InternalValue=value;
+    }
+
     public String getValue(String field)
     {
         return Fields.getValue(field);

@@ -57,5 +57,6 @@ public  class GalaxyHandler extends BaseHandler<GalaxyMetaObject> {
        GalaxyMetaObject galaxy = new GalaxyMetaObject();
        galaxy.create();
        add(galaxy);
+
     }
 }

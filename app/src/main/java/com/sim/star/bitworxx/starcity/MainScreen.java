@@ -68,7 +68,7 @@ private int Count=0;
         Task = TaskStackBuilder.create(this);
         Task.addNextIntent(ResultIntent);
         db.setConnection(openOrCreateDatabase(DB.DB_NAME,MODE_PRIVATE,null));
-
+        db.Connection.execSQL("delete from meta_object");
         MetaObjectContainer ships = Meta.getContainer("starship");
         MetaObjectContainer destroyer = Meta.getContainer("starship","shiptype","DESTROYER");
         MetaObjectContainer explorer = Meta.getContainer("starship","shiptype","EXPLORER");
