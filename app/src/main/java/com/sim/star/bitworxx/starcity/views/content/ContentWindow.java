@@ -56,6 +56,7 @@ public abstract class ContentWindow extends ContentBase {
 
     public void prevPage()
     {
+        ActionContainer.flushPage();
         if(ActualPage==0)
             ActualPage=Pages.size()-1;
         else
@@ -64,8 +65,15 @@ public abstract class ContentWindow extends ContentBase {
         flush();
     }
 
+    public String getPageId()
+    {
+        return Pages.get(ActualPage).UId;
+    }
+
     public void nextPage()
     {
+        ActionContainer.flushPage();
+
         if (ActualPage==Pages.size()-1)
             ActualPage=0;
         else
@@ -73,7 +81,7 @@ public abstract class ContentWindow extends ContentBase {
         flush();
     }
 
-    protected abstract void setupPages();
+    public abstract void setupPages();
 
     @Override
     public Bitmap draw() {

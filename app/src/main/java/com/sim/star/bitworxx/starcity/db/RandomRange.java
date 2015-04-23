@@ -8,7 +8,7 @@ import java.util.Random;
 public final class RandomRange {
 
 
-    private static int getRandom(int aStart, int aEnd){
+    public static int getRandom(int aStart, int aEnd){
         if (aStart > aEnd) {
             int aSave=aStart;
             aStart = aEnd;
@@ -20,6 +20,15 @@ public final class RandomRange {
         long fraction = (long)(range * new Random().nextDouble());
        return  (int)(fraction + aStart);
 
+    }
+
+
+    public static float getFloat(float min,float max)
+    {
+        float result = getRandom((int)min,(int)max)+ new Random().nextFloat();
+        while(result<min || result > max)
+            result= getRandom((int)min,(int)max)+new Random().nextFloat();
+        return result;
     }
 
 }

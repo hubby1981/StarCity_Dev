@@ -97,10 +97,7 @@ public class ContentDescription {
         content.Shader=cd.Shader;
         if(cd.hasChilds())
         {
-            int l = (P.R-P.L)/2;
-            int t=(P.B-P.T)/2;
-            for(TextDescription td : cd.getChilds())
-                content.Childs.add(new TextContent(new CoPo(P.L+l,P.T+t),td.Text,td.Size));
+
         }
         return content;
     }

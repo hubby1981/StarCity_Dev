@@ -30,6 +30,7 @@ import com.sim.star.bitworxx.starcity.geometric.GeometricHelp;
 import com.sim.star.bitworxx.starcity.geometric.TriagleHelper;
 import com.sim.star.bitworxx.starcity.highlight.BlinkCode;
 import com.sim.star.bitworxx.starcity.runnable.RunnablesMainMenu;
+import com.sim.star.bitworxx.starcity.views.icons.BankIcon;
 import com.sim.star.bitworxx.starcity.views.touch.ActionContainer;
 import com.sim.star.bitworxx.starcity.views.touch.ActionHandler;
 
@@ -372,14 +373,14 @@ private Paint HeaderFontPaint;
 
             Rect rL = new Rect(o.left, (o.top + o.height() / 2) - measureItemHeight(), o.left + w + FACTOR_TRIANGLE_OUT * 4, (o.top + o.height() / 2) + measureItemHeight());
 
-            ActionContainer.Handler.add(new ActionHandler(rL, RunnablesMainMenu.R_S_SUB_MENU));
+            ActionContainer.addClickHandlerMain(new ActionHandler(rL, RunnablesMainMenu.R_S_SUB_MENU));
             Rect rR = new Rect(o.right - w + FACTOR_TRIANGLE_OUT * 4, (o.top + o.height() / 2) - measureItemHeight(), o.right, (o.top + o.height() / 2) + measureItemHeight());
 
-            ActionContainer.Handler.add(new ActionHandler(rR, RunnablesMainMenu.R_S_TIME_MENU));
+            ActionContainer.addClickHandlerMain(new ActionHandler(rR, RunnablesMainMenu.R_S_TIME_MENU));
 
             Rect rM = new Rect(o.right - ((o.width() / 2)) - measureItemWidth(), o.bottom - measureItemHeight(), o.right - ((o.width() / 2)) + measureItemWidth(), o.bottom);
 
-            ActionContainer.Handler.add(new ActionHandler(rM, RunnablesMainMenu.R_S_MAIN_MENU));
+            ActionContainer.addClickHandlerMain(new ActionHandler(rM, RunnablesMainMenu.R_S_MAIN_MENU));
             ActionContainer.InitBorder = true;
         }
     }
@@ -518,27 +519,25 @@ private Paint HeaderFontPaint;
         canvas.drawText("<",(float)leftPage.right-leftPage.width()/2,(float)leftPage.bottom-leftPage.height()/4,HeaderFontPaint);
         canvas.drawText(">",(float)rightPage.left+rightPage.width()/3,(float)rightPage.bottom-rightPage.height()/4,HeaderFontPaint);
 
+        ActionContainer.addClickHandlerMain(new ActionHandler(leftPage, RunnablesMainMenu.R_A_PREV_PAGE));
+        ActionContainer.addClickHandlerMain(new ActionHandler(rightPage, RunnablesMainMenu.R_A_NEXT_PAGE));
 
+        HeaderFontPaint.setTextSize((float) ContentFont.FontHeightHeader-8);
+        HeaderFontPaint.setFakeBoldText(false);
 
-        if(ActionContainer.Handler!=null)
-        {
-            ActionContainer.Handler.add(new ActionHandler(leftPage, RunnablesMainMenu.R_A_PREV_PAGE));
-            ActionContainer.Handler.add(new ActionHandler(rightPage, RunnablesMainMenu.R_A_NEXT_PAGE));
+        int hh = (int)(leftPage.height()/1.6)+2;
 
-        }
+        Rect rbi = new Rect(leftPage.right+MenuConst.MARGIN_CLIP_MINI*2,leftPage.top+2,(leftPage.right+MenuConst.MARGIN_CLIP_MINI*2)+hh,leftPage.top+hh);
+        BankIcon bi = new BankIcon();
+        canvas.drawPath( bi.getPath(rbi),MenuConst.FORE_PAINTER_ICON);
+        canvas.drawText("39.333.221",rbi.right+4,rbi.centerY()+rbi.height()/4,HeaderFontPaint);
         canvas.clipRect(InnerRect, Region.Op.UNION);
 
         CliprRects.InnerRectMain=InnerRect;
         CliprRects.OuterRectMain=OutboundRect;
     }
 
-    private void checkRenderClip(Canvas canvas) {
-        if (Show.RenderClipShow) {
-            for (ActionHandler h : ActionContainer.Handler) {
-                canvas.drawRect(h.Bound, MenuConst.PLATE_BACK_PAINTER);
-            }
-        }
-    }
+
 
 
 }

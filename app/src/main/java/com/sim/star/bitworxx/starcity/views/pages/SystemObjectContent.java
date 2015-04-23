@@ -9,8 +9,11 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 
 import com.sim.star.bitworxx.starcity.constants.ColorSetter;
+import com.sim.star.bitworxx.starcity.constants.ContentFont;
+import com.sim.star.bitworxx.starcity.constants.ContentPosition;
 import com.sim.star.bitworxx.starcity.constants.MenuConst;
 import com.sim.star.bitworxx.starcity.constants.STAR;
+import com.sim.star.bitworxx.starcity.game.enums.TextSize;
 import com.sim.star.bitworxx.starcity.geometric.CoPo;
 import com.sim.star.bitworxx.starcity.geometric.GeometricHelp;
 import com.sim.star.bitworxx.starcity.views.content.ContentWindow;
@@ -46,12 +49,22 @@ public class SystemObjectContent extends ButtonContent {
             {
                 Rect r2=new Rect(r.centerX()-(int)(w+Size*1),r.centerY()-(int)(w+Size*1),r.centerX()+(int)(w+Size*1),r.centerY()+(int)(w+Size*1));
 
+                if(Size<2) {
+                    canvas.drawRect(r, MenuConst.FORE_PAINTER_STROKE_LIGHT);
 
-                canvas.drawRect(r2,MenuConst.FORE_PAINTER_STROKE_LIGHT);
+                }
+                                else
+                {
+                    canvas.drawRect(r2, MenuConst.FORE_PAINTER_STROKE_LIGHT);
+
+                }
 
 
+            }
 
-
+            if(Size<2)
+            {
+                //canvas.drawRect(r, MenuConst.BACK_PAINTER_CONTENT_LIGHT);
             }
 
             if(Shader!=null){
@@ -60,8 +73,20 @@ public class SystemObjectContent extends ButtonContent {
                 p1.setShader(Shader);
                 p1.setShadowLayer(2,2,2, Color.BLACK);
                 canvas.drawArc(rf,(float)0,(float)360,true,p1);
+                p1.setShadowLayer(2,-2,-2, Color.BLACK);
+
+                canvas.drawArc(rf,(float)0,(float)360,true,p1);
+                p1.setShadowLayer(2,2,-2, Color.BLACK);
+
+                canvas.drawArc(rf,(float)0,(float)360,true,p1);
+                p1.setShadowLayer(2,-2,2, Color.BLACK);
+
+                canvas.drawArc(rf,(float)0,(float)360,true,p1);
+
                 p1=null;}
             canvas.drawArc(rf,(float)0,(float)360,true,MenuConst.BACK_PAINTER_CONTENT_INNER);
+
+
 
 
 

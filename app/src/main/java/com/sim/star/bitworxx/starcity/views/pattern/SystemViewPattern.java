@@ -1,16 +1,29 @@
 package com.sim.star.bitworxx.starcity.views.pattern;
 
+import android.os.DropBoxManager;
+
+import com.sim.star.bitworxx.starcity.constants.STAR;
 import com.sim.star.bitworxx.starcity.game.enums.ContentType;
 import com.sim.star.bitworxx.starcity.geometric.CoPo;
+import com.sim.star.bitworxx.starcity.meta.MetaObject;
+import com.sim.star.bitworxx.starcity.meta.MetaObjectContainer;
+import com.sim.star.bitworxx.starcity.meta.game.GalaxySystemObjectMetaObject;
+import com.sim.star.bitworxx.starcity.meta.object.handler.GalaxySystemHandler;
+import com.sim.star.bitworxx.starcity.meta.object.handler.GalaxySystemObjectHandler;
 import com.sim.star.bitworxx.starcity.views.pages.ContentDescription;
+
+import java.util.Map;
 
 /**
  * Created by WEIS on 22.04.2015.
  */
 public class SystemViewPattern extends PatternBase {
     public SystemViewPattern(String pageCount) {
+
+        String name = "pytico II";
+
         Contents.add(new ContentDescription(new CoPo(0, 0), "header-system", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(5, 0), "Pytico II", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(5, 0), name, ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(28, 0), "page", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(30, 0), "3", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(31, 0), pageCount, ContentType.TEXT));
@@ -39,20 +52,21 @@ public class SystemViewPattern extends PatternBase {
         Contents.add(new ContentDescription(new CoPo(22, 3, 22, 14), "", ContentType.LINE));
 
         Contents.add(new ContentDescription(new CoPo(1, 2), "Solar System Objects", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(26, 2), "DATA", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(26, 2), "ACTIONS", ContentType.TEXT));
 
-        Contents.add(new ContentDescription(new CoPo(26, 4), "MASS", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(26, 5), "TYPE", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(26, 6), "GAS", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(26, 7), "DESC", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(28, 4), "8.6", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(28, 5), "SUN", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(28, 6), "O2/H2", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(28, 7), "Primary Sun", ContentType.TEXT));
+        StackingPattern st = new StackingPattern(4,0,2,2,new CoPo(26,4,30,15));
+        Patterns.add(st);
+        st.register(new ContentDescription("OPEN",ContentType.BUTTON));
+        st.register(new ContentDescription("btn-system-generate",ContentType.BUTTON));
+        st.register(new ContentDescription("FLEET",ContentType.BUTTON));
+        st.register(new ContentDescription("DEFENCE",ContentType.BUTTON));
+        st.register(new ContentDescription("MINING",ContentType.BUTTON));
 
-        Contents.add(new ContentDescription(new CoPo(1, 3), "DEATH", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(9, 3), "LIVING", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(21, 3), "DEATH", ContentType.TEXT));
+
+        Contents.add(new ContentDescription(new CoPo(1, 15), "HOT", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(7, 15), "NORMAL", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(17, 15), "COLD", ContentType.TEXT));
+
         Contents.add(new ContentDescription(new CoPo(1, 4), "A", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(3, 4), "B", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(5, 4), "C", ContentType.TEXT));
@@ -64,14 +78,67 @@ public class SystemViewPattern extends PatternBase {
         Contents.add(new ContentDescription(new CoPo(17, 4), "I", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(19, 4), "J", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(21, 4), "K", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(23, 4), "L", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(23, 4), "1", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(1, 3), "+", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(3, 3), "2", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(5, 3), "4", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(7, 3), "6", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(9, 3), "8", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(11, 3), "10", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(13, 3), "12", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(15, 3), "14", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(17, 3), "16", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(19, 3), "18", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(21, 3), "20", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(23, 3), "LM", ContentType.TEXT));
 
-        Contents.add(new ContentDescription(new CoPo(1,9,2,10),"sun1",ContentType.SYSTEM_OBJECT));
+        Contents.add(new ContentDescription(new CoPo(23, 5), "2", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(23, 6), "3", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(23, 7), "4", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(23, 8), "5", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(23, 9), "6", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(23, 10), "7", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(23, 11), "8", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(23, 12), "9", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(23, 13), "10", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(23, 14), "11", ContentType.TEXT));
 
-        Contents.add(new ContentDescription(new CoPo(8,9,9,10),"planet1",ContentType.SYSTEM_OBJECT));
-        Contents.add(new ContentDescription(new CoPo(8,11,9,12),"moon1",ContentType.SYSTEM_OBJECT));
-        Contents.add(new ContentDescription(new CoPo(8,13,9,14),"moon2",ContentType.SYSTEM_OBJECT));
 
-        Contents.add(new ContentDescription(new CoPo(12,9,13,10),"planet2",ContentType.SYSTEM_OBJECT));
+/*
+        Contents.add(new ContentDescription(new CoPo(2,6,3,7),"sun1",ContentType.SYSTEM_OBJECT));
+        Contents.add(new ContentDescription(new CoPo(1,9,2,11),"sun2",ContentType.SYSTEM_OBJECT));
+
+        Contents.add(new ContentDescription(new CoPo(8,5,9,6),"planet1",ContentType.SYSTEM_OBJECT));
+        Contents.add(new ContentDescription(new CoPo(8,7,9,8),"moon1",ContentType.SYSTEM_OBJECT));
+        Contents.add(new ContentDescription(new CoPo(8,9,9,10),"moon2",ContentType.SYSTEM_OBJECT));
+
+        Contents.add(new ContentDescription(new CoPo(12,5,13,6),"planet2",ContentType.SYSTEM_OBJECT));
+
+        Contents.add(new ContentDescription(new CoPo(18,5,19,6),"planet4",ContentType.SYSTEM_OBJECT));
+        Contents.add(new ContentDescription(new CoPo(20,5,21,6),"planet3",ContentType.SYSTEM_OBJECT));
+        Contents.add(new ContentDescription(new CoPo(17,7,18,8),"planet5",ContentType.SYSTEM_OBJECT));*/
+
+        GalaxySystemHandler system =  STAR.getSystem(name);
+        if(system!=null)
+        {
+            for(Map.Entry<String,GalaxySystemObjectHandler> systems:system.SystemObjects.entrySet())
+            {
+               GalaxySystemObjectHandler handler = systems.getValue();
+                if(handler!=null)
+                {
+                    for(Map.Entry<Integer,GalaxySystemObjectMetaObject> objects:handler.Container.Objects.entrySet())
+                    {
+                       GalaxySystemObjectMetaObject object= objects.getValue();
+                       if(object!=null) {
+                           Contents.add(new ContentDescription(new CoPo((int) object.getInternalValue("left"), (int) object.getInternalValue("top"), (int) object.getInternalValue("right"), (int) object.getInternalValue("bottom")),
+                                   object.getValue("id"), ContentType.SYSTEM_OBJECT));
+                            STAR.addKey(object.getValue("id"),object.getInternalValue("size"),(int)object.getInternalValue("shader"),object.getValue("type"));
+                       }
+                    }
+                }
+            }
+        }
+
+
     }
 }

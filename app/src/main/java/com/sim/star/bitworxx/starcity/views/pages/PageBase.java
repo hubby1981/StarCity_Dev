@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import com.sim.star.bitworxx.starcity.views.pattern.PatternBase;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * Created by WEIS on 16.04.2015.
@@ -13,7 +14,7 @@ public class PageBase {
 
     public String Name;
     public long Id;
-
+    public String UId;
     ArrayList<Content> Contents;
 
     public PageBase(long id)
@@ -26,6 +27,7 @@ public class PageBase {
         Name=name;
         Id=id;
         Contents= new ArrayList<Content>();
+        UId=UUID.randomUUID().toString();
     }
 
     public void RegisterContent(Content content)

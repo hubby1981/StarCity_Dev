@@ -14,7 +14,7 @@ public class SystemObjectDescription extends BaseContentDescription<TextDescript
 
     public TextDescription Text;
     public Runnable Action;
-    public boolean SearchText=false;
+    public boolean SearchText=true;
 
     public float Size=1;
     public BitmapShader Shader;

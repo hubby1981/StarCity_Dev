@@ -27,9 +27,9 @@ public class MainContent extends ContentWindow {
     }
     public static String PageCount="3";
     @Override
-    protected void setupPages() {
+    public void setupPages() {
 
-
+        Pages.clear();
         PageBase indexPage = new PageBase(0,"MainIndex");
         PageBase systemPage = new PageBase(1,"MainSystems");
         PageBase systemView = new PageBase(2,"SystemView");

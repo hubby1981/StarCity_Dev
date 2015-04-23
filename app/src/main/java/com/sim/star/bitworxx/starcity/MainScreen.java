@@ -33,6 +33,7 @@ import com.sim.star.bitworxx.starcity.cycle.GM;
 import com.sim.star.bitworxx.starcity.db.Meta;
 import com.sim.star.bitworxx.starcity.meta.MetaObjectContainer;
 import com.sim.star.bitworxx.starcity.meta.object.handler.GalaxyHandler;
+import com.sim.star.bitworxx.starcity.meta.object.handler.GalaxySystemHandler;
 import com.sim.star.bitworxx.starcity.runnable.RunnablesMainMenu;
 import com.sim.star.bitworxx.starcity.views.Main;
 import com.sim.star.bitworxx.starcity.views.touch.ActionContainer;
@@ -78,8 +79,13 @@ private int Count=0;
         MenuConst.BACK_SHADER = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.back_shader), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
         MenuConst.BACK_SHADER2 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.back_shader2), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
         MenuConst.BACK_SHADER_SUN01 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.sun_01), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_SUN02 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.sun_02), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+
         MenuConst.BACK_SHADER_PLANET01 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet_01), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
         MenuConst.BACK_SHADER_PLANET02 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet_02), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET03 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet_03), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET04 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet_04), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+
         MenuConst.BACK_SHADER_MOON01 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.moon_01), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
 
         MenuBitmaps.BITMAP_RACE = BitmapFactory.decodeResource(getResources(), R.drawable.race_human);

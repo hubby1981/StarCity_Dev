@@ -2,12 +2,14 @@ package com.sim.star.bitworxx.starcity.constants;
 
 import android.widget.Toast;
 
+import com.sim.star.bitworxx.starcity.MainScreen;
 import com.sim.star.bitworxx.starcity.app.StarCityApp;
 import com.sim.star.bitworxx.starcity.cycle.GM;
 import com.sim.star.bitworxx.starcity.game.enums.TextSize;
 import com.sim.star.bitworxx.starcity.views.pages.ButtonContent;
 import com.sim.star.bitworxx.starcity.views.pages.ButtonDescription;
 import com.sim.star.bitworxx.starcity.views.pages.TextDescription;
+import com.sim.star.bitworxx.starcity.views.touch.ActionContainer;
 
 import java.util.HashMap;
 
@@ -32,6 +34,20 @@ public class BTN {
             @Override
             public void run() {
                 android.widget.Toast.makeText(StarCityApp.getAppContext(), "Add geklickt", Toast.LENGTH_SHORT).show();
+            }
+        }));
+
+        ALL_BUTTON.put("en-btn-system-generate", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+              DB.Connection.execSQL("delete from meta_object");
+              if(STAR.ALL_SYSTEMS.containsKey(GM.SYSTEM_NAME))STAR.ALL_SYSTEMS.remove(GM.SYSTEM_NAME);
+              STAR.getSystem(GM.SYSTEM_NAME);
+              STAR.ALL_STARS.clear();
+              ActionContainer.flushPage();
+              MenuBitmaps.ActualWindow.flush();
+                MenuBitmaps.ActualWindow.setupPages();
+              MainScreen.Init.run();
             }
         }));
 

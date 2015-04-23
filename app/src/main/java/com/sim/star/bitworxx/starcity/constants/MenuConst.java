@@ -43,14 +43,21 @@ public class MenuConst {
     public static Paint BACK_SHADER_PAINTER = null;
 
     public static BitmapShader BACK_SHADER_SUN01 = null;
+    public static BitmapShader BACK_SHADER_SUN02 = null;
+
     public static BitmapShader BACK_SHADER_PLANET01 = null;
     public static BitmapShader BACK_SHADER_PLANET02 = null;
+    public static BitmapShader BACK_SHADER_PLANET03 = null;
+    public static BitmapShader BACK_SHADER_PLANET04 = null;
+
     public static BitmapShader BACK_SHADER_MOON01 = null;
 
     public static Paint BACK_PAINTER_CONTENT;
     public static Paint BACK_PAINTER_CONTENT_INNER;
     public static Paint BACK_PAINTER_CONTENT_INNER2;
     public static Paint BACK_PAINTER_BLACK;
+    public static Paint BACK_PAINTER_CONTENT_LIGHT;
+
 
     static {
         BACK_PAINTER = createBackPainter(ColorSetter.FILL_BACK_COLOR);
@@ -60,7 +67,7 @@ public class MenuConst {
 
         PLATE_BACK_PAINTER = createBackPainter(ColorSetter.FILL_BACK_COLOR_PLATE);
 
-
+        BACK_PAINTER_CONTENT_LIGHT = createBackPainter(ColorSetter.FILL_BACK_CONTENT_LIGHT);
         STROKE_BACK_PAINTER = createStrokeBackPainter(ColorSetter.FILL_STROKE_BACK);
         STROKE_FORE_PAINTER = createStrokeBackPainter(ColorSetter.FILL_STROKE_FORE);
         FORE_PAINTER_STROKE_LIGHT = createStrokeBackPainterDash(ColorSetter.FILL_SHADER_BACK_LIGHT);
@@ -109,8 +116,8 @@ public class MenuConst {
         p.setStyle(Paint.Style.STROKE);
         p.setAntiAlias(true);
         p.setColor(color);
-        p.setStrokeWidth(1);
-        p.setPathEffect(new DashPathEffect(new float[]{2, 6}, 0));
+        p.setStrokeWidth(2);
+        p.setPathEffect(new DashPathEffect(new float[]{4, 8}, 0));
         p.setStrokeCap(Paint.Cap.ROUND);
         p.setStrokeJoin(Paint.Join.ROUND);
         return p;

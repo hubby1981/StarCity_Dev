@@ -12,13 +12,13 @@ public class ButtonDescription extends BaseContentDescription<TextDescription> {
     public TextDescription Text;
     public Runnable Action;
     public boolean SearchText=true;
-    public ButtonDescription(Runnable actrion)
+    public ButtonDescription(Runnable action)
     {
-        this(new TextDescription("", TextSize.TEXT),actrion);
+        this(new TextDescription("", TextSize.TEXT),action);
     }
-    public ButtonDescription(Runnable actrion,boolean searchText)
+    public ButtonDescription(Runnable action,boolean searchText)
     {
-        this(new TextDescription("", TextSize.TEXT),actrion);
+        this(new TextDescription("", TextSize.TEXT),action);
         SearchText=searchText;
     }
     public ButtonDescription(TextDescription text,Runnable action)

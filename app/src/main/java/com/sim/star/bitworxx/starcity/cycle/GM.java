@@ -23,6 +23,8 @@ public class GM {
     public static String LOCALE_A = Locale.getDefault().getLanguage()+"-";
     public static long TS=0;
     public static long TE =0;
+
+    public static String SYSTEM_NAME="pytico II";
     static {
 
         LT = new GM_LoopTicker(5, 9);
