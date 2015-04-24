@@ -74,7 +74,7 @@ public class STAR {
 
     public static void addKey(String key,float size,int shader,String type)
     {
-        BitmapShader back = type=="sun"?getShaderSun(shader):type=="moon"?getShaderMoon(shader):getShaderPlanet(shader);
+        BitmapShader back = type.equals("sun")?getShaderSun(shader):type.equals("moon")?getShaderMoon(shader):getShaderPlanet(shader);
         if(!ALL_STARS.containsKey(key))
             ALL_STARS.put("en-"+key,new SystemObjectDescription(getActionForKey(key),size,back));
 

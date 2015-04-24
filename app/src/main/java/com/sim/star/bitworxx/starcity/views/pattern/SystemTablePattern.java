@@ -18,19 +18,19 @@ public class SystemTablePattern extends PatternBase {
         Contents.add(new ContentDescription(new CoPo(19, 5), "header-systems-table_status", ContentType.TEXT));
 
         Contents.add(new ContentDescription(new CoPo(1, 7), "Pytico I", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(11, 7), "45.10.99.200", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(11, 7), "45.10.99.200", ContentType.BUTTON));
         Contents.add(new ContentDescription(new CoPo(19, 7), "settle", ContentType.TEXT));
 
         Contents.add(new ContentDescription(new CoPo(1, 8), "Pytico II", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(11, 8), "45.10.0.200", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(11, 8), "45.10.0.200", ContentType.BUTTON));
         Contents.add(new ContentDescription(new CoPo(19, 8), "wait", ContentType.TEXT));
 
         Contents.add(new ContentDescription(new CoPo(1, 9), "Sambut", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(11, 9), "45.123.99.200", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(11, 9), "45.123.99.200", ContentType.BUTTON));
         Contents.add(new ContentDescription(new CoPo(19, 9), "wait", ContentType.TEXT));
 
         Contents.add(new ContentDescription(new CoPo(1, 10), "Taba", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(11, 10), "45.1.99.200", ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(11, 10), "45.1.99.200", ContentType.BUTTON));
         Contents.add(new ContentDescription(new CoPo(19, 10), "explore", ContentType.TEXT));
 
 

@@ -51,6 +51,62 @@ public class BTN {
             }
         }));
 
+        ALL_BUTTON.put("en-45.10.99.200", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                GM.SYSTEM_NAME = "Pytico";
+                STAR.getSystem(GM.SYSTEM_NAME);
+                STAR.ALL_STARS.clear();
+                ActionContainer.flushPage();
+                MenuBitmaps.ActualWindow.flush();
+                MenuBitmaps.ActualWindow.setupPages();
+                MenuBitmaps.ActualWindow.setPage(2);
+                MainScreen.Init.run();
+            }
+        }));
+
+        ALL_BUTTON.put("en-45.10.0.200", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                GM.SYSTEM_NAME = "Pytico II";
+                STAR.getSystem(GM.SYSTEM_NAME);
+                STAR.ALL_STARS.clear();
+                ActionContainer.flushPage();
+                MenuBitmaps.ActualWindow.flush();
+                MenuBitmaps.ActualWindow.setupPages();
+                MenuBitmaps.ActualWindow.setPage(2);
+                MainScreen.Init.run();
+            }
+        }));
+
+        ALL_BUTTON.put("en-45.123.99.200", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                GM.SYSTEM_NAME = "Sambut";
+                STAR.getSystem(GM.SYSTEM_NAME);
+                STAR.ALL_STARS.clear();
+                ActionContainer.flushPage();
+                MenuBitmaps.ActualWindow.flush();
+                MenuBitmaps.ActualWindow.setupPages();
+                MenuBitmaps.ActualWindow.setPage(2);
+                MainScreen.Init.run();
+            }
+        }));
+
+        ALL_BUTTON.put("en-45.1.99.200", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                GM.SYSTEM_NAME = "Taba";
+                STAR.getSystem(GM.SYSTEM_NAME);
+                STAR.ALL_STARS.clear();
+                ActionContainer.flushPage();
+                MenuBitmaps.ActualWindow.flush();
+                MenuBitmaps.ActualWindow.setupPages();
+                MenuBitmaps.ActualWindow.setPage(2);
+                MainScreen.Init.run();
+            }
+        }));
+
     }
 
 

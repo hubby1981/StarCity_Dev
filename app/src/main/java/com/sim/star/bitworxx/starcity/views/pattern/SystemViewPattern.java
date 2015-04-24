@@ -3,6 +3,7 @@ package com.sim.star.bitworxx.starcity.views.pattern;
 import android.os.DropBoxManager;
 
 import com.sim.star.bitworxx.starcity.constants.STAR;
+import com.sim.star.bitworxx.starcity.cycle.GM;
 import com.sim.star.bitworxx.starcity.game.enums.ContentType;
 import com.sim.star.bitworxx.starcity.geometric.CoPo;
 import com.sim.star.bitworxx.starcity.meta.MetaObject;
@@ -20,7 +21,7 @@ import java.util.Map;
 public class SystemViewPattern extends PatternBase {
     public SystemViewPattern(String pageCount) {
 
-        String name = "pytico II";
+        String name = GM.SYSTEM_NAME;
 
         Contents.add(new ContentDescription(new CoPo(0, 0), "header-system", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(5, 0), name, ContentType.TEXT));
@@ -104,20 +105,6 @@ public class SystemViewPattern extends PatternBase {
         Contents.add(new ContentDescription(new CoPo(23, 14), "11", ContentType.TEXT));
 
 
-/*
-        Contents.add(new ContentDescription(new CoPo(2,6,3,7),"sun1",ContentType.SYSTEM_OBJECT));
-        Contents.add(new ContentDescription(new CoPo(1,9,2,11),"sun2",ContentType.SYSTEM_OBJECT));
-
-        Contents.add(new ContentDescription(new CoPo(8,5,9,6),"planet1",ContentType.SYSTEM_OBJECT));
-        Contents.add(new ContentDescription(new CoPo(8,7,9,8),"moon1",ContentType.SYSTEM_OBJECT));
-        Contents.add(new ContentDescription(new CoPo(8,9,9,10),"moon2",ContentType.SYSTEM_OBJECT));
-
-        Contents.add(new ContentDescription(new CoPo(12,5,13,6),"planet2",ContentType.SYSTEM_OBJECT));
-
-        Contents.add(new ContentDescription(new CoPo(18,5,19,6),"planet4",ContentType.SYSTEM_OBJECT));
-        Contents.add(new ContentDescription(new CoPo(20,5,21,6),"planet3",ContentType.SYSTEM_OBJECT));
-        Contents.add(new ContentDescription(new CoPo(17,7,18,8),"planet5",ContentType.SYSTEM_OBJECT));*/
-
         GalaxySystemHandler system =  STAR.getSystem(name);
         if(system!=null)
         {
@@ -128,7 +115,7 @@ public class SystemViewPattern extends PatternBase {
                 {
                     for(Map.Entry<Integer,GalaxySystemObjectMetaObject> objects:handler.Container.Objects.entrySet())
                     {
-                       GalaxySystemObjectMetaObject object= objects.getValue();
+                       MetaObject object= objects.getValue();
                        if(object!=null) {
                            Contents.add(new ContentDescription(new CoPo((int) object.getInternalValue("left"), (int) object.getInternalValue("top"), (int) object.getInternalValue("right"), (int) object.getInternalValue("bottom")),
                                    object.getValue("id"), ContentType.SYSTEM_OBJECT));

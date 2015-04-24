@@ -31,6 +31,8 @@ import com.sim.star.bitworxx.starcity.geometric.TriagleHelper;
 import com.sim.star.bitworxx.starcity.highlight.BlinkCode;
 import com.sim.star.bitworxx.starcity.runnable.RunnablesMainMenu;
 import com.sim.star.bitworxx.starcity.views.icons.BankIcon;
+import com.sim.star.bitworxx.starcity.views.icons.SkillIcon;
+import com.sim.star.bitworxx.starcity.views.icons.TechIcon;
 import com.sim.star.bitworxx.starcity.views.touch.ActionContainer;
 import com.sim.star.bitworxx.starcity.views.touch.ActionHandler;
 
@@ -527,10 +529,29 @@ private Paint HeaderFontPaint;
 
         int hh = (int)(leftPage.height()/1.6)+2;
 
+        String money="39.333.221";
+        String skill="439";
+        String tech ="22";
+
         Rect rbi = new Rect(leftPage.right+MenuConst.MARGIN_CLIP_MINI*2,leftPage.top+2,(leftPage.right+MenuConst.MARGIN_CLIP_MINI*2)+hh,leftPage.top+hh);
+        int tw = (int) HeaderFontPaint.measureText(money);
+        int tw2 = (int) HeaderFontPaint.measureText(skill);
+
+        Rect rsi = new Rect((rbi.right+tw)+MenuConst.MARGIN_CLIP_MINI*2,leftPage.top+2,((rbi.right+tw)+MenuConst.MARGIN_CLIP_MINI*2)+hh,leftPage.top+hh);
+
+        Rect rti = new Rect((rsi.right+tw2)+MenuConst.MARGIN_CLIP_MINI*2,leftPage.top+2,((rsi.right+tw2)+MenuConst.MARGIN_CLIP_MINI*2)+hh,leftPage.top+hh);
+
         BankIcon bi = new BankIcon();
+        SkillIcon si = new SkillIcon();
+        TechIcon ti = new TechIcon();
+
         canvas.drawPath( bi.getPath(rbi),MenuConst.FORE_PAINTER_ICON);
-        canvas.drawText("39.333.221",rbi.right+4,rbi.centerY()+rbi.height()/4,HeaderFontPaint);
+        canvas.drawText(money, rbi.right + 4, rbi.centerY() + rbi.height() / 4, HeaderFontPaint);
+        canvas.drawPath(si.getPath(rsi), MenuConst.FORE_PAINTER_ICON);
+        canvas.drawText(skill, rsi.right + 4, rsi.centerY() + rsi.height() / 4, HeaderFontPaint);
+        canvas.drawPath(ti.getPath(rti), MenuConst.FORE_PAINTER_ICON);
+        canvas.drawText(tech, rti.right + 4, rti.centerY() + rti.height() / 4, HeaderFontPaint);
+
         canvas.clipRect(InnerRect, Region.Op.UNION);
 
         CliprRects.InnerRectMain=InnerRect;

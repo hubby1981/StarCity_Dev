@@ -81,6 +81,14 @@ public abstract class ContentWindow extends ContentBase {
         flush();
     }
 
+    public void setPage(int page)
+    {
+        ActionContainer.flushPage();
+        if(Pages.size()>page)
+            ActualPage=page;
+        flush();
+    }
+
     public abstract void setupPages();
 
     @Override

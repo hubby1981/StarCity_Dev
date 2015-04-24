@@ -16,7 +16,9 @@ import com.sim.star.bitworxx.starcity.runnable.RunnablesMainMenu;
 import com.sim.star.bitworxx.starcity.views.anim.BankAnimation;
 import com.sim.star.bitworxx.starcity.views.anim.BitmapAnimation;
 import com.sim.star.bitworxx.starcity.views.anim.MainAnimation;
+import com.sim.star.bitworxx.starcity.views.anim.SkillAnimation;
 import com.sim.star.bitworxx.starcity.views.anim.SubMenuAnimation;
+import com.sim.star.bitworxx.starcity.views.anim.TechAnimation;
 import com.sim.star.bitworxx.starcity.views.anim.WatchAnimation;
 import com.sim.star.bitworxx.starcity.views.content.ContentWindow;
 import com.sim.star.bitworxx.starcity.views.content.MainContent;
@@ -42,6 +44,9 @@ public class Main extends MainBorder {
     private BankAnimation Bank;
     private SubMenuAnimation Sub;
     private BitmapAnimation Race;
+    private SkillAnimation Skill;
+    private TechAnimation Tech;
+
     private boolean ShowSubMenu = false;
 
 
@@ -66,6 +71,8 @@ public class Main extends MainBorder {
         Bank = new BankAnimation(SubMenuBank);
         Sub = new SubMenuAnimation(SubMenu);
         Race = new BitmapAnimation(TopMenu, MenuBitmaps.BITMAP_RACE);
+           Skill = new SkillAnimation(SubMenuSkill);
+        Tech = new TechAnimation(SubMenuTech);
 
         MainMenu.setRunnable(RunnablesMainMenu.R_A_MAIN_MENU);
         SubMenu.setRunnable(RunnablesMainMenu.R_A_SUB_MENU);
@@ -132,6 +139,7 @@ public class Main extends MainBorder {
                 p = new Point(subLeft, TopItem);
                 SubMenuTech.Measure = p;
                 canvas.drawBitmap(SubMenuTech.getAsBitmap(), (float) p.x, (float) p.y, null);
+                Tech.drawItems();
 
                 SubMenuBank.HandleDisplay(measureItemWidth(), measureItemWidth());
                 p = new Point(subLeft, (TopItem - measureItemWidth()) - FACTOR_TRIANGLE_OUT);
@@ -143,6 +151,7 @@ public class Main extends MainBorder {
                 p = new Point(subLeft, TopItem + measureItemWidth() + FACTOR_TRIANGLE_OUT + FACTOR_TRIANGLE_OUT);
                 SubMenuSkill.Measure = p;
                 canvas.drawBitmap(SubMenuSkill.getAsBitmap(), (float) p.x, (float) p.y, null);
+                Skill.drawItems();
             }
         }
         if (Show.ShowTimer) {
