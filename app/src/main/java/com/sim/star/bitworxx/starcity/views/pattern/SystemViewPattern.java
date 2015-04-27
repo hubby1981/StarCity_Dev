@@ -33,7 +33,7 @@ public class SystemViewPattern extends PatternBase {
 
         Contents.add(new ContentDescription(new CoPo(25, 2, 31, 14), "", ContentType.TABLE));
 
-
+/*
         Contents.add(new ContentDescription(new CoPo(0, 5, 23, 5), "", ContentType.LINE));
         Contents.add(new ContentDescription(new CoPo(0, 7, 23, 7), "", ContentType.LINE));
         Contents.add(new ContentDescription(new CoPo(0, 9, 23, 9), "", ContentType.LINE));
@@ -50,7 +50,10 @@ public class SystemViewPattern extends PatternBase {
         Contents.add(new ContentDescription(new CoPo(16, 3, 16, 14), "", ContentType.LINE));
         Contents.add(new ContentDescription(new CoPo(18, 3, 18, 14), "", ContentType.LINE));
         Contents.add(new ContentDescription(new CoPo(20, 3, 20, 14), "", ContentType.LINE));
-        Contents.add(new ContentDescription(new CoPo(22, 3, 22, 14), "", ContentType.LINE));
+        Contents.add(new ContentDescription(new CoPo(22, 3, 22, 14), "", ContentType.LINE));*/
+
+
+        Patterns.add(new GridLinePattern(2,2,new CoPo(0,3,23,14)));
 
         Contents.add(new ContentDescription(new CoPo(1, 2), "Solar System Objects", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(26, 2), "ACTIONS", ContentType.TEXT));
@@ -67,6 +70,7 @@ public class SystemViewPattern extends PatternBase {
         Contents.add(new ContentDescription(new CoPo(1, 15), "HOT", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(7, 15), "NORMAL", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(17, 15), "COLD", ContentType.TEXT));
+
 
         Contents.add(new ContentDescription(new CoPo(1, 4), "A", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(3, 4), "B", ContentType.TEXT));
@@ -105,26 +109,7 @@ public class SystemViewPattern extends PatternBase {
         Contents.add(new ContentDescription(new CoPo(23, 14), "11", ContentType.TEXT));
 
 
-        GalaxySystemHandler system =  STAR.getSystem(name);
-        if(system!=null)
-        {
-            for(Map.Entry<String,GalaxySystemObjectHandler> systems:system.SystemObjects.entrySet())
-            {
-               GalaxySystemObjectHandler handler = systems.getValue();
-                if(handler!=null)
-                {
-                    for(Map.Entry<Integer,GalaxySystemObjectMetaObject> objects:handler.Container.Objects.entrySet())
-                    {
-                       MetaObject object= objects.getValue();
-                       if(object!=null) {
-                           Contents.add(new ContentDescription(new CoPo((int) object.getInternalValue("left"), (int) object.getInternalValue("top"), (int) object.getInternalValue("right"), (int) object.getInternalValue("bottom")),
-                                   object.getValue("id"), ContentType.SYSTEM_OBJECT));
-                            STAR.addKey(object.getValue("id"),object.getInternalValue("size"),(int)object.getInternalValue("shader"),object.getValue("type"));
-                       }
-                    }
-                }
-            }
-        }
+      Patterns.add(new SystemObjectPattern(name));
 
 
     }

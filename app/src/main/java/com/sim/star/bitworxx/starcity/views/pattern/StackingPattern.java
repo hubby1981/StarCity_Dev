@@ -6,9 +6,9 @@ import com.sim.star.bitworxx.starcity.views.pages.ContentDescription;
 /**
  * Created by WEIS on 17.04.2015.
  */
-public class StackingPattern extends PatternBase {
+public class StackingPattern extends CoPoPattern {
 
-    private CoPo P;
+
     private int W;
     private int H;
     private int M;
@@ -21,8 +21,8 @@ public class StackingPattern extends PatternBase {
 
     public StackingPattern(int w,int h,int m,int mm,CoPo p)
     {
-        super();
-        P=p;
+        super(p);
+
         X=P.L;
         Y=P.T;
         W=w;
