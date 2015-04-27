@@ -1,18 +1,22 @@
 package com.sim.star.bitworxx.starcity.views.pages;
 
+import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.RadialGradient;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Shader;
 
 import com.sim.star.bitworxx.starcity.constants.ColorSetter;
 import com.sim.star.bitworxx.starcity.constants.ContentFont;
 import com.sim.star.bitworxx.starcity.constants.ContentPosition;
 import com.sim.star.bitworxx.starcity.constants.MenuConst;
 import com.sim.star.bitworxx.starcity.constants.STAR;
+import com.sim.star.bitworxx.starcity.db.RandomRange;
 import com.sim.star.bitworxx.starcity.game.enums.TextSize;
 import com.sim.star.bitworxx.starcity.geometric.CoPo;
 import com.sim.star.bitworxx.starcity.geometric.GeometricHelp;
@@ -71,17 +75,43 @@ public class SystemObjectContent extends ButtonContent {
                 Paint p1 = new Paint();
                 p1.setAntiAlias(true);
                 p1.setShader(Shader);
-                p1.setShadowLayer(2,2,2, Color.BLACK);
+
+                int shadow=1;
+                p1.setShadowLayer(shadow,shadow,shadow, Color.BLACK);
                 canvas.drawArc(rf,(float)0,(float)360,true,p1);
-                p1.setShadowLayer(2,-2,-2, Color.BLACK);
+                p1.setShadowLayer(shadow,-shadow,-shadow, Color.BLACK);
 
                 canvas.drawArc(rf,(float)0,(float)360,true,p1);
-                p1.setShadowLayer(2,2,-2, Color.BLACK);
+                p1.setShadowLayer(shadow,shadow,-shadow, Color.BLACK);
 
                 canvas.drawArc(rf,(float)0,(float)360,true,p1);
-                p1.setShadowLayer(2,-2,2, Color.BLACK);
+                p1.setShadowLayer(shadow,-shadow,shadow, Color.BLACK);
 
                 canvas.drawArc(rf,(float)0,(float)360,true,p1);
+
+
+                p1 = new Paint();
+                p1.setAntiAlias(true);
+                p1.setStyle(Paint.Style.FILL);
+                if(Size>5) {
+
+                    p1.setShader(new RadialGradient( rf.centerX(),rf.centerY(), rf.width()/2, Color.TRANSPARENT,Color.argb(80,255,255,255), android.graphics.Shader.TileMode.MIRROR));
+                    canvas.drawArc(rf, (float) 0, (float) 360, true, p1);
+
+
+                    RectF rf2 = new RectF(rf.left,rf.top-rf.height(),rf.left+(rf.width()*Size)/4,rf.bottom+rf.height());
+                    p1.setShader(new RadialGradient( rf.left,rf.centerY(), rf2.width()/2,Color.argb(80,255,255,170), Color.TRANSPARENT, android.graphics.Shader.TileMode.MIRROR));
+                    canvas.drawArc(rf2, (float)0    , (float) 360, true, p1);
+
+                }
+                else
+                {
+
+
+                    p1.setColor(Color.argb(50, 0, 0, 0));
+                    canvas.drawArc(rf, (float) -90, (float) 180, true, p1);
+
+                }
 
                 p1=null;}
             canvas.drawArc(rf,(float)0,(float)360,true,MenuConst.BACK_PAINTER_CONTENT_INNER);
