@@ -24,8 +24,8 @@ public class LineContent extends RectContent  {
            Rect r = combineRects(rects.get(0),rects.get(1));
 
         if(rects.get(0).top==rects.get(1).top)
-           canvas.drawLine(r.left,r.top,r.right,r.top, MenuConst.PLATE_STROKE_BACK_PAINTER);
+           canvas.drawLine(r.left,r.top,r.right,r.top, MenuConst.LINE_STROKE_BACK_PAINTER);
         else
-            canvas.drawLine(r.left,r.top,r.left,r.bottom, MenuConst.PLATE_STROKE_BACK_PAINTER);
+            canvas.drawLine(r.left,r.top,r.left,r.bottom, MenuConst.LINE_STROKE_BACK_PAINTER);
     }
 }

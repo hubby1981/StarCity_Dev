@@ -404,11 +404,18 @@ private Paint HeaderFontPaint;
         }
 
 
-        canvas.drawBitmap(MenuBitmaps.BitmapDrawables.get(Id),0,0,null);
-        drawContent(canvas);
 
-        drawItems(canvas);
 
+        if(Show.ShowOverlay)
+        {
+            canvas.drawRect(OutboundRect,MenuConst.HALF_TRANSPARENT_BACK_PAINTER);
+        }else
+        {
+            canvas.drawBitmap(MenuBitmaps.BitmapDrawables.get(Id),0,0,null);
+            drawContent(canvas);
+
+            drawItems(canvas);
+        }
 
     }
 

@@ -24,4 +24,6 @@ public class Show {
 
     public static boolean ShowGrid=false;
 
+    public static boolean ShowOverlay=false;
+
 }

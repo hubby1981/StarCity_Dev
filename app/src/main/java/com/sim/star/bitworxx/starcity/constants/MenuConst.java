@@ -25,7 +25,7 @@ public class MenuConst {
     public static Paint STROKE_FORE_PAINTER;
 
     public static Paint PLATE_STROKE_BACK_PAINTER;
-
+    public static Paint LINE_STROKE_BACK_PAINTER;
     public static Paint HALF_TRANSPARENT_BACK_PAINTER;
     public static Paint BACK_TRANSPARENT;
 
@@ -72,6 +72,7 @@ public class MenuConst {
         STROKE_FORE_PAINTER = createStrokeBackPainter(ColorSetter.FILL_STROKE_FORE);
         FORE_PAINTER_STROKE_LIGHT = createStrokeBackPainterDash(ColorSetter.FILL_SHADER_BACK_LIGHT);
         PLATE_STROKE_BACK_PAINTER = createStrokeBackPainter(ColorSetter.FILL_STROKE_BACK);
+        LINE_STROKE_BACK_PAINTER = createStrokeBackPainterDash1(ColorSetter.FILL_STROKE_BACK);
 
         HALF_TRANSPARENT_BACK_PAINTER = createBackPainter(ColorSetter.FILL_STROKE_BACK_HALF);
         BACK_TRANSPARENT = createTransparentBackPainter();
@@ -116,11 +117,21 @@ public class MenuConst {
         p.setStyle(Paint.Style.STROKE);
         p.setAntiAlias(true);
         p.setColor(color);
-        p.setStrokeWidth(2);
-        p.setPathEffect(new DashPathEffect(new float[]{4, 8}, 0));
+        p.setStrokeWidth(1);
+        p.setPathEffect(new DashPathEffect(new float[]{8, 4}, 0));
         p.setStrokeCap(Paint.Cap.ROUND);
         p.setStrokeJoin(Paint.Join.ROUND);
         return p;
     }
-
+    private static Paint createStrokeBackPainterDash1(int color) {
+        Paint p = new Paint();
+        p.setStyle(Paint.Style.STROKE);
+        p.setAntiAlias(true);
+        p.setColor(color);
+        p.setStrokeWidth(1);
+        //p.setPathEffect(new DashPathEffect(new float[]{2, 4}, 0));
+        p.setStrokeCap(Paint.Cap.ROUND);
+        p.setStrokeJoin(Paint.Join.ROUND);
+        return p;
+    }
 }
