@@ -60,6 +60,11 @@ public class MenuConst {
 
 
     static {
+        init();
+    }
+
+    public static void init()
+    {
         BACK_PAINTER = createBackPainter(ColorSetter.FILL_BACK_COLOR);
         BACK_PAINTER_BLACK = createBackPainter(ColorSetter.FILL_SHADER_BACK);
         FORE_PAINTER = createBackPainter(ColorSetter.FILL_FORE_COLOR);

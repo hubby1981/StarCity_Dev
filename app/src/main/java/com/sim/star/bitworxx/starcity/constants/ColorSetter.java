@@ -38,6 +38,12 @@ public class ColorSetter {
         //MenuBitmaps.BitmapDrawables.clear();
 
     }
+
+    private static void flushColor()
+    {
+        MenuBitmaps.BitmapDrawables.clear();
+        MenuConst.init();
+    }
     public static void changeToYellow()
     {
         if(YELLOW==0) {
@@ -49,6 +55,7 @@ public class ColorSetter {
             FILL_FORE_ICON = ColorMenu.FILL_YELLOW_FORE_ICON;
             FILL_BACK_COLOR_PLATE_HALF = ColorMenu.FILL_YELLOW_PLATE_HALF;
             YELLOW=1;
+            flushColor();
         }
     }
 
@@ -63,6 +70,7 @@ public class ColorSetter {
             FILL_FORE_ICON = ColorMenu.FILL_GREEN_FORE_ICON;
             FILL_BACK_COLOR_PLATE_HALF = ColorMenu.FILL_GREEN_PLATE_HALF;
             GREEN=1;
+            flushColor();
         }
 
     }

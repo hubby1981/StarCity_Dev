@@ -69,6 +69,7 @@ private int Count=0;
         Task = TaskStackBuilder.create(this);
         Task.addNextIntent(ResultIntent);
         db.setConnection(openOrCreateDatabase(DB.DB_NAME,MODE_PRIVATE,null));
+        db.Connection.execSQL("delete from meta_object");
 
         MetaObjectContainer ships = Meta.getContainer("starship");
         MetaObjectContainer destroyer = Meta.getContainer("starship","shiptype","DESTROYER");
@@ -81,8 +82,8 @@ private int Count=0;
         MenuConst.BACK_SHADER_SUN01 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.sun_01), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
         MenuConst.BACK_SHADER_SUN02 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.sun_02), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
 
-        MenuConst.BACK_SHADER_PLANET01 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet_01), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
-        MenuConst.BACK_SHADER_PLANET02 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet_02), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET01 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.gas_lines), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET02 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.gas_lines2), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
         MenuConst.BACK_SHADER_PLANET03 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet_03), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
         MenuConst.BACK_SHADER_PLANET04 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet_04), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
 

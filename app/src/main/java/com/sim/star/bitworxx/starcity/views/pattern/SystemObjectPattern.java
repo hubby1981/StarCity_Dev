@@ -1,5 +1,7 @@
 package com.sim.star.bitworxx.starcity.views.pattern;
 
+import android.graphics.Bitmap;
+
 import com.sim.star.bitworxx.starcity.constants.STAR;
 import com.sim.star.bitworxx.starcity.game.enums.ContentType;
 import com.sim.star.bitworxx.starcity.geometric.CoPo;
@@ -7,6 +9,8 @@ import com.sim.star.bitworxx.starcity.meta.MetaObject;
 import com.sim.star.bitworxx.starcity.meta.game.GalaxySystemObjectMetaObject;
 import com.sim.star.bitworxx.starcity.meta.object.handler.GalaxySystemHandler;
 import com.sim.star.bitworxx.starcity.meta.object.handler.GalaxySystemObjectHandler;
+import com.sim.star.bitworxx.starcity.stellar.planet.BasePlanet;
+import com.sim.star.bitworxx.starcity.stellar.planet.GasPlanet;
 import com.sim.star.bitworxx.starcity.views.pages.ContentDescription;
 import com.sim.star.bitworxx.starcity.views.pages.SystemObjectContent;
 
@@ -33,10 +37,13 @@ public class SystemObjectPattern extends PatternBase {
                 GalaxySystemObjectHandler handler = systems.getValue();
                 if(handler!=null)
                 {
-                    for(Map.Entry<Integer,GalaxySystemObjectMetaObject> objects:handler.Container.Objects.entrySet())
+                    for(Map.Entry<Integer,MetaObject> objects:handler.Container.Objects.entrySet())
                     {
                         MetaObject object= objects.getValue();
                         if(object!=null) {
+
+
+
                             Contents.add(new ContentDescription(new CoPo((int) object.getInternalValue("left"), (int) object.getInternalValue("top"), (int) object.getInternalValue("right"), (int) object.getInternalValue("bottom")),
                                     object.getValue("id"), ContentType.SYSTEM_OBJECT));
                             STAR.addKey(object.getValue("id"),object.getInternalValue("size"),(int)object.getInternalValue("shader"),object.getValue("type"));

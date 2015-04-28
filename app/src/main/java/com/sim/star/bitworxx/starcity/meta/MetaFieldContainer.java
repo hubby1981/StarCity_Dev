@@ -24,12 +24,12 @@ public class MetaFieldContainer {
 
     public String getValue(String name)
     {
-        return Fields.containsKey(name)?Fields.get(name).Value:null;
+        return Fields.containsKey(name)?Fields.get(name).Value:"";
     }
 
     public float getInternalValue(String name)
     {
-        return Fields.containsKey(name)?Fields.get(name).InternalValue:null;
+        return Fields.containsKey(name)?Fields.get(name).InternalValue:0;
     }
 
     public MetaField getField(String field)

@@ -5,7 +5,9 @@ import android.graphics.Point;
 import com.sim.star.bitworxx.starcity.db.RandomRange;
 import com.sim.star.bitworxx.starcity.geometric.CoPo;
 import com.sim.star.bitworxx.starcity.meta.MetaField;
+import com.sim.star.bitworxx.starcity.meta.MetaObject;
 import com.sim.star.bitworxx.starcity.meta.game.GalaxySystemObjectMetaObject;
+import com.sim.star.bitworxx.starcity.stellar.planet.GasPlanet;
 
 import java.util.HashMap;
 
@@ -13,7 +15,7 @@ import java.util.HashMap;
  * Created by WEIS on 23.04.2015.
  */
 
-public class GalaxySystemObjectHandler extends BaseHandler<GalaxySystemObjectMetaObject> {
+public class GalaxySystemObjectHandler extends BaseHandler<MetaObject> {
 
     private static int MIN_SUN = 1;
     private static  int MAX_SUN = 1;
@@ -69,33 +71,7 @@ public class GalaxySystemObjectHandler extends BaseHandler<GalaxySystemObjectMet
 
         }
 
-        if(P<5)
-        {
-            if(RandomRange.getRandom(10,20)>15){
-                old=createPlanetRow2(6, 9, old);
-                old=createPlanetRow(8,9,old);
-                old=createPlanetRow(10,9,old);}
-            if(RandomRange.getRandom(10,20)>15){
-                old=createPlanetRow(12,9,old);}
-            old=createPlanetRow2(14, 9, old);
-            old=createPlanetRow(16,9,old);
-            old=createPlanetRow(18,9,old);
-            old=createPlanetRow(20,9,old);
 
-            if(P<5) {
-                if (RandomRange.getRandom(10, 20) > 15) {
-                    old = createPlanetRow2(7, 7, old);
-                    old = createPlanetRow(9, 7, old);
-                    old = createPlanetRow(11, 7, old);
-                }
-                if (RandomRange.getRandom(10, 20) > 15) {
-                    old = createPlanetRow2(13, 7, old);
-                }
-                old = createPlanetRow2(15, 7, old);
-                old = createPlanetRow(17, 7, old);
-
-            }
-        }
     }
 
 
@@ -138,23 +114,21 @@ public class GalaxySystemObjectHandler extends BaseHandler<GalaxySystemObjectMet
         if(done==1)
         {
             int planets = RandomRange.getRandom(0,1);
-            int shader = l<10?RandomRange.getRandom(1, 2):RandomRange.getRandom(2, 4);
+
             for(int i =0;i<planets;i++) {
-                float size = l<10?getSize((float)0.5,(float)2.0):getSize((float)1.5,(float)3.0);
-                GalaxySystemObjectMetaObject planet = new GalaxySystemObjectMetaObject();
-                planet.create();
-                planet.Fields.register("parent-id",new MetaField(ParentId));
-                planet.Fields.register("type",new MetaField("planet"));
-                planet.Fields.register("size",new MetaField("",size));
-                planet.Fields.register("shader",new MetaField("",shader));
-                planet.Fields.register("left",new MetaField("",l));
-                planet.Fields.register("top",new MetaField("",t));
-                planet.Fields.register("right",new MetaField("",l+1));
-                planet.Fields.register("bottom",new MetaField("",t+1));
-                planet.setFieldValue("name", "planet" + i);
+
+                GasPlanet planet = new GasPlanet();
+
+                planet.Data.Fields.register("parent-id",new MetaField(ParentId));
+
+                planet.Data.Fields.register("left",new MetaField("",l));
+                planet.Data.Fields.register("top",new MetaField("",t));
+                planet.Data.Fields.register("right",new MetaField("",l+1));
+                planet.Data.Fields.register("bottom",new MetaField("",t+1));
+                planet.Data.setFieldValue("name", "planet" + i);
                 Point p = new Point(l,t);
                     if(!Planets.containsKey(p)) {
-                        add(planet);
+                        add(planet.Data);
                         Planets.put(p,1);
                         P++;
 
@@ -166,6 +140,7 @@ public class GalaxySystemObjectHandler extends BaseHandler<GalaxySystemObjectMet
         }
         return 0;
     }
+    /*
     private int createPlanetRow2(int l,int t,int old)
     {
 
@@ -198,7 +173,7 @@ public class GalaxySystemObjectHandler extends BaseHandler<GalaxySystemObjectMet
             return planets;
 
 
-    }
+    }*/
 
 
 
