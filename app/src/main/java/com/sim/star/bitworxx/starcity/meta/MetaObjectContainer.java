@@ -6,6 +6,7 @@ import com.sim.star.bitworxx.starcity.constants.DB;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -32,9 +33,46 @@ public class MetaObjectContainer<T extends MetaObject> {
         return  container;
     }
 
+    public <TA extends MetaObjectContainer<T>> TA splitEx(String field,String value)
+    {
+        TA container =(TA)createThis(value);
+        for (Map.Entry<Integer,T> e : Objects.entrySet())
+        {
+            if(e.getValue().hasField(field,value))
+                container.Objects.put(e.getKey(),e.getValue());
+        }
+        return  container;
+    }
+
+    public MetaObjectContainer<T> createThis(String name)
+    {
+
+        return new MetaObjectContainer<>(name);
+    }
+
+    public MetaObject createItem(String name)
+    {
+        return  new MetaObject(name);
+    }
+
     public T getItem(Integer key)
     {
         return (T) Objects.get(key);
+    }
+
+    public T getFirst(){
+       for(Map.Entry<Integer,T> e : Objects.entrySet())
+           return e.getValue();
+        return null;
+    }
+
+    public T getLast(){
+
+        T result=null;
+        for(Map.Entry<Integer,T> e : Objects.entrySet())
+            result= e.getValue();
+
+       return result;
     }
 
     public void register(Integer id,T item)

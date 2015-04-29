@@ -4,8 +4,11 @@ import android.widget.Toast;
 
 import com.sim.star.bitworxx.starcity.MainScreen;
 import com.sim.star.bitworxx.starcity.app.StarCityApp;
+import com.sim.star.bitworxx.starcity.banking.BankingHelper;
+import com.sim.star.bitworxx.starcity.banking.CreditTransaction;
 import com.sim.star.bitworxx.starcity.cycle.GM;
 import com.sim.star.bitworxx.starcity.game.enums.TextSize;
+import com.sim.star.bitworxx.starcity.player.PlayerStore;
 import com.sim.star.bitworxx.starcity.views.pages.ButtonContent;
 import com.sim.star.bitworxx.starcity.views.pages.ButtonDescription;
 import com.sim.star.bitworxx.starcity.views.pages.TextDescription;
@@ -34,6 +37,15 @@ public class BTN {
             @Override
             public void run() {
                 android.widget.Toast.makeText(StarCityApp.getAppContext(), "Add geklickt", Toast.LENGTH_SHORT).show();
+            }
+        }));
+
+        ALL_BUTTON.put("en-btn-system-buy", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                CreditTransaction transaction = new CreditTransaction(100000, PlayerStore.getPlayerBank().receiveMoney());
+                transaction.transact();
+                MainScreen.Init.run();
             }
         }));
 

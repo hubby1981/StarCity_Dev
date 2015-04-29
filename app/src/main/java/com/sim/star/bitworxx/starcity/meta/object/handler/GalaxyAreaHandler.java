@@ -1,6 +1,7 @@
 package com.sim.star.bitworxx.starcity.meta.object.handler;
 
 import com.sim.star.bitworxx.starcity.meta.MetaField;
+import com.sim.star.bitworxx.starcity.meta.MetaObjectContainer;
 import com.sim.star.bitworxx.starcity.meta.game.GalaxyAreaMetaObject;
 import com.sim.star.bitworxx.starcity.meta.game.GalaxyMetaObject;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by WEIS on 22.04.2015.
  */
-public class GalaxyAreaHandler extends BaseHandler<GalaxyAreaMetaObject> {
+public class GalaxyAreaHandler extends BaseHandler<GalaxyAreaMetaObject,MetaObjectContainer<GalaxyAreaMetaObject>> {
 
     public GalaxyAreaHandler(String galaxy) {
         super("galaxy-area",galaxy);

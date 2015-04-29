@@ -35,6 +35,9 @@ public class TXT {
         ALL_TEXT.put("en-btn-system-add",new TextDescription("Add", TextSize.TEXT));
         ALL_TEXT.put("de-btn-system-add",new TextDescription("Neu", TextSize.TEXT));
 
+        ALL_TEXT.put("en-btn-system-buy",new TextDescription("Buy", TextSize.TEXT));
+        ALL_TEXT.put("de-btn-system-buy",new TextDescription("Kaufen", TextSize.TEXT));
+
         ALL_TEXT.put("en-btn-system-generate",new TextDescription("build", TextSize.TEXT));
 
 

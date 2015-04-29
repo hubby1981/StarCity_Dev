@@ -29,6 +29,7 @@ import com.sim.star.bitworxx.starcity.game.enums.MenuTriangle;
 import com.sim.star.bitworxx.starcity.geometric.GeometricHelp;
 import com.sim.star.bitworxx.starcity.geometric.TriagleHelper;
 import com.sim.star.bitworxx.starcity.highlight.BlinkCode;
+import com.sim.star.bitworxx.starcity.player.PlayerStore;
 import com.sim.star.bitworxx.starcity.runnable.RunnablesMainMenu;
 import com.sim.star.bitworxx.starcity.views.icons.BankIcon;
 import com.sim.star.bitworxx.starcity.views.icons.SkillIcon;
@@ -536,7 +537,7 @@ private Paint HeaderFontPaint;
 
         int hh = (int)(leftPage.height()/1.6)+2;
 
-        String money="39.333.221";
+        String money= PlayerStore.getPlayerBank().getMainMoney();
         String skill="439";
         String tech ="22";
 

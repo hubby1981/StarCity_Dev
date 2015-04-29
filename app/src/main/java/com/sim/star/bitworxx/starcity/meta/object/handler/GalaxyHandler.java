@@ -16,7 +16,7 @@ import java.util.Objects;
 /**
  * Created by WEIS on 22.04.2015.
  */
-public  class GalaxyHandler extends BaseHandler<GalaxyMetaObject> {
+public  class GalaxyHandler extends BaseHandler<GalaxyMetaObject,MetaObjectContainer<GalaxyMetaObject>> {
 
 
 

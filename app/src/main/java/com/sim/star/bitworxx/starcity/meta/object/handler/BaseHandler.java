@@ -1,11 +1,15 @@
 package com.sim.star.bitworxx.starcity.meta.object.handler;
 
+import android.view.LayoutInflater;
+
 import com.sim.star.bitworxx.starcity.constants.DB;
 import com.sim.star.bitworxx.starcity.db.Meta;
 import com.sim.star.bitworxx.starcity.meta.MetaObject;
 import com.sim.star.bitworxx.starcity.meta.MetaObjectContainer;
+import com.sim.star.bitworxx.starcity.meta.fields.F;
 import com.sim.star.bitworxx.starcity.meta.game.GalaxyMetaObject;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,10 +17,10 @@ import java.util.Map;
 /**
  * Created by WEIS on 22.04.2015.
  */
-public abstract class BaseHandler<T extends MetaObject> {
+public abstract class BaseHandler<T extends MetaObject,TC extends MetaObjectContainer<T>> {
     protected ArrayList<String> _names= new ArrayList<>();
 
-    public MetaObjectContainer<T> Container;
+    public TC Container;
     public String ParentId;
     public BaseHandler(String name)
     {
@@ -70,14 +74,20 @@ public abstract class BaseHandler<T extends MetaObject> {
 
     public void init(String name)
     {
-        Container=new MetaObjectContainer(name);
 
+        try {
+            new ParameterizedType()
+
+            Container=result;
+        }catch(Exception e){
+            String ex=e.getMessage();
+        };
     }
 
     public void split()
     {
         if(ParentId!=null)
-            Container = Container.split("parent-id",ParentId);
+            Container = (TC)Container.split(F.FIELD_PARENT_ID,ParentId);
     }
 
     public void load()

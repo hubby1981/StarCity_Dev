@@ -90,7 +90,7 @@ public class DB {
     {
        String result= hasNameOrCreate(SqlTables.SQL_SETUP, SqlSetup.SQL_NAME_VERSION, SqlSetup.SQL_VALUE_VERSION);
        result=  hasNameOrCreate(SqlTables.SQL_SETUP, SqlSetup.SQL_NAME_INSTALLED,new Date().toString());
-       result=  hasNameOrCreate(SqlTables.SQL_SETUP, SqlSetup.SQL_NAME_USER_TOKEN, GM.Player.PlayerToken);
+
     }
 
     private static String hasNameOrCreate(String table,String name,String value)
@@ -120,7 +120,7 @@ public class DB {
             {
                 while (cMeta.moveToNext()) {
 
-                    MetaObject metaObject = new MetaObject( cMeta.getString(1));
+                    MetaObject metaObject = container.createItem( cMeta.getString(1));
                     fillFields(cMeta.getInt(0),metaObject);
                     container.register(cMeta.getInt(0), metaObject);
                 }
@@ -136,6 +136,7 @@ public class DB {
     {
         if(Connection!=null){
             Cursor cMeta = Connection.rawQuery(SQL_SELECT_META_FIELD.replace("[id]",id.toString()),null);
+            metaObject.RealDB=id;
             if(cMeta.getCount()>0)
             {
                 while (cMeta.moveToNext()) {
@@ -178,6 +179,8 @@ public static Integer addMetaObject(MetaObject metaObject)
             }
         }
     }
+
+
 
 
 

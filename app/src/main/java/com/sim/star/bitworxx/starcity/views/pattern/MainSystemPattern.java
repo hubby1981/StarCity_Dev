@@ -31,7 +31,7 @@ public class MainSystemPattern extends PatternBase {
         st.register(new ContentDescription("Explore",ContentType.BUTTON));
         st.register(new ContentDescription("Build",ContentType.BUTTON));
         st.register(new ContentDescription("Settle",ContentType.BUTTON));
-        st.register(new ContentDescription("Spy",ContentType.BUTTON));
+        st.register(new ContentDescription("btn-system-buy",ContentType.BUTTON));
 
         Patterns.add(st);
     }

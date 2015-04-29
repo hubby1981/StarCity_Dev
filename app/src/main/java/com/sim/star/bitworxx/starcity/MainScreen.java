@@ -23,17 +23,20 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.sim.star.bitworxx.starcity.app.StarCityApp;
+import com.sim.star.bitworxx.starcity.banking.BankingHelper;
 import com.sim.star.bitworxx.starcity.constants.ColorSetter;
 import com.sim.star.bitworxx.starcity.constants.DB;
 import com.sim.star.bitworxx.starcity.constants.DirtyRects;
 import com.sim.star.bitworxx.starcity.constants.MenuBitmaps;
 import com.sim.star.bitworxx.starcity.constants.MenuConst;
 import com.sim.star.bitworxx.starcity.constants.RBN;
+import com.sim.star.bitworxx.starcity.constants.SqlTables;
 import com.sim.star.bitworxx.starcity.cycle.GM;
 import com.sim.star.bitworxx.starcity.db.Meta;
 import com.sim.star.bitworxx.starcity.meta.MetaObjectContainer;
 import com.sim.star.bitworxx.starcity.meta.object.handler.GalaxyHandler;
 import com.sim.star.bitworxx.starcity.meta.object.handler.GalaxySystemHandler;
+import com.sim.star.bitworxx.starcity.player.PlayerStore;
 import com.sim.star.bitworxx.starcity.runnable.RunnablesMainMenu;
 import com.sim.star.bitworxx.starcity.views.Main;
 import com.sim.star.bitworxx.starcity.views.touch.ActionContainer;
@@ -55,8 +58,11 @@ public class MainScreen extends Activity {
     private DB db;
     private Intent ResultIntent;
     private TaskStackBuilder Task;
-private int Count=0;
-    public static UUID Id=UUID.randomUUID();
+
+        private BankingHelper bk;
+    private PlayerStore pl;
+    private int Count=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,18 +70,22 @@ private int Count=0;
         gm = new GM();
         mc = new MenuConst();
         ac = new ActionContainer();
-        db  = new DB();
+        db = new DB();
+        db.setConnection(openOrCreateDatabase(DB.DB_NAME, MODE_PRIVATE, null));
+        //db.Connection.execSQL("delete from "+SqlTables.SQL_META_OBJECT);
+        bk=new BankingHelper();
+
+
+        pl = new PlayerStore();
         ResultIntent = this.getIntent();
         Task = TaskStackBuilder.create(this);
         Task.addNextIntent(ResultIntent);
-        db.setConnection(openOrCreateDatabase(DB.DB_NAME,MODE_PRIVATE,null));
-        db.Connection.execSQL("delete from meta_object");
 
         MetaObjectContainer ships = Meta.getContainer("starship");
         MetaObjectContainer destroyer = Meta.getContainer("starship","shiptype","DESTROYER");
         MetaObjectContainer explorer = Meta.getContainer("starship","shiptype","EXPLORER");
 
-        GalaxyHandler galaxyHandler = new GalaxyHandler();
+
 
         MenuConst.BACK_SHADER = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.back_shader), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
         MenuConst.BACK_SHADER2 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.back_shader2), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
@@ -130,6 +140,7 @@ private int Count=0;
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+
                         update();
                     }
                 });

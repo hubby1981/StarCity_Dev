@@ -12,9 +12,6 @@ import java.util.HashMap;
  */
 public class Meta {
 
-    public String get_from_gm() {
-        return GM.Started;
-    }
 
     public static HashMap<String,MetaObjectContainer> Container=null;
 

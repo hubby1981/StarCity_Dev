@@ -6,6 +6,7 @@ import com.sim.star.bitworxx.starcity.db.RandomRange;
 import com.sim.star.bitworxx.starcity.geometric.CoPo;
 import com.sim.star.bitworxx.starcity.meta.MetaField;
 import com.sim.star.bitworxx.starcity.meta.MetaObject;
+import com.sim.star.bitworxx.starcity.meta.MetaObjectContainer;
 import com.sim.star.bitworxx.starcity.meta.game.GalaxySystemObjectMetaObject;
 import com.sim.star.bitworxx.starcity.stellar.planet.GasPlanet;
 
@@ -15,7 +16,7 @@ import java.util.HashMap;
  * Created by WEIS on 23.04.2015.
  */
 
-public class GalaxySystemObjectHandler extends BaseHandler<MetaObject> {
+public class GalaxySystemObjectHandler extends BaseHandler<MetaObject,MetaObjectContainer<MetaObject>> {
 
     private static int MIN_SUN = 1;
     private static  int MAX_SUN = 1;
