@@ -75,7 +75,7 @@ public class MainScreen extends Activity {
         ac = new ActionContainer();
         db = new DB();
         db.setConnection(openOrCreateDatabase(DB.DB_NAME, MODE_PRIVATE, null));
-        //db.Connection.execSQL("delete from "+SqlTables.SQL_META_OBJECT);
+       // db.Connection.execSQL("delete from "+SqlTables.SQL_META_OBJECT);
         bk=new BankingHelper();
 
 
