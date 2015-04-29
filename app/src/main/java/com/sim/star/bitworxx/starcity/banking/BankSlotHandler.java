@@ -17,9 +17,14 @@ public class BankSlotHandler extends BaseHandler<BankSlotMetaObject,BankSlotMeta
     }
 
     @Override
+    protected String className() {
+        return "com.sim.star.bitworxx.starcity.banking.BankSlotMetaObjectContainer";
+    }
+
+    @Override
     protected void create() {
 
-        add(BankingHelper.createBaseSlot());
+        add(BankingHelper.createBaseSlot(ParentId));
 
     }
 

@@ -17,6 +17,11 @@ public class GalaxySystemHandler extends BaseHandler<GalaxySystemMetaObject,Meta
         fill();
     }
 
+    @Override
+    protected String className() {
+        return "com.sim.star.bitworxx.starcity.meta.MetaObjectContainer";
+    }
+
     public void fill()
     {
         SystemObjects=new HashMap<>();

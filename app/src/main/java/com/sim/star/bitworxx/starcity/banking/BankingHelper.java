@@ -5,6 +5,7 @@ import com.sim.star.bitworxx.starcity.meta.fields.F;
 import com.sim.star.bitworxx.starcity.player.PlayerStore;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +17,7 @@ public class BankingHelper {
 
 
 
-public static HashMap<String,BankHandler> Bank;
+public static HashMap<String,BankMetaObjectContainer> Bank;
 
     static{
 
@@ -34,17 +35,38 @@ public static HashMap<String,BankHandler> Bank;
     public static BankMetaObject getBank(String playerId)
     {
        if(!Bank.containsKey(playerId))
-           Bank.put(playerId,new BankHandler("bank",playerId));
+       {
+           BankMetaObjectContainer container = new BankMetaObjectContainer("bank");
+           DB.fillContainer(container);
+           container.split(F.FIELD_PARENT_ID, playerId);
+           if(container.getFirst()==null)
+           {
+               BankMetaObject b = new BankMetaObject(playerId);
+               b.create();
+               b.setFieldValue(F.FIELD_PARENT_ID,playerId);
+               container.register(DB.addMetaObject(b),b);
+           }
+           Bank.put(playerId,container);
+       }
        if(Bank.containsKey(playerId))
-           return Bank.get(playerId).Container.getFirst();
+       {
+           BankMetaObjectContainer c = Bank.get(playerId);
+            try{return c.getFirst();
+
+
+            }catch(Exception e){
+                String ex=e.getMessage();
+            }
+
+       };
        return null;
     }
 
     public static BankSlotMetaObject getSlot(String slotId)
     {
-       for(Map.Entry<String,BankHandler> b : Bank.entrySet())
+       for(Map.Entry<String,BankMetaObjectContainer> b : Bank.entrySet())
        {
-           for(Map.Entry<Integer,BankMetaObject> e:b.getValue().Container.Objects.entrySet())
+           for(Map.Entry<Integer,BankMetaObject> e:b.getValue().Objects.entrySet())
            {
                BankSlotMetaObject result = e.getValue().getSlotById(slotId);
                if(result!=null)
@@ -62,13 +84,15 @@ public static HashMap<String,BankHandler> Bank;
     public static String formatMoney(float value)
     {
         DecimalFormat formatter = (DecimalFormat)NumberFormat.getCurrencyInstance();
-        formatter.getDecimalFormatSymbols().setCurrencySymbol("");
+        DecimalFormatSymbols symbols = formatter.getDecimalFormatSymbols();
+        symbols.setCurrencySymbol("");
+        formatter.setDecimalFormatSymbols(symbols);
         String money= formatter.format((long) value);
 
         return money;
     }
 
-    public static BankSlotMetaObject createBaseSlot()
+    public static BankSlotMetaObject createBaseSlot(String parentId)
     {
         BankSlotMetaObject slot = new BankSlotMetaObject(PlayerStore.LAST_PLAYER.getId());
         slot.create();
@@ -82,6 +106,7 @@ public static HashMap<String,BankHandler> Bank;
         slot.setFieldInternalValue(F.FIELD_BANK_SLOT_RED_CRISTAL,(float)10);
         slot.setFieldInternalValue(F.FIELD_BANK_SLOT_VIOLET_CRISTAL,(float)1);
         slot.setFieldValue(F.FIELD_BANK_SLOT_TYPE,"main");
+        slot.setFieldValue(F.FIELD_PARENT_ID,parentId);
 
         return slot;
     }

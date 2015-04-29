@@ -36,6 +36,7 @@ import com.sim.star.bitworxx.starcity.db.Meta;
 import com.sim.star.bitworxx.starcity.meta.MetaObjectContainer;
 import com.sim.star.bitworxx.starcity.meta.object.handler.GalaxyHandler;
 import com.sim.star.bitworxx.starcity.meta.object.handler.GalaxySystemHandler;
+import com.sim.star.bitworxx.starcity.meta.store.BankStorageLoader;
 import com.sim.star.bitworxx.starcity.player.PlayerStore;
 import com.sim.star.bitworxx.starcity.runnable.RunnablesMainMenu;
 import com.sim.star.bitworxx.starcity.views.Main;
@@ -63,6 +64,8 @@ public class MainScreen extends Activity {
     private PlayerStore pl;
     private int Count=0;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +80,12 @@ public class MainScreen extends Activity {
 
 
         pl = new PlayerStore();
+
+        BankStorageLoader bl = new BankStorageLoader(PlayerStore.LAST_PLAYER.getId());
+
+        bl.load();
+
+
         ResultIntent = this.getIntent();
         Task = TaskStackBuilder.create(this);
         Task.addNextIntent(ResultIntent);

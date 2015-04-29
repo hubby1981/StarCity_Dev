@@ -40,6 +40,11 @@ public class GalaxySystemObjectHandler extends BaseHandler<MetaObject,MetaObject
     }
 
     @Override
+    protected String className() {
+        return "com.sim.star.bitworxx.starcity.meta.MetaObjectContainer";
+    }
+
+    @Override
     protected void create() {
 
        createSun();

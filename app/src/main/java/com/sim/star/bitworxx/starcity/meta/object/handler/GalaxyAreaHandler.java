@@ -19,6 +19,11 @@ public class GalaxyAreaHandler extends BaseHandler<GalaxyAreaMetaObject,MetaObje
     }
 
     @Override
+    protected String className() {
+        return "com.sim.star.bitworxx.starcity.meta.MetaObjectContainer";
+    }
+
+    @Override
     protected void create() {
 
 

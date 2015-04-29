@@ -20,6 +20,7 @@ import java.util.Map;
 public abstract class BaseHandler<T extends MetaObject,TC extends MetaObjectContainer<T>> {
     protected ArrayList<String> _names= new ArrayList<>();
 
+
     public TC Container;
     public String ParentId;
     public BaseHandler(String name)
@@ -76,13 +77,13 @@ public abstract class BaseHandler<T extends MetaObject,TC extends MetaObjectCont
     {
 
         try {
-            new ParameterizedType()
-
-            Container=result;
+           Container = (TC)Class.forName(className()).getDeclaredConstructor(String.class).newInstance(name);
         }catch(Exception e){
             String ex=e.getMessage();
         };
     }
+
+    protected abstract String className();
 
     public void split()
     {
@@ -95,6 +96,16 @@ public abstract class BaseHandler<T extends MetaObject,TC extends MetaObjectCont
         DB.fillContainer(Container);
         if(Container.Objects.size()==0)
             create();
+        else
+            reloadParent();
+    }
+
+    public void reloadParent()
+    {
+      for(Map.Entry<Integer,T> e : Container.Objects.entrySet())
+      {
+          e.getValue().ParentId=ParentId;
+      }
     }
 
     public void save()

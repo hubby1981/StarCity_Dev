@@ -9,7 +9,7 @@ import com.sim.star.bitworxx.starcity.meta.fields.F;
 
 public class BankMetaObject extends MetaObject {
 
-    private String ParentId="";
+
     public BankSlotHandler Handler;
 
     public BankMetaObject(String parentId)

@@ -24,6 +24,7 @@ public class MetaObject implements IMetaObject
     public String Name;
     public boolean WasNew=false;
     public Integer RealDB=0;
+    public String ParentId="";
     public MetaObject(String name)
     {
         Fields=new MetaFieldContainer();

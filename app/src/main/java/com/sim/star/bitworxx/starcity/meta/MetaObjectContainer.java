@@ -22,9 +22,9 @@ public class MetaObjectContainer<T extends MetaObject> {
         Name=name;
     }
 
-    public MetaObjectContainer split(String field,String value)
+    public <TA extends MetaObjectContainer<T>> TA split(String field,String value)
     {
-        MetaObjectContainer container =new MetaObjectContainer(value);
+        TA container =(TA)createThis(value);
         for (Map.Entry<Integer,T> e : Objects.entrySet())
         {
             if(e.getValue().hasField(field,value))
