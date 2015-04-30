@@ -33,6 +33,11 @@ public class MainIndexPattern extends PatternBase {
         Contents.add(new ContentDescription(new CoPo(10,9,13,9),"rbn-use-action-1", ContentType.RADIOBOX));
         Contents.add(new ContentDescription(new CoPo(10,10,13,10),"rbn-use-action-2", ContentType.RADIOBOX));
 
+
+        Contents.add(new ContentDescription(new CoPo(1,11,6,11),"",ContentType.PROGRESS_BAR));
+        Contents.add(new ContentDescription(new CoPo(1,13,3,15),"",ContentType.PROGRESS_ARC));
+
+
         Patterns.add(new MainSystemButtonPattern());
     }
 }

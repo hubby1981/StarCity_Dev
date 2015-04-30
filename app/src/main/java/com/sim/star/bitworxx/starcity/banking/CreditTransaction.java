@@ -28,15 +28,15 @@ public class CreditTransaction {
 
     public String transact()
     {
-        BankSlotMetaObject slotTo = BankingHelper.getSlot(TO);
-        BankSlotMetaObject slotFrom = BankingHelper.getSlot(FROM);
+        BankSlotBaseMetaObject slotTo =new BankSlotBaseMetaObject( BankingHelper.getSlot(TO));
+        BankSlotBaseMetaObject slotFrom = new BankSlotBaseMetaObject(BankingHelper.getSlot(FROM));
 
 
 
-        if(slotFrom!=null)
+        if(slotFrom.HasMeta)
         {
-            if(slotFrom.transactId(ID)) {
-                if (slotTo != null) {
+            if(slotFrom.transactId(ID,MONEY)) {
+                if (slotTo.HasMeta) {
                     slotTo.addMoney(MONEY);
                     slotTo.save();
                     slotFrom.save();
@@ -46,7 +46,7 @@ public class CreditTransaction {
         }
         else
         {
-            if(slotTo!=null)
+            if(slotTo.HasMeta)
             {
                 slotTo.addMoney(MONEY);
                 slotTo.save();

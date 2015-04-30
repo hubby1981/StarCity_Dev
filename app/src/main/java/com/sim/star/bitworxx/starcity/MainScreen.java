@@ -1,32 +1,16 @@
 package com.sim.star.bitworxx.starcity;
 
 import android.app.Activity;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Rect;
 import android.graphics.Shader;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.sim.star.bitworxx.starcity.app.StarCityApp;
 import com.sim.star.bitworxx.starcity.banking.BankingHelper;
 import com.sim.star.bitworxx.starcity.constants.ColorSetter;
 import com.sim.star.bitworxx.starcity.constants.DB;
-import com.sim.star.bitworxx.starcity.constants.DirtyRects;
 import com.sim.star.bitworxx.starcity.constants.MenuBitmaps;
 import com.sim.star.bitworxx.starcity.constants.MenuConst;
 import com.sim.star.bitworxx.starcity.constants.RBN;
@@ -34,18 +18,12 @@ import com.sim.star.bitworxx.starcity.constants.SqlTables;
 import com.sim.star.bitworxx.starcity.cycle.GM;
 import com.sim.star.bitworxx.starcity.db.Meta;
 import com.sim.star.bitworxx.starcity.meta.MetaObjectContainer;
-import com.sim.star.bitworxx.starcity.meta.object.handler.GalaxyHandler;
-import com.sim.star.bitworxx.starcity.meta.object.handler.GalaxySystemHandler;
-import com.sim.star.bitworxx.starcity.meta.store.BankStorageLoader;
+import com.sim.star.bitworxx.starcity.meta.storages.BankStorageLoader;
 import com.sim.star.bitworxx.starcity.player.PlayerStore;
-import com.sim.star.bitworxx.starcity.runnable.RunnablesMainMenu;
-import com.sim.star.bitworxx.starcity.views.Main;
 import com.sim.star.bitworxx.starcity.views.touch.ActionContainer;
 
-import java.net.IDN;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.UUID;
 
 public class MainScreen extends Activity {
 
@@ -75,15 +53,14 @@ public class MainScreen extends Activity {
         ac = new ActionContainer();
         db = new DB();
         db.setConnection(openOrCreateDatabase(DB.DB_NAME, MODE_PRIVATE, null));
-       // db.Connection.execSQL("delete from "+SqlTables.SQL_META_OBJECT);
-        bk=new BankingHelper();
+       // db.Connection.execSQL("delete from "+ SqlTables.SQL_META_OBJECT);
 
 
         pl = new PlayerStore();
+        bk=new BankingHelper();
 
-        BankStorageLoader bl = new BankStorageLoader(PlayerStore.LAST_PLAYER.getId());
 
-        bl.load();
+
 
 
         ResultIntent = this.getIntent();

@@ -48,7 +48,9 @@ public class ContentDescription {
                                         T==ContentType.CHECKBOX ?buildCheckbox():
                                                 T==ContentType.RADIOBOX ?buildRadiobox():
                                                         T==ContentType.SYSTEM_OBJECT?buildSystemObject():
-                                                                null;
+                                                                T==ContentType.PROGRESS_BAR?new ProgressBarContent(P):
+                                                                        T==ContentType.PROGRESS_ARC?new ProgressArcContent(P):
+                                                                                null;
     }
 
 

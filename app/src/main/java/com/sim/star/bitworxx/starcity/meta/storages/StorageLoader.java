@@ -1,9 +1,10 @@
-package com.sim.star.bitworxx.starcity.meta.store;
+package com.sim.star.bitworxx.starcity.meta.storages;
 
 import com.sim.star.bitworxx.starcity.constants.DB;
 import com.sim.star.bitworxx.starcity.meta.MetaObject;
 import com.sim.star.bitworxx.starcity.meta.MetaObjectContainer;
 import com.sim.star.bitworxx.starcity.meta.fields.F;
+import com.sim.star.bitworxx.starcity.meta.storages.factory.FAC;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -30,6 +31,25 @@ public abstract class StorageLoader {
     protected abstract void loadNames();
 
 
+    public void getByNameAndParentId(String parentId,String name,ArrayList<MetaObject> result)
+    {
+
+            for( Storage s : Items)
+            {
+                s.getByNameAndParentId(parentId,name,result);
+            }
+
+}
+    public void getByNameAndId(String parentId,String name,ArrayList<MetaObject> result)
+    {
+
+        for( Storage s : Items)
+        {
+            s.getByNameAndId(parentId,name,result);
+        }
+
+    }
+
     public void load()
     {
         Items=new ArrayList<>();
@@ -40,7 +60,7 @@ public abstract class StorageLoader {
             MetaObjectContainer<MetaObject> container = new MetaObjectContainer<>(name);
             DB.fillContainer(container);
             if(ParentId!="")
-                container.split(F.FIELD_PARENT_ID,ParentId);
+                container=container.split(F.FIELD_PARENT_ID,ParentId);
             if(container.Objects.size()>0)
             {
                 for(Map.Entry<Integer,MetaObject> m : container.Objects.entrySet())
@@ -50,6 +70,19 @@ public abstract class StorageLoader {
                     Items.add(new Storage(m.getValue(),LoadPipe));
                 }
             }
+            else {
+
+                ArrayList<MetaObject> created = FAC.create(ParentId,name);
+
+                for(MetaObject m :created)
+                {
+                    if(m!=null)
+                    {
+                        Items.add(new Storage(m,LoadPipe));
+                    }
+                }
+            }
+
         }
     }
 }

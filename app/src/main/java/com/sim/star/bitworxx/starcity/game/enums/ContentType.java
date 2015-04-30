@@ -10,5 +10,7 @@ public enum ContentType {
     LINE,
     CHECKBOX,
     RADIOBOX,
-    SYSTEM_OBJECT
+    SYSTEM_OBJECT,
+    PROGRESS_BAR,
+    PROGRESS_ARC
 }

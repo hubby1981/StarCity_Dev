@@ -43,8 +43,9 @@ public class BTN {
         ALL_BUTTON.put("en-btn-system-buy", new ButtonDescription(new Runnable() {
             @Override
             public void run() {
-                CreditTransaction transaction = new CreditTransaction(100000, PlayerStore.getPlayerBank().receiveMoney());
+                CreditTransaction transaction = new CreditTransaction(1245148, PlayerStore.getPlayerBank().receiveMoney());
                 transaction.transact();
+                MenuBitmaps.BitmapDrawables.clear();
                 MainScreen.Init.run();
             }
         }));

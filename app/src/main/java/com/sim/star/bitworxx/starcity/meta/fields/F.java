@@ -26,6 +26,9 @@ public class F {
 
     public static String FIELD_BANK_SLOT_TYPE ="slot_type";
     public static String FIELD_BANK_SLOT_CREDITS ="credits";
+    public static String FIELD_BANK_SLOT_CREDITS_SEND ="for_send";
+    public static String FIELD_BANK_SLOT_CREDITS_RECEIVE ="for_receive";
+
     public static String FIELD_BANK_SLOT_TECH_POINTS ="tech_points";
     public static String FIELD_BANK_SLOT_SKILL_POINTS ="skill_points";
     public static String FIELD_BANK_SLOT_LOOP_POINTS ="loop_points";

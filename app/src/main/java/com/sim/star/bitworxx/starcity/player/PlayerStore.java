@@ -1,10 +1,10 @@
 package com.sim.star.bitworxx.starcity.player;
 
-import com.sim.star.bitworxx.starcity.banking.BankMetaObject;
+
+import com.sim.star.bitworxx.starcity.banking.BankBaseMetaObject;
 import com.sim.star.bitworxx.starcity.banking.BankingHelper;
 import com.sim.star.bitworxx.starcity.constants.DB;
 import com.sim.star.bitworxx.starcity.game.enums.RaceEnum;
-import com.sim.star.bitworxx.starcity.meta.MetaObjectContainer;
 
 /**
  * Created by WEIS on 29.04.2015.
@@ -21,9 +21,9 @@ public class PlayerStore {
     }
 
 
-    public static BankMetaObject getPlayerBank()
+    public static BankBaseMetaObject getPlayerBank()
     {
-        return BankingHelper.getBank(LAST_PLAYER.getId());
+        return new BankBaseMetaObject(BankingHelper.getBank(LAST_PLAYER.getId()));
     }
 
 
