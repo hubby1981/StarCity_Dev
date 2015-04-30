@@ -16,6 +16,7 @@ import java.util.Map;
 
 /**
  * Created by WEIS on 29.04.2015.
+ * Static object to handle the bank objects base
  */
 public class BankingHelper {
 

@@ -6,6 +6,7 @@ import com.sim.star.bitworxx.starcity.meta.fields.F;
 
 /**
  * Created by WEIS on 29.04.2015.
+ * a slot object handler
  */
 public class BankSlotBaseMetaObject extends BaseMetaObject {
 

@@ -5,6 +5,7 @@ import android.content.Context;
 
 /**
  * Created by WEIS on 17.04.2015.
+ * Only the App object as Singleton
  */
 public class StarCityApp extends Application {
 

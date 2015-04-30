@@ -4,6 +4,7 @@ import java.util.UUID;
 
 /**
  * Created by WEIS on 29.04.2015.
+ * a transaction from and to a slot from could be empty and the money must be marked as get
  */
 public class CreditTransaction {
 

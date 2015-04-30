@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 /**
  * Created by WEIS on 30.04.2015.
+ * Helps to handle base bank activities
  */
 public class BankBaseMetaObject extends BaseMetaObject {
 

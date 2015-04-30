@@ -5,6 +5,7 @@ import com.sim.star.bitworxx.starcity.meta.MetaObject;
 
 /**
  * Created by WEIS on 30.04.2015.
+ * This object helps to interact with the metaobjects base like saving or handling
  */
 public abstract class BaseMetaObject {
 
