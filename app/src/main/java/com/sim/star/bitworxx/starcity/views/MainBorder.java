@@ -2,6 +2,7 @@ package com.sim.star.bitworxx.starcity.views;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -18,6 +19,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.sim.star.bitworxx.starcity.MainScreen;
+import com.sim.star.bitworxx.starcity.R;
 import com.sim.star.bitworxx.starcity.constants.CliprRects;
 import com.sim.star.bitworxx.starcity.constants.ColorSetter;
 import com.sim.star.bitworxx.starcity.constants.ContentFont;
@@ -540,14 +542,34 @@ private Paint HeaderFontPaint;
         String money= PlayerStore.getPlayerBank().getMainMoney();
         String skill="439";
         String tech ="22";
-
+        String c1 ="1000";
+        String c2 ="500";
+        String c3 ="100";
+        String c4 ="10";
+        String c5 ="1";
         Rect rbi = new Rect(leftPage.right+MenuConst.MARGIN_CLIP_MINI*2,leftPage.top+2,(leftPage.right+MenuConst.MARGIN_CLIP_MINI*2)+hh,leftPage.top+hh);
         int tw = (int) HeaderFontPaint.measureText(money);
         int tw2 = (int) HeaderFontPaint.measureText(skill);
+        int tw3 = (int) HeaderFontPaint.measureText(tech);
+        int tw4 = (int) HeaderFontPaint.measureText(c1);
+        int tw5 = (int) HeaderFontPaint.measureText(c2);
+        int tw6 = (int) HeaderFontPaint.measureText(c3);
+        int tw7 = (int) HeaderFontPaint.measureText(c4);
 
-        Rect rsi = new Rect((rbi.right+tw)+MenuConst.MARGIN_CLIP_MINI*2,leftPage.top+2,((rbi.right+tw)+MenuConst.MARGIN_CLIP_MINI*2)+hh,leftPage.top+hh);
 
-        Rect rti = new Rect((rsi.right+tw2)+MenuConst.MARGIN_CLIP_MINI*2,leftPage.top+2,((rsi.right+tw2)+MenuConst.MARGIN_CLIP_MINI*2)+hh,leftPage.top+hh);
+        Rect rsi = new Rect((rbi.right+tw)+MenuConst.MARGIN_CLIP_MINI*3,leftPage.top+2,((rbi.right+tw)+MenuConst.MARGIN_CLIP_MINI*2)+hh,leftPage.top+hh);
+
+        Rect rti = new Rect((rsi.right+tw2)+MenuConst.MARGIN_CLIP_MINI*3,leftPage.top+2,((rsi.right+tw2)+MenuConst.MARGIN_CLIP_MINI*2)+hh,leftPage.top+hh);
+
+        Rect rci1 = new Rect((rti.right+tw3)+MenuConst.MARGIN_CLIP_MINI*3,leftPage.top+2,((rti.right+tw3)+MenuConst.MARGIN_CLIP_MINI*2)+hh,leftPage.top+hh);
+        Rect rci2 = new Rect((rci1.right+tw4)+MenuConst.MARGIN_CLIP_MINI*3,leftPage.top+2,((rci1.right+tw4)+MenuConst.MARGIN_CLIP_MINI*2)+hh,leftPage.top+hh);
+        Rect rci3 = new Rect((rci2.right+tw5)+MenuConst.MARGIN_CLIP_MINI*3,leftPage.top+2,((rci2.right+tw5)+MenuConst.MARGIN_CLIP_MINI*2)+hh,leftPage.top+hh);
+
+        Rect rci4 = new Rect((rci3.right+tw6)+MenuConst.MARGIN_CLIP_MINI*3,leftPage.top+2,((rci3.right+tw6)+MenuConst.MARGIN_CLIP_MINI*2)+hh,leftPage.top+hh);
+
+        Rect rci5 = new Rect((rci4.right+tw7)+MenuConst.MARGIN_CLIP_MINI*3,leftPage.top+2,((rci4.right+tw7)+MenuConst.MARGIN_CLIP_MINI*2)+hh,leftPage.top+hh);
+
+
 
         BankIcon bi = new BankIcon();
         SkillIcon si = new SkillIcon();
@@ -559,6 +581,24 @@ private Paint HeaderFontPaint;
         canvas.drawText(skill, rsi.right + 4, rsi.centerY() + rsi.height() / 4, HeaderFontPaint);
         canvas.drawPath(ti.getPath(rti), MenuConst.FORE_PAINTER_ICON);
         canvas.drawText(tech, rti.right + 4, rti.centerY() + rti.height() / 4, HeaderFontPaint);
+        Bitmap bitC1 = BitmapFactory.decodeResource(getResources(), R.drawable.c1);
+        Bitmap bitC2 = BitmapFactory.decodeResource(getResources(), R.drawable.c2);
+        Bitmap bitC3 = BitmapFactory.decodeResource(getResources(), R.drawable.c3);
+        Bitmap bitC4 = BitmapFactory.decodeResource(getResources(), R.drawable.c4);
+        Bitmap bitC5 = BitmapFactory.decodeResource(getResources(), R.drawable.c5);
+
+        canvas.drawBitmap(bitC1,new Rect(0,0,bitC1.getWidth(),bitC1.getHeight()),rci1,null);
+        canvas.drawBitmap(bitC2,new Rect(0,0,bitC2.getWidth(),bitC2.getHeight()),rci2,null);
+        canvas.drawBitmap(bitC3,new Rect(0,0,bitC3.getWidth(),bitC3.getHeight()),rci3,null);
+        canvas.drawBitmap(bitC4,new Rect(0,0,bitC4.getWidth(),bitC4.getHeight()),rci4,null);
+        canvas.drawBitmap(bitC5,new Rect(0,0,bitC5.getWidth(),bitC5.getHeight()),rci5,null);
+
+        canvas.drawText(c1, rci1.right - 1, rci1.centerY() + rci1.height() / 4, HeaderFontPaint);
+        canvas.drawText(c2, rci2.right - 1, rci2.centerY() + rci1.height() / 4, HeaderFontPaint);
+        canvas.drawText(c3, rci3.right - 1, rci3.centerY() + rci1.height() / 4, HeaderFontPaint);
+        canvas.drawText(c4, rci4.right - 1, rci4.centerY() + rci1.height() / 4, HeaderFontPaint);
+        canvas.drawText(c5, rci5.right - 1, rci5.centerY() + rci1.height() / 4, HeaderFontPaint);
+
 
         canvas.clipRect(InnerRect, Region.Op.UNION);
 
