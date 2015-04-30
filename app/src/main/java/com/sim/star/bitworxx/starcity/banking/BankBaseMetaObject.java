@@ -35,6 +35,54 @@ public class BankBaseMetaObject extends BaseMetaObject {
         return BankingHelper.formatMoney( slot!=null?slot.DATA.getInternalValue(F.FIELD_BANK_SLOT_CREDITS):0);
     }
 
+    public String getMainSkill()
+    {
+        BankSlotBaseMetaObject slot = getMainSlot();
+        return ((Integer)(int)slot.DATA.getInternalValue(F.FIELD_BANK_SLOT_SKILL_POINTS)).toString();
+    }
+
+    public String getMainTech()
+    {
+        BankSlotBaseMetaObject slot = getMainSlot();
+        return ((Integer)(int)slot.DATA.getInternalValue(F.FIELD_BANK_SLOT_TECH_POINTS)).toString();
+    }
+    public String getMainLoop()
+    {
+        BankSlotBaseMetaObject slot = getMainSlot();
+        return ((Integer)(int)slot.DATA.getInternalValue(F.FIELD_BANK_SLOT_LOOP_POINTS)).toString();
+    }
+
+    public String getMainCrystalBlue()
+    {
+        BankSlotBaseMetaObject slot = getMainSlot();
+        return ((Integer)(int)slot.DATA.getInternalValue(F.FIELD_BANK_SLOT_BLUE_CRISTAL)).toString();
+    }
+
+    public String getMainCrystalGreen()
+    {
+        BankSlotBaseMetaObject slot = getMainSlot();
+        return ((Integer)(int)slot.DATA.getInternalValue(F.FIELD_BANK_SLOT_GREEN_CRISTAL)).toString();
+    }
+
+    public String getMainCrystalYellow()
+    {
+        BankSlotBaseMetaObject slot = getMainSlot();
+        return ((Integer)(int)slot.DATA.getInternalValue(F.FIELD_BANK_SLOT_YELLOW_CRISTAL)).toString();
+    }
+
+    public String getMainCrystalRed()
+    {
+        BankSlotBaseMetaObject slot = getMainSlot();
+        return ((Integer)(int)slot.DATA.getInternalValue(F.FIELD_BANK_SLOT_RED_CRISTAL)).toString();
+    }
+
+    public String getMainCrystalViolet()
+    {
+        BankSlotBaseMetaObject slot = getMainSlot();
+        return ((Integer)(int)slot.DATA.getInternalValue(F.FIELD_BANK_SLOT_VIOLET_CRISTAL)).toString();
+    }
+
+
     public String receiveMoney()
     {
         BankSlotBaseMetaObject slot = getMainSlot();

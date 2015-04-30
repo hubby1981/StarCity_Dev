@@ -540,14 +540,14 @@ private Paint HeaderFontPaint;
         int hh = (int)(leftPage.height()/1.6)+2;
 
         String money= PlayerStore.getPlayerBank().getMainMoney();
-        String skill="439";
-        String tech ="22";
-        String c1 ="1000";
-        String c2 ="500";
-        String c3 ="100";
-        String c4 ="10";
-        String c5 ="1";
-        Rect rbi = new Rect(leftPage.right+MenuConst.MARGIN_CLIP_MINI*2,leftPage.top+2,(leftPage.right+MenuConst.MARGIN_CLIP_MINI*2)+hh,leftPage.top+hh);
+        String skill=PlayerStore.getPlayerBank().getMainLoop();
+        String tech =PlayerStore.getPlayerBank().getMainTech();
+        String c1 =PlayerStore.getPlayerBank().getMainCrystalBlue();
+        String c2 =PlayerStore.getPlayerBank().getMainCrystalGreen();
+        String c3 =PlayerStore.getPlayerBank().getMainCrystalYellow();
+        String c4 =PlayerStore.getPlayerBank().getMainCrystalRed();
+        String c5 =PlayerStore.getPlayerBank().getMainCrystalViolet();
+        Rect rbi = new Rect(leftPage.right+MenuConst.MARGIN_CLIP_MINI*1,leftPage.top+2,(leftPage.right+MenuConst.MARGIN_CLIP_MINI*1)+hh,leftPage.top+hh);
         int tw = (int) HeaderFontPaint.measureText(money);
         int tw2 = (int) HeaderFontPaint.measureText(skill);
         int tw3 = (int) HeaderFontPaint.measureText(tech);
@@ -557,17 +557,17 @@ private Paint HeaderFontPaint;
         int tw7 = (int) HeaderFontPaint.measureText(c4);
 
 
-        Rect rsi = new Rect((rbi.right+tw)+MenuConst.MARGIN_CLIP_MINI*3,leftPage.top+2,((rbi.right+tw)+MenuConst.MARGIN_CLIP_MINI*2)+hh,leftPage.top+hh);
+        Rect rsi = new Rect((rbi.right+tw)+MenuConst.MARGIN_CLIP_MINI*1,leftPage.top+2,((rbi.right+tw)+MenuConst.MARGIN_CLIP_MINI*1)+hh,leftPage.top+hh);
 
-        Rect rti = new Rect((rsi.right+tw2)+MenuConst.MARGIN_CLIP_MINI*3,leftPage.top+2,((rsi.right+tw2)+MenuConst.MARGIN_CLIP_MINI*2)+hh,leftPage.top+hh);
+        Rect rti = new Rect((rsi.right+tw2)+MenuConst.MARGIN_CLIP_MINI*1,leftPage.top+2,((rsi.right+tw2)+MenuConst.MARGIN_CLIP_MINI*1)+hh,leftPage.top+hh);
 
-        Rect rci1 = new Rect((rti.right+tw3)+MenuConst.MARGIN_CLIP_MINI*3,leftPage.top+2,((rti.right+tw3)+MenuConst.MARGIN_CLIP_MINI*2)+hh,leftPage.top+hh);
-        Rect rci2 = new Rect((rci1.right+tw4)+MenuConst.MARGIN_CLIP_MINI*3,leftPage.top+2,((rci1.right+tw4)+MenuConst.MARGIN_CLIP_MINI*2)+hh,leftPage.top+hh);
-        Rect rci3 = new Rect((rci2.right+tw5)+MenuConst.MARGIN_CLIP_MINI*3,leftPage.top+2,((rci2.right+tw5)+MenuConst.MARGIN_CLIP_MINI*2)+hh,leftPage.top+hh);
+        Rect rci1 = new Rect((rti.right+tw3)+MenuConst.MARGIN_CLIP_MINI*1,leftPage.top+2,((rti.right+tw3)+MenuConst.MARGIN_CLIP_MINI*1)+hh,leftPage.top+hh);
+        Rect rci2 = new Rect((rci1.right+tw4)+MenuConst.MARGIN_CLIP_MINI*1,leftPage.top+2,((rci1.right+tw4)+MenuConst.MARGIN_CLIP_MINI*1)+hh,leftPage.top+hh);
+        Rect rci3 = new Rect((rci2.right+tw5)+MenuConst.MARGIN_CLIP_MINI*1,leftPage.top+2,((rci2.right+tw5)+MenuConst.MARGIN_CLIP_MINI*1)+hh,leftPage.top+hh);
 
-        Rect rci4 = new Rect((rci3.right+tw6)+MenuConst.MARGIN_CLIP_MINI*3,leftPage.top+2,((rci3.right+tw6)+MenuConst.MARGIN_CLIP_MINI*2)+hh,leftPage.top+hh);
+        Rect rci4 = new Rect((rci3.right+tw6)+MenuConst.MARGIN_CLIP_MINI*1,leftPage.top+2,((rci3.right+tw6)+MenuConst.MARGIN_CLIP_MINI*1)+hh,leftPage.top+hh);
 
-        Rect rci5 = new Rect((rci4.right+tw7)+MenuConst.MARGIN_CLIP_MINI*3,leftPage.top+2,((rci4.right+tw7)+MenuConst.MARGIN_CLIP_MINI*2)+hh,leftPage.top+hh);
+        Rect rci5 = new Rect((rci4.right+tw7)+MenuConst.MARGIN_CLIP_MINI*1,leftPage.top+2,((rci4.right+tw7)+MenuConst.MARGIN_CLIP_MINI*1)+hh,leftPage.top+hh);
 
 
 
@@ -576,11 +576,11 @@ private Paint HeaderFontPaint;
         TechIcon ti = new TechIcon();
 
         canvas.drawPath( bi.getPath(rbi),MenuConst.FORE_PAINTER_ICON);
-        canvas.drawText(money, rbi.right + 4, rbi.centerY() + rbi.height() / 4, HeaderFontPaint);
+        canvas.drawText(money, rbi.right, rbi.centerY() + rbi.height() / 4, HeaderFontPaint);
         canvas.drawPath(si.getPath(rsi), MenuConst.FORE_PAINTER_ICON);
-        canvas.drawText(skill, rsi.right + 4, rsi.centerY() + rsi.height() / 4, HeaderFontPaint);
+        canvas.drawText(skill, rsi.right, rsi.centerY() + rsi.height() / 4, HeaderFontPaint);
         canvas.drawPath(ti.getPath(rti), MenuConst.FORE_PAINTER_ICON);
-        canvas.drawText(tech, rti.right + 4, rti.centerY() + rti.height() / 4, HeaderFontPaint);
+        canvas.drawText(tech, rti.right, rti.centerY() + rti.height() / 4, HeaderFontPaint);
         Bitmap bitC1 = BitmapFactory.decodeResource(getResources(), R.drawable.c1);
         Bitmap bitC2 = BitmapFactory.decodeResource(getResources(), R.drawable.c2);
         Bitmap bitC3 = BitmapFactory.decodeResource(getResources(), R.drawable.c3);
@@ -593,11 +593,11 @@ private Paint HeaderFontPaint;
         canvas.drawBitmap(bitC4,new Rect(0,0,bitC4.getWidth(),bitC4.getHeight()),rci4,null);
         canvas.drawBitmap(bitC5,new Rect(0,0,bitC5.getWidth(),bitC5.getHeight()),rci5,null);
 
-        canvas.drawText(c1, rci1.right - 1, rci1.centerY() + rci1.height() / 4, HeaderFontPaint);
-        canvas.drawText(c2, rci2.right - 1, rci2.centerY() + rci1.height() / 4, HeaderFontPaint);
-        canvas.drawText(c3, rci3.right - 1, rci3.centerY() + rci1.height() / 4, HeaderFontPaint);
-        canvas.drawText(c4, rci4.right - 1, rci4.centerY() + rci1.height() / 4, HeaderFontPaint);
-        canvas.drawText(c5, rci5.right - 1, rci5.centerY() + rci1.height() / 4, HeaderFontPaint);
+        canvas.drawText(c1, rci1.right, rci1.centerY() + rci1.height() / 4, HeaderFontPaint);
+        canvas.drawText(c2, rci2.right, rci2.centerY() + rci1.height() / 4, HeaderFontPaint);
+        canvas.drawText(c3, rci3.right, rci3.centerY() + rci1.height() / 4, HeaderFontPaint);
+        canvas.drawText(c4, rci4.right, rci4.centerY() + rci1.height() / 4, HeaderFontPaint);
+        canvas.drawText(c5, rci5.right, rci5.centerY() + rci1.height() / 4, HeaderFontPaint);
 
 
         canvas.clipRect(InnerRect, Region.Op.UNION);
