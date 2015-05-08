@@ -500,6 +500,7 @@ private Paint HeaderFontPaint;
         pPlate = makePlateH(canvas, getOutboundRect().left, getOutboundRect().top+wH, getOutboundRect().right, getInboundRect().top+wH, true,false);
 
 
+
         if (HasTitle) {
             pPlate=makePlateH(canvas, getTitleRect().left, getOutboundRect().bottom-wH, getTitleRect().right, (getTitleRect().bottom - translateMarginHeight())-wH, false,false);
         } else {

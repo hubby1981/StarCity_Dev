@@ -19,8 +19,8 @@ public class GM {
     public static GM_LoopTicker LT;
     public static GM_TimeFrame TF;
 
-    public static String LOCALE = "en-";
-    public static String LOCALE_A = Locale.getDefault().getLanguage()+"-";
+    public static String LOCALE = "en";
+    public static String LOCALE_A = Locale.getDefault().getLanguage();
     public static long TS=0;
     public static long TE =0;
     public static long DEGREE = 0;

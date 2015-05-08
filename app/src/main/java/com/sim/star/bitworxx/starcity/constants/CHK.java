@@ -43,8 +43,8 @@ public class CHK {
 
     public static CheckboxDescription getInternal(String key)
     {
-        String k1 = GM.LOCALE_A +key;
-        String k2 = GM.LOCALE + key;
+        String k1 = GM.LOCALE_A +"-"+key;
+        String k2 = GM.LOCALE +"-"+ key;
 
         return ALL_CHECKBOX.containsKey(k1)?ALL_CHECKBOX.get(k1):ALL_CHECKBOX.containsKey(k2)?ALL_CHECKBOX.get(k2):new CheckboxDescription(new TextDescription(key, TextSize.TEXT),getActionForKey(key,false));
     }

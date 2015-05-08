@@ -125,8 +125,8 @@ public class BTN {
 
     public static ButtonDescription getInternal(String key)
     {
-        String k1 = GM.LOCALE_A +key;
-        String k2 = GM.LOCALE + key;
+        String k1 = GM.LOCALE_A +"-"+key;
+        String k2 = GM.LOCALE +"-"+ key;
 
         return ALL_BUTTON.containsKey(k1)?ALL_BUTTON.get(k1):ALL_BUTTON.containsKey(k2)?ALL_BUTTON.get(k2):new ButtonDescription(new TextDescription(key,TextSize.TEXT),null);
     }

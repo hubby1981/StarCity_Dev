@@ -71,8 +71,8 @@ public class RBN {
 
     public static RadioboxDescription getInternal(String key)
     {
-        String k1 = GM.LOCALE_A +key;
-        String k2 = GM.LOCALE + key;
+        String k1 = GM.LOCALE_A +"-"+key;
+        String k2 = GM.LOCALE +"-"+ key;
 
         return ALL_CHECKBOX.containsKey(k1)?
                 ALL_CHECKBOX.get(k1):

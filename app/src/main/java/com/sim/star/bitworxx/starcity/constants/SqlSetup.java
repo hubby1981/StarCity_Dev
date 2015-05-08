@@ -11,7 +11,7 @@ public class SqlSetup {
     public static String SQL_NAME_INSTALLED = "installed";
     public static String SQL_NAME_USER_TOKEN = "user-token";
 
-
+    public static String SQL_TABLE_TEXT = "text";
     public static String SQL_FIELDS="(name text,value text)";
 
 

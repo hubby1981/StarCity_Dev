@@ -3,14 +3,18 @@ package com.sim.star.bitworxx.starcity.constants;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.SyncStateContract;
 
 import com.sim.star.bitworxx.starcity.cycle.GM;
+import com.sim.star.bitworxx.starcity.db.SqlRow;
 import com.sim.star.bitworxx.starcity.meta.MetaField;
 import com.sim.star.bitworxx.starcity.meta.MetaFieldContainer;
 import com.sim.star.bitworxx.starcity.meta.MetaObject;
 import com.sim.star.bitworxx.starcity.meta.MetaObjectContainer;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -27,12 +31,16 @@ public class DB {
     public static String CREATE_SQL_META_FIELD = CREATE_IF_NOT+ SqlTables.SQL_META_FIELD+"(meta_object_id integer,name text,value text,internal_value numeric)"+LINE;
     public static String CREATE_SQL_META_PATTERN_FIELD = CREATE_IF_NOT+ SqlTables.SQL_META_PATTERN_FIELD+"(meta_pattern_id integer,name text,value text,internal_value numeric)"+LINE;
     public static String CREATE_SQL_SETUP = CREATE_IF_NOT+ SqlTables.SQL_SETUP+ SqlSetup.SQL_FIELDS+LINE;
+    public static String CREATE_SQL_TEXT = CREATE_IF_NOT+SqlTables.SQL_TEXT+"(id integer primary key autoincrement,text text,locale text,key text,size text)"+LINE;
 
 
     public static String SQL_SELECT_META = "SELECT id,name FROM "+ SqlTables.SQL_META_OBJECT+" WHERE name='[name]'";
     public static String SQL_SELECT_META_FIELD = "SELECT name,value,internal_value FROM "+ SqlTables.SQL_META_FIELD+" WHERE meta_object_id='[id]'";
     public static String SQL_INSERT_META_FIELD = "INSERT INTO "+ SqlTables.SQL_META_FIELD+" VALUES([id],'[name]','[value]',[internal_value])";
     public static String SQL_DELETE_META_FIELD = "DELETE FROM "+ SqlTables.SQL_META_FIELD+" WHERE meta_object_id='[id]'";
+
+    public static String SQL_SELECT_TEXT ="SELECT * FROM "+SqlTables.SQL_TEXT;
+    public static String SQL_SELECT_TEXT_SPECIAL ="SELECT * FROM "+SqlTables.SQL_TEXT+" WHERE locale='[locale]' AND key='[key]'";
 
     public static String SQL_SELECT_ONE="SELECT value FROM ";
 
@@ -84,6 +92,10 @@ public class DB {
     private static void checkInit()
     {
         checkSetup();
+        if(Connection!=null) {
+            if (!hasTable(SqlTables.SQL_TEXT))
+                Connection.execSQL(CREATE_SQL_TEXT);
+        }
     }
 
     private static void checkSetup()
@@ -129,6 +141,45 @@ public class DB {
 
 
 
+    }
+
+    public static void writeToTable(String table,ArrayList<ContentValues> values)
+    {
+        if(Connection!=null){
+            for(ContentValues v : values)
+                Connection.insert(table,"",v);
+        }
+    }
+
+    public static boolean hasTable(String table)
+    {
+        String sql = "SELECT name FROM sqlite_master WHERE type='table' AND name='"+table+"'";
+        if(Connection!=null)
+        {
+            Cursor cursor = Connection.rawQuery(sql,null);
+            if(cursor!=null&&cursor.getCount()>0)
+                return true;
+        }
+        return false;
+    }
+
+
+
+    public static ArrayList<SqlRow> readFromTable(String statement,String columns)
+    {
+        ArrayList<SqlRow> result=new ArrayList<>();
+        if(Connection!=null){
+            Cursor cursor = Connection.rawQuery(statement,null);
+            if(cursor.getCount()>0)
+            {
+                while(cursor.moveToNext())
+                {
+                    result.add(new SqlRow(cursor,COL.getCol(columns)));
+                }
+            }
+        }
+
+        return result;
     }
 
 
