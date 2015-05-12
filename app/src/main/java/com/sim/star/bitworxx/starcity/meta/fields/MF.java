@@ -7,4 +7,9 @@ public class MF {
 
     public static String META_NAME_BANK="bank";
     public static String META_NAME_BANK_SLOT="bank_slot";
+
+
+    public static String META_NAME_GALACTIC_SYSTEM="system";
+    public static String META_NAME_GALACTIC_SYSTEM_Object="system_object";
+
 }

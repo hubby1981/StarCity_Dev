@@ -63,6 +63,7 @@ public class STAR {
 
     public static BitmapShader getShaderPlanet(int shader)
     {
+
         return shader==1?MenuConst.BACK_SHADER_PLANET01:
                 shader==2?MenuConst.BACK_SHADER_PLANET02:
                         shader==3?MenuConst.BACK_SHADER_PLANET03:MenuConst.BACK_SHADER_PLANET04;

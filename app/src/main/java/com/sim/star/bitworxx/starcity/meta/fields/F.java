@@ -39,4 +39,18 @@ public class F {
     public static String FIELD_BANK_SLOT_VIOLET_CRISTAL ="violet_cristal";
 
 
+    public static String FIELD_PLANET_TYPE="type";
+    public static String FIELD_PLANET_SUBCLASS="type";
+    public static String FIELD_PLANET_CORE_TYPE="core_type";
+    public static String FIELD_PLANET_SURFACE_TYPE="surface_type";
+    public static String FIELD_PLANET_ATMOSPHERE_TYPE="atmosphere_type";
+    public static String FIELD_PLANET_ATMOSPHERE_GAS0="atmosphere_gas0";
+    public static String FIELD_PLANET_ATMOSPHERE_GAS1="atmosphere_gas1";
+    public static String FIELD_PLANET_ATMOSPHERE_GAS2="atmosphere_gas2";
+    public static String FIELD_PLANET_ATMOSPHERE_GAS3="atmosphere_gas3";
+    public static String FIELD_PLANET_SIZE="size";
+    public static String FIELD_PLANET_SHADER="shader";
+
+
+
 }

@@ -49,7 +49,22 @@ public class MenuConst {
     public static BitmapShader BACK_SHADER_PLANET02 = null;
     public static BitmapShader BACK_SHADER_PLANET03 = null;
     public static BitmapShader BACK_SHADER_PLANET04 = null;
-
+    public static BitmapShader BACK_SHADER_PLANET05 = null;
+    public static BitmapShader BACK_SHADER_PLANET06 = null;
+    public static BitmapShader BACK_SHADER_PLANET07 = null;
+    public static BitmapShader BACK_SHADER_PLANET08 = null;
+    public static BitmapShader BACK_SHADER_PLANET09 = null;
+    public static BitmapShader BACK_SHADER_PLANET10 = null;
+    public static BitmapShader BACK_SHADER_PLANET11 = null;
+    public static BitmapShader BACK_SHADER_PLANET12 = null;
+    public static BitmapShader BACK_SHADER_PLANET13 = null;
+    public static BitmapShader BACK_SHADER_PLANET14 = null;
+    public static BitmapShader BACK_SHADER_PLANET15 = null;
+    public static BitmapShader BACK_SHADER_PLANET16 = null;
+    public static BitmapShader BACK_SHADER_PLANET17 = null;
+    public static BitmapShader BACK_SHADER_PLANET18 = null;
+    public static BitmapShader BACK_SHADER_PLANET19 = null;
+    public static BitmapShader BACK_SHADER_PLANET20 = null;
     public static BitmapShader BACK_SHADER_MOON01 = null;
 
     public static Paint BACK_PAINTER_CONTENT;

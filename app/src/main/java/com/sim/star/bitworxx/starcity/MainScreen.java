@@ -78,10 +78,26 @@ public class MainScreen extends Activity {
         MenuConst.BACK_SHADER_SUN01 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.sun_01), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
         MenuConst.BACK_SHADER_SUN02 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.sun_02), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
 
-        MenuConst.BACK_SHADER_PLANET01 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet_04), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
-        MenuConst.BACK_SHADER_PLANET02 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet_02), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
-        MenuConst.BACK_SHADER_PLANET03 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet_03), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
-        MenuConst.BACK_SHADER_PLANET04 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet_01), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET01 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet1), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET02 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet2), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET03 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet3), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET04 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet4), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET05 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet5), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET06 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet6), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET07 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet7), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET08 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet1), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET09 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet14), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET10 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet10), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET11 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet11), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET12 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet12), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET13 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet13), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET14 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet14), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET15 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet15), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET16 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet16), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET17 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet17), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET18 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet18), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET19 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet19), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        MenuConst.BACK_SHADER_PLANET20 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.planet20), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
 
         MenuConst.BACK_SHADER_MOON01 = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.moon_01), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
 

@@ -1,6 +1,7 @@
 package com.sim.star.bitworxx.starcity.meta.storages;
 
 import com.sim.star.bitworxx.starcity.meta.MetaObject;
+import com.sim.star.bitworxx.starcity.meta.fields.MF;
 
 import java.util.ArrayList;
 
@@ -14,8 +15,8 @@ public class BankStorageLoader extends StorageLoader {
 
     @Override
     protected void loadNames() {
-        LoadPipe.add("bank");
-        LoadPipe.add("bank_slot");
+        LoadPipe.add(MF.META_NAME_BANK);
+        LoadPipe.add(MF.META_NAME_BANK_SLOT);
     }
 
 }

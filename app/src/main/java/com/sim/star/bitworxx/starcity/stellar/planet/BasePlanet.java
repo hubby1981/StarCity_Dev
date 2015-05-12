@@ -4,9 +4,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
 
+import com.sim.star.bitworxx.starcity.db.RandomRange;
 import com.sim.star.bitworxx.starcity.helper.BitmapHelper;
 import com.sim.star.bitworxx.starcity.meta.MetaField;
 import com.sim.star.bitworxx.starcity.meta.MetaObject;
+import com.sim.star.bitworxx.starcity.meta.fields.F;
 import com.sim.star.bitworxx.starcity.meta.game.GalaxySystemObjectMetaObject;
 import com.sim.star.bitworxx.starcity.stellar.elements.BaseElements;
 import com.sim.star.bitworxx.starcity.stellar.elements.NobleGas;
@@ -43,20 +45,20 @@ public abstract class BasePlanet {
 
     protected void createFields(){
 
-        Data.Fields.register("type", new MetaField("planet"));
-        Data.Fields.register("subclass", new MetaField("solid"));
+        Data.Fields.register(F.FIELD_PLANET_TYPE, new MetaField("planet"));
+        Data.Fields.register(F.FIELD_PLANET_SUBCLASS, new MetaField("solid"));
 
-        Data.Fields.register("core_type",new MetaField());
-        Data.Fields.register("surface_type",new MetaField());
+        Data.Fields.register(F.FIELD_PLANET_CORE_TYPE,new MetaField());
+        Data.Fields.register(F.FIELD_PLANET_SURFACE_TYPE,new MetaField());
 
-        Data.Fields.register("atmosphere_type",new MetaField());
-        Data.Fields.register("atmosphere_gas0",new MetaField());
-        Data.Fields.register("atmosphere_gas1",new MetaField());
-        Data.Fields.register("atmosphere_gas2",new MetaField());
-        Data.Fields.register("atmosphere_gas3",new MetaField());
+        Data.Fields.register(F.FIELD_PLANET_ATMOSPHERE_TYPE,new MetaField());
+        Data.Fields.register(F.FIELD_PLANET_ATMOSPHERE_GAS0,new MetaField());
+        Data.Fields.register(F.FIELD_PLANET_ATMOSPHERE_GAS1,new MetaField());
+        Data.Fields.register(F.FIELD_PLANET_ATMOSPHERE_GAS2,new MetaField());
+        Data.Fields.register(F.FIELD_PLANET_ATMOSPHERE_GAS3,new MetaField());
 
-        Data.Fields.register("size",new MetaField());
-        Data.Fields.register("texture",new MetaField());
+        Data.Fields.register(F.FIELD_PLANET_SIZE,new MetaField());
+        Data.Fields.register(F.FIELD_PLANET_SHADER,new MetaField("", RandomRange.getRandom(1,20)));
 
         createSubClass();
         createSize();
@@ -82,118 +84,117 @@ public abstract class BasePlanet {
 
     public void setCoreType(PlanetCore coreType)
     {
-        Data.setFieldValue("core_type",coreType.toString());
+        Data.setFieldValue(F.FIELD_PLANET_CORE_TYPE,coreType.toString());
     }
 
     public PlanetSurface getSurfaceType()
     {
-        return PlanetSurface.valueOf(Data.getValue("surface_type"));
+        return PlanetSurface.valueOf(Data.getValue(F.FIELD_PLANET_SURFACE_TYPE));
     }
 
     public void setSurfaceType(PlanetSurface surfaceType)
     {
-        Data.setFieldValue("surface_type",surfaceType.toString());
+        Data.setFieldValue(F.FIELD_PLANET_SURFACE_TYPE,surfaceType.toString());
     }
 
     public PlanetAtmosphere getAtmosphereType()
     {
-        return PlanetAtmosphere.valueOf(Data.getValue("atmosphere_type"));
+        return PlanetAtmosphere.valueOf(Data.getValue(F.FIELD_PLANET_ATMOSPHERE_TYPE));
     }
 
     public void setAtmosphereType(PlanetAtmosphere atmosphereType)
     {
-        Data.setFieldValue("atmosphere_type",atmosphereType.toString());
+        Data.setFieldValue(F.FIELD_PLANET_ATMOSPHERE_TYPE,atmosphereType.toString());
     }
 
     public float getSize()
     {
-        return Data.getInternalValue("size");
+        return Data.getInternalValue(F.FIELD_PLANET_SIZE);
     }
 
     public void setSize(float size)
     {
-        Data.setFieldInternalValue("size",size);
+        Data.setFieldInternalValue(F.FIELD_PLANET_SIZE,size);
     }
 
     public float getAtmosphereGasSystem()
     {
-        return Data.getInternalValue("atmosphere_gas0");
+        return Data.getInternalValue(F.FIELD_PLANET_ATMOSPHERE_GAS0);
     }
     public void setAtmosphereGasSystem(float gas)
     {
-        Data.setFieldInternalValue("atmosphere_gas0",gas);
+        Data.setFieldInternalValue(F.FIELD_PLANET_ATMOSPHERE_GAS0,gas);
 
     }
 
     public BaseElements getAtmosphereGasMain()
     {
-        String value = Data.getValue("atmosphere_gas1");
+        String value = Data.getValue(F.FIELD_PLANET_ATMOSPHERE_GAS1);
         try{ BaseElements.valueOf(value);}catch(Exception e){};
         return BaseElements.valueOf(value);
     }
     public void setAtmosphereGasMain(BaseElements gas)
     {
-        Data.setFieldValue("atmosphere_gas1", gas.toString());
+        Data.setFieldValue(F.FIELD_PLANET_ATMOSPHERE_GAS1, gas.toString());
 
     }
 
     public float getAtmosphereGasMainInternal()
     {
-        return Data.getInternalValue("atmosphere_gas1");
+        return Data.getInternalValue(F.FIELD_PLANET_ATMOSPHERE_GAS1);
     }
     public void setAtmosphereGasMainInternal(float gas)
     {
-        Data.setFieldInternalValue("atmosphere_gas1",gas);
-
+        Data.setFieldInternalValue(F.FIELD_PLANET_ATMOSPHERE_GAS1,gas);
     }
 
     public NobleGas getAtmosphereGasSubFirst()
     {
-        return NobleGas.valueOf(Data.getValue("atmosphere_gas2"));
+        return NobleGas.valueOf(Data.getValue(F.FIELD_PLANET_ATMOSPHERE_GAS2));
     }
     public void setAtmosphereGasSubFirst(NobleGas gas)
     {
-        Data.setFieldValue("atmosphere_gas2", gas.toString());
+        Data.setFieldValue(F.FIELD_PLANET_ATMOSPHERE_GAS2, gas.toString());
 
     }
 
     public float getAtmosphereGasSubFirstInternal()
     {
-        return Data.getInternalValue("atmosphere_gas2");
+        return Data.getInternalValue(F.FIELD_PLANET_ATMOSPHERE_GAS2);
     }
     public void setAtmosphereGasSubFirstInternal(float gas)
     {
-        Data.setFieldInternalValue("atmosphere_gas2",gas);
+        Data.setFieldInternalValue(F.FIELD_PLANET_ATMOSPHERE_GAS2,gas);
 
     }
 
     public NobleGas getAtmosphereGasSubSecond()
     {
-        return NobleGas.valueOf(Data.getValue("atmosphere_gas3"));
+        return NobleGas.valueOf(Data.getValue(F.FIELD_PLANET_ATMOSPHERE_GAS3));
     }
     public void setAtmosphereGasSubSecond(NobleGas gas)
     {
-        Data.setFieldValue("atmosphere_gas3", gas.toString());
+        Data.setFieldValue(F.FIELD_PLANET_ATMOSPHERE_GAS3, gas.toString());
 
     }
 
     public float getAtmosphereGasSubSecondInternal()
     {
-        return Data.getInternalValue("atmosphere_gas3");
+        return Data.getInternalValue(F.FIELD_PLANET_ATMOSPHERE_GAS3);
     }
     public void setAtmosphereGasSubSecondInternal(float gas)
     {
-        Data.setFieldInternalValue("atmosphere_gas3",gas);
+        Data.setFieldInternalValue(F.FIELD_PLANET_ATMOSPHERE_GAS3,gas);
 
     }
 
 
     public String getSubClass()
     {
-        return Data.getValue("subclass");
+        return Data.getValue(F.FIELD_PLANET_SUBCLASS);
     }
 
     public void setSubClass(String subClass){
-        Data.setFieldValue("subclass",subClass);
+        Data.setFieldValue(F.FIELD_PLANET_SUBCLASS,subClass);
     }
 }
