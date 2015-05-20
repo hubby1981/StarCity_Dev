@@ -27,7 +27,12 @@ public class RBN {
         ALL_GROUPS=new HashMap<>();
         ALL_CHECKBOX.put("en-rbn-use-action-1",new RadioboxDescription(getActionForKey("rbn-use-action-1",true,"g1")));
         ALL_CHECKBOX.put("en-rbn-use-action-2",new RadioboxDescription(getActionForKey("rbn-use-action-2",false,"g1")));
-
+        ALL_CHECKBOX.put("en-rbn-use-action-3",new RadioboxDescription(getActionForKey("rbn-use-action-3",false,"g1")));
+        ALL_CHECKBOX.put("en-rbn-use-action-4",new RadioboxDescription(getActionForKey("rbn-use-action-4",false,"g1")));
+        ALL_CHECKBOX.put("en-rbn-use-action-5",new RadioboxDescription(getActionForKey("rbn-use-action-5",false,"g1")));
+        ALL_CHECKBOX.put("en-rbn-use-action-6",new RadioboxDescription(getActionForKey("rbn-use-action-6",false,"g1")));
+        ALL_CHECKBOX.put("en-rbn-use-action-7",new RadioboxDescription(getActionForKey("rbn-use-action-7",false,"g1")));
+        ALL_CHECKBOX.put("en-rbn-use-action-8",new RadioboxDescription(getActionForKey("rbn-use-action-8",false,"g1")));
 
     }
 

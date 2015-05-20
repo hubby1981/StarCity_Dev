@@ -25,6 +25,11 @@ public class TextContent extends Content {
     }
 
 
+    protected void doContentSupply(Rect r)
+    {
+
+    }
+
     @Override
     protected void onDrawInternal(Canvas canvas, Rect rect, ContentWindow window) {
         Paint painter = window.getFontPainter(Size);
@@ -43,6 +48,7 @@ public class TextContent extends Content {
         else {
             canvas.drawText(Text, rect.left, rect.centerY()+painter.getTextSize()/4, painter);
         }
+        doContentSupply(rect);
     }
 
     @Override

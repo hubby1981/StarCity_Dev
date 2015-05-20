@@ -15,9 +15,11 @@ public abstract class PatternBase {
     public ArrayList<ContentDescription> Contents;
     public ArrayList<PatternBase> Patterns;
 
+
     public PatternBase()
     {
         Contents=new ArrayList<>();Patterns=new ArrayList<>();
+
     }
 
     public ArrayList<Content> build()
@@ -38,6 +40,20 @@ public abstract class PatternBase {
                     contents.add(c);
                 }
             }
+
+
+            for(ContentDescription cd :getHidden())
+            {
+                Content c = cd.build();
+                if(c!=null)
+                    contents.add(c);
+            }
+
         return contents;
+    }
+
+    public  ArrayList<ContentDescription> getHidden()
+    {
+        return new ArrayList<>();
     }
 }

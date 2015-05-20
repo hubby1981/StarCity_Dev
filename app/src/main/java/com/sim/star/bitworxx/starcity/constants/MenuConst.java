@@ -72,6 +72,7 @@ public class MenuConst {
     public static Paint BACK_PAINTER_CONTENT_INNER2;
     public static Paint BACK_PAINTER_BLACK;
     public static Paint BACK_PAINTER_CONTENT_LIGHT;
+    public static Paint BACK_PAINTER_CONTENT_LIGHT_MAX;
 
 
     static {
@@ -88,6 +89,8 @@ public class MenuConst {
         PLATE_BACK_PAINTER = createBackPainter(ColorSetter.FILL_BACK_COLOR_PLATE);
 
         BACK_PAINTER_CONTENT_LIGHT = createBackPainter(ColorSetter.FILL_BACK_CONTENT_LIGHT);
+        BACK_PAINTER_CONTENT_LIGHT_MAX = createBackPainter(ColorSetter.FILL_BACK_CONTENT_LIGHT_MAX);
+
         STROKE_BACK_PAINTER = createStrokeBackPainter(ColorSetter.FILL_STROKE_BACK);
         STROKE_FORE_PAINTER = createStrokeBackPainter(ColorSetter.FILL_STROKE_FORE);
         FORE_PAINTER_STROKE_LIGHT = createStrokeBackPainterDash(ColorSetter.FILL_SHADER_BACK_LIGHT);

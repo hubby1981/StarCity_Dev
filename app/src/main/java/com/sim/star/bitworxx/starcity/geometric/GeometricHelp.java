@@ -40,4 +40,52 @@ public class GeometricHelp {
 
         return outerPath;
     }
+
+    public static Path upTriangle(Rect rc)
+    {
+        Path result = new Path();
+
+        result.moveTo(rc.left, rc.bottom);
+        result.lineTo(rc.left+rc.width()/2,rc.top);
+        result.lineTo(rc.right,rc.bottom);
+        result.lineTo(rc.left,rc.bottom);
+
+        return result;
+    }
+
+    public static Path downTriangle(Rect rc)
+    {
+        Path result = new Path();
+
+        result.moveTo(rc.left,rc.top);
+        result.lineTo(rc.left+rc.width()/2, rc.bottom);
+        result.lineTo(rc.right, rc.top);
+        result.lineTo(rc.left,rc.top);
+
+        return result;
+    }
+
+    public static Path prevTriangle(Rect rc)
+    {
+        Path result = new Path();
+
+        result.moveTo(rc.right,rc.top);
+        result.lineTo(rc.left,rc.top+rc.height()/2);
+        result.lineTo(rc.right,rc.bottom);
+        result.lineTo(rc.right,rc.top);
+
+        return result;
+    }
+
+    public static Path nextTriangle(Rect rc)
+    {
+        Path result = new Path();
+
+        result.moveTo(rc.left,rc.top);
+        result.lineTo(rc.right,rc.top+rc.height()/2);
+        result.lineTo(rc.left,rc.bottom);
+        result.lineTo(rc.left,rc.top);
+
+        return result;
+    }
 }

@@ -163,12 +163,6 @@ public class MainScreen extends Activity {
             Count=0;
         }
 
-        if(RBN.ALL_CHECKED.containsKey("rbn-use-action-1"))
-            if(RBN.ALL_CHECKED.get("rbn-use-action-1")==true)
-                ColorSetter.changeToYellow();
-        if(RBN.ALL_CHECKED.containsKey("rbn-use-action-2"))
-            if(RBN.ALL_CHECKED.get("rbn-use-action-2")==true)
-                ColorSetter.changeToGreen();
         findViewById(R.id.imageView).invalidate();
     }
 

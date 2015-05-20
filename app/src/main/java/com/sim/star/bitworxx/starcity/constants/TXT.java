@@ -23,11 +23,17 @@ public class TXT {
         ALL_TEXT=new HashMap<String,TextDescription>(){
 
         };
-
+        callCleanText();
         ArrayList<SqlRow> setup=DB.readFromTable(DB.SQL_SELECT_TEXT,COL.TEXT_COL);
         if(setup.size()==0)
             DB.writeToTable(SqlTables.SQL_TEXT,setup());
 
+
+    }
+
+    public static void callCleanText()
+    {
+        DB.Connection.execSQL("DELETE FROM "+SqlTables.SQL_TEXT);
 
     }
 
@@ -49,7 +55,45 @@ public class TXT {
         result.add(getValuesFrom("en","header-systems-table_status","Status",TextSize.SUB_HEADER));
         result.add(getValuesFrom("en","rbn-use-action-1","use yellow",TextSize.TEXT));
         result.add(getValuesFrom("en","rbn-use-action-2","use green",TextSize.TEXT));
+        result.add(getValuesFrom("en","rbn-use-action-3","use blue",TextSize.TEXT));
+        result.add(getValuesFrom("en","rbn-use-action-4","use red",TextSize.TEXT));
+        result.add(getValuesFrom("en","rbn-use-action-5","use orange",TextSize.TEXT));
+        result.add(getValuesFrom("en","rbn-use-action-6","use violet",TextSize.TEXT));
+        result.add(getValuesFrom("en","rbn-use-action-7","use aqua",TextSize.TEXT));
+        result.add(getValuesFrom("en","rbn-use-action-8","use purple",TextSize.TEXT));
+        result.add(getValuesFrom("en","cmb-colors","choose color",TextSize.TEXT));
+        result.add(getValuesFrom("en","cmb-colors-1","yellow",TextSize.TEXT));
+        result.add(getValuesFrom("en","cmb-colors-2","green",TextSize.TEXT));
+        result.add(getValuesFrom("en","cmb-colors-3","blue",TextSize.TEXT));
+        result.add(getValuesFrom("en","cmb-colors-4","red",TextSize.TEXT));
+        result.add(getValuesFrom("en","cmb-colors-5","orange",TextSize.TEXT));
+        result.add(getValuesFrom("en","cmb-colors-6","violet",TextSize.TEXT));
+        result.add(getValuesFrom("en","cmb-colors-7","aqua",TextSize.TEXT));
+        result.add(getValuesFrom("en","cmb-colors-8","purple",TextSize.TEXT));
 
+
+
+        result.add(getValuesFrom("de","header-main","M.A.P. System",TextSize.HEADER));
+        result.add(getValuesFrom("de","header-systems","System Uebersicht",TextSize.SUB_HEADER));
+        result.add(getValuesFrom("de","header-system","System: ",TextSize.SUB_HEADER));
+        result.add(getValuesFrom("de","page","Seite",TextSize.TEXT));
+        result.add(getValuesFrom("de","btn-system-add","NEU",TextSize.TEXT));
+        result.add(getValuesFrom("de","btn-system-buy","kaufen",TextSize.TEXT));
+        result.add(getValuesFrom("de","btn-system-generate","Bauen",TextSize.TEXT));
+        result.add(getValuesFrom("de","header-main-functions","Funktionen",TextSize.SUB_HEADER));
+        result.add(getValuesFrom("de","header-main-functions_desc","Alle Funktionen wurden gestaltet.",TextSize.TEXT));
+        result.add(getValuesFrom("de","header-systems-table","Deine System Uebersicht",TextSize.SUB_HEADER));
+        result.add(getValuesFrom("de","header-systems-table_name","Name",TextSize.SUB_HEADER));
+        result.add(getValuesFrom("de","header-systems-table_sector","Sektor",TextSize.SUB_HEADER));
+        result.add(getValuesFrom("de","header-systems-table_status","Status",TextSize.SUB_HEADER));
+        result.add(getValuesFrom("de","rbn-use-action-1","nimm gelb",TextSize.TEXT));
+        result.add(getValuesFrom("de","rbn-use-action-2","nimm gruen",TextSize.TEXT));
+        result.add(getValuesFrom("de","rbn-use-action-3","nimm blau",TextSize.TEXT));
+        result.add(getValuesFrom("de","rbn-use-action-4","nimm red",TextSize.TEXT));
+        result.add(getValuesFrom("de","rbn-use-action-5","nimm orange",TextSize.TEXT));
+        result.add(getValuesFrom("de","rbn-use-action-6","nimm violett",TextSize.TEXT));
+        result.add(getValuesFrom("de","rbn-use-action-7","nimm aqua",TextSize.TEXT));
+        result.add(getValuesFrom("de","rbn-use-action-8","nimm lila",TextSize.TEXT));
 
 
         return result;

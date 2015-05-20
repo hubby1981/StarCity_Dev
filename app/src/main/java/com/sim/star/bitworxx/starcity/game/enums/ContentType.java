@@ -12,5 +12,7 @@ public enum ContentType {
     RADIOBOX,
     SYSTEM_OBJECT,
     PROGRESS_BAR,
-    PROGRESS_ARC
+    PROGRESS_ARC,
+    COMBO,
+    TEXT_CLICK
 }

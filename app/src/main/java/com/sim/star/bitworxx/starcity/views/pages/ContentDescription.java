@@ -2,6 +2,7 @@ package com.sim.star.bitworxx.starcity.views.pages;
 
 import com.sim.star.bitworxx.starcity.constants.BTN;
 import com.sim.star.bitworxx.starcity.constants.CHK;
+import com.sim.star.bitworxx.starcity.constants.CMB;
 import com.sim.star.bitworxx.starcity.constants.RBN;
 import com.sim.star.bitworxx.starcity.constants.STAR;
 import com.sim.star.bitworxx.starcity.constants.TXT;
@@ -50,7 +51,9 @@ public class ContentDescription {
                                                         T==ContentType.SYSTEM_OBJECT?buildSystemObject():
                                                                 T==ContentType.PROGRESS_BAR?new ProgressBarContent(P):
                                                                         T==ContentType.PROGRESS_ARC?new ProgressArcContent(P):
-                                                                                null;
+                                                                                T==ContentType.COMBO?buildCombo():
+                                                                                    T==ContentType.TEXT_CLICK?buildTextClick():
+                                                                                        null;
     }
 
 
@@ -59,6 +62,13 @@ public class ContentDescription {
         TextDescription td = TXT.get(K);
         return new TextContent(P, td.Text,td.Size);
     }
+
+    private TextClickContent buildTextClick()
+    {
+        TextDescription td = TXT.get(K);
+        return new TextClickContent(P, td.Text,td.Size,CMB.getAction(K));
+    }
+
 
     private ButtonContent buildButton()
     {
@@ -80,6 +90,21 @@ public class ContentDescription {
         CheckboxDescription cd = CHK.get(K);
 
         CheckboxContent content= new CheckboxContent(P,K,cd.Action);
+        if(cd.hasChilds())
+        {
+            int l = (P.R-P.L)/2;
+            int t=(P.B-P.T)/2;
+            for(TextDescription td : cd.getChilds())
+                content.Childs.add(new TextContent(new CoPo(P.L+l,P.T+t),td.Text,td.Size));
+        }
+        return content;
+    }
+
+    private ComboContent buildCombo()
+    {
+        ComboDescription cd = CMB.get(K);
+
+        ComboContent content= new ComboContent(P,K,cd.Action);
         if(cd.hasChilds())
         {
             int l = (P.R-P.L)/2;
