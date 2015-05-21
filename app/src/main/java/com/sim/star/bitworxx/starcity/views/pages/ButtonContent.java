@@ -49,20 +49,25 @@ public class ButtonContent extends RectContent {
             int w =CliprRects.InnerRectMain.left- CliprRects.OuterRectContent.left;
             int h=CliprRects.InnerRectMain.top- CliprRects.OuterRectContent.top;
             Rect r2 = new Rect(r.left+ w,r.top+h,r.right+ w,r.bottom+h);
-            ActionContainer.addButton(r2,Action);
+            setHandler(r2, Action);
         }
+    }
+
+    protected void setHandler(Rect rect,Runnable action)
+    {
+        ActionContainer.addButton(rect, Action);
     }
 
     protected void drawFilling(Canvas canvas,Rect r)
     {
         int w=6;
-
+        float fak = (float)1.8;
         Path p = GeometricHelp.generateTrianglePath(r, w, w);
 
         Paint pp = new Paint();
 
         pp.setColor(Color.BLACK);
-        pp.setShader(new RadialGradient((float)r.centerX(),(float)r.centerY(),(float)r.width()/2, ColorSetter.FILL_BACK_COLOR_PLATE,Color.BLACK, Shader.TileMode.MIRROR));
+        pp.setShader(new RadialGradient((float)r.centerX(),(float)r.centerY(),(float)((float)(r.width())/fak), ColorSetter.FILL_BACK_COLOR_PLATE,Color.BLACK, Shader.TileMode.MIRROR));
         pp.setAntiAlias(true);
 
 

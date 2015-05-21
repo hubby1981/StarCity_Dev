@@ -72,6 +72,55 @@ public class TXT {
         result.add(getValuesFrom("en","cmb-colors-8","purple",TextSize.TEXT));
 
 
+        result.add(getValuesFrom("en","key-0","0",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-1","1",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-2","2",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-3","3",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-4","4",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-5","5",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-6","6",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-7","7",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-8","8",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-9","9",TextSize.TEXT));
+
+        result.add(getValuesFrom("en","key-Q","Q",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-W","W",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-E","E",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-R","R",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-T","T",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-Z","Z",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-U","U",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-I","I",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-O","O",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-P","P",TextSize.TEXT));
+
+        result.add(getValuesFrom("en","key-A","A",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-S","S",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-D","D",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-F","F",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-G","G",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-H","H",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-J","J",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-K","K",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-L","L",TextSize.TEXT));
+
+        result.add(getValuesFrom("en","key-_","_",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-Y","Y",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-X","X",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-C","C",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-V","V",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-B","B",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-N","N",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-M","M",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-<","DEL",TextSize.TEXT));
+        result.add(getValuesFrom("en","key->","ESC",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-empty","SPC",TextSize.TEXT));
+
+        result.add(getValuesFrom("en","key-@","@",TextSize.TEXT));
+        result.add(getValuesFrom("en","key-.",".",TextSize.TEXT));
+        result.add(getValuesFrom("en","key--","-",TextSize.TEXT));
+
+
 
         result.add(getValuesFrom("de","header-main","M.A.P. System",TextSize.HEADER));
         result.add(getValuesFrom("de","header-systems","System Uebersicht",TextSize.SUB_HEADER));

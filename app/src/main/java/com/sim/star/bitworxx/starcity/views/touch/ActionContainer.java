@@ -4,6 +4,7 @@ import android.graphics.Point;
 import android.graphics.Rect;
 
 import com.sim.star.bitworxx.starcity.constants.CliprRects;
+import com.sim.star.bitworxx.starcity.constants.KEY;
 import com.sim.star.bitworxx.starcity.constants.MenuBitmaps;
 
 import java.util.ArrayList;
@@ -16,12 +17,15 @@ public class ActionContainer {
 
     private static HashMap<String,ArrayList<ActionHandler>> Handler;
     private static HashMap<String,ArrayList<ActionHandler>> HandlerButton;
+    private static HashMap<String,ArrayList<ActionHandler>> HandlerButtonHidden;
 
     public static boolean InitBorder = false;
 
     static {
         Handler = new HashMap<>();
         HandlerButton=new HashMap<>();
+        HandlerButtonHidden=new HashMap<>();
+
     }
 
     public static void checkUp(Point point) {
@@ -30,7 +34,7 @@ public class ActionContainer {
 
     private static void checkInternal(Point point)
     {
-        checkInternalKey(point,"MAIN");
+        checkInternalKey(point, "MAIN");
         if(MenuBitmaps.ActualWindow!=null)
             checkInternalKey(point,MenuBitmaps.ActualWindow.getPageId());
 
@@ -39,25 +43,39 @@ public class ActionContainer {
     {
 
 
-            if(Handler.containsKey(id))
-            {
-                ArrayList<ActionHandler> handler = Handler.get(id);
-                if (Handler != null)
-                    for (ActionHandler h : handler) {
-                        h.checkUp(point);
-                    }
 
-            }
-            if(HandlerButton.containsKey(id))
-            {
-                ArrayList<ActionHandler> handlerButton = HandlerButton.get(id);
+            if(KEY.Active.equals("NONE")){
+                if(Handler.containsKey(id))
+                {
+                    ArrayList<ActionHandler> handler = Handler.get(id);
+                    if (handler != null)
+                        for (ActionHandler h : handler) {
+                            h.checkUp(point);
+                        }
 
-                if (HandlerButton != null) {
-                    for (ActionHandler h : handlerButton) {
-                        h.checkUp(point);
+                }
+                if(HandlerButton.containsKey(id))
+                {
+                    ArrayList<ActionHandler> handlerButton = HandlerButton.get(id);
+
+                    if (handlerButton != null) {
+                        for (ActionHandler h : handlerButton) {
+                            h.checkUp(point);
+                        }
                     }
                 }
+
             }
+        if(HandlerButtonHidden.containsKey(id))
+        {
+            ArrayList<ActionHandler> handlerButton = HandlerButtonHidden.get(id);
+
+            if (handlerButton != null) {
+                for (ActionHandler h : handlerButton) {
+                    h.checkUp(point);
+                }
+            }
+        }
 
     }
     public static void addClick(ActionHandler handler)
@@ -74,6 +92,22 @@ public class ActionContainer {
             handlerButton.add(handler);
         }
     }
+
+    public static void addClickHidden(ActionHandler handler)
+    {
+        if(MenuBitmaps.ActualWindow!=null)
+        {
+            String id = MenuBitmaps.ActualWindow.getPageId();
+            ArrayList<ActionHandler> handlerButton = HandlerButtonHidden.get(id);
+            if(handlerButton==null) {
+                handlerButton = new ArrayList<>();
+                HandlerButtonHidden.remove(id);
+                HandlerButtonHidden.put(id,handlerButton);
+            }
+            handlerButton.add(handler);
+        }
+    }
+
     public static void addClickHandler(ActionHandler handler)
     {
         if(MenuBitmaps.ActualWindow!=null)
@@ -97,7 +131,7 @@ public class ActionContainer {
             if(handlerButton==null) {
                 handlerButton = new ArrayList<>();
                 Handler.remove(id);
-                Handler.put(id,handlerButton);
+                Handler.put(id, handlerButton);
             }
             handlerButton.add(handler);
 
@@ -121,5 +155,17 @@ public class ActionContainer {
             addClick(new ActionHandler(rect, action));
     }
 
+
+    public static void addButtonHidden(Rect rect,Runnable action)
+    {
+        if(HandlerButtonHidden!=null)
+            addClickHidden(new ActionHandler(rect, action));
+    }
+
+    public static void clearHidden()
+    {
+        if(HandlerButtonHidden!=null)
+            HandlerButtonHidden.clear();
+    }
 
 }

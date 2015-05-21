@@ -19,11 +19,14 @@ public class CMB {
     public static HashMap<String,ComboDescription> ALL_COMBO;
     public static HashMap<String,Boolean> ALL_OPENED;
     public static HashMap<String,Runnable> ALL_COMBO_CLICKS;
-    public static ArrayList<Rect>
+
 public static Runnable CloseAll=new Runnable() {
     @Override
     public void run() {
-        ActionContainer.
+        ALL_OPENED.remove("cmb-colors");
+        if(MenuBitmaps.ActualWindow!=null)
+            MenuBitmaps.ActualWindow.setupPages();
+        ActionContainer.clearHidden();
     }
 };
     static{
@@ -33,15 +36,13 @@ public static Runnable CloseAll=new Runnable() {
         ALL_COMBO_CLICKS = new HashMap<>();
         ALL_OPENED = new HashMap<>();
 
-        ALL_COMBO.put("en-cmb-colors",new ComboDescription(getActionForKey("cmb-colors",false)));
+        ALL_COMBO.put("cmb-colors",new ComboDescription(getActionForKey("cmb-colors",false)));
 
 
         ALL_COMBO_CLICKS.put("cmb-colors-1", new Runnable() {
             @Override
             public void run() {
-                ALL_OPENED.remove("cmb-colors");
-                if(MenuBitmaps.ActualWindow!=null)
-                    MenuBitmaps.ActualWindow.setupPages();
+                CloseAll.run();
                 ColorSetter.changeToYellow();
             }
         });
@@ -49,9 +50,7 @@ public static Runnable CloseAll=new Runnable() {
         ALL_COMBO_CLICKS.put("cmb-colors-2", new Runnable() {
             @Override
             public void run() {
-                ALL_OPENED.remove("cmb-colors");
-                if(MenuBitmaps.ActualWindow!=null)
-                    MenuBitmaps.ActualWindow.setupPages();
+                CloseAll.run();
                 ColorSetter.changeToGreen();
             }
         });
@@ -59,9 +58,7 @@ public static Runnable CloseAll=new Runnable() {
         ALL_COMBO_CLICKS.put("cmb-colors-3", new Runnable() {
             @Override
             public void run() {
-                ALL_OPENED.remove("cmb-colors");
-                if(MenuBitmaps.ActualWindow!=null)
-                    MenuBitmaps.ActualWindow.setupPages();
+                CloseAll.run();
                 ColorSetter.changeToBlue();
             }
         });
@@ -79,9 +76,7 @@ public static Runnable CloseAll=new Runnable() {
         ALL_COMBO_CLICKS.put("cmb-colors-5", new Runnable() {
             @Override
             public void run() {
-                ALL_OPENED.remove("cmb-colors");
-                if(MenuBitmaps.ActualWindow!=null)
-                    MenuBitmaps.ActualWindow.setupPages();
+                CloseAll.run();
                 ColorSetter.changeToOrange();
             }
         });
@@ -89,9 +84,7 @@ public static Runnable CloseAll=new Runnable() {
         ALL_COMBO_CLICKS.put("cmb-colors-6", new Runnable() {
             @Override
             public void run() {
-                ALL_OPENED.remove("cmb-colors");
-                if(MenuBitmaps.ActualWindow!=null)
-                    MenuBitmaps.ActualWindow.setupPages();
+                CloseAll.run();
                 ColorSetter.changeToViolet();
             }
         });
@@ -99,9 +92,7 @@ public static Runnable CloseAll=new Runnable() {
         ALL_COMBO_CLICKS.put("cmb-colors-7", new Runnable() {
             @Override
             public void run() {
-                ALL_OPENED.remove("cmb-colors");
-                if(MenuBitmaps.ActualWindow!=null)
-                    MenuBitmaps.ActualWindow.setupPages();
+                CloseAll.run();
                 ColorSetter.changeToAqua();
             }
         });
@@ -109,9 +100,7 @@ public static Runnable CloseAll=new Runnable() {
         ALL_COMBO_CLICKS.put("cmb-colors-8", new Runnable() {
             @Override
             public void run() {
-                ALL_OPENED.remove("cmb-colors");
-                if(MenuBitmaps.ActualWindow!=null)
-                    MenuBitmaps.ActualWindow.setupPages();
+                CloseAll.run();
                 ColorSetter.changeToPurple();
             }
         });
@@ -125,10 +114,16 @@ public static Runnable CloseAll=new Runnable() {
         return new Runnable() {
             @Override
             public void run() {
+                if(ALL_OPENED.containsKey(k2)){
                 Boolean val = ALL_OPENED.get(k2);
                 val=!val;
+
                 ALL_OPENED.remove(k2);
-                ALL_OPENED.put(k2, val);
+                ALL_OPENED.put(k2, val);}
+                else
+                {
+                    ALL_OPENED.put(k2,true);
+                }
                 if(MenuBitmaps.ActualWindow!=null)
                     MenuBitmaps.ActualWindow.setupPages();
                 RunnablesMainMenu.R_S_FLUSH_CONTENT.run();
@@ -141,11 +136,22 @@ public static Runnable CloseAll=new Runnable() {
         return ALL_OPENED.containsKey(key)?ALL_OPENED.get(key):false;
     }
 
+    public static void setSize(String key,int size)
+    {
+        if(ALL_COMBO.containsKey(key))
+            ALL_COMBO.get(key).Size=size;
+    }
+
+    public static int getSize(String key)
+    {
+        return ALL_COMBO.containsKey(key)?ALL_COMBO.get(key).Size:1;
+    }
+
 
     public static ComboDescription getInternal(String key)
     {
-        String k1 = GM.LOCALE_A +"-"+key;
-        String k2 = GM.LOCALE +"-"+ key;
+        String k1 = key;
+        String k2 = key;
 
         return ALL_COMBO.containsKey(k1)? ALL_COMBO.get(k1): ALL_COMBO.containsKey(k2)? ALL_COMBO.get(k2):new ComboDescription(new TextDescription(key, TextSize.TEXT),getActionForKey(key,false));
     }

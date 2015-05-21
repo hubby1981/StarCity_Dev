@@ -24,22 +24,32 @@ public class ColorComboPattern extends CoPoPattern {
 
     }
 
+
     @Override
     public ArrayList<ContentDescription> getHidden()
     {
         ArrayList<ContentDescription> result=new ArrayList<>();
         CoPo p = P;
-        boolean u = CMB.getCombo("cmb-colors");
+        String key="cmb-colors";
+        CMB.setSize(key,8);
+
+        boolean u = CMB.getCombo(key);
+
         if(u)
         {
-            result.add(new ContentDescription(new CoPo(p.L+1, p.B+1,p.R,p.B+1), "cmb-colors-1", ContentType.TEXT_CLICK));
-            result.add(new ContentDescription(new CoPo(p.L+1, p.B+2,p.R,p.B+2), "cmb-colors-2", ContentType.TEXT_CLICK));
-            result.add(new ContentDescription(new CoPo(p.L+1, p.B+3,p.R,p.B+3), "cmb-colors-3", ContentType.TEXT_CLICK));
-            result.add(new ContentDescription(new CoPo(p.L+1, p.B+4,p.R,p.B+4), "cmb-colors-4", ContentType.TEXT_CLICK));
-            result.add(new ContentDescription(new CoPo(p.L+1, p.B+5,p.R,p.B+5), "cmb-colors-5", ContentType.TEXT_CLICK));
-            result.add(new ContentDescription(new CoPo(p.L+1, p.B+6,p.R,p.B+6), "cmb-colors-6", ContentType.TEXT_CLICK));
-            result.add(new ContentDescription(new CoPo(p.L+1, p.B+7,p.R,p.B+7), "cmb-colors-7", ContentType.TEXT_CLICK));
-            result.add(new ContentDescription(new CoPo(p.L+1, p.B+8,p.R,p.B+8), "cmb-colors-8", ContentType.TEXT_CLICK));
+            result.add(new ContentDescription(new CoPo(p.L+1, p.B+1,p.R,p.B+1), key+"-1", ContentType.TEXT_CLICK));
+            result.add(new ContentDescription(new CoPo(p.L+1, p.B+2,p.R,p.B+2), key+"-2", ContentType.TEXT_CLICK));
+            result.add(new ContentDescription(new CoPo(p.L+1, p.B+3,p.R,p.B+3), key+"-3", ContentType.TEXT_CLICK));
+            result.add(new ContentDescription(new CoPo(p.L+1, p.B+4,p.R,p.B+4), key+"-4", ContentType.TEXT_CLICK));
+            result.add(new ContentDescription(new CoPo(p.L+1, p.B+5,p.R,p.B+5), key+"-5", ContentType.TEXT_CLICK));
+            result.add(new ContentDescription(new CoPo(p.L + 1, p.B + 6, p.R, p.B + 6), key + "-6", ContentType.TEXT_CLICK));
+            result.add(new ContentDescription(new CoPo(p.L + 1, p.B + 7, p.R, p.B + 7), key + "-7", ContentType.TEXT_CLICK));
+            result.add(new ContentDescription(new CoPo(p.L + 1, p.B + 8, p.R, p.B + 8), key + "-8", ContentType.TEXT_CLICK));
+
+
+
+
+
 
         }
         return result;

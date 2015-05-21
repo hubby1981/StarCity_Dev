@@ -120,6 +120,269 @@ public class BTN {
             }
         }));
 
+
+        ALL_BUTTON.put("en-key-0", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+               KEY.addText("0");
+            }
+        }));
+        ALL_BUTTON.put("en-key-1", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("1");
+            }
+        }));
+        ALL_BUTTON.put("en-key-2", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("2");
+            }
+        }));
+        ALL_BUTTON.put("en-key-3", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("3");
+            }
+        }));
+        ALL_BUTTON.put("en-key-4", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("4");
+            }
+        }));
+        ALL_BUTTON.put("en-key-5", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("5");
+            }
+        }));
+        ALL_BUTTON.put("en-key-6", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("6");
+            }
+        }));
+        ALL_BUTTON.put("en-key-7", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("7");
+            }
+        }));
+        ALL_BUTTON.put("en-key-8", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("8");
+            }
+        }));
+        ALL_BUTTON.put("en-key-9", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("9");
+            }
+        }));
+
+
+        ALL_BUTTON.put("en-key-Q", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("Q");
+            }
+        }));
+        ALL_BUTTON.put("en-key-W", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("W");
+            }
+        }));
+        ALL_BUTTON.put("en-key-E", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("E");
+            }
+        }));
+        ALL_BUTTON.put("en-key-R", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("R");
+            }
+        }));
+        ALL_BUTTON.put("en-key-T", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("T");
+            }
+        }));
+        ALL_BUTTON.put("en-key-Z", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("Z");
+            }
+        }));
+        ALL_BUTTON.put("en-key-U", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("U");
+            }
+        }));
+        ALL_BUTTON.put("en-key-I", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("I");
+            }
+        }));
+        ALL_BUTTON.put("en-key-O", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("O");
+            }
+        }));
+        ALL_BUTTON.put("en-key-P", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("P");
+            }
+        }));
+
+        ALL_BUTTON.put("en-key-A", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("A");
+            }
+        }));
+        ALL_BUTTON.put("en-key-S", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("S");
+            }
+        }));
+        ALL_BUTTON.put("en-key-D", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("D");
+            }
+        }));
+        ALL_BUTTON.put("en-key-F", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("F");
+            }
+        }));
+        ALL_BUTTON.put("en-key-G", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("G");
+            }
+        }));
+        ALL_BUTTON.put("en-key-H", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("H");
+            }
+        }));
+        ALL_BUTTON.put("en-key-J", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("J");
+            }
+        }));
+        ALL_BUTTON.put("en-key-K", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("K");
+            }
+        }));
+        ALL_BUTTON.put("en-key-L", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("L");
+            }
+        }));
+        ALL_BUTTON.put("en-key-empty", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText(" ");
+            }
+        }));
+
+        ALL_BUTTON.put("en-key-_", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("_");
+            }
+        }));
+        ALL_BUTTON.put("en-key-Y", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("Y");
+            }
+        }));
+        ALL_BUTTON.put("en-key-X", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("X");
+            }
+        }));
+        ALL_BUTTON.put("en-key-C", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("C");
+            }
+        }));
+        ALL_BUTTON.put("en-key-V", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("V");
+            }
+        }));
+        ALL_BUTTON.put("en-key-B", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("B");
+            }
+        }));
+        ALL_BUTTON.put("en-key-N", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("N");
+            }
+        }));
+        ALL_BUTTON.put("en-key-M", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("M");
+            }
+        }));
+        ALL_BUTTON.put("en-key-<", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("delete");
+            }
+        }));
+        ALL_BUTTON.put("en-key->", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("enter");
+            }
+        }));
+        ALL_BUTTON.put("en-key-@", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("@");
+            }
+        }));
+        ALL_BUTTON.put("en-key-.", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText(".");
+            }
+        }));
+        ALL_BUTTON.put("en-key--", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                KEY.addText("-");
+            }
+        }));
     }
 
 

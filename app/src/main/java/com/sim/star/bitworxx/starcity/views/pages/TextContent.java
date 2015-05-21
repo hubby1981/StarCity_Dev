@@ -53,7 +53,11 @@ public class TextContent extends Content {
 
     @Override
     protected void onDrawInternal(Canvas canvas, ArrayList<Rect> rects, ContentWindow window) {
-
-        onDrawInternal(canvas,rects.get(0),window);
+        if(rects.size()>=2) {
+            Rect r = combineRects(rects.get(0), rects.get(1));
+            onDrawInternal(canvas,r,window);
+        }else
+        {
+            onDrawInternal(canvas,rects.get(0),window);}
     }
 }

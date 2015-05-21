@@ -38,6 +38,28 @@ public class RunnablesMainMenu {
             S_UPDATE.run();}
     };
 
+    public static Runnable R_S_MAIN_MENU_FALSE= new Runnable() {
+        @Override
+        public void run() {
+            Show.ShowMainMenu = false;
+            Show.ShowSubMenu = Show.ShowMainMenu;
+            Show.ShowTimer = Show.ShowMainMenu;
+            Show.ShowTopMenu =Show.ShowMainMenu;
+
+            S_UPDATE.run();}
+    };
+
+    public static Runnable R_S_MAIN_MENU_TRUE = new Runnable() {
+        @Override
+        public void run() {
+            Show.ShowMainMenu = true;
+            Show.ShowSubMenu = Show.ShowMainMenu;
+            Show.ShowTimer = Show.ShowMainMenu;
+            Show.ShowTopMenu =Show.ShowMainMenu;
+
+            S_UPDATE.run();}
+    };
+
     public static Runnable R_S_TIME_MENU = new Runnable() {
         @Override
         public void run() {

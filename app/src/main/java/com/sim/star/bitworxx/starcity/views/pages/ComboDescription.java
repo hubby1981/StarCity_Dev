@@ -5,7 +5,7 @@ package com.sim.star.bitworxx.starcity.views.pages;
  */
 public class ComboDescription extends CheckboxDescription {
 
-
+    public int Size=1;
 
     public ComboDescription(Runnable actrion) {
         super(actrion);

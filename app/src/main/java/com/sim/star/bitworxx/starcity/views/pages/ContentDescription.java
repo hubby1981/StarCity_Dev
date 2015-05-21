@@ -3,10 +3,12 @@ package com.sim.star.bitworxx.starcity.views.pages;
 import com.sim.star.bitworxx.starcity.constants.BTN;
 import com.sim.star.bitworxx.starcity.constants.CHK;
 import com.sim.star.bitworxx.starcity.constants.CMB;
+import com.sim.star.bitworxx.starcity.constants.KEY;
 import com.sim.star.bitworxx.starcity.constants.RBN;
 import com.sim.star.bitworxx.starcity.constants.STAR;
 import com.sim.star.bitworxx.starcity.constants.TXT;
 import com.sim.star.bitworxx.starcity.game.enums.ContentType;
+import com.sim.star.bitworxx.starcity.game.enums.TextSize;
 import com.sim.star.bitworxx.starcity.geometric.CoPo;
 
 /**
@@ -52,8 +54,10 @@ public class ContentDescription {
                                                                 T==ContentType.PROGRESS_BAR?new ProgressBarContent(P):
                                                                         T==ContentType.PROGRESS_ARC?new ProgressArcContent(P):
                                                                                 T==ContentType.COMBO?buildCombo():
-                                                                                    T==ContentType.TEXT_CLICK?buildTextClick():
-                                                                                        null;
+                                                                                        T==ContentType.TEXT_CLICK?buildTextClick():
+                                                                                                T==ContentType.TEXT_BOX?buildTextBox():
+                                                                                                        T==ContentType.BUTTON_HIDDEN?buildButtonHidden():
+                                                                                                                null;
     }
 
 
@@ -74,6 +78,20 @@ public class ContentDescription {
     {
         ButtonDescription bd = BTN.get(K);
         ButtonContent content= new ButtonContent(P,bd.Action);
+        if(bd.hasChilds())
+        {
+            int l = (P.R-P.L)/2;
+            int t=(P.B-P.T)/2;
+            for(TextDescription td : bd.getChilds())
+                content.Childs.add(new TextContent(new CoPo(P.L+l,P.T+t),td.Text,td.Size));
+        }
+        return content;
+    }
+
+    private HiddenButtonContent buildButtonHidden()
+    {
+        ButtonDescription bd = BTN.get(K);
+        HiddenButtonContent content= new HiddenButtonContent(P,bd.Action);
         if(bd.hasChilds())
         {
             int l = (P.R-P.L)/2;
@@ -112,6 +130,15 @@ public class ContentDescription {
             for(TextDescription td : cd.getChilds())
                 content.Childs.add(new TextContent(new CoPo(P.L+l,P.T+t),td.Text,td.Size));
         }
+        return content;
+    }
+
+    private TextBoxContent buildTextBox()
+    {
+        TextBoxDescription cd = KEY.get(K);
+
+        TextBoxContent content= new TextBoxContent(P,K,cd.Action);
+        content.Childs.add(new TextContent(new CoPo(P.L+1,P.T),KEY.getText(K), TextSize.TEXT));
         return content;
     }
 

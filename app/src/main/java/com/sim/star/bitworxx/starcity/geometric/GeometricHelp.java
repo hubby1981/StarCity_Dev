@@ -88,4 +88,44 @@ public class GeometricHelp {
 
         return result;
     }
+
+    public static Path simpleRect(Rect rc)
+    {
+        Path result = new Path();
+
+        result.moveTo(rc.left, rc.top);
+        result.lineTo(rc.right, rc.top);
+        result.lineTo(rc.right,rc.bottom);
+        result.lineTo(rc.left,rc.bottom);
+        result.lineTo(rc.left,rc.top);
+
+        return result;
+    }
+
+    public static Path keyboardRect(Rect rc)
+    {
+        Path result = new Path();
+        int w=rc.width()/4;
+        int h = rc.height()/4;
+        result.addPath(simpleRect(new Rect(rc.left, rc.top,rc.left+w,rc.top+h)));
+        result.addPath(simpleRect(new Rect(rc.left+w, rc.top, rc.left +w+w, rc.top +h)));
+        result.addPath(simpleRect(new Rect(rc.left+w+w, rc.top,rc.left+w+w+w,rc.top+h)));
+        result.addPath(simpleRect(new Rect(rc.left+w+w+w, rc.top, rc.left +w+w+w+w, rc.top +h)));
+        result.addPath(simpleRect(new Rect(rc.left+w+w+w+w, rc.top, rc.left +w+w+w+w+w, rc.top +h)));
+
+        //result.addPath(simpleRect(new Rect(rc.left, rc.top+h,rc.left+w,rc.top+h+h)));
+        result.addPath(simpleRect(new Rect(rc.left+w, rc.top+h, rc.left +w+w, rc.top +h+h)));
+        result.addPath(simpleRect(new Rect(rc.left+w+w+w, rc.top+h,rc.left+w+w+w+w,rc.top+h+h)));
+        //result.addPath(simpleRect(new Rect(rc.left+w+w+w, rc.top+h, rc.left +w+w+w+w, rc.top +h+h)));
+        //result.addPath(simpleRect(new Rect(rc.left, rc.top+h+h,rc.left+w,rc.top+h+h+h)));
+        result.addPath(simpleRect(new Rect(rc.left+w, rc.top+h+h, rc.left +w+w, rc.top +h+h+h)));
+        result.addPath(simpleRect(new Rect(rc.left+w+w+w, rc.top+h+h,rc.left+w+w+w+w,rc.top+h+h+h)));
+        //result.addPath(simpleRect(new Rect(rc.left+w+w+w, rc.top+h+h, rc.left +w+w+w+w, rc.top +h+h+h)));
+        result.addPath(simpleRect(new Rect(rc.left, rc.top+h+h+h,rc.left+w,rc.top+h+h+h+h)));
+        result.addPath(simpleRect(new Rect(rc.left+w, rc.top+h+h+h, rc.left +w+w, rc.top +h+h+h+h)));
+        result.addPath(simpleRect(new Rect(rc.left+w+w, rc.top+h+h+h,rc.left+w+w+w,rc.top+h+h+h+h)));
+        result.addPath(simpleRect(new Rect(rc.left+w+w+w, rc.top+h+h+h, rc.left +w+w+w+w, rc.top +h+h+h+h)));
+        result.addPath(simpleRect(new Rect(rc.left+w+w+w+w, rc.top+h+h+h, rc.left +w+w+w+w+w, rc.top+h+h+h +h)));
+        return result;
+    }
 }

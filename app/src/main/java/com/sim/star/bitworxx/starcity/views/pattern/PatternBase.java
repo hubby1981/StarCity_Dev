@@ -49,6 +49,14 @@ public abstract class PatternBase {
                     contents.add(c);
             }
 
+            for(PatternBase p : getHiddenPatterns())
+            {
+                for(Content c : p.build())
+                {
+                    contents.add(c);
+                }
+            }
+
         return contents;
     }
 
@@ -56,4 +64,9 @@ public abstract class PatternBase {
     {
         return new ArrayList<>();
     }
+    public  ArrayList<PatternBase> getHiddenPatterns()
+    {
+        return new ArrayList<>();
+    }
+
 }

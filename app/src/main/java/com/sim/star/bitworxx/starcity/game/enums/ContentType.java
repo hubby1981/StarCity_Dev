@@ -14,5 +14,7 @@ public enum ContentType {
     PROGRESS_BAR,
     PROGRESS_ARC,
     COMBO,
-    TEXT_CLICK
+    TEXT_CLICK,
+    TEXT_BOX,
+    BUTTON_HIDDEN
 }

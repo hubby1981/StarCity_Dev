@@ -21,7 +21,7 @@ public class MainIndexPattern extends PatternBase {
         Contents.add(new ContentDescription(new CoPo(0,3),"header-main-functions", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(1,4),"header-main-functions_desc", ContentType.TEXT));
 
-        Contents.add(new ContentDescription(new CoPo(1,6,4,6),"use sublight", ContentType.CHECKBOX));
+        Contents.add(new ContentDescription(new CoPo(1,7,4,7),"use sublight", ContentType.CHECKBOX));
         Contents.add(new ContentDescription(new CoPo(1,8,4,8),"use linear", ContentType.CHECKBOX));
         Contents.add(new ContentDescription(new CoPo(1,9,4,9),"use commander", ContentType.CHECKBOX));
 
@@ -44,7 +44,8 @@ public class MainIndexPattern extends PatternBase {
 
 
         Patterns.add(new MainSystemButtonPattern());
-        Patterns.add(new ColorComboPattern(new CoPo(10, 6, 17, 6)));
+        Patterns.add(new ColorComboPattern(new CoPo(1,6,7,6)));
+        Patterns.add(new TextBoxPattern(new CoPo(10, 6, 19, 6),"index-name"));
 
     }
 }

@@ -514,11 +514,6 @@ private Paint HeaderFontPaint;
         Rect rightPage = new Rect(getTitleRect().right-wTitle,getTitleRect().top,getTitleRect().right,getTitleRect().bottom);
         LeftPage=GeometricHelp.generateTrianglePath(leftPage,0,0,0,0,48,30,0,0);
         RightPage=GeometricHelp.generateTrianglePath(rightPage,0,0,0,0,0,0,48,30);
-        canvas.drawPath(LeftPage, MenuConst.PLATE_BACK_PAINTER);
-        canvas.drawPath(RightPage, MenuConst.PLATE_BACK_PAINTER);
-
-        canvas.drawPath(LeftPage, MenuConst.STROKE_BACK_PAINTER);
-        canvas.drawPath(RightPage, MenuConst.STROKE_BACK_PAINTER);
 
         HeaderFontPaint = new Paint();
         HeaderFontPaint.setStyle(Paint.Style.FILL);
@@ -529,8 +524,13 @@ private Paint HeaderFontPaint;
         HeaderFontPaint.setTextSize((float) ContentFont.FontHeightHeader+8);
 
 
-        canvas.drawText("<",(float)leftPage.right-leftPage.width()/2,(float)leftPage.bottom-leftPage.height()/4,HeaderFontPaint);
-        canvas.drawText(">",(float)rightPage.left+rightPage.width()/3,(float)rightPage.bottom-rightPage.height()/4,HeaderFontPaint);
+        Path pp1 = GeometricHelp.prevTriangle(new Rect(leftPage.right-leftPage.width()/2,leftPage.top+leftPage.height()/4,leftPage.right-leftPage.width()/4,leftPage.bottom-leftPage.height()/4));
+        canvas.drawPath(pp1,MenuConst.PLATE_BACK_PAINTER);
+        canvas.drawPath(pp1,MenuConst.STROKE_BACK_PAINTER);
+
+        pp1 = GeometricHelp.nextTriangle(new Rect(rightPage.left+leftPage.width()/4,rightPage.top+rightPage.height()/4,rightPage.left+leftPage.width()/2,rightPage.bottom-rightPage.height()/4));
+        canvas.drawPath(pp1,MenuConst.PLATE_BACK_PAINTER);
+        canvas.drawPath(pp1,MenuConst.STROKE_BACK_PAINTER);
 
         ActionContainer.addClickHandlerMain(new ActionHandler(leftPage, RunnablesMainMenu.R_A_PREV_PAGE));
         ActionContainer.addClickHandlerMain(new ActionHandler(rightPage, RunnablesMainMenu.R_A_NEXT_PAGE));
