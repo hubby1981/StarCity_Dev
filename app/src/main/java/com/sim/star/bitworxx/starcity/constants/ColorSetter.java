@@ -25,7 +25,7 @@ public class ColorSetter {
     public static int FILL_SHADER_BACK = Color.argb(255, 0, 0, 0);
     public static int FILL_SHADER_BACK_LIGHT = Color.argb(255, 255,255, 255);
     public static int FILL_BACK_CONTENT_LIGHT = Color.argb(85, 50,50, 50);
-    public static int FILL_BACK_CONTENT_LIGHT_MAX = Color.argb(200, 50,50,50);
+    public static int FILL_BACK_CONTENT_LIGHT_MAX = Color.argb(200, 100,100,100);
 
     public static int FILL_SHADER_BACK_HALF = Color.argb(ColorMenu.ALPHA_TWO/2, 200,200,200);
 
