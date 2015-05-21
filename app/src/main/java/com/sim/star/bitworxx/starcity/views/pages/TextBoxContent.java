@@ -44,8 +44,8 @@ public class TextBoxContent        extends ButtonContent {
         canvas.drawPath(p, MenuConst.BACK_PAINTER_CONTENT_INNER);
         canvas.drawPath(p, MenuConst.PLATE_STROKE_BACK_PAINTER);
 
-        int h = r.height()/3;
-        Rect rB = new Rect(r.right-r.height(),r.top+h,r.right-h,r.bottom-h);
+        int h = r.height()/2;
+        Rect rB = new Rect(r.right-r.height(),r.top+h/2,r.right-h,r.bottom-h);
         if(u)
         {
             p = GeometricHelp.keyboardRect(rB);/*

@@ -106,7 +106,7 @@ public class GeometricHelp {
     {
         Path result = new Path();
         int w=rc.width()/4;
-        int h = rc.height()/4;
+        int h = rc.height()/2;
         result.addPath(simpleRect(new Rect(rc.left, rc.top,rc.left+w,rc.top+h)));
         result.addPath(simpleRect(new Rect(rc.left+w, rc.top, rc.left +w+w, rc.top +h)));
         result.addPath(simpleRect(new Rect(rc.left+w+w, rc.top,rc.left+w+w+w,rc.top+h)));

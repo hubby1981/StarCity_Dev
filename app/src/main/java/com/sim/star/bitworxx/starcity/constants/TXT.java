@@ -49,7 +49,7 @@ public class TXT {
         result.add(getValuesFrom("en","btn-system-generate","Build",TextSize.TEXT));
         result.add(getValuesFrom("en","header-main-functions","Functions",TextSize.SUB_HEADER));
         result.add(getValuesFrom("en","header-main-functions_desc","All Functions are designed for.",TextSize.TEXT));
-        result.add(getValuesFrom("en","header-systems-table","Your Systems Overview",TextSize.SUB_HEADER));
+        result.add(getValuesFrom("en","header-systems-table","All Systems",TextSize.SUB_HEADER));
         result.add(getValuesFrom("en","header-systems-table_name","Name",TextSize.SUB_HEADER));
         result.add(getValuesFrom("en","header-systems-table_sector","Sector",TextSize.SUB_HEADER));
         result.add(getValuesFrom("en","header-systems-table_status","Status",TextSize.SUB_HEADER));
@@ -131,7 +131,7 @@ public class TXT {
         result.add(getValuesFrom("de","btn-system-generate","Bauen",TextSize.TEXT));
         result.add(getValuesFrom("de","header-main-functions","Funktionen",TextSize.SUB_HEADER));
         result.add(getValuesFrom("de","header-main-functions_desc","Alle Funktionen wurden gestaltet.",TextSize.TEXT));
-        result.add(getValuesFrom("de","header-systems-table","Deine System Uebersicht",TextSize.SUB_HEADER));
+        result.add(getValuesFrom("de","header-systems-table","Alle Systeme",TextSize.SUB_HEADER));
         result.add(getValuesFrom("de","header-systems-table_name","Name",TextSize.SUB_HEADER));
         result.add(getValuesFrom("de","header-systems-table_sector","Sektor",TextSize.SUB_HEADER));
         result.add(getValuesFrom("de","header-systems-table_status","Status",TextSize.SUB_HEADER));
