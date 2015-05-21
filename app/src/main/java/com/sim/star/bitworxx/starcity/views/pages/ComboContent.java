@@ -50,7 +50,7 @@ public class ComboContent extends ButtonContent {
             canvas.drawPath(p1, MenuConst.BACK_PAINTER_WITH_SHADER);
             canvas.drawPath(p1, MenuConst.BACK_PAINTER_CONTENT_LIGHT_MAX);
 
-            canvas.drawPath(p1, MenuConst.PLATE_BACK_PAINTER);
+            //canvas.drawPath(p1, MenuConst.PLATE_BACK_PAINTER);
 
             canvas.drawPath(p1, MenuConst.PLATE_STROKE_BACK_PAINTER);
 

@@ -45,7 +45,9 @@ public class MainIndexPattern extends PatternBase {
 
         Patterns.add(new MainSystemButtonPattern());
         Patterns.add(new ColorComboPattern(new CoPo(1,6,7,6)));
-        Patterns.add(new TextBoxPattern(new CoPo(10, 6, 19, 6),"index-name"));
+        Patterns.add(new TextBoxPattern(new CoPo(10, 6, 19, 6),"index-mail"));
+        Patterns.add(new TextBoxPattern(new CoPo(10, 3, 19, 3),"index-name"));
+
 
     }
 }

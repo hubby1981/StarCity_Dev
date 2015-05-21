@@ -9,6 +9,7 @@ import com.sim.star.bitworxx.starcity.views.pages.TextBoxDescription;
 import com.sim.star.bitworxx.starcity.views.pages.TextDescription;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by WEIS on 21.05.2015.
@@ -22,6 +23,8 @@ public class KEY {
         ALL_KEYS=new HashMap<>();
 
         ALL_KEYS.put("index-name",new TextBoxDescription(getActionForKey("index-name",false)));
+        ALL_KEYS.put("index-mail",new TextBoxDescription(getActionForKey("index-mail",false)));
+
     }
 
 
@@ -71,11 +74,13 @@ public class KEY {
                 if(ALL_KEY.containsKey(k2)){
                     Boolean val = ALL_KEY.get(k2);
                     val=!val;
-
+                    clearOpen();
                     ALL_KEY.remove(k2);
                     ALL_KEY.put(k2, val);}
                 else
                 {
+                    clearOpen();
+
                     ALL_KEY.put(k2,true);
                 }
 
@@ -91,6 +96,15 @@ public class KEY {
                 RunnablesMainMenu.R_S_FLUSH_CONTENT.run();
             }
         };
+    }
+
+    public static void clearOpen()
+    {
+        for(Map.Entry<String,Boolean> items : ALL_KEY.entrySet())
+        {
+            if(items.getValue()==true)
+                items.setValue(false);
+        }
     }
 
     public static void addText(String text)

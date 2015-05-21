@@ -15,7 +15,7 @@ public class TextBoxPattern extends CoPoPattern {
         super(p);
         Key=key;
 
-        Contents.add(new ContentDescription(p,"index-name", ContentType.TEXT_BOX));
+        Contents.add(new ContentDescription(p,key, ContentType.TEXT_BOX));
         Patterns.add(new KeyBoardPattern(p,key));
     }
 }
