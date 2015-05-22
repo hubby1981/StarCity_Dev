@@ -149,17 +149,17 @@ public class ActionContainer {
     }
 
 
-    public static void addButton(Rect rect,Runnable action)
+    public static void addButton(Rect rect,Runnable action,String token)
     {
         if(HandlerButton!=null)
-            addClick(new ActionHandler(rect, action));
+            addClick(new ActionHandler(rect, action,token));
     }
 
 
-    public static void addButtonHidden(Rect rect,Runnable action)
+    public static void addButtonHidden(Rect rect,Runnable action,String token)
     {
         if(HandlerButtonHidden!=null)
-            addClickHidden(new ActionHandler(rect, action));
+            addClickHidden(new ActionHandler(rect, action,token));
     }
 
     public static void clearHidden()

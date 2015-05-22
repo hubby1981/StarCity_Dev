@@ -8,6 +8,7 @@ import com.sim.star.bitworxx.starcity.geometric.CoPo;
 import com.sim.star.bitworxx.starcity.views.content.ContentWindow;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * Created by WEIS on 16.04.2015.
@@ -20,6 +21,8 @@ public abstract class Content {
     public Content Parent;
     public boolean UseParentBounds=true;
     protected ArrayList<Content> Childs;
+
+    public String Token=UUID.randomUUID().toString();
 
     public Content(Point leftTop)
     {
@@ -45,6 +48,7 @@ public abstract class Content {
     public void onDraw(Canvas canvas,ContentWindow window,Content parent)
     {
         Parent = parent;
+
         if(isSinglePoint())
             onDrawInternal(canvas,window.getLayoutPosition(P.L,P.T),window);
         else

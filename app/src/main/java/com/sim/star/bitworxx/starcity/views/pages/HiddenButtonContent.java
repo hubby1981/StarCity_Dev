@@ -16,6 +16,6 @@ public class HiddenButtonContent extends ButtonContent {
     @Override
     protected void setHandler(Rect rect,Runnable action)
     {
-        ActionContainer.addButtonHidden(rect, Action);
+        ActionContainer.addButtonHidden(rect, Action,Token);
     }
 }

@@ -378,14 +378,14 @@ private Paint HeaderFontPaint;
 
             Rect rL = new Rect(o.left, (o.top + o.height() / 2) - measureItemHeight(), o.left + w + FACTOR_TRIANGLE_OUT * 4, (o.top + o.height() / 2) + measureItemHeight());
 
-            ActionContainer.addClickHandlerMain(new ActionHandler(rL, RunnablesMainMenu.R_S_SUB_MENU));
+            ActionContainer.addClickHandlerMain(new ActionHandler(rL, RunnablesMainMenu.R_S_SUB_MENU,this.Id.toString()));
             Rect rR = new Rect(o.right - w + FACTOR_TRIANGLE_OUT * 4, (o.top + o.height() / 2) - measureItemHeight(), o.right, (o.top + o.height() / 2) + measureItemHeight());
 
-            ActionContainer.addClickHandlerMain(new ActionHandler(rR, RunnablesMainMenu.R_S_TIME_MENU));
+            ActionContainer.addClickHandlerMain(new ActionHandler(rR, RunnablesMainMenu.R_S_TIME_MENU,this.Id.toString()));
 
             Rect rM = new Rect(o.right - ((o.width() / 2)) - measureItemWidth(), o.bottom - measureItemHeight(), o.right - ((o.width() / 2)) + measureItemWidth(), o.bottom);
 
-            ActionContainer.addClickHandlerMain(new ActionHandler(rM, RunnablesMainMenu.R_S_MAIN_MENU));
+            ActionContainer.addClickHandlerMain(new ActionHandler(rM, RunnablesMainMenu.R_S_MAIN_MENU,this.Id.toString()));
             ActionContainer.InitBorder = true;
         }
     }
@@ -532,8 +532,8 @@ private Paint HeaderFontPaint;
         canvas.drawPath(pp1,MenuConst.PLATE_BACK_PAINTER);
         canvas.drawPath(pp1,MenuConst.STROKE_BACK_PAINTER);
 
-        ActionContainer.addClickHandlerMain(new ActionHandler(leftPage, RunnablesMainMenu.R_A_PREV_PAGE));
-        ActionContainer.addClickHandlerMain(new ActionHandler(rightPage, RunnablesMainMenu.R_A_NEXT_PAGE));
+        ActionContainer.addClickHandlerMain(new ActionHandler(leftPage, RunnablesMainMenu.R_A_PREV_PAGE,this.Id.toString()));
+        ActionContainer.addClickHandlerMain(new ActionHandler(rightPage, RunnablesMainMenu.R_A_NEXT_PAGE,this.Id.toString()));
 
         HeaderFontPaint.setTextSize((float) ContentFont.FontHeightHeader-8);
         HeaderFontPaint.setFakeBoldText(false);

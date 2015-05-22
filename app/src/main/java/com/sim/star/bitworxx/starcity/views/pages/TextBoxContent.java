@@ -26,7 +26,7 @@ public class TextBoxContent        extends ButtonContent {
     @Override
     protected void setHandler(Rect rect,Runnable action)
     {
-        ActionContainer.addButtonHidden(rect, Action);
+        ActionContainer.addButtonHidden(rect, Action,Token);
     }
     @Override
     protected  void drawFilling(Canvas canvas,Rect r)

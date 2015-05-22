@@ -31,7 +31,7 @@ public class TextClickContent extends TextContent {
             int w = CliprRects.InnerRectMain.left- CliprRects.OuterRectContent.left;
             int h=CliprRects.InnerRectMain.top- CliprRects.OuterRectContent.top;
             Rect r2 = new Rect(r.left+ w,r.top+h,r.right+ w,r.bottom+h);
-            ActionContainer.addButtonHidden(r2, Action);
+            ActionContainer.addButtonHidden(r2, Action,Token);
         }
     }
 }

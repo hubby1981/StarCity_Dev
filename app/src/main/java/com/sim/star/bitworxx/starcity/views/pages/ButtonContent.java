@@ -55,7 +55,7 @@ public class ButtonContent extends RectContent {
 
     protected void setHandler(Rect rect,Runnable action)
     {
-        ActionContainer.addButton(rect, Action);
+        ActionContainer.addButton(rect, Action,Token);
     }
 
     protected void drawFilling(Canvas canvas,Rect r)
