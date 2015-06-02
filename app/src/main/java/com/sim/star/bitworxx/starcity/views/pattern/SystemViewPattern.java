@@ -20,7 +20,7 @@ import java.util.Map;
  */
 public class SystemViewPattern extends PatternBase {
     public SystemViewPattern(String pageCount) {
-
+/*
         String name = GM.SYSTEM_NAME;
 
         Contents.add(new ContentDescription(new CoPo(0, 0), "header-system", ContentType.TEXT));
@@ -33,7 +33,7 @@ public class SystemViewPattern extends PatternBase {
 
         Contents.add(new ContentDescription(new CoPo(25, 2, 31, 14), "", ContentType.TABLE));
 
-/*
+
         Contents.add(new ContentDescription(new CoPo(0, 5, 23, 5), "", ContentType.LINE));
         Contents.add(new ContentDescription(new CoPo(0, 7, 23, 7), "", ContentType.LINE));
         Contents.add(new ContentDescription(new CoPo(0, 9, 23, 9), "", ContentType.LINE));
@@ -50,7 +50,7 @@ public class SystemViewPattern extends PatternBase {
         Contents.add(new ContentDescription(new CoPo(16, 3, 16, 14), "", ContentType.LINE));
         Contents.add(new ContentDescription(new CoPo(18, 3, 18, 14), "", ContentType.LINE));
         Contents.add(new ContentDescription(new CoPo(20, 3, 20, 14), "", ContentType.LINE));
-        Contents.add(new ContentDescription(new CoPo(22, 3, 22, 14), "", ContentType.LINE));*/
+        Contents.add(new ContentDescription(new CoPo(22, 3, 22, 14), "", ContentType.LINE))
 
 
         Patterns.add(new GridLinePattern(2,2,new CoPo(0,3,23,14)));
@@ -111,6 +111,6 @@ public class SystemViewPattern extends PatternBase {
 
       Patterns.add(new SystemObjectPattern(name));
 
-
+*/
     }
 }
