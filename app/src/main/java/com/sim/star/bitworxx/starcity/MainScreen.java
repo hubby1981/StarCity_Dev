@@ -20,6 +20,15 @@ import com.sim.star.bitworxx.starcity.db.Meta;
 import com.sim.star.bitworxx.starcity.meta.MetaObjectContainer;
 import com.sim.star.bitworxx.starcity.meta.storages.BankStorageLoader;
 import com.sim.star.bitworxx.starcity.player.PlayerStore;
+import com.sim.star.bitworxx.starcity.statistics.combo.PlayerRaceCombo;
+import com.sim.star.bitworxx.starcity.statistics.properties.PropertiesEnum;
+import com.sim.star.bitworxx.starcity.statistics.properties.abilities.AbilityRepoProperty;
+import com.sim.star.bitworxx.starcity.statistics.properties.abilities.DiplomatProperty;
+import com.sim.star.bitworxx.starcity.statistics.properties.abilities.SettlerProperty;
+import com.sim.star.bitworxx.starcity.statistics.properties.abilities.SoldierProperty;
+import com.sim.star.bitworxx.starcity.statistics.properties.abilities.SpacemanProperty;
+import com.sim.star.bitworxx.starcity.statistics.properties.races.HumanProperty;
+import com.sim.star.bitworxx.starcity.statistics.properties.races.InsectProperty;
 import com.sim.star.bitworxx.starcity.statistics.properties.races.RaceRepoProperty;
 import com.sim.star.bitworxx.starcity.views.touch.ActionContainer;
 
@@ -61,9 +70,6 @@ public class MainScreen extends Activity {
         bk=new BankingHelper();
 
 
-
-
-
         ResultIntent = this.getIntent();
         Task = TaskStackBuilder.create(this);
         Task.addNextIntent(ResultIntent);
@@ -72,6 +78,14 @@ public class MainScreen extends Activity {
         MetaObjectContainer destroyer = Meta.getContainer("starship","shiptype","DESTROYER");
         MetaObjectContainer explorer = Meta.getContainer("starship","shiptype","EXPLORER");
 
+        PlayerRaceCombo player1 = new PlayerRaceCombo(new SpacemanProperty(),new SoldierProperty(),new InsectProperty());
+        PlayerRaceCombo player2 = new PlayerRaceCombo(new DiplomatProperty(),new SettlerProperty(),new HumanProperty());
+
+
+        int attackP1 = player1.getComboCount(PropertiesEnum.attack);
+        int defenseP2 = player2.getComboCount(PropertiesEnum.defense);
+
+        int attackDamage = attackP1-defenseP2;
 
 
         MenuConst.BACK_SHADER = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.back_shader), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);

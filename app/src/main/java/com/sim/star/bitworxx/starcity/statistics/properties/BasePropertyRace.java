@@ -61,4 +61,60 @@ public abstract class BasePropertyRace {
                 getPropertyValue_skill()+
                 getPropertyValue_planning();
     }
+
+
+    public int getProperty(PropertiesEnum property)
+    {
+        if(property==PropertiesEnum.attack)
+            return getPropertyValue_attack();
+        if(property==PropertiesEnum.defense)
+            return getPropertyValue_defense();
+        if(property==PropertiesEnum.trading)
+            return getPropertyValue_trading();
+        if(property==PropertiesEnum.reduction)
+            return getPropertyValue_reduction();
+        if(property==PropertiesEnum.growing)
+            return getPropertyValue_growing();
+        if(property==PropertiesEnum.colonization)
+            return getPropertyValue_colonization();
+        if(property==PropertiesEnum.danger)
+            return getPropertyValue_danger();
+        if(property==PropertiesEnum.morality)
+            return getPropertyValue_morality();
+        if(property==PropertiesEnum.strength)
+            return getPropertyValue_strength();
+        if(property==PropertiesEnum.live)
+            return getPropertyValue_live();
+        if(property==PropertiesEnum.population)
+            return getPropertyValue_population();
+        if(property==PropertiesEnum.flee)
+            return getPropertyValue_flee();
+        if(property==PropertiesEnum.progress)
+            return getPropertyValue_progress();
+        if(property==PropertiesEnum.innovation)
+            return getPropertyValue_innovation();
+        if(property==PropertiesEnum.willpower)
+            return getPropertyValue_willpower();
+        if(property==PropertiesEnum.psi)
+            return getPropertyValue_psi();
+        if(property==PropertiesEnum.abandonment)
+            return getPropertyValue_abandonment();
+        if(property==PropertiesEnum.fail)
+            return getPropertyValue_fail();
+        if(property==PropertiesEnum.bounty)
+            return getPropertyValue_bounty();
+        if(property==PropertiesEnum.price)
+            return getPropertyValue_price();
+        if(property==PropertiesEnum.power)
+            return getPropertyValue_power();
+        if(property==PropertiesEnum.losses)
+            return getPropertyValue_losses();
+        if(property==PropertiesEnum.locate)
+            return getPropertyValue_locate();
+        if(property==PropertiesEnum.skill)
+            return getPropertyValue_skill();
+        if(property==PropertiesEnum.planning)
+            return getPropertyValue_planning();
+        return 0;
+    }
 }
