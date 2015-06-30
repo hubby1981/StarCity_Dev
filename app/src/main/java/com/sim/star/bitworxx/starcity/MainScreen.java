@@ -20,6 +20,7 @@ import com.sim.star.bitworxx.starcity.db.Meta;
 import com.sim.star.bitworxx.starcity.meta.MetaObjectContainer;
 import com.sim.star.bitworxx.starcity.meta.storages.BankStorageLoader;
 import com.sim.star.bitworxx.starcity.player.PlayerStore;
+import com.sim.star.bitworxx.starcity.statistics.properties.races.RaceRepoProperty;
 import com.sim.star.bitworxx.starcity.views.touch.ActionContainer;
 
 import java.util.Timer;

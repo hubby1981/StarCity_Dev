@@ -30,4 +30,35 @@ public abstract class BasePropertyRace {
     public abstract int getPropertyValue_skill();
     public abstract int getPropertyValue_planning();
 
+
+
+    public int getAllCount()
+    {
+        return
+                getPropertyValue_attack()+
+                getPropertyValue_defense()+
+                getPropertyValue_trading()+
+                getPropertyValue_reduction()+
+                getPropertyValue_growing()+
+                getPropertyValue_colonization()+
+                getPropertyValue_danger()+
+                getPropertyValue_morality()+
+                getPropertyValue_strength()+
+                getPropertyValue_live()+
+                getPropertyValue_population()+
+                getPropertyValue_flee()+
+                getPropertyValue_progress()+
+                getPropertyValue_innovation()+
+                getPropertyValue_willpower()+
+                getPropertyValue_psi()+
+                getPropertyValue_abandonment()+
+                getPropertyValue_fail()+
+                getPropertyValue_bounty()+
+                getPropertyValue_price()+
+                getPropertyValue_power()+
+                getPropertyValue_losses()+
+                getPropertyValue_locate()+
+                getPropertyValue_skill()+
+                getPropertyValue_planning();
+    }
 }
