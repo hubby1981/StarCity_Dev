@@ -12,6 +12,9 @@ public class F {
 
     public static String FIELD_PLAYER_RACE ="race";
     public static String FIELD_PLAYER_LAST_PLAYED="last_played";
+    public static String FIELD_PLAYER_ABILITY_FIRST="aby_first";
+    public static String FIELD_PLAYER_ABILITY_SECOND="aby_second";
+
 
 
     public static String FIELD_PARENT_ID="parent_id";

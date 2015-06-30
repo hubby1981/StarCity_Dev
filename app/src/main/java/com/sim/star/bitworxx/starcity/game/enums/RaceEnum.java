@@ -7,8 +7,9 @@ public enum RaceEnum {
     Human,
     Insect,
     Plant,
+    Reptile,
     Octopus,
-    Tech,
+    Techno,
     Singular,
     MustSelect
 }

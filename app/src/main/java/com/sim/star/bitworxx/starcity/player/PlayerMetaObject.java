@@ -3,6 +3,7 @@ package com.sim.star.bitworxx.starcity.player;
 import com.sim.star.bitworxx.starcity.game.enums.RaceEnum;
 import com.sim.star.bitworxx.starcity.meta.MetaObject;
 import com.sim.star.bitworxx.starcity.meta.fields.F;
+import com.sim.star.bitworxx.starcity.statistics.abilities.AbilitiesEnum;
 
 import java.lang.reflect.Field;
 import java.util.Date;
@@ -41,9 +42,29 @@ public class PlayerMetaObject extends MetaObject {
 
     public void setRace(RaceEnum race)
     {
-        setFieldValue(F.FIELD_PLAYER_RACE,race.toString());
+        setFieldValue(F.FIELD_PLAYER_RACE, race.toString());
     }
 
+
+    public AbilitiesEnum getRaceAbyFirst()
+    {
+        return AbilitiesEnum.valueOf(getValue(F.FIELD_PLAYER_ABILITY_FIRST));
+    }
+
+    public void setRaceAbyFirst(AbilitiesEnum ability)
+    {
+        setFieldValue(F.FIELD_PLAYER_ABILITY_FIRST,ability.toString());
+    }
+
+    public AbilitiesEnum getRaceAbySecond()
+    {
+        return AbilitiesEnum.valueOf(getValue(F.FIELD_PLAYER_ABILITY_SECOND));
+    }
+
+    public void setRaceAbySecond(AbilitiesEnum ability)
+    {
+        setFieldValue(F.FIELD_PLAYER_ABILITY_SECOND,ability.toString());
+    }
 
     public Date getLastPlayed()
     {
