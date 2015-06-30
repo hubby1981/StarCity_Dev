@@ -82,10 +82,6 @@ public class MainScreen extends Activity {
         PlayerRaceCombo player2 = new PlayerRaceCombo(new DiplomatProperty(),new SettlerProperty(),new HumanProperty());
 
 
-        int attackP1 = player1.getComboCount(PropertiesEnum.attack);
-        int defenseP2 = player2.getComboCount(PropertiesEnum.defense);
-
-        int attackDamage = attackP1-defenseP2;
 
 
         MenuConst.BACK_SHADER = new BitmapShader(BitmapFactory.decodeResource(getResources(), R.drawable.back_shader), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
