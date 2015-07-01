@@ -33,6 +33,7 @@ public abstract class ContentWindow extends ContentBase {
     public Paint HeaderFontPaint;
     public Paint SubHeaderFontPaint;
     public Paint FontPaint;
+    public boolean PaintOnlyContent=false;
 
     protected ArrayList<PageBase> Pages;
     protected int ActualPage =0;
@@ -96,54 +97,56 @@ public abstract class ContentWindow extends ContentBase {
         Bitmap result = generateBitmap();
 
         if(IsNew) {
-
             Canvas canvas = new Canvas(result);
-            int w = DisplayRect.width() / (MenuConst.MARGIN_CLIP_MINI * MenuConst.FACTOR_TRIANGLE_OUT * 2);
-            int ww= w/MenuConst.FACTOR_TRIANGLE_OUT;
-            int www= ww/MenuConst.FACTOR_TRIANGLE_OUT;
-            Path outLine = GeometricHelp.generateTrianglePath(getOutboundRect(), ww, ww);
-            Path inLine = GeometricHelp.generateTrianglePath(getInboundRect(ww), www,www);
-            LeftPos=InboundRect.left+w;
-            TopPos=InboundRect.top+w;
 
-            HeaderFontPaint = new Paint();
-            HeaderFontPaint.setStyle(Paint.Style.FILL);
-            HeaderFontPaint.setTypeface(MainBorder.VenusFace);
-            HeaderFontPaint.setFakeBoldText(true);
-            HeaderFontPaint.setStrokeWidth(1);
-            HeaderFontPaint.setColor(ColorSetter.FILL_STROKE_BACK_FORE);
-            HeaderFontPaint.setTextSize((float) ContentFont.FontHeightHeader);
-            HeaderFontPaint.setAntiAlias(true);
-            SubHeaderFontPaint = new Paint();
-            SubHeaderFontPaint.setStyle(Paint.Style.FILL);
-            SubHeaderFontPaint.setStrokeWidth(1);
-            SubHeaderFontPaint.setTypeface(MainBorder.VenusFace);
-            SubHeaderFontPaint.setFakeBoldText(true);
-            SubHeaderFontPaint.setColor(ColorSetter.FILL_STROKE_BACK_FORE);
-            SubHeaderFontPaint.setTextSize((float) ContentFont.FontHeightSubHeader);
-            SubHeaderFontPaint.setAntiAlias(true);
 
-            FontPaint = new Paint();
-            FontPaint.setStyle(Paint.Style.FILL);
+                int w = DisplayRect.width() / (MenuConst.MARGIN_CLIP_MINI * MenuConst.FACTOR_TRIANGLE_OUT * 2);
+                int ww = w / MenuConst.FACTOR_TRIANGLE_OUT;
+                int www = ww / MenuConst.FACTOR_TRIANGLE_OUT;
+                Path outLine = GeometricHelp.generateTrianglePath(getOutboundRect(), ww, ww);
+                Path inLine = GeometricHelp.generateTrianglePath(getInboundRect(ww), www, www);
+                LeftPos = InboundRect.left + w;
+                TopPos = InboundRect.top + w;
 
-            FontPaint.setTypeface(MainBorder.VenusFace);
-            FontPaint.setAntiAlias(true);
+                HeaderFontPaint = new Paint();
+                HeaderFontPaint.setStyle(Paint.Style.FILL);
+                HeaderFontPaint.setTypeface(MainBorder.VenusFace);
+                HeaderFontPaint.setFakeBoldText(true);
+                HeaderFontPaint.setStrokeWidth(1);
+                HeaderFontPaint.setColor(ColorSetter.FILL_STROKE_BACK_FORE);
+                HeaderFontPaint.setTextSize((float) ContentFont.FontHeightHeader);
+                HeaderFontPaint.setAntiAlias(true);
+                SubHeaderFontPaint = new Paint();
+                SubHeaderFontPaint.setStyle(Paint.Style.FILL);
+                SubHeaderFontPaint.setStrokeWidth(1);
+                SubHeaderFontPaint.setTypeface(MainBorder.VenusFace);
+                SubHeaderFontPaint.setFakeBoldText(true);
+                SubHeaderFontPaint.setColor(ColorSetter.FILL_STROKE_BACK_FORE);
+                SubHeaderFontPaint.setTextSize((float) ContentFont.FontHeightSubHeader);
+                SubHeaderFontPaint.setAntiAlias(true);
 
-            FontPaint.setColor(ColorSetter.FILL_STROKE_BACK_FORE);
-            FontPaint.setTextSize((float) ContentFont.FontHeight);
+                FontPaint = new Paint();
+                FontPaint.setStyle(Paint.Style.FILL);
 
-            if (MenuConst.BACK_SHADER_PAINTER != null)
-            {
+                FontPaint.setTypeface(MainBorder.VenusFace);
+                FontPaint.setAntiAlias(true);
 
-                canvas.drawRect(InboundRect, MenuConst.BACK_SHADER_PAINTER);
-            }
-            canvas.drawPath(outLine, MenuConst.BACK_PAINTER_CONTENT);
-            canvas.drawPath(outLine, MenuConst.PLATE_STROKE_BACK_PAINTER);
-            canvas.drawPath(inLine, MenuConst.BACK_PAINTER_CONTENT_INNER);
-            canvas.drawPath(inLine, MenuConst.PLATE_STROKE_BACK_PAINTER);
+                FontPaint.setColor(ColorSetter.FILL_STROKE_BACK_FORE);
+                FontPaint.setTextSize((float) ContentFont.FontHeight);
 
-            CliprRects.InnerRectContent=InboundRect;
-            CliprRects.OuterRectContent=OutboundRect;
+                if(!PaintOnlyContent) {
+                    if (MenuConst.BACK_SHADER_PAINTER != null) {
+
+                        canvas.drawRect(InboundRect, MenuConst.BACK_SHADER_PAINTER);
+                    }
+                    canvas.drawPath(outLine, MenuConst.BACK_PAINTER_CONTENT);
+                    canvas.drawPath(outLine, MenuConst.PLATE_STROKE_BACK_PAINTER);
+                    canvas.drawPath(inLine, MenuConst.BACK_PAINTER_CONTENT_INNER);
+                    canvas.drawPath(inLine, MenuConst.PLATE_STROKE_BACK_PAINTER);
+                }
+
+                CliprRects.InnerRectContent = InboundRect;
+                CliprRects.OuterRectContent = OutboundRect;
 
 
 

@@ -103,6 +103,11 @@ public abstract class ContentBase {
         canvas.drawBitmap(MenuBitmaps.ActualWindow.draw(),(float)DisplayRect.left,(float)DisplayRect.top,null);
     }
 
+    public void drawOnCanvas(Canvas canvas,ContentWindow window)
+    {
+        canvas.drawBitmap(window.draw(),(float)DisplayRect.left,(float)DisplayRect.top,null);
+    }
+
     private void createGrid()
     {
         Grid=GridHelper.measureElements(getInboundRectMargin(MenuConst.MARGIN_CLIP_MINI), ContentPosition.MAX_GRID_X,ContentPosition.MAX_GRID_Y);;

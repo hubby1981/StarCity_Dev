@@ -7,6 +7,7 @@ import com.sim.star.bitworxx.starcity.app.StarCityApp;
 import com.sim.star.bitworxx.starcity.banking.BankingHelper;
 import com.sim.star.bitworxx.starcity.banking.CreditTransaction;
 import com.sim.star.bitworxx.starcity.cycle.GM;
+import com.sim.star.bitworxx.starcity.display.Show;
 import com.sim.star.bitworxx.starcity.game.enums.TextSize;
 import com.sim.star.bitworxx.starcity.player.PlayerStore;
 import com.sim.star.bitworxx.starcity.views.pages.ButtonContent;
@@ -33,6 +34,42 @@ public class BTN {
                android.widget.Toast.makeText(StarCityApp.getAppContext(), "Add clicked", Toast.LENGTH_SHORT).show();
             }
         }));
+
+        ALL_BUTTON.put("en-btn-main-play", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                MenuBitmaps.ActualWindow=null;
+                Show.ShowOverlay=false;
+                MenuBitmaps.BitmapDrawables.clear();
+                MainScreen.Init.run();
+                android.widget.Toast.makeText(StarCityApp.getAppContext(), "Add clicked", Toast.LENGTH_SHORT).show();
+
+            }
+        }));
+
+
+        ALL_BUTTON.put("en-btn-main-new", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                MenuBitmaps.ActualWindow=null;
+                Show.ShowOverlay=false;
+                MenuBitmaps.BitmapDrawables.clear();
+                MainScreen.Init.run();
+
+            }
+        }));
+
+        ALL_BUTTON.put("en-btn-main-options", new ButtonDescription(new Runnable() {
+            @Override
+            public void run() {
+                MenuBitmaps.ActualWindow=null;
+                Show.ShowOverlay=false;
+                MenuBitmaps.BitmapDrawables.clear();
+                MainScreen.Init.run();
+
+            }
+        }));
+
         ALL_BUTTON.put("de-btn-system-add", new ButtonDescription(new Runnable() {
             @Override
             public void run() {

@@ -46,6 +46,10 @@ public class TXT {
         result.add(getValuesFrom("en","page","Page",TextSize.TEXT));
         result.add(getValuesFrom("en","btn-system-add","ADD",TextSize.TEXT));
         result.add(getValuesFrom("en","btn-system-buy","buy",TextSize.TEXT));
+        result.add(getValuesFrom("en","btn-main-play","play",TextSize.TEXT));
+        result.add(getValuesFrom("en","btn-main-new","new game",TextSize.TEXT));
+        result.add(getValuesFrom("en","btn-main-options","options",TextSize.TEXT));
+
         result.add(getValuesFrom("en","btn-system-generate","Build",TextSize.TEXT));
         result.add(getValuesFrom("en","header-main-functions","Functions",TextSize.SUB_HEADER));
         result.add(getValuesFrom("en","header-main-functions_desc","All Functions are designed for.",TextSize.TEXT));

@@ -28,14 +28,18 @@ import com.sim.star.bitworxx.starcity.constants.MenuConst;
 import com.sim.star.bitworxx.starcity.display.Show;
 import com.sim.star.bitworxx.starcity.game.enums.Direction;
 import com.sim.star.bitworxx.starcity.game.enums.MenuTriangle;
+import com.sim.star.bitworxx.starcity.geometric.CoPo;
 import com.sim.star.bitworxx.starcity.geometric.GeometricHelp;
 import com.sim.star.bitworxx.starcity.geometric.TriagleHelper;
 import com.sim.star.bitworxx.starcity.highlight.BlinkCode;
 import com.sim.star.bitworxx.starcity.player.PlayerStore;
 import com.sim.star.bitworxx.starcity.runnable.RunnablesMainMenu;
+import com.sim.star.bitworxx.starcity.views.content.ContentWindow;
+import com.sim.star.bitworxx.starcity.views.content.OverlayContent;
 import com.sim.star.bitworxx.starcity.views.icons.BankIcon;
 import com.sim.star.bitworxx.starcity.views.icons.SkillIcon;
 import com.sim.star.bitworxx.starcity.views.icons.TechIcon;
+import com.sim.star.bitworxx.starcity.views.pages.ButtonContent;
 import com.sim.star.bitworxx.starcity.views.touch.ActionContainer;
 import com.sim.star.bitworxx.starcity.views.touch.ActionHandler;
 
@@ -338,6 +342,7 @@ private Paint HeaderFontPaint;
 
     protected abstract void drawItems(Canvas canvas);
     protected abstract void drawContent(Canvas canvas);
+    protected abstract void drawContentWindow(Canvas canvas,ContentWindow window);
 
     private void createBackShader() {
         if (Show.RenderShader) {
@@ -411,7 +416,26 @@ private Paint HeaderFontPaint;
 
         if(Show.ShowOverlay)
         {
-            canvas.drawRect(OutboundRect,MenuConst.HALF_TRANSPARENT_BACK_PAINTER);
+            canvas.drawRect(OutboundRect, MenuConst.HALF_TRANSPARENT_BACK_PAINTER);
+
+            float bx=0;
+            float by=0;
+
+            bx=OutboundRectF.centerX()-(640/2);
+            by=OutboundRectF.centerY()-(480/2);
+
+
+            canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.splash), bx, by, null);
+            if(MenuBitmaps.ActualWindow==null)
+            {
+                MenuBitmaps.ActualWindow = new OverlayContent(OutboundRect);
+
+
+            }
+
+             drawContent(canvas);
+
+
         }else
         {
             canvas.drawBitmap(MenuBitmaps.BitmapDrawables.get(Id),0,0,null);

@@ -8,8 +8,8 @@ public enum RaceEnum {
     Insect,
     Plant,
     Reptile,
-    Octopus,
+    Octopod,
     Techno,
-    Singular,
+    Singularity,
     MustSelect
 }

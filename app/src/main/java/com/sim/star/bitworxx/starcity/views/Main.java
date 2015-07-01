@@ -174,4 +174,11 @@ public class Main extends MainBorder {
         if(MenuBitmaps.ActualWindow!=null)
             MenuBitmaps.ActualWindow.drawOnCanvas(canvas);
     }
+
+    @Override
+    protected void drawContentWindow(Canvas canvas,ContentWindow window)
+    {
+        if(window!=null)
+          window.drawOnCanvas(canvas,window);
+    }
 }
