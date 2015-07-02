@@ -18,16 +18,17 @@ import java.util.Map;
 /**
  * Created by WEIS on 22.04.2015.
  */
-public class SystemViewPattern extends PatternBase {
+public class SystemViewPattern extends PageCountPatternBase {
     public SystemViewPattern(String pageCount) {
-/*
+            super(pageCount);
+
         String name = GM.SYSTEM_NAME;
 
         Contents.add(new ContentDescription(new CoPo(0, 0), "header-system", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(5, 0), name, ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(28, 0), "page", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(30, 0), "3", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(31, 0), pageCount, ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(31, 0), PageCount, ContentType.TEXT));
 
         Contents.add(new ContentDescription(new CoPo(0, 2, 23, 14), "", ContentType.TABLE));
 
@@ -50,7 +51,7 @@ public class SystemViewPattern extends PatternBase {
         Contents.add(new ContentDescription(new CoPo(16, 3, 16, 14), "", ContentType.LINE));
         Contents.add(new ContentDescription(new CoPo(18, 3, 18, 14), "", ContentType.LINE));
         Contents.add(new ContentDescription(new CoPo(20, 3, 20, 14), "", ContentType.LINE));
-        Contents.add(new ContentDescription(new CoPo(22, 3, 22, 14), "", ContentType.LINE))
+        Contents.add(new ContentDescription(new CoPo(22, 3, 22, 14), "", ContentType.LINE));
 
 
         Patterns.add(new GridLinePattern(2,2,new CoPo(0,3,23,14)));
@@ -111,6 +112,6 @@ public class SystemViewPattern extends PatternBase {
 
       Patterns.add(new SystemObjectPattern(name));
 
-*/
+
     }
 }

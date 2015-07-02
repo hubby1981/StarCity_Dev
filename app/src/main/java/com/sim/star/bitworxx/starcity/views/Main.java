@@ -6,12 +6,14 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 
+import com.sim.star.bitworxx.starcity.MainScreen;
 import com.sim.star.bitworxx.starcity.constants.CliprRects;
 import com.sim.star.bitworxx.starcity.constants.DirtyRects;
 import com.sim.star.bitworxx.starcity.constants.MenuBitmaps;
 import com.sim.star.bitworxx.starcity.constants.MenuConst;
 import com.sim.star.bitworxx.starcity.display.Show;
 import com.sim.star.bitworxx.starcity.game.enums.MenuTriangle;
+import com.sim.star.bitworxx.starcity.runnable.RunnableWindow;
 import com.sim.star.bitworxx.starcity.runnable.RunnablesMainMenu;
 import com.sim.star.bitworxx.starcity.views.anim.BankAnimation;
 import com.sim.star.bitworxx.starcity.views.anim.BitmapAnimation;
@@ -21,7 +23,9 @@ import com.sim.star.bitworxx.starcity.views.anim.SubMenuAnimation;
 import com.sim.star.bitworxx.starcity.views.anim.TechAnimation;
 import com.sim.star.bitworxx.starcity.views.anim.WatchAnimation;
 import com.sim.star.bitworxx.starcity.views.content.ContentWindow;
+import com.sim.star.bitworxx.starcity.views.content.FightContent;
 import com.sim.star.bitworxx.starcity.views.content.MainContent;
+import com.sim.star.bitworxx.starcity.views.touch.ActionContainer;
 
 /**
  * Created by WEIS on 10.04.2015.
@@ -56,6 +60,8 @@ public class Main extends MainBorder {
 
     @Override
     public void get_init() {
+
+
         HasTitle = true;
         init(MenuConst.MARGIN_CLIP, MenuTriangle.ALL, MenuConst.FACTOR_TRIANGLE_OUT, MenuConst.FACTOR_TRIANGLE_IN);
         MainMenu = new Mini();
@@ -71,13 +77,16 @@ public class Main extends MainBorder {
         Bank = new BankAnimation(SubMenuBank);
         Sub = new SubMenuAnimation(SubMenu);
         Race = new BitmapAnimation(TopMenu, MenuBitmaps.BITMAP_RACE);
-           Skill = new SkillAnimation(SubMenuSkill);
+        Skill = new SkillAnimation(SubMenuSkill);
         Tech = new TechAnimation(SubMenuTech);
 
         MainMenu.setRunnable(RunnablesMainMenu.R_A_MAIN_MENU);
         SubMenu.setRunnable(RunnablesMainMenu.R_A_SUB_MENU);
         TopMenu.setRunnable(RunnablesMainMenu.R_A_TOP_MENU);
 
+        SubMenuBank.setRunnable(RunnableWindow.R_A_SHOW_FIGHT);
+
+        SubMenuTech.setRunnable(RunnableWindow.R_A_SHOW_MAIN);
     }
 
     @Override
@@ -166,7 +175,7 @@ public class Main extends MainBorder {
 
     @Override
     protected void drawContent(Canvas canvas) {
-
+        RunnableWindow.InnerRectWindow=InnerRect;
 
         if(MenuBitmaps.ActualWindow==null)
             MenuBitmaps.ActualWindow = new MainContent(InnerRect);

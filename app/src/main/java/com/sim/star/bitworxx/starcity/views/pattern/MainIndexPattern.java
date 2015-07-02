@@ -8,15 +8,16 @@ import com.sim.star.bitworxx.starcity.views.pages.ContentDescription;
 /**
  * Created by WEIS on 16.04.2015.
  */
-public class MainIndexPattern extends PatternBase {
+public class MainIndexPattern extends PageCountPatternBase {
 
     public MainIndexPattern(String pageCount)
     {
-        super();
+        super(pageCount);
+
         Contents.add(new ContentDescription(new CoPo(0, 0), "header-main", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(28,0),"page", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(30,0),"1", ContentType.TEXT));
-        Contents.add(new ContentDescription(new CoPo(31,0), pageCount, ContentType.TEXT));
+        Contents.add(new ContentDescription(new CoPo(31,0), PageCount, ContentType.TEXT));
 
         Contents.add(new ContentDescription(new CoPo(0,3),"header-main-functions", ContentType.TEXT));
         Contents.add(new ContentDescription(new CoPo(1,4),"header-main-functions_desc", ContentType.TEXT));

@@ -57,6 +57,8 @@ public class TXT {
         result.add(getValuesFrom("en","header-systems-table_name","Name",TextSize.SUB_HEADER));
         result.add(getValuesFrom("en","header-systems-table_sector","Sector",TextSize.SUB_HEADER));
         result.add(getValuesFrom("en","header-systems-table_status","Status",TextSize.SUB_HEADER));
+        result.add(getValuesFrom("en","header-fight_map","Fight Map",TextSize.SUB_HEADER));
+
         result.add(getValuesFrom("en","rbn-use-action-1","use yellow",TextSize.TEXT));
         result.add(getValuesFrom("en","rbn-use-action-2","use green",TextSize.TEXT));
         result.add(getValuesFrom("en","rbn-use-action-3","use blue",TextSize.TEXT));
@@ -139,6 +141,8 @@ public class TXT {
         result.add(getValuesFrom("de","header-systems-table_name","Name",TextSize.SUB_HEADER));
         result.add(getValuesFrom("de","header-systems-table_sector","Sektor",TextSize.SUB_HEADER));
         result.add(getValuesFrom("de","header-systems-table_status","Status",TextSize.SUB_HEADER));
+        result.add(getValuesFrom("de","header-fight_map","Kampfansicht",TextSize.SUB_HEADER));
+
         result.add(getValuesFrom("de","rbn-use-action-1","nimm gelb",TextSize.TEXT));
         result.add(getValuesFrom("de","rbn-use-action-2","nimm gruen",TextSize.TEXT));
         result.add(getValuesFrom("de","rbn-use-action-3","nimm blau",TextSize.TEXT));

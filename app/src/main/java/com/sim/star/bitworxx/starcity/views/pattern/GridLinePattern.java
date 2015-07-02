@@ -10,7 +10,7 @@ import com.sim.star.bitworxx.starcity.views.pages.ContentDescription;
 public class GridLinePattern extends CoPoPattern {
 
 
-    protected GridLinePattern(int x,int y,CoPo p) {
+    public GridLinePattern(int x,int y,CoPo p) {
         super(p);
 
 
