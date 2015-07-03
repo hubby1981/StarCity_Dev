@@ -124,6 +124,8 @@ public class MainScreen extends Activity {
         Init = new Runnable() {
             @Override
             public void run() {
+                if(MenuBitmaps.ActualWindow!=null)
+                    MenuBitmaps.ActualWindow.flush();
                 update();
             }
         };

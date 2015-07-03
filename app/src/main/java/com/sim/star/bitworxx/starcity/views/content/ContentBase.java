@@ -31,6 +31,7 @@ public abstract class ContentBase {
 
     public ContentBase(Rect displayIn)
     {
+
         Id= UUID.randomUUID();
         DisplayRect=displayIn;
     }

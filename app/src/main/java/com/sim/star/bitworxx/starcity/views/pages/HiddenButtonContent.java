@@ -2,6 +2,7 @@ package com.sim.star.bitworxx.starcity.views.pages;
 
 import android.graphics.Rect;
 
+import com.sim.star.bitworxx.starcity.constants.MenuBitmaps;
 import com.sim.star.bitworxx.starcity.geometric.CoPo;
 import com.sim.star.bitworxx.starcity.views.touch.ActionContainer;
 

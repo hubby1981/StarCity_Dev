@@ -25,7 +25,9 @@ public static Runnable CloseAll=new Runnable() {
     public void run() {
         ALL_OPENED.remove("cmb-colors");
         if(MenuBitmaps.ActualWindow!=null)
+        {
             MenuBitmaps.ActualWindow.setupPages();
+            }
         ActionContainer.clearHidden();
     }
 };

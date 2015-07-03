@@ -22,7 +22,8 @@ public static  Rect InnerRectWindow;
             @Override
             public void run() {
                 MenuBitmaps.ActualWindow=new FightContent(InnerRectWindow);
-                ActionContainer.flush();
+                if(MenuBitmaps.ActualWindow!=null)
+                    MenuBitmaps.ActualWindow.flush();
                 MainScreen.Init.run();
             }
         };
@@ -32,7 +33,8 @@ public static  Rect InnerRectWindow;
                 @Override
                 public void run() {
                     MenuBitmaps.ActualWindow=new MainContent(InnerRectWindow);
-                    ActionContainer.flush();
+                    if(MenuBitmaps.ActualWindow!=null)
+                        MenuBitmaps.ActualWindow.flush();
                     MainScreen.Init.run();
                 }
             };

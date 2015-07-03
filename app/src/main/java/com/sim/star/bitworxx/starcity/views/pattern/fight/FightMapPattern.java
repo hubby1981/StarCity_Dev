@@ -27,9 +27,6 @@ public class FightMapPattern extends PageCountPatternBase {
         Contents.add(new ContentDescription(new CoPo(0, 2, 15, 14), "", ContentType.TABLE));
         Patterns.add(new GridLinePattern(1,1,new CoPo(0,3,15,14)));
 
-        Contents.add(new ContentDescription(new CoPo(17, 2, 23, 14), "", ContentType.TABLE));
 
-        Contents.add(new ContentDescription(new CoPo(17, 9, 23, 14), "", ContentType.TABLE));
-        Contents.add(new ContentDescription(new CoPo(25, 9, 31, 14), "", ContentType.TABLE));
     }
 }

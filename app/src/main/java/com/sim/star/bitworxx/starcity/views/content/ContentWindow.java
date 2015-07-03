@@ -11,6 +11,7 @@ import android.preference.PreferenceActivity;
 import com.sim.star.bitworxx.starcity.constants.CliprRects;
 import com.sim.star.bitworxx.starcity.constants.ColorSetter;
 import com.sim.star.bitworxx.starcity.constants.ContentFont;
+import com.sim.star.bitworxx.starcity.constants.MenuBitmaps;
 import com.sim.star.bitworxx.starcity.constants.MenuConst;
 import com.sim.star.bitworxx.starcity.display.Show;
 import com.sim.star.bitworxx.starcity.game.enums.TextSize;
@@ -164,7 +165,8 @@ public abstract class ContentWindow extends ContentBase {
            PageBase page = Pages.get(ActualPage);
             if(page!=null)
             {
-                ActionContainer.flush();
+                if(MenuBitmaps.ActualWindow!=null)
+                    MenuBitmaps.ActualWindow.flush();
                 for(Content c : page.drawContents())
                 {
                     c.onDraw(canvas,this,null);
